@@ -1,33 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
-import Image from "next/image";
-/* Icon Ringkasan */
-import { RiAlarmWarningLine } from "react-icons/ri";
+
 /* Icon Pras */
 import { FaRegCalendarCheck } from "react-icons/fa";
 /* Icon Tujuan */
 import { RiMapPinAddFill } from "react-icons/ri";
 /* Icon Uncheck */
 import { ImCheckboxUnchecked } from "react-icons/im";
-import Bab4_1_G1 from "../../../asset/Bab4_1_G1.png";
-import Bab4_1_G2 from "../../../asset/Bab4_1_G2.png";
-import Bab4_1_G4 from "../../../asset/Bab4_1_G4.png";
-import Bab4_1_G5 from "../../../asset/Bab4_1_G5.png";
-import Bab4_1_G6 from "../../../asset/Bab4_1_G6.png";
-import Bab4_1_G7 from "../../../asset/Bab4_1_G7.png";
-import Bab4_1_G8 from "../../../asset/Bab4_1_G8.png";
-import Bab4_1_G9 from "../../../asset/Bab4_1_G9.png";
 import Bab4_2_G1 from "../../../asset/G44_MBab3.png";
 import Bab4_2_G2 from "../../../asset/Bab4_2_G2.png";
 import Bab4_2_G3 from "../../../asset/Bab4_2_G3.png";
 import Bab4_2_G4 from "../../../asset/Bab4_2_G4.png";
 import Bab4_2_G5 from "../../../asset/Bab4_2_G5.png";
-import Bab4_2_G6 from "../../../asset/Bab4_2_G6.png";
-import Bab4_2_G7 from "../../../asset/Bab4_2_G7.png";
-import Bab4_2_G8 from "../../../asset/Bab4_2_G8.png";
-import Bab4_2_G9 from "../../../asset/Bab4_2_G9.png";
-
 import Cardbab from "@/app/component/Cardbab";
 import Cardsubbab from "@/app/component/Cardsubbab";
 import Cardlatihan from "@/app/component/Cardlatihan";

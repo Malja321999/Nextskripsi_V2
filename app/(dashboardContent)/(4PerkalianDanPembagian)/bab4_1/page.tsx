@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
-import Image from "next/image";
 /* Icon Ringkasan */
 import { RiAlarmWarningLine } from "react-icons/ri";
 /* Icon Pras */

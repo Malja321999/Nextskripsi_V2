@@ -21,8 +21,10 @@ const config: Config = {
          light: {
           'DEFAULT' : '#FAFBFC',
           'lighter' : '#F3F4F6',
-         }
-        },
+         },
+         "dark-purple": "#081A51",
+        "light-white": "rgb(255,255,255,0.18)"        
+      },
     },
   },
   plugins: [],

@@ -18,6 +18,7 @@ const disableNavbar = [
   "/bab4_1",
   "/bab4_2",
   "/bab4_kuis",
+  "/coba",
 ];
 
 const UsetateNavbar = () => {

@@ -27,47 +27,54 @@ const Page = () => {
       <div className="mx-2 mt-0 left-[-90.9rem]">
         {/* Judul Bab */}
         <Cardbab n={1} p={"Bilangan Bulat"} />
-        <div className="bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
-          <button onClick={() => SetCollapse(!Collapse)}>
-            <ul className="flex justify-between gap-2">
-              <li className="flex justify-between gap-2">
-                <FaRegCalendarCheck className={"mt-[2.5px]"} />
-                Prasyarat
-              </li>
+        <div
+          className={`bg-gray-900 w-[23rem] p-2 mt-2 rounded-md ${
+            Collapse ? "h-[6rem]" : "h-[55px]"
+          } duration-300 relative`}
+        >
+          <div className="flex justify-between items-start">
+            <div className="flex gap-2">
+              <FaRegCalendarCheck />
+              Prasyarat
+            </div>
 
-              <li>{Collapse ? <IoIosArrowDown /> : <IoIosArrowForward />}</li>
-            </ul>
-          </button>
+            <IoIosArrowForward
+              className={`${Collapse && "rotate-90 duration-300 relative"}`}
+              onClick={() => SetCollapse(!Collapse)}
+            />
+          </div>
 
-          <div>
-            {Collapse ? (
-              <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
-                Tidak Ada Syarat Untuk Pembelajaran
-              </div>
-            ) : (
-              <></>
-            )}
+          <div
+            className={`w-[22rem] p-2 bg-gray-800 rounded-md text-base ${
+              !Collapse && "scale-0"
+            } `}
+          >
+            Tidak Ada Syarat Untuk Pembelajaran
           </div>
         </div>
-        <div className="bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
-          <button onClick={() => SetCollapse2(!Collapse2)}>
-            <ul className="flex justify-between gap-2">
-              <li className="flex justify-between gap-2 text-2xl">
-                <RiMapPinAddFill className={"mt-[2.5px]"} />
-                Tujuan Pembelajaran
-              </li>
-              <li>{Collapse2 ? <IoIosArrowDown /> : <IoIosArrowForward />}</li>
-            </ul>
-          </button>
+        <div
+          className={`bg-gray-900 w-[23rem] p-2 mt-2 rounded-md ${
+            Collapse2 ? "h-[7.5rem]" : "h-[55px]"
+          } duration-300 relative`}
+        >
+          <div className="flex justify-between items-start">
+            <div className="flex gap-2">
+              <FaRegCalendarCheck />
+              Tujuan Pembelajaran
+            </div>
 
-          <div>
-            {Collapse2 ? (
-              <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
-                1. Siswa dapat mengetahui apa itu bilangan bulat
-              </div>
-            ) : (
-              <></>
-            )}
+            <IoIosArrowForward
+              className={`${Collapse2 && "rotate-90 duration-300 relative"}`}
+              onClick={() => SetCollapse2(!Collapse2)}
+            />
+          </div>
+
+          <div
+            className={`w-[22rem] p-2 bg-gray-800 rounded-md text-base ${
+              !Collapse2 && "scale-0"
+            } `}
+          >
+            1. Siswa dapat mengetahui apa itu bilangan bulat
           </div>
         </div>
       </div>

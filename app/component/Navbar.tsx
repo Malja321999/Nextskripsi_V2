@@ -8,32 +8,11 @@ import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
-/* import { UserButton } from "@clerk/nextjs";
-import { useAuth } from "@clerk/nextjs";
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithCustomToken } from "firebase/auth";
-import { firebaseConfig } from "@/firebaseConfig";
- */
-/* initializeApp(firebaseConfig); */
+import { usePathname } from "next/navigation";
 
 function NavBar({ darkMode, setDarkMode }: any) {
-  /* const { getToken } = useAuth();
-
-  useEffect(() => {
-    const signInWithClerk = async () => {
-      const auth = getAuth();
-      const token: any = await getToken({
-        template: "integration_firebase",
-      });
-      const userCredentials = await signInWithCustomToken(auth, token);
-
-      console.log("user ::", userCredentials.user);
-    };
-
-    signInWithClerk();
-  }, []); */
-
   const [navbar, setNavbar] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -63,8 +42,12 @@ function NavBar({ darkMode, setDarkMode }: any) {
                     alt="Bilcon"
                     className="w-8 h-5 dark:text-white"
                   />
-                  <div className="text-white font-extrabold text-2xl">
-                    BIL<span className="text-teal-500">BUL</span>
+                  <div
+                    className={`${
+                      pathname === "/" ? "text-teal-100" : "text-white"
+                    } text-3xl font-bold`}
+                  >
+                    BIL<span className="text-teal-600">BUL</span>
                   </div>
                 </div>
               </Link>
@@ -86,37 +69,50 @@ function NavBar({ darkMode, setDarkMode }: any) {
               }`}
             >
               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
-                <li className="pb-6 text-xl text-white py-2 px-6 text-center  hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md">
+                <li>
                   <Link href="/capem" onClick={() => setNavbar(!navbar)}>
-                    Capain Pembelajaran{" "}
+                    <span
+                      className={`${
+                        pathname === "/capem" ? "text-teal-300" : "text-white"
+                      } pb-6 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                    >
+                      Capain Pembelajaran
+                    </span>
                   </Link>
                 </li>
-                <li className="pb-6 text-xl text-white py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-500 md:hover:bg-transparent rounded-md">
+                <li>
                   <Link href="/bab1_1" onClick={() => setNavbar(!navbar)}>
-                    Content
+                    <span
+                      className={`${
+                        pathname === "/bab1_1" ? "text-teal-300" : "text-white"
+                      } pb-6 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                    >
+                      Content
+                    </span>
                   </Link>
                 </li>
-                <li className="pb-6 text-xl text-white py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md">
+                <li>
                   <Link href="/about" onClick={() => setNavbar(!navbar)}>
-                    About
+                    <span
+                      className={`${
+                        pathname === "/about" ? "text-teal-300" : "text-white"
+                      } pb-6 text-xl py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                    >
+                      About
+                    </span>
                   </Link>
                 </li>
-
-                <li className="pb-6 text-xl text-white py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md">
-                  {/*  <Link href="/signup" onClick={() => setNavbar(!navbar)}>
-                    Sign Up
-                  </Link> */}
-                  {/* <UserButton afterSignOutUrl="/login" /> */}
-                  {/*    <button
-                    onClick={() => {
-                      signOut(auth);
-                      sessionStorage.removeItem("user");
-                     }}
-                  >
-                    Log out
-                  </button>{" "} */}
+                <li>
+                  <Link href="/signup" onClick={() => setNavbar(!navbar)}>
+                    <span
+                      className={`${
+                        pathname === "/signup" ? "text-teal-300" : "text-white"
+                      } pb-6 text-xl py-2 md:px-6 text-center hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                    >
+                      Sign Up
+                    </span>
+                  </Link>
                 </li>
-
                 <li className="w-28 text-xl text-white py-2 px-6 text-center border-teal-500  rounded-md">
                   <div
                     className="relative justify-end w-16 h-8 flex items-center dark:bg-gray-900 bg-teal-500 cursor-pointer rounded-full p-1"

@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className="bg-gray-700 h-[560px] w-[90rem] flex flex-col relative mt-[5.5rem] mx-2 left-[-90.9rem]">
+    <div className="bg-fuchsia-600 h-[37.1rem] w-[88.8rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
       BAB4 Kuis
     </div>
   );

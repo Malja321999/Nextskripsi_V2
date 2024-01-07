@@ -27,7 +27,7 @@ const menuItems = [
     id: 3,
     label: "Peta Konsep",
     icon: <FaSitemap size={25} />,
-    link: "/peta",
+    link: " /peta",
   },
 ];
 

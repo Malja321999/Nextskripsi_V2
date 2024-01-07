@@ -9,7 +9,6 @@ import {
   TbCircleNumber4,
 } from "react-icons/tb";
 import { BsArrowLeftShort, BsChevronRight } from "react-icons/bs";
-import { RiDashboardFill } from "react-icons/ri";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -28,7 +27,7 @@ const SidebarC = () => {
   return (
     <div className="flex mt-[5rem] overflow-y-auto overflow-x-hidden h-[40rem]">
       <div
-        className={`bg-dark-purple h-screen p-5 pt-8 ${
+        className={`bg-teal-900 dark:bg-dark-purple h-screen p-5 pt-8 ${
           open1 ? "w-72" : "w-20"
         } duration-300 relative`}
       >
@@ -62,9 +61,9 @@ const SidebarC = () => {
             <Link href="/bab1_1">
               <li
                 className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md ${
-                  pathname === "/bab1_1" && "bg-light-white text-teal-200"
+                  pathname === "/bab1_1" && "bg-teal-500"
                 } ${
-                  pathname === "/bab1_kuis" && "bg-light-white text-teal-200"
+                  pathname === "/bab1_kuis" && "bg-teal-500"
                 }`}
                 onClick={() => setSubmenutOpen1(!submenuOpen1)}
               >
@@ -117,9 +116,9 @@ const SidebarC = () => {
             <Link href="/bab2_1">
               <li
                 className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md 
-                ${pathname === "/bab2_1" && "bg-light-white text-teal-200"}
-                ${pathname === "/bab2_2" && "bg-light-white text-teal-200"}
-                ${pathname === "/bab2_kuis" && "bg-light-white text-teal-200"}`}
+                ${pathname === "/bab2_1" && "bg-teal-500"}
+                ${pathname === "/bab2_2" && "bg-teal-500"}
+                ${pathname === "/bab2_kuis" && "bg-teal-500"}`}
                 onClick={() => setSubmenutOpen2(!submenuOpen2)}
               >
                 <span className="text-2xl block float-left">
@@ -180,9 +179,9 @@ const SidebarC = () => {
             <Link href="/bab3_1">
               <li
                 className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
-                ${pathname === "/bab3_1" && "bg-light-white text-teal-200"}
-                ${pathname === "/bab3_2" && "bg-light-white text-teal-200"}
-                ${pathname === "/bab3_kuis" && "bg-light-white text-teal-200"}
+                ${pathname === "/bab3_1" && "bg-teal-500"}
+                ${pathname === "/bab3_2" && "bg-teal-500"}
+                ${pathname === "/bab3_kuis" && "bg-teal-500"}
                 `}
                 onClick={() => setSubmenutOpen3(!submenuOpen3)}
               >
@@ -244,9 +243,9 @@ const SidebarC = () => {
             <Link href="/bab4_1">
               <li
                 className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
-                ${pathname === "/bab4_1" && "bg-light-white text-teal-200"}
-                ${pathname === "/bab4_2" && "bg-light-white text-teal-200"}
-                ${pathname === "/bab4_kuis" && "bg-light-white text-teal-200"}
+                ${pathname === "/bab4_1" && "bg-teal-500"}
+                ${pathname === "/bab4_2" && "bg-teal-500"}
+                ${pathname === "/bab4_kuis" && "bg-teal-500"}
                 `}
                 onClick={() => setSubmenutOpen4(!submenuOpen4)}
               >

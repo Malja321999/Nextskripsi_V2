@@ -10,7 +10,7 @@ const DashboardContent = ({ children }: { children: React.ReactNode }) => {
     <div className="h-screen flex justify-start items-start overflow-y-hidden overflow-x-hidden">
       <L>
         <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
-        <SidebarC darkMode={darkMode} />
+        <SidebarC/>
       </L>
       <div className="ml-[90rem] w-1 flex-1 p-4 text-white">{children}</div>
     </div>

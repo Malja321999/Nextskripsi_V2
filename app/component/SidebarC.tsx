@@ -59,25 +59,27 @@ const SidebarC = () => {
           {/* Bab 1 */}
           <ul className="pt-2">
             <>
-              <Link href="/bab1_1">
+              <Link href="/bab2_1">
                 <li
                   className={`${
                     open1 && "w-[275px]"
-                  }text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md ${
-                    pathname === "/bab1_1" && "bg-teal-500"
-                  } ${pathname === "/bab1_kuis" && "bg-teal-500"}`}
+                  } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md 
+                ${pathname === "/bab2_1" && "bg-teal-500"}
+                ${pathname === "/bab2_2" && "bg-teal-500"}
+                ${pathname === "/bab2_kuis" && "bg-teal-500"}`}
                   onClick={() => setSubmenutOpen1(!submenuOpen1)}
                 >
                   <span className="text-2xl block float-left">
                     <TbCircleNumber1 />
                   </span>
                   <span
-                    className={`text-xs font-medium flex-1  ${
+                    className={`text-xs font-medium flex-1 ${
                       !open1 && "hidden"
                     }`}
                   >
                     Bilangan Bulat
                   </span>
+
                   {open1 && (
                     <BsChevronRight
                       className={`text-2xl ${

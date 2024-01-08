@@ -8,11 +8,12 @@ import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 function NavBar({ darkMode, setDarkMode }: any) {
   const [navbar, setNavbar] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -70,7 +71,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
             >
               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
                 <li>
-                  <Link href="/capem" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/capem">
                     <span
                       className={`${
                         pathname === "/capem" ? "text-teal-300" : "text-white"
@@ -81,7 +82,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/bab1_1" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/bab1_1">
                     <span
                       className={`${
                         pathname === "/bab1_1" ? "text-teal-300" : "text-white"
@@ -92,7 +93,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/about">
                     <span
                       className={`${
                         pathname === "/about" ? "text-teal-300" : "text-white"
@@ -103,7 +104,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/signup" onClick={() => setNavbar(!navbar)}>
+                  <button onClick={() => router.push("/signup")}>
                     <span
                       className={`${
                         pathname === "/signup" ? "text-teal-300" : "text-white"
@@ -111,7 +112,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                     >
                       Sign Up
                     </span>
-                  </Link>
+                  </button>
                 </li>
                 <li className="w-28 text-xl text-white py-2 px-6 text-center border-teal-500  rounded-md">
                   <div

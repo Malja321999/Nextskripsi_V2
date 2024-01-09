@@ -8,10 +8,10 @@ import Link from "next/link";
 
 const Home = () => {
   return (
-    <div className="flex justify-center items-center h-screen w-screen mt-40 md:mt-12">
+    <div className="h-screen w-auto flex justify-center items-center mt-40 md:mt-12">
       <div className="h-[900px] md:mx-35 w-full relative left-40">
         <div className="overflow-y-scroll overflow-x-hidden md:overflow-hidden h-screen mt-3.2">
-          <div className="flex justify-between">
+          <div className="flex justify-between ml-[60px] mt-3">
             {/* Judul */}
             <div className="h-[600px] flex justify-between items-center md:mx-32">
               <div className="text-black dark:text-white">
@@ -77,7 +77,7 @@ const Home = () => {
           </div>
           {/* Menu */}
           <div>
-            <ul className="md:flex justify-between items-center md:w-[900px] w-72 p-1 bg-indigo-600 border-10 rounded-3xl md:mx-[175px] mx-10 my-[-80px] mb-10 border-2 border-teal-300">
+            <ul className="md:flex justify-between items-center md:w-[900px] w-72 p-1 bg-indigo-600 border-10 rounded-3xl md:mx-[175px] mx-10 my-[-100px] mb-10 border-2 border-teal-300">
               <li>
                 <Link href={"/capem"}>
                   <button className="w-60 p-10 px-24  mx-5 my-5 rounded-lg bg-[#dc3545] hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
@@ -102,7 +102,6 @@ const Home = () => {
             </ul>
           </div>
         </div>
-
         {/* Footer */}
         <div className="fixed bottom-0">
           <Footer />

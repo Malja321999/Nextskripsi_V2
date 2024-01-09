@@ -1,77 +1,101 @@
 "use client";
-import logoTailwind from "../../asset/tailwind.svg";
+import Bilcon from "../../asset/Bilcon.svg";
 import Image from "next/image";
 import { useState } from "react";
-/* import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
- *//* import { auth } from "@/app/firebase/config";
- */import Link from "next/link";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-/*   const [createUserWithEmailAndPassword] =
-    useCreateUserWithEmailAndPassword(auth); */
-/* 
-  const handleSignUp = async () => {
-    try {
-      const res = await createUserWithEmailAndPassword(email, password);
-      console.log({ res });
-      sessionStorage.setItem("user", "true");
-      setEmail("");
-      setPassword("");
-    } catch (e) {
-      console.error(e);
-    }
-  }; */
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black text-white">
-      <div className="bg-indigo-600  dark:bg-gray-800 p-10 rounded-lg shadow-xl w-96">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <Image
-            className="mx-auto h-10 w-auto bg-white dark:bg-inherit rounded-md"
-            src={logoTailwind}
-            alt="Your Company"
-          />
-          <h2 className="dark:text-white mb-5 text-center text-2xl font-bold leading-9 tracking-tight">
-            Sign Up to <span className="dark:text-indigo-600">BIL</span>
-            <span className="text-teal-500">BUL</span>
-          </h2>
+    <div className="bg-white dark:bg-black min-h-screen flex items-center justify-center text-white mx-auto">
+      <div className="h-screen w-auto flex justify-center items-center">
+        <div className="bg-white w-[60vh] shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <form className="space-y-6" action="#">
+            <h2 className="dark:text-white mb-5 text-center text-2xl font-bold leading-9 tracking-tight">
+              <div className="w-10 h-10 flex justify-center items-center mx-auto ">
+                <Image
+                  src={Bilcon}
+                  alt="Bilcon"
+                  className="mx-auto h-10 w-auto"
+                />
+              </div>
+              <span className="text-black dark:text-white">Sign Up to </span>
+              <span className="text-indigo-600">BIL</span>
+              <span className="text-teal-500">BUL</span>
+            </h2>
+            <div>
+              <label
+                htmlFor="fullname"
+                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
+              >
+                Your full name
+              </label>
+              <input
+                type="text"
+                name="fullname"
+                id="fullname"
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="full name"
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
+              >
+                Your email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="name@company.com"
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="password"
+                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
+              >
+                Your password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="••••••••"
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required
+              />
+            </div>
+            <div className="flex items-start">
+              <Link
+                href="#"
+                className="text-sm text-blue-700 hover:underline ml-auto dark:text-blue-500"
+              >
+                Lost Password?
+              </Link>
+            </div>
+            <button
+              type="submit"
+              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Sign up your account
+            </button>
+            <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+              Have an account registered?{" "}
+              <Link
+                href="/signin"
+                className="text-blue-700 hover:underline dark:text-blue-500"
+              >
+                Sign in here
+              </Link>
+            </div>
+          </form>
         </div>
-
-        <input
-          autoComplete="email"
-          required
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 mb-4 dark:bg-gray-700 rounded outline-none text-white placeholder-gray-500"
-        />
-        <input
-          autoComplete="current-password"
-          required
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 mb-4 dark:bg-gray-700 rounded outline-none text-white placeholder-gray-500"
-        />
-        <button
-/*           onClick={handleSignUp}
- */          className="w-full p-3 bg-teal-500 rounded text-white hover:bg-indigo-500"
-        >
-          Sign Up
-        </button>
-        <p className="mt-10 text-center text-sm text-gray-300 dark:text-gray-500">
-          Already have an account?{" "}
-          <Link
-            href="/signin"
-            className="font-semibold leading-6 text-white dark:text-indigo-600 hover:text-indigo-500"
-          >
-            Log In
-          </Link>
-        </p>
       </div>
     </div>
   );

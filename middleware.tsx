@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const islogin = false;
+  const islogin = true;
 
   if (!islogin) {
     return NextResponse.redirect(new URL("/signin", request.url));
@@ -9,5 +9,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboardAdmin/:path*", "/dashboardUser/:path*"],
+  matcher: ["/dashboardAdmin/:path*"],
 };

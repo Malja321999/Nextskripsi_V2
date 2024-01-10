@@ -1,9 +1,7 @@
-import React from 'react'
-
-const page = () => {
+export default function DashboardPage() {
   return (
-    <div>page</div>
-  )
+    <div className="w-full h-96 bg-gray-300 rounded-[12px] flex justify-center items-center mt-[5rem]">
+      <h1>Dashboard</h1>
+    </div>
+  );
 }
-
-export default page

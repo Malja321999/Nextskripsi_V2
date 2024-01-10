@@ -24,9 +24,9 @@ export default function PageadminRevalidate() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center">
+    <div className="h-20 flex flex-col justify-center items-center">
       <h1
-        className={`text-9xl my-5 ${
+        className={`text-9xl mt-12 ${
           status === "Revalidate Success" ? "text-teal-500" : "text-rose-500"
         }`}
       >
@@ -34,7 +34,7 @@ export default function PageadminRevalidate() {
       </h1>
       <button
         onClick={revalidate}
-        className="bg-sky-500 p-5 w-fit rounded-md text-9xl hover:bg-sky-300"
+        className="bg-sky-500 p-5 w-fit rounded-md text-2xl hover:bg-sky-300"
       >
         Ravalidate
       </button>

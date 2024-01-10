@@ -24,9 +24,9 @@ export default function PageadminRevalidate() {
   };
 
   return (
-    <div className="h-20 flex flex-col justify-center items-center">
+    <div className="w-3/6 h-96 bg-gray-300 rounded-[12px] flex flex-col justify-center items-center mr-5">
       <h1
-        className={`text-9xl mt-12 ${
+        className={`text-5xl font-bold ${
           status === "Revalidate Success" ? "text-teal-500" : "text-rose-500"
         }`}
       >

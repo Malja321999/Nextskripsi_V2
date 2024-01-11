@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+"use client";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 import React from "react";
 import UsetateNavbar from "./component/UsetateNavbar";
 import UsetateFooter from "./component/UsetateFooter";
+import { SessionProvider } from "next-auth/react";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -11,11 +12,6 @@ const roboto = Roboto({
   subsets: ["latin"],
   display: "swap",
 });
-
-export const metadata: Metadata = {
-  title: "BILBUL",
-  description: "Apps For Education",
-};
 
 export default function RootLayout({
   children,
@@ -34,9 +30,11 @@ export default function RootLayout({
       <body
         className={`${roboto.className} dark:bg-black text-white h-screen w-screen`}
       >
-        <UsetateNavbar />
-        {children}
-        <UsetateFooter />
+        <SessionProvider>
+          <UsetateNavbar />
+          {children}
+          <UsetateFooter />
+        </SessionProvider>
       </body>
     </html>
   );

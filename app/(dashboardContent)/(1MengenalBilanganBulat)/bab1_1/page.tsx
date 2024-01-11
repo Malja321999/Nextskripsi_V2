@@ -28,9 +28,10 @@ const Page = () => {
         {/* Judul Bab */}
         <Cardbab n={1} p={"Bilangan Bulat"} />
         <div
-          className={`bg-gray-900 w-[23rem] p-2 mt-2 rounded-md ${
+          className={`bg-gray-900 w-[23rem] p-2 mt-2 rounded-md cursor-pointer ${
             Collapse ? "h-[6rem]" : "h-[55px]"
           } duration-300 relative`}
+          onClick={() => SetCollapse(!Collapse)}
         >
           <div className="flex justify-between items-start">
             <div className="flex gap-2">
@@ -40,7 +41,6 @@ const Page = () => {
 
             <IoIosArrowForward
               className={`${Collapse && "rotate-90 duration-300 relative"}`}
-              onClick={() => SetCollapse(!Collapse)}
             />
           </div>
 
@@ -53,9 +53,10 @@ const Page = () => {
           </div>
         </div>
         <div
-          className={`bg-gray-900 w-[23rem] p-2 mt-2 rounded-md ${
+          className={`bg-gray-900 w-[23rem] p-2 mt-2 rounded-md cursor-pointer ${
             Collapse2 ? "h-[7.5rem]" : "h-[55px]"
           } duration-300 relative`}
+          onClick={() => SetCollapse2(!Collapse2)}
         >
           <div className="flex justify-between items-start">
             <div className="flex gap-2">
@@ -65,7 +66,6 @@ const Page = () => {
 
             <IoIosArrowForward
               className={`${Collapse2 && "rotate-90 duration-300 relative"}`}
-              onClick={() => SetCollapse2(!Collapse2)}
             />
           </div>
 

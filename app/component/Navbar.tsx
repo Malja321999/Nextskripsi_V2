@@ -9,11 +9,13 @@ import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function NavBar({ darkMode, setDarkMode }: any) {
   const [navbar, setNavbar] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const { status }: { status: string } = useSession();
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -104,15 +106,31 @@ function NavBar({ darkMode, setDarkMode }: any) {
                   </Link>
                 </li>
                 <li>
-                  <button onClick={() => router.push("/signup")}>
-                    <span
-                      className={`${
-                        pathname === "/signup" ? "text-teal-300" : "text-white"
-                      } pb-6 text-xl py-2 md:px-6 text-center hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
-                    >
-                      Sign Up
-                    </span>
-                  </button>
+                  {status === "authenticated" ? (
+                    <button onClick={() => signOut()}>
+                      <span
+                        className={`${
+                          pathname === "/signup"
+                            ? "text-teal-300"
+                            : "text-white"
+                        } pb-6 text-xl py-2 md:px-6 text-center hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                      >
+                        Logout
+                      </span>
+                    </button>
+                  ) : (
+                    <button onClick={() => signIn()}>
+                      <span
+                        className={`${
+                          pathname === "/signup"
+                            ? "text-teal-300"
+                            : "text-white"
+                        } pb-6 text-xl py-2 md:px-6 text-center hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                      >
+                        Login
+                      </span>
+                    </button>
+                  )}
                 </li>
                 <li className="w-28 text-xl text-white py-2 px-6 text-center border-teal-500  rounded-md">
                   <div

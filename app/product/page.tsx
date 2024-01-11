@@ -13,7 +13,7 @@ const page = async (props: ProductPageProps) => {
   const products = await getData("http://localhost:3000/api/product");
   console.log(products);
   return (
-    <div className="grid grid-cols-4 gap-4 mt-[6rem] mb-5 p-2 rounded-md mx-auto h-[85%] w-screen bg-teal-500 overflow-y-scroll place-items-center">
+    <div className="grid grid-cols-4 gap-4 h-screen mt-10 p-20 rounded-md mx-auto w-screen bg-teal-500 overflow-y-auto place-items-center">
       {/*   <h1 className="bg-white p-2 rounded-md w-[60vh] text-center text-teal-500 font-bold text-4xl">
         {params.slug ? "Detail Product Page" : " Product Page"}
       </h1> */}

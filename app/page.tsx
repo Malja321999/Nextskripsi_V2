@@ -1,10 +1,15 @@
-"use client";
 import Footer from "./component/Footer";
 import * as Icon from "react-icons/fa";
 import * as Iconb from "react-icons/bs";
 import GHome from "./asset/home.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "BILBUL",
+  description: "Apps For Education",
+};
 
 const Home = () => {
   return (

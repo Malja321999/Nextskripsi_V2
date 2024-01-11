@@ -10,7 +10,7 @@ export default function Layout({
   payments: React.ReactNode;
 }) {
   return (
-    <div className="p-5 overflow-x-scroll h-screen">
+    <div className="p-5 overflow-x-hidden overflow-y-scroll h-[39rem] mt-[5rem]">
       <div>{children}</div>
       <div className="flex justify-center items-center mt-5">
         {products}

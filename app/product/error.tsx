@@ -19,7 +19,7 @@ export default function Error({
       </h1>
       <button
         onClick={() => reset()}
-        className="bg-emerald-500 p-5 rounded-full border border-gray-500 w-fit text-center hover:bg-emerald-400 text-5xl"
+        className="bg-emerald-500 p-5 rounded-full border border-gray-200 w-fit text-center hover:bg-emerald-400 text-5xl"
       >
         Try Again
       </button>

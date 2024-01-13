@@ -15,7 +15,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
   const [navbar, setNavbar] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { status }: { status: string } = useSession();
+  const { data: session, status }: { data: any; status: string } = useSession();
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -107,17 +107,20 @@ function NavBar({ darkMode, setDarkMode }: any) {
                 </li>
                 <li>
                   {status === "authenticated" ? (
-                    <button onClick={() => signOut()}>
-                      <span
-                        className={`${
-                          pathname === "/signup"
-                            ? "text-teal-300"
-                            : "text-white"
-                        } pb-6 text-xl py-2 md:px-6 text-center hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
-                      >
-                        Logout
-                      </span>
-                    </button>
+                    <div className="flex flex-col text-center rounded-full">
+                    <h4>{session?.user?.fullname}</h4>
+                      <button onClick={() => signOut()}>
+                        <span
+                          className={`${
+                            pathname === "/signup"
+                              ? "text-teal-300"
+                              : "text-white"
+                          } pb-6 text-xl py-2 md:px-6 text-center hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                        >
+                          Logout
+                        </span>
+                      </button>
+                    </div>
                   ) : (
                     <button onClick={() => signIn()}>
                       <span

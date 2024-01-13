@@ -12,7 +12,7 @@ const SignIn = ({ searchParams }: any) => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const callbackUrl = "/dashboardAdmin";
+  const callbackAdmin = "/dashboardAdmin";
   const handleLogin = async (e: any) => {
     e.preventDefault();
     setError("");
@@ -22,12 +22,12 @@ const SignIn = ({ searchParams }: any) => {
         redirect: false,
         email: e.target.email.value,
         password: e.target.password.value,
-        callbackUrl,
+        callbackAdmin,
       });
       if (!res?.error) {
         e.target.reset();
         setIsLoading(false);
-        push(callbackUrl);
+        push(callbackAdmin);
       } else {
         setIsLoading(false);
         console.log(res);
@@ -98,15 +98,6 @@ const SignIn = ({ searchParams }: any) => {
             >
               {isLoading ? "Loading..." : "Login to your account"}
             </button>
-            {/* <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-              Not registered?{" "}
-              <Link
-                href="signup"
-                className="text-blue-700 hover:underline dark:text-blue-500"
-              >
-                Create account
-              </Link>
-            </div> */}
           </form>
         </div>
       </div>

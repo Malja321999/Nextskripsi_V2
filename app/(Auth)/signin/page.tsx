@@ -106,7 +106,7 @@ const SignIn = ({ searchParams }: any) => {
                 Create account
               </Link>
             </div>
-         {/*    <div className="flex justify-between items-center ">
+            <div className="flex justify-between items-center ">
               <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
               <h1 className="text-black dark:text-white">OR</h1>
               <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
@@ -118,7 +118,7 @@ const SignIn = ({ searchParams }: any) => {
               >
                 Masuk Sebagai Guru
               </Link>
-            </div> */}
+            </div>
           </form>
         </div>
       </div>

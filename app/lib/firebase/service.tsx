@@ -30,7 +30,7 @@ export async function retrieveDataById(collectionName: string, id: string) {
   return data;
 }
 
-/* Menghubungkan Signin Dan Signup dengan Firebase */
+/* Menghubungkan Signup dengan Firebase */
 
 export async function register(data: {
   fullname: string;
@@ -58,5 +58,24 @@ export async function register(data: {
     } catch (error) {
       return { status: false, statusCode: 400, message: "Register Failed" };
     }
+  }
+}
+
+/* Menghubungkan Signin dengan Firebase */
+
+export async function login(data: { email: string; password: string }) {
+  const q = query(
+    collection(firestore, "users"),
+    where("email", "==", data.email)
+  );
+  const shapshot = await getDocs(q);
+  const user = shapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  if(user){
+    return user[0];
+  }else{
+    return null;
   }
 }

@@ -7,11 +7,12 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 const SignIn = ({ searchParams }: any) => {
+  console.log(searchParams.callbackUrl);
   const { push } = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const callbackUrl = searchParams.callbackUrl || "/";
+  const callbackUrl = "/dashboardAdmin";
   const handleLogin = async (e: any) => {
     e.preventDefault();
     setError("");
@@ -97,26 +98,13 @@ const SignIn = ({ searchParams }: any) => {
             >
               {isLoading ? "Loading..." : "Login to your account"}
             </button>
-            <div className="flex justify-center items-center text-sm font-medium text-gray-500 dark:text-gray-300">
+            {/* <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
               Not registered?{" "}
               <Link
                 href="signup"
                 className="text-blue-700 hover:underline dark:text-blue-500"
               >
                 Create account
-              </Link>
-            </div>
-         {/*    <div className="flex justify-between items-center ">
-              <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
-              <h1 className="text-black dark:text-white">OR</h1>
-              <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
-            </div>
-            <div className="flex justify-center items-center">
-              <Link
-                href={"/signinAdmin"}
-                className="text-blue-700 hover:underline dark:text-blue-500 text-center text-sm font-medium"
-              >
-                Masuk Sebagai Guru
               </Link>
             </div> */}
           </form>

@@ -1,6 +1,6 @@
 import { retrieveData, retrieveDataById } from "@/app/lib/firebase/service";
 import { NextRequest, NextResponse } from "next/server";
-const data = [
+/* const data = [
   {
     id: 1,
     title: "Nike Air Force 1 '07",
@@ -29,7 +29,7 @@ const data = [
     image:
       "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/48ac368f-0d69-4b57-ad8d-4ebaa8e2eb74/air-max-flyknit-racer-shoes-tTv54H.png",
   },
-];
+]; */
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);

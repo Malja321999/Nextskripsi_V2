@@ -10,7 +10,9 @@ type ProductPageProps = {
 
 const page = async (props: ProductPageProps) => {
   const { params } = props;
-  const products = await getData("http://localhost:3000/api/product");
+  const products = await getData(
+    "https://nextskripsi-v2.vercel.app/api/product"
+  );
   console.log(products);
   return (
     <div className="grid grid-cols-4 gap-4 h-screen mt-10 p-20 rounded-md mx-auto w-screen bg-teal-500 overflow-y-auto place-items-center">

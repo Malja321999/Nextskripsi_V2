@@ -22,6 +22,7 @@ const UsetateNavbar = () => {
     "/bab4_2",
     "/bab4_kuis",
     "/coba",
+    "/signinAdmin",
   ];
 
   return (

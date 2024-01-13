@@ -8,15 +8,14 @@ import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 function NavBar({ darkMode, setDarkMode }: any) {
   const [navbar, setNavbar] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
-  const { data: session, status }: { data: any; status: string } = useSession();
 
+  const { data: session, status }: { data: any; status: string } = useSession();
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "dark ") setDarkMode(true);
@@ -72,6 +71,19 @@ function NavBar({ darkMode, setDarkMode }: any) {
               }`}
             >
               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
+                <li className="text-xl">
+                  {session?.user?.role === "admin" ? (
+                    <Link href="/dashboardAdmin">
+                      <span
+                        className={`${
+                          pathname === "/dashboardAdmin" ? "text-teal-300" : "text-white"
+                        } pb-6 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                      >
+                        Dashboard Admin
+                      </span>
+                    </Link>
+                  ) : null}
+                </li>
                 <li>
                   <Link href="/capem">
                     <span
@@ -106,9 +118,20 @@ function NavBar({ darkMode, setDarkMode }: any) {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/profile">
+                    <span
+                      className={`${
+                        pathname === "/profile" ? "text-teal-300" : "text-white"
+                      } pb-6 text-xl py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                    >
+                      Profile
+                    </span>
+                  </Link>
+                </li>
+                <li>
                   {status === "authenticated" ? (
                     <div className="flex flex-col text-center rounded-full">
-                    <h4>{session?.user?.fullname}</h4>
+                      <h4>{session?.user?.fullname}</h4>
                       <button onClick={() => signOut()}>
                         <span
                           className={`${

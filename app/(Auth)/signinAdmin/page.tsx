@@ -12,7 +12,7 @@ const SignIn = ({ searchParams }: any) => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const callbackUrl = searchParams.callbackUrl || "/dashboardAdmin";
+  const callbackUrl = "/dashboardAdmin";
   const handleLogin = async (e: any) => {
     e.preventDefault();
     setError("");

@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 const SignIn = ({ searchParams }: any) => {
-  console.log(searchParams.callbackUrl);
   const { push } = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -107,9 +106,9 @@ const SignIn = ({ searchParams }: any) => {
                 Create account
               </Link>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center ">
               <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
-              <h1 className="text-black">OR</h1>
+              <h1 className="text-black dark:text-white">OR</h1>
               <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
             </div>
             <div className="flex justify-center items-center">

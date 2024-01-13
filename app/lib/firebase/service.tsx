@@ -6,6 +6,7 @@ import {
   getDocs,
   getFirestore,
   query,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import app from "./init";
@@ -77,5 +78,30 @@ export async function login(data: { email: string; password: string }) {
     return user[0];
   } else {
     return null;
+  }
+}
+
+/* Menghubungkan Login System dengan Google Firebase */
+
+export async function loginWithGoogle(data: any, callback: any) {
+  const q = query(
+    collection(firestore, "users"),
+    where("email", "==", data.email)
+  );
+  const shapshot = await getDocs(q);
+  const user:any = shapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  if (user.length > 0) {
+    data.role = user[0].role;
+    await updateDoc(doc(firestore, "users", user[0].id), data).then(() => {
+      callback({ status: true, data: data });
+    });
+  } else {
+    data.role = "member";
+    await addDoc(collection(firestore, "users"), data).then(() => {
+      callback({ status: true, data: data });
+    });
   }
 }

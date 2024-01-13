@@ -5,6 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { FcGoogle } from "react-icons/fc";
 
 const SignIn = ({ searchParams }: any) => {
   const { push } = useRouter();
@@ -97,6 +98,17 @@ const SignIn = ({ searchParams }: any) => {
             >
               {isLoading ? "Loading..." : "Login to your account"}
             </button>
+            <hr />
+            <button
+              type="button"
+              onClick={() => signIn("google")}
+              className="flex justify-center items-center w-full text-black bg-white border border-gray-400 hover:bg-blue-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  dark:hover:bg-blue-100 dark:focus:ring-blue-800"
+            >
+              <span className="flex justify-between items-center px-[5px]">
+                <FcGoogle className="w-5 h-5 mr-1" />
+                Login with Google
+              </span>
+            </button>
             <div className="flex justify-center items-center text-sm font-medium text-gray-500 dark:text-gray-300">
               Not registered?{" "}
               <Link
@@ -106,6 +118,7 @@ const SignIn = ({ searchParams }: any) => {
                 Create account
               </Link>
             </div>
+            {/* 
             <div className="flex justify-between items-center ">
               <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
               <h1 className="text-black dark:text-white">OR</h1>
@@ -118,7 +131,7 @@ const SignIn = ({ searchParams }: any) => {
               >
                 Masuk Sebagai Guru
               </Link>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>

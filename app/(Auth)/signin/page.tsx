@@ -22,7 +22,7 @@ const SignIn = ({ searchParams }: any) => {
         redirect: false,
         email: e.target.email.value,
         password: e.target.password.value,
-        callbackUrl,
+        callbackUrl: callbackUrl,
       });
       if (!res?.error) {
         e.target.reset();

@@ -10,8 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
-import profile from "@/public/Images/profile.png";
-
+import { MdAccountCircle } from "react-icons/md";
 function NavBar({ darkMode, setDarkMode }: any) {
   const [navbar, setNavbar] = useState(false);
   const pathname = usePathname();
@@ -134,13 +133,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                 <li>
                   {status === "authenticated" ? (
                     <div className="flex flex-col text-center rounded-full">
-                      <Image
-                        src={profile}
-                        width={30}
-                        height={30}
-                        alt="profile"
-                        className="flex justify-center items-center mx-auto w-fit rounded-full"
-                      />
+                      <MdAccountCircle className="w-[5vh] h-auto ml-10 bg-black rounded-full" />
                       <h4>{session?.user?.fullname}</h4>
                       <button onClick={() => signOut()}>
                         <span

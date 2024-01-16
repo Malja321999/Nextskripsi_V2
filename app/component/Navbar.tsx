@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
+import profile from "@/public/Images/profile.png";
 
 function NavBar({ darkMode, setDarkMode }: any) {
   const [navbar, setNavbar] = useState(false);
@@ -134,7 +135,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                   {status === "authenticated" ? (
                     <div className="flex flex-col text-center rounded-full">
                       <Image
-                        src={"/images/profile.png"}
+                        src={profile}
                         width={30}
                         height={30}
                         alt="profile"

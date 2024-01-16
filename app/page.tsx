@@ -9,6 +9,7 @@ import { Metadata } from "next/types";
 export const metadata: Metadata = {
   title: "BILBUL",
   description: "Apps For Education",
+  authors: [{ name: "JAMALUDIN", url: "https://nextskripsi-v2.vercel.app/" }],
 };
 
 const Home = () => {

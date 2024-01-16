@@ -76,7 +76,9 @@ function NavBar({ darkMode, setDarkMode }: any) {
                     <Link href="/dashboardAdmin">
                       <span
                         className={`${
-                          pathname === "/dashboardAdmin" ? "text-teal-300" : "text-white"
+                          pathname === "/dashboardAdmin"
+                            ? "text-teal-300"
+                            : "text-white"
                         } pb-6 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
                       >
                         Dashboard Admin
@@ -131,6 +133,13 @@ function NavBar({ darkMode, setDarkMode }: any) {
                 <li>
                   {status === "authenticated" ? (
                     <div className="flex flex-col text-center rounded-full">
+                      <Image
+                        src={"/images/profile.png"}
+                        width={30}
+                        height={30}
+                        alt="profile"
+                        className="flex justify-center items-center mx-auto w-fit rounded-full"
+                      />
                       <h4>{session?.user?.fullname}</h4>
                       <button onClick={() => signOut()}>
                         <span

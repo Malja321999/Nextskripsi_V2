@@ -8,12 +8,13 @@ type ProductPageProps = {
   };
 };
 
-const page = async (props: ProductPageProps) => {
+export default async function ProductPage(props: ProductPageProps) {
   const { params } = props;
+
   const products = await getData(
-    "https://nextskripsi-v2.vercel.app/api/product"
+    `${process.env.NEXT_PUBLIC_API_URL}/api/product`
   );
-  console.log(products);
+
   return (
     <div className="grid grid-cols-4 gap-4 h-screen mt-10 p-20 rounded-md mx-auto w-screen bg-teal-500 overflow-y-auto place-items-center">
       {/*   <h1 className="bg-white p-2 rounded-md w-[60vh] text-center text-teal-500 font-bold text-4xl">
@@ -24,7 +25,7 @@ const page = async (props: ProductPageProps) => {
           <Link
             href={`/product/detail/${products.id}`}
             key={products.id}
-            className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5"
+            className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-auto h-fit"
           >
             <Image
               width={500}
@@ -32,6 +33,7 @@ const page = async (props: ProductPageProps) => {
               className="p-8 rounded-t-lg object-cover h-96 w-full"
               src={products.image}
               alt="product image"
+              priority
             />
 
             <div className="px-5 pb-5">
@@ -53,22 +55,6 @@ const page = async (props: ProductPageProps) => {
             </div>
           </Link>
         ))}
-
-      {params.slug && (
-        <div className="bg-teal-500 p-2 rounded-md w-[60vh] my-2 font-extrabold text-2xl">
-          <p>
-            Category :<span className="font-normal"> {params.slug[0]}</span>
-          </p>
-          <p>
-            Product :<span className="font-normal"> {params.slug[1]}</span>
-          </p>
-          <p>
-            ID :<span className="font-normal"> {params.slug[2]}</span>{" "}
-          </p>
-        </div>
-      )}
     </div>
   );
-};
-
-export default page;
+}

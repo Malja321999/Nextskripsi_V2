@@ -20,12 +20,15 @@ export default function withAuth(
           return NextResponse.redirect(url);
       }
       if(token){
+        if(authPages.includes(pathname) && token.role === "admin"){
+          return NextResponse.redirect(new URL("/dashboardAdmin", req.url));
+        }
         if(authPages.includes(pathname)){
           return NextResponse.redirect(new URL("/", req.url));
         }
         if(token.role !== "admin" && onlyAdminPage.includes(pathname)){
-        return NextResponse.redirect(new URL("/", req.url));
-      }
+          return NextResponse.redirect(new URL("/", req.url));
+        }
       }   
     }
     return middleware(req, next);

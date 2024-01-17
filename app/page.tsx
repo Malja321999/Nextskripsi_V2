@@ -113,7 +113,7 @@ const Home = () => {
           </li>
           {session?.user?.role !== "admin" ? (
             <li>
-              <Link href={"/dashboardAdmin"}>
+              <Link href={"/about"}>
                 <button className="w-[12rem] p-10 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-amber-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
                   About
                 </button>

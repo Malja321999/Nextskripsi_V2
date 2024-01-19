@@ -75,10 +75,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       {/* Menu */}
       <div>
-        <ul className="md:flex justify-between items-center md:w-fit w-full p-1 bg-indigo-600 dark:bg-[#111827] border-10 rounded-3xl mx-auto mt-10 mb-10 border-2 border-teal-300 dark:border-[#0d6efd]">
+        <ul className="md:flex justify-between items-center md:w-fit w-full p-1 bg-indigo-600 dark:bg-[#111827] border-10 rounded-3xl mx-auto mt-5 mb-16 border-2 border-teal-300 dark:border-[#0d6efd]">
           {session?.user?.role === "admin" ? (
             <li>
               <Link href={"/dashboardAdmin"}>

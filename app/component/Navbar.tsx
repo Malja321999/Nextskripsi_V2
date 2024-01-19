@@ -66,11 +66,11 @@ function NavBar({ darkMode, setDarkMode }: any) {
           </div>
           <div>
             <div
-              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+              className={`flex-1 justify-self-center pb-3 md:block md:pb-0 md:mt-0 ${
                 navbar ? "p-12 md:p-0 block" : "hidden"
               }`}
             >
-              <ul className="h-screen md:h-auto items-center justify-center md:flex ">
+              <ul className="h-screen md:h-auto md:flex md:flex-row flex flex-col items-center">
                 <li className="text-xl">
                   {session?.user?.role === "admin" ? (
                     <Link href="/dashboardAdmin">
@@ -79,7 +79,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                           pathname === "/dashboardAdmin"
                             ? "text-teal-300"
                             : "text-white"
-                        } pb-6 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                        } pb-1 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                       >
                         Dashboard Admin
                       </span>
@@ -91,7 +91,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                     <span
                       className={`${
                         pathname === "/capem" ? "text-teal-300" : "text-white"
-                      } pb-6 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                      } pb-1 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
                       Capain Pembelajaran
                     </span>
@@ -102,7 +102,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                     <span
                       className={`${
                         pathname === "/bab1_1" ? "text-teal-300" : "text-white"
-                      } pb-6 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                      } pb-1 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
                       Content
                     </span>
@@ -113,7 +113,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                     <span
                       className={`${
                         pathname === "/about" ? "text-teal-300" : "text-white"
-                      } pb-6 text-xl py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                      } pb-1 text-xl py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
                       About
                     </span>
@@ -124,25 +124,22 @@ function NavBar({ darkMode, setDarkMode }: any) {
                     <span
                       className={`${
                         pathname === "/profile" ? "text-teal-300" : "text-white"
-                      } pb-6 text-xl py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                      } pb-1 text-xl py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
                       Profile
                     </span>
                   </Link>
                 </li>
+
                 <li>
                   {status === "authenticated" ? (
-                    <div className="flex flex-col text-center rounded-full">
-                      <MdAccountCircle className="w-[5vh] h-auto ml-10 bg-black rounded-full" />
+                    <div className="flex flex-col item-center text-center md:rounded-md md:bg-inherit bg-sky-500 md:w-auto w-fit rounded-md md:p-1 p-5 -mt-1">
+                      <div className="flex justify-center items-center">
+                        <MdAccountCircle className="w-[5vh] h-auto bg-black rounded-full" />
+                      </div>
                       <h4>{session?.user?.fullname}</h4>
                       <button onClick={() => signOut()}>
-                        <span
-                          className={`${
-                            pathname === "/signup"
-                              ? "text-teal-300"
-                              : "text-white"
-                          } pb-6 text-xl py-2 md:px-6 text-center hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
-                        >
+                        <span className="pb-1 py-2 md:px-6 text-center font-bold hover:bg-indigo-500 border-teal-500 text-rose-400 hover:text-rose-300 md:hover:bg-transparent rounded-md">
                           Logout
                         </span>
                       </button>
@@ -150,11 +147,7 @@ function NavBar({ darkMode, setDarkMode }: any) {
                   ) : (
                     <button onClick={() => signIn()}>
                       <span
-                        className={`${
-                          pathname === "/signup"
-                            ? "text-teal-300"
-                            : "text-white"
-                        } pb-6 text-xl py-2 md:px-6 text-center hover:bg-teal-500  border-teal-500  md:hover:text-teal-500 md:hover:bg-transparent rounded-md`}
+                        className=""
                       >
                         Login
                       </span>

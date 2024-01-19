@@ -1,14 +1,18 @@
 "use client";
 import "./globals.css";
-import { Roboto } from "next/font/google";
+import { Ubuntu } from "next/font/google";
 import React from "react";
 import UsetateNavbar from "./component/UsetateNavbar";
 import UsetateFooter from "./component/UsetateFooter";
 import { SessionProvider } from "next-auth/react";
 
-const roboto = Roboto({
-  weight: ["100", "300", "400", "500", "700", "900"],
+const ubuntu = Ubuntu({
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-ubuntu",
+  fallback: ["sans-serif"],
+  
 });
 
 export default function RootLayout({
@@ -27,7 +31,7 @@ export default function RootLayout({
         <link rel="icon" href="/Bilcon.png" />
       </head>
       <body
-        className={`${roboto.className} dark:bg-black text-white h-screen w-screen`}
+        className={`${ubuntu.className} dark:bg-[#111827] text-white h-screen w-screen`}
       >
         <SessionProvider>
           <UsetateNavbar />

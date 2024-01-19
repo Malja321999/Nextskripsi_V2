@@ -7,9 +7,13 @@ export function mainMiddleware(request: NextRequest) {
 }
 
 export default withAuth(mainMiddleware, [
-  "/bab1_1",
   "/dashboardAdmin",
   "/profile",
   "/signin",
   "/signup",
+  "/bab1_1",
+  "/bab1_kuis",
+  "/bab2_kuis",
+  "/bab3_kuis",
+  "/bab4_kuis",
 ]);

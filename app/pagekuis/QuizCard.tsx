@@ -12,25 +12,29 @@ const QuizCard = ({
   lastQuestion,
 }: any) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [NotYetAnswer, setNotYetAnswer] = useState(true);
 
   const handleAnswerSelect = (option: any) => {
     setSelectedAnswer(option);
   };
 
   const handleNextClick = () => {
-    onNext(selectedAnswer === correctAnswer);
-    setSelectedAnswer(null);
+    if (selectedAnswer !== null) {
+      onNext(selectedAnswer === correctAnswer);
+      setSelectedAnswer(null);
+    } else {
+      setNotYetAnswer(!NotYetAnswer);
+    }
   };
 
   return (
     <div className="bg-teal-500 w-[60rem] h-fit rounded-md p-5 shadow-md text-5xl">
       <div>
         <h1 className="font-bold bg-sky-700 rounded-md border-4 border-white text-center p-5">
-          Kuis {currentQuestion + 1}
+          Soal {currentQuestion + 1}
         </h1>
         <ul className="bg-white rounded-md border-4 border-sky-400 p-10 mt-5 text-sky-500">
           <p>{question}</p>
-
           {options.map((option: any) => {
             return (
               <li className="px-5" key={option}>
@@ -46,6 +50,7 @@ const QuizCard = ({
             );
           })}
         </ul>
+        {/* Next and Previous button */}
         <div className="flex justify-between mt-5 text-base w-50 gap-10">
           {currentQuestion > 0 ? (
             <button

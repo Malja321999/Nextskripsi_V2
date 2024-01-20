@@ -26,7 +26,7 @@ const SidebarC = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex mt-[5.7rem] h-1/2 bg-teal-900 dark:bg-dark-purple">
+    <div className="flex mt-[5.7rem] h-screen bg-teal-900 dark:bg-dark-purple">
       <div
         className={`h-[38rem] p-5 pt-8 overflow-y-auto overflow-x-hidden ${
           open1 ? "w-74" : "w-[6rem]"

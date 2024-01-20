@@ -23,6 +23,12 @@ const UsetateNavbar = () => {
     "/bab4_kuis",
     "/coba",
     "/signinAdmin",
+    "/pagekuis/bab1_kuis",
+    "/pagekuis/bab2_kuis",
+    "/pagekuis/bab2_kuis",
+    "/pagekuis/bab3_kuis",
+    "/pagekuis/bab4_kuis",
+    "/pagekuis/result",
   ];
 
   return (

@@ -1,11 +1,12 @@
 "use client";
-import QuizCard from "./QuizCard";
+import QuizCard from "../QuizCard";
 import { useState } from "react";
 
-const Bab1_Kuis = () => {
+const Bab3_Kuis = () => {
+  const [darkMode, setDarkMode] = useState(false);
   const questions = [
     {
-      question: "1 + 1 = ...",
+      question: "1 +  1 = ...",
       options: ["1", "2", "3", "4"],
       correctAnswer: "2",
     },
@@ -35,7 +36,7 @@ const Bab1_Kuis = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center h-screen bg-[#111827]">
       {currentQuestion < lastQuestion ? (
         <QuizCard
           currentQuestion={currentQuestion}
@@ -67,4 +68,4 @@ const Bab1_Kuis = () => {
   );
 };
 
-export default Bab1_Kuis;
+export default Bab3_Kuis;

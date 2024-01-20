@@ -5,9 +5,12 @@ import * as Iconb from "react-icons/bs";
 import GHome from "./asset/home.png";
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next/types";
 import { useSession } from "next-auth/react";
-import { limit } from "firebase/firestore";
+import { FaFlag } from "react-icons/fa";
+import { BsListUl } from "react-icons/bs";
+import { MdAccountCircle } from "react-icons/md";
+import { BsFillInfoSquareFill } from "react-icons/bs";
+import { GrUserAdmin } from "react-icons/gr";
 
 const Home = () => {
   const { data: session, status }: { data: any; status: string } = useSession();
@@ -81,7 +84,8 @@ const Home = () => {
           {session?.user?.role === "admin" ? (
             <li>
               <Link href={"/dashboardAdmin"}>
-                <button className="w-[12rem] p-10 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-amber-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+                <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-amber-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+                  <GrUserAdmin className="w-[35px] h-[35px]" />
                   Admin
                 </button>
               </Link>
@@ -91,21 +95,24 @@ const Home = () => {
           )}
           <li>
             <Link href={"/capem"}>
-              <button className="w-[12rem] p-10 text-center m-5 flex flex-col justify-center items-center  rounded-lg bg-[#dc3545] hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+              <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center  rounded-lg bg-[#dc3545] hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+                <FaFlag className="w-[35px] h-[35px]" />
                 CaPem
               </button>
             </Link>
           </li>
           <li>
             <Link href={"/bab1_1"}>
-              <button className="w-[12rem] p-10 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-emerald-600 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+              <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-emerald-600 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+                <BsListUl className="w-[35px] h-[35px]" />
                 Content
               </button>
             </Link>
           </li>
           <li>
             <Link href={"/profile"}>
-              <button className="w-[12rem] p-10 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-[#0dcaf0] hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+              <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-[#0dcaf0] hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+                <MdAccountCircle className="w-[35px] h-[35px]" />
                 Profile
               </button>
             </Link>
@@ -113,7 +120,8 @@ const Home = () => {
           {session?.user?.role !== "admin" ? (
             <li>
               <Link href={"/about"}>
-                <button className="w-[12rem] p-10 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-amber-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+                <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-amber-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+                  <BsFillInfoSquareFill className="w-[35px] h-[35px]" />
                   About
                 </button>
               </Link>

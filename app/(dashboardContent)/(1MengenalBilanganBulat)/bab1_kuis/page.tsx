@@ -23,7 +23,7 @@ const BAb1_Kuis_Page = () => {
         </ul>
         <div className="flex justify-center items-center">
           <Link href={"/pagekuis/bab1_kuis"}>
-            <button className="mt-7 text-black bg-yellow-300 hover:bg-yellow-200 rounded-md w-[20rem] p-5 text-2xl">
+            <button className="mt-7 bg-yellow-300 hover:bg-yellow-200 rounded-md w-[20rem] p-5 text-2xl font-bold text-black">
               Start Quiz
             </button>
           </Link>

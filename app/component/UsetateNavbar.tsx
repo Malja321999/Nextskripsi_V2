@@ -28,7 +28,7 @@ const UsetateNavbar = () => {
     "/pagekuis/bab2_kuis",
     "/pagekuis/bab3_kuis",
     "/pagekuis/bab4_kuis",
-    "/pagekuis/result",
+    "/pagekuis/resultquiz",
   ];
 
   return <div>{!disableNavbar.includes(pathname) && <NavBar />}</div>;

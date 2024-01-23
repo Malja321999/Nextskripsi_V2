@@ -1,13 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
 import NavBar from "../component/Navbar";
 
 const Watch = () => {
-  const [darkMode, setDarkMode] = useState(true);
   return (
     <>
-      <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <NavBar />
       <div className="my-40 mx-auto h-96 w-96 flex justify-center items-center">
         <ul>
           <li>

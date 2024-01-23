@@ -15,7 +15,11 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
 
   return (
     <SessionProvider>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem={true}
+      >
         <AppContext.Provider
           value={{
             darkMode,

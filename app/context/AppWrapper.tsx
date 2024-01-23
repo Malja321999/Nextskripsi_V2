@@ -18,7 +18,7 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
-        enableSystem={true}
+        enableSystem={false}
       >
         <AppContext.Provider
           value={{

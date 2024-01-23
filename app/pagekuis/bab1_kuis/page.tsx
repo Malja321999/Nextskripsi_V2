@@ -1,22 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ScoreKuis from "../ScoreKuis";
 import QuizCard from "../QuizCard";
 import questions from "../Questions";
 import { useAppContext } from "@/app/context/AppWrapper";
 import ResultQuiz from "../resultquiz/page";
-import { useRouter } from "next/navigation";
 
 const Quiz = () => {
-  const router = useRouter();
-  const {
-    currentQuestion,
-    setCurrentQuestion,
-    points,
-    setPoints,
-    index,
-    SetAttempts,
-  } = useAppContext();
+  const { currentQuestion, setCurrentQuestion, points, setPoints, index } =
+    useAppContext();
 
   function UbahcurrentQuestionsNext() {
     setCurrentQuestion(currentQuestion + 1);

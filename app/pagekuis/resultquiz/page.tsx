@@ -57,27 +57,27 @@ const ResultQuiz = ({ Pass, TotalQuestion, correct, incorrect }: any) => {
               <span>Total Points:</span>
               <span>{points}</span>
             </li>
-            <li>
-              {Pass ? (
-                <div className="w-full flex justify-center items-center">
-                  <Link href={"/bab2_1"}>
-                    <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
-                      Lannjutkan Ke BAB 2
-                    </button>
-                  </Link>
-                </div>
-              ) : (
-                <div className="w-full flex justify-center items-center">
-                  <button
-                    onClick={() => ResetQuiz()}
-                    className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
-                  >
-                    Reset
-                  </button>
-                </div>
-              )}
-            </li>
           </ul>
+          <div className="mt-5">
+            {Pass ? (
+              <div className="w-full flex justify-center items-center">
+                <Link href={"/bab2_1"}>
+                  <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
+                    Lannjutkan Ke BAB 2
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="w-full flex justify-center items-center">
+                <button
+                  onClick={() => ResetQuiz()}
+                  className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
+                >
+                  Reset
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ export default async function ProductPage(props: ProductPageProps) {
   );
 
   return (
-    <div className="grid grid-cols-4 gap-4 h-screen mt-10 p-20 rounded-md mx-auto w-screen bg-teal-500 overflow-y-auto place-items-center">
+    <div className="grid grid-cols-4 gap-4 h-screen p-20 rounded-md mx-auto w-screen bg-teal-500 overflow-y-auto place-items-center">
       {/*   <h1 className="bg-white p-2 rounded-md w-[60vh] text-center text-teal-500 font-bold text-4xl">
         {params.slug ? "Detail Product Page" : " Product Page"}
       </h1> */}

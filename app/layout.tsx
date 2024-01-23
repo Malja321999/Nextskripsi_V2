@@ -1,10 +1,10 @@
-"use client";
 import "./globals.css";
+import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import React from "react";
 import UsetateNavbar from "./component/UsetateNavbar";
 import UsetateFooter from "./component/UsetateFooter";
-import { SessionProvider } from "next-auth/react";
+import { AppWrapper } from "./context/AppWrapper";
 
 const ubuntu = Ubuntu({
   weight: ["300", "400", "500", "700"],
@@ -12,8 +12,12 @@ const ubuntu = Ubuntu({
   display: "swap",
   variable: "--font-ubuntu",
   fallback: ["sans-serif"],
-  
 });
+
+export const metadata: Metadata = {
+  title: "BILBUL",
+  description: "Application For Education",
+};
 
 export default function RootLayout({
   children,
@@ -21,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <title>BILBUL</title>
         <meta
@@ -33,11 +37,11 @@ export default function RootLayout({
       <body
         className={`${ubuntu.className} dark:bg-[#111827] text-white h-screen w-screen`}
       >
-        <SessionProvider>
+        <AppWrapper>
           <UsetateNavbar />
           {children}
           <UsetateFooter />
-        </SessionProvider>
+        </AppWrapper>
       </body>
     </html>
   );

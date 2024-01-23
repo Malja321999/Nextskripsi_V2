@@ -14,7 +14,7 @@ export default function Error({
     /*   reset(); */
   }, [error]);
   return (
-    <div className="flex flex-col justify-center items-center bg-rose-500 text-center rounded-md h-screen mt-10 p-20 gap-5">
+    <div className="flex flex-col justify-center items-center bg-rose-500 text-center rounded-md h-screen p-20 gap-5">
       <h1 className=" text-center text-9xl p-5 rounded-md w-fit">
         Something went wrong!
       </h1>

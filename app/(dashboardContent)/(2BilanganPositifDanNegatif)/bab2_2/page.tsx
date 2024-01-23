@@ -43,7 +43,7 @@ const Page = () => {
     "bg-gray-900 w-fit mt-20 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
 
   return (
-    <div className="bg-emerald-700 h-[37.1rem] w-[88.8rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
+    <div className="bg-emerald-700 h-[37.1rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
       {/* ButtonpnUP */}
       <ButttonpnUP p={"/bab2_1"} n={"/bab2_kuis"} />
       {/* Bab, Prasyarat, dan Tujuan */}

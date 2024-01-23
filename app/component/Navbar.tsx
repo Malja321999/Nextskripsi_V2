@@ -11,25 +11,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { MdAccountCircle } from "react-icons/md";
-function NavBar({ darkMode, setDarkMode }: any) {
+import ThemeSwitch from "./ThemeSwitch";
+function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const pathname = usePathname();
 
   const { data: session, status }: { data: any; status: string } = useSession();
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark ") setDarkMode(true);
-  }, [setDarkMode]);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
   return (
     <div>
       <nav className="fixed w-max-screen md:w-full h-auto md:h-[91px] bg-indigo-600 top-0 left-0 right-0 z-10">
@@ -146,16 +134,12 @@ function NavBar({ darkMode, setDarkMode }: any) {
                     </div>
                   ) : (
                     <button onClick={() => signIn()}>
-                      <span
-                        className=""
-                      >
-                        Login
-                      </span>
+                      <span className="">Login</span>
                     </button>
                   )}
                 </li>
                 <li className="w-28 text-xl text-white py-2 px-6 text-center border-teal-500  rounded-md">
-                  <div
+                  {/* <div
                     className="relative justify-end w-16 h-8 flex items-center dark:bg-gray-900 bg-teal-500 cursor-pointer rounded-full p-1"
                     onClick={() => setDarkMode(!darkMode)}
                   >
@@ -165,7 +149,8 @@ function NavBar({ darkMode, setDarkMode }: any) {
                       style={darkMode ? { left: "2px" } : { right: "px" }}
                     ></div>
                     <BsSunFill className="ml-auto text-yellow-400" size={18} />
-                  </div>
+                  </div> */}
+                  <ThemeSwitch />
                 </li>
               </ul>
             </div>

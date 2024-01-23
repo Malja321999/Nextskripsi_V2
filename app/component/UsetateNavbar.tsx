@@ -31,13 +31,7 @@ const UsetateNavbar = () => {
     "/pagekuis/result",
   ];
 
-  return (
-    <div>
-      {!disableNavbar.includes(pathname) && (
-        <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
-      )}
-    </div>
-  );
+  return <div>{!disableNavbar.includes(pathname) && <NavBar />}</div>;
 };
 
 export default UsetateNavbar;

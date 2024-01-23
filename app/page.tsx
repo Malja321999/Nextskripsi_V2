@@ -16,9 +16,9 @@ const Home = () => {
   const { data: session, status }: { data: any; status: string } = useSession();
 
   return (
-    <div className="md:h-screen h-[77vh] w-auto flex flex-col justify-center items-center md:mt-10 mt-24 overflow-y-scroll">
+    <div className="md:h-screen h-[77vh] w-auto flex flex-col justify-center items-center md:mt-0 mt-24 overflow-y-auto">
       {/* Judul */}
-      <div className="flex justify-center items-center md:w-1/2 w-fit md:mt-1 mt-[100vh]">
+      <div className="flex justify-center items-center md:w-1/2 w-fit md:mt-20 mt-[21rem]">
         <div className="text-black dark:text-white">
           <h1 className="flex justify-start text-left text-5xl font-bold md:w-[412px] w-auto">
             BILANGAN BULAT KELAS VII SMP
@@ -117,18 +117,15 @@ const Home = () => {
               </button>
             </Link>
           </li>
-          {session?.user?.role !== "admin" ? (
-            <li>
-              <Link href={"/about"}>
-                <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-amber-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
-                  <BsFillInfoSquareFill className="w-[35px] h-[35px]" />
-                  About
-                </button>
-              </Link>
-            </li>
-          ) : (
-            <li></li>
-          )}
+
+          <li>
+            <Link href={"/about"}>
+              <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-indigo-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+                <BsFillInfoSquareFill className="w-[35px] h-[35px]" />
+                About
+              </button>
+            </Link>
+          </li>
         </ul>
       </div>
       {/* Footer */}

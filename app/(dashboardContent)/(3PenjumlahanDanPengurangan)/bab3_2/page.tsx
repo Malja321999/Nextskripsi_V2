@@ -35,11 +35,8 @@ const Page = () => {
     "bg-gray-900 w-fit mt-20 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
 
   return (
-    <div className="bg-blue-700 h-[37.1rem] w-[88.8rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
-      <ButttonpnUP
-        p={"/bab3_1"}
-        n={"/bab3_kuis"}
-      />
+    <div className="bg-blue-700 h-[37.1rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
+      <ButttonpnUP p={"/bab3_1"} n={"/bab3_kuis"} />
       {/* Bab, Prasyarat, dan Tujuan */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
         {/* Judul Bab */}
@@ -157,9 +154,9 @@ const Page = () => {
                   Ketika suatu bilangan bulat dikurangkan dari bilangan bulat
                   lainnya, selisihnya tidak selalu merupakan bilangan bulat.
                   Artinya, bilangan bulat tidak ditutup pada pengurangan. Jika a
-                  dan b adalah dua bilangan bulat dan a − b = c, maka c tidak
-                  selalu merupakan bilangan bulat. Misalkan a = 7 dan b = 5, a −
-                  b = 7 − 5 = 2 dan b − a = 5 − 7 = −2 (bukan bilangan bulat
+                  dan b adalah dua bilangan bulat dan a - b = c, maka c tidak
+                  selalu merupakan bilangan bulat. Misalkan a = 7 dan b = 5, a -
+                  b = 7 - 5 = 2 dan b - a = 5 - 7 = -2 (bukan bilangan bulat
                 </div>
               </li>
               <li>
@@ -168,10 +165,10 @@ const Page = () => {
                   Sifat asosiatif tidak berlaku untuk pengurangan bilangan
                   bulat. Artinya kita tidak bisa mengelompokkan dua bilangan
                   bulat dan mengurangkannya terlebih dahulu. Urutan pengurangan
-                  merupakan faktor penting . Jika 'a', 'b', dan 'c' adalah tiga
-                  bilangan bulat, maka a − (b − c) ≠ (a − b) − c. Perhatikan
-                  kasus ketika a = 8, b = 5 dan c = 2, 8 − (5 − 2) = 5 ≠ (8 − 5)
-                  − 2 = 1.
+                  merupakan faktor penting . Jika a, b, dan c adalah tiga
+                  bilangan bulat, maka a - (b - c) ≠ (a - b) - c. Perhatikan
+                  kasus ketika a = 8, b = 5 dan c = 2, 8 - (5 - 2) = 5 ≠ (8 - 5)
+                  - 2 = 1.
                 </div>
               </li>
               <li>
@@ -239,10 +236,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <ButttonpnDOWN
-        p={"/bab3_1"}
-        n={"/bab3_kuis"}
-      />
+      <ButttonpnDOWN p={"/bab3_1"} n={"/bab3_kuis"} />
     </div>
   );
 };

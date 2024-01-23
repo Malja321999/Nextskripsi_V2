@@ -16,4 +16,5 @@ export default withAuth(mainMiddleware, [
   "/bab2_kuis",
   "/bab3_kuis",
   "/bab4_kuis",
+  "/pagekuis/bab1_kuis",
 ]);

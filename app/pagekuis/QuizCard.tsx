@@ -14,11 +14,6 @@ const QuizCard = ({
 }: any) => {
   return (
     <div>
-      {!allQuestionsAnswered() && index === TotalQuestion - 1 && (
-        <div className="w-full bg-rose-500 rounded-md shadow-md cursor-pointer text-center font-bold p-2 flex justify-center items-center text-white">
-          Belum Semua Soal Terjawab
-        </div>
-      )}
       <div key={index}>
         <h3>{questions[index].question}</h3>
         {questions[index].options.map((option: string, optionIndex: number) => (

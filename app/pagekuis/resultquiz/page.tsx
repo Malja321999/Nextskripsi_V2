@@ -12,7 +12,7 @@ const ResultQuiz = ({ Pass, TotalQuestion, correct, incorrect }: any) => {
     window.location.reload();
   }
   return (
-    <div className="flex justify-center items-center h-screen w-screen">
+    <div className="flex justify-center items-center h-screen w-screen -ml-[7rem]">
       <div className="w-screen mx-20 bg-teal-500 rounded-md p-2 shadow-md text-4xl m-5">
         <h1 className="font-bold bg-sky-700 rounded-md border-4 border-white  text-center p-5 w-full mb-5">
           Quiz completed!

@@ -4,21 +4,56 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {
+  Card,
+  Input,
+  Typography,
+  Select,
+  Option,
+  Button,
+} from "@material-tailwind/react";
+import { useForm, Controller } from "react-hook-form";
 
 const SignUp = () => {
   const { push } = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  type Inputs = {
+    fullname: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  };
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+    watch,
+    unregister,
+    reset,
+  } = useForm<Inputs>({
+    defaultValues: {
+      fullname: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  const onSubmit = async (e: any) => {
     setError("");
     setIsLoading(true);
     const res = await fetch("/api/auth/register", {
       method: "POST",
       body: JSON.stringify({
-        fullname: e.target.fullname.value,
-        email: e.target.email.value,
-        password: e.target.password.value,
+        fullname: e.fullname,
+        email: e.email,
+        password: e.password,
       }),
     });
     console.log(res.status);
@@ -33,16 +68,19 @@ const SignUp = () => {
     }
   };
 
+  const text_error =
+    "h-fit bg-red-500 p-none m-none text-red-500 text-xs font-medium";
+
   return (
-    <div className="bg-white dark:bg-black min-h-screen flex items-center justify-center text-white mx-auto">
-      <div className="h-screen w-auto flex justify-center items-center flex-col">
+    <div className="h-screen flex justify-center items-center bg-white dark:bg-black text-black dark:text-white ">
+      <div className="w-fit">
         {error !== "" && (
           <div className="text-red-600 text-5xl font-bold mb-3">{error}</div>
         )}
-        <div className="bg-white w-[60vh] shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <form className="space-y-6" onSubmit={(e) => handleSubmit(e)}>
+        <div className="bg-white w-[60vh] h-[88vh] shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <h2 className="dark:text-white mb-5 text-center text-2xl font-bold leading-9 tracking-tight">
-              <div className="w-10 h-10 flex justify-center items-center mx-auto ">
+              <div className="w-10 h-5 m-1 flex justify-center items-center mx-auto ">
                 <Image
                   src={Bilcon}
                   alt="Bilcon"
@@ -60,14 +98,34 @@ const SignUp = () => {
               >
                 Your full name
               </label>
-              <input
-                type="text"
-                name="fullname"
-                id="fullname"
-                className="bg-gray-50 border border-gray-400 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                placeholder="full name"
-                required
-              />
+              <div>
+                <Controller
+                  name="fullname"
+                  rules={{
+                    required: "fullname is Required",
+                    minLength: {
+                      value: 3,
+                      message: "Minimum 3 characters required",
+                    },
+                  }}
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      placeholder="Full name"
+                      crossOrigin={undefined}
+                      size="lg"
+                      {...field}
+                      error={Boolean(errors?.fullname?.message)}
+                    />
+                  )}
+                />
+
+                {errors?.fullname?.message && (
+                  <div className="h-[1px] p-none m-none text-red-500 text-xs font-medium">
+                    {errors?.fullname?.message}
+                  </div>
+                )}
+              </div>
             </div>
             <div>
               <label
@@ -76,30 +134,121 @@ const SignUp = () => {
               >
                 Your email
               </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="bg-gray-50 border border-gray-400 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                placeholder="name@company.com"
-                required
-              />
+              <div>
+                <Controller
+                  name="email"
+                  rules={{
+                    required: "email is Required",
+                    pattern: {
+                      value:
+                        /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
+                      message: "Email ID is invaild",
+                    },
+                  }}
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      placeholder="Email"
+                      crossOrigin={undefined}
+                      size="lg"
+                      {...field}
+                      error={Boolean(errors?.email?.message)}
+                    />
+                  )}
+                />
+                {errors?.email?.message && (
+                  <div className="h-[1px] p-none m-none text-red-500 text-xs font-medium">
+                    {errors?.email?.message}
+                  </div>
+                )}
+              </div>
             </div>
             <div>
               <label
                 htmlFor="password"
                 className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
               >
-                Your password
+                Your Password
               </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                className="bg-gray-50 border border-gray-400 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                required
-              />
+              <div className="flex justify-between items-center">
+                <Controller
+                  name="password"
+                  control={control}
+                  rules={{
+                    required: "Password is Required",
+                    minLength: {
+                      value: 8,
+                      message: "Minimum 8 characters required",
+                    }
+                  }}
+                  render={({ field }) => (
+                    <Input
+                      className="flex-1"
+                      crossOrigin={undefined}
+                      placeholder="Confirm Password"
+                      type={showPassword ? "text" : "password"}
+                      {...field}
+                      size="lg"
+                      error={Boolean(errors?.password?.message)}
+                    />
+                  )}
+                />
+
+                <button
+                  onClick={() => setShowPassword(!showPassword)} //setShowPassword)}
+                  className="ml-2 p-2 w-fit h-fit flex justify-center items-center rounded-lg bg-gray-100 border-2 border-gray-500 text-center text-sm text-black font-mono cursor-pointer"
+                >
+                  {showPassword ? "hide" : "show"}
+                </button>
+              </div>
+              {errors?.password?.message && (
+                <div className="h-[1px] p-none m-none text-red-500 text-xs font-medium">
+                  {errors?.password?.message}
+                </div>
+              )}
+            </div>
+            <div>
+              <label
+                htmlFor="confirmPassword"
+                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
+              >
+                Konfirmasi Password
+              </label>
+              <div className="flex justify-between items-center">
+                <Controller
+                  name="confirmPassword"
+                  control={control}
+                  rules={{
+                    required: "Confirm Password is Required",
+                    validate: (value) =>
+                      getValues("password") === value ||
+                      "Passwords do not match",
+                  }}
+                  render={({ field }) => (
+                    <Input
+                      className="flex-1"
+                      crossOrigin={undefined}
+                      placeholder="Confirm Password"
+                      type={showConfirmPassword ? "text" : "password"}
+                      {...field}
+                      size="lg"
+                      error={Boolean(errors?.confirmPassword?.message)}
+                    />
+                  )}
+                />
+
+                <button
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)} //setShowConfirmPassword)}
+                  className="ml-2 p-2 w-fit h-fit flex justify-center items-center rounded-lg bg-gray-100 border-2 border-gray-500 text-center text-sm text-black font-mono cursor-pointer"
+                >
+                  {showConfirmPassword ? "hide" : "show"}
+                </button>
+              </div>
+              {errors?.confirmPassword?.message && (
+                <div className="h-[1px] p-none m-none text-red-500 text-xs font-medium">
+                  {errors?.confirmPassword?.message}
+                </div>
+              )}
             </div>
             <button
               disabled={isLoading}

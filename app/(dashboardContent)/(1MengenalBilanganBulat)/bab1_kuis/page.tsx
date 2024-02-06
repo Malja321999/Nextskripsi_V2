@@ -1,6 +1,9 @@
-import Link from "next/link";
+"use client";
+import { useRouter } from "next/navigation";
 
 const BAb1_Kuis_Page = () => {
+  const router = useRouter();
+
   return (
     <div className="bg-rose-700 h-[37.1rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-5 relative rounded-md left-[-90.9rem] text-3xl text-white flex justify-center items-center overflow-x-auto">
       <div className="bg-emerald-600 w-full h-full mx-auto rounded-md shadow-md text-justify">
@@ -22,11 +25,12 @@ const BAb1_Kuis_Page = () => {
           </li>
         </ul>
         <div className="flex justify-center items-center">
-          <Link href={"/pagekuis/bab1_kuis"}>
-            <button className="mt-7 bg-yellow-300 hover:bg-yellow-200 rounded-md w-[20rem] p-5 text-2xl font-bold text-black">
-              Start Quiz
-            </button>
-          </Link>
+          <button
+            onClick={() => router.replace("/pagekuis/bab1_kuis")}
+            className="mt-7 bg-yellow-300 hover:bg-yellow-200 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
+          >
+            Start Quiz
+          </button>
         </div>
       </div>
     </div>

@@ -60,6 +60,7 @@ const SignIn = ({ searchParams }: any) => {
         console.log(res);
         if (res.status === 401) {
           setError("Email or Password is not correct");
+          alert("Email or Password is not correct");
         }
       }
     } catch (err) {
@@ -70,9 +71,6 @@ const SignIn = ({ searchParams }: any) => {
   return (
     <div className="bg-white dark:bg-black min-h-screen flex items-center justify-center text-white mx-auto">
       <div className="h-screen w-auto flex justify-center items-center flex-col">
-        {error !== "" && (
-          <div className="text-red-600 text-5xl font-bold mb-3">{error}</div>
-        )}
         <div className="bg-white w-[60vh] shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <h2 className="dark:text-white mb-5 text-center text-2xl font-bold leading-9 tracking-tight">

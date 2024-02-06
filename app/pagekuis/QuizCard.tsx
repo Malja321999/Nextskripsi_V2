@@ -52,25 +52,14 @@ const QuizCard = ({
         {index < TotalQuestion - 1 ? (
           <button
             onClick={() => UbahcurrentQuestionsNext()}
-            className="bg-yellow-500 rounded-md shadow-md cursor-pointer text-center font-bold w-fit p-2 flex justify-center items-center"
+            className="bg-sky-700 rounded-md shadow-md cursor-pointer text-center font-bold w-fit p-2 flex justify-center items-center"
           >
             <div className=" relative">
               <MdNavigateNext size={40} />
             </div>
           </button>
         ) : (
-          <div>
-            {allQuestionsAnswered() ? (
-              <button
-                onClick={() => calculatePoints()}
-                className="relative bg-sky-700 rounded-md shadow-md cursor-pointer text-center font-bold w-fit p-2 flex justify-center items-center"
-              >
-                <MdNavigateNext size={40} />
-              </button>
-            ) : (
-              <div></div>
-            )}
-          </div>
+          <div></div>
         )}
       </div>
     </div>

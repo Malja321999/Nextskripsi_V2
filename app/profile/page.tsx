@@ -37,7 +37,7 @@ export default function ProfilePage() {
     <div className="flex justify-center items-center place-items-center text-center rounded-md h-screen mt-10 p-20 flex-col font-bold select-none">
       {/* {isLoading && <h4>Fetching data...</h4>} */}
       <h1 className="text-9xl text-indigo-500">PROFILE</h1>
-      <h2 className="text-5xl text-emerald-400">{username}</h2>
+      <h2 className="text-5xl text-emerald-400">{fullnameDB}</h2>
       <div className="grid grid-cols-3 gap-3"></div>
     </div>
   );

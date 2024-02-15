@@ -40,7 +40,7 @@ const autOptions:NextAuthOptions = {
         })   
     ],
     callbacks: {
-        async jwt({ token, account, profile, user }:any) {
+        async jwt({ token, account, user }:any) {
            if (account?.provider === "credentials") {
                token.email = user.email;
                token.fullname = user.fullname;
@@ -61,7 +61,7 @@ const autOptions:NextAuthOptions = {
            }
            return token;
         },
-        async session({ session, token, user }:any) {
+        async session({ session, token }:any) {
             if("email" in token) {
                 session.user.email = token.email;
             }

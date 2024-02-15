@@ -21,8 +21,8 @@ export default function ProfilePage() {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const response = docSnap.data().fullname;
-      const json = await response;
-      setFullnameDB(json);
+      const data = await response;
+      setFullnameDB(data);
     } else {
       console.log("No such document!");
     }

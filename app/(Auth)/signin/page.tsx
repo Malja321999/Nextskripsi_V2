@@ -172,7 +172,7 @@ const SignIn = ({ searchParams }: any) => {
             >
               {isLoading ? "Loading..." : "Login to your account"}
             </button>
-            <hr />
+           {/*  <hr />
             <button
               type="button"
               onClick={() => signIn("google")}
@@ -182,7 +182,7 @@ const SignIn = ({ searchParams }: any) => {
                 <FcGoogle className="w-5 h-5 mr-1" />
                 Login with Google
               </span>
-            </button>
+            </button> */}
             <div className="flex justify-center items-center text-sm font-medium text-gray-500 dark:text-gray-300">
               Not registered?
               <Link

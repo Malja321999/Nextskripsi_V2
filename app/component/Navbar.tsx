@@ -17,6 +17,7 @@ function NavBar() {
   const pathname = usePathname();
 
   const { data: session, status }: { data: any; status: string } = useSession();
+  const username = session?.user?.fullname;
 
   return (
     <div>
@@ -125,7 +126,7 @@ function NavBar() {
                       <div className="flex justify-center items-center">
                         <MdAccountCircle className="w-[5vh] h-auto bg-black rounded-full" />
                       </div>
-                      <h4>{session?.user?.fullname}</h4>
+                      <h4>{username}</h4>
                       <button onClick={() => signOut()}>
                         <span className="pb-1 py-2 md:px-6 text-center font-bold hover:bg-indigo-500 border-teal-500 text-rose-400 hover:text-rose-300 md:hover:bg-transparent rounded-md">
                           Logout

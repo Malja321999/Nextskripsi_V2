@@ -17,7 +17,7 @@ export default function ProfilePage() {
   const userEmail = session?.user?.email;
   console.log({ userEmail });
 
-  const fetchData = async () => {
+  const getDataFirestore = async () => {
     const docRef = doc(firestore, `${userEmail}`, "DataUsers");
     const docSnap = await getDoc(docRef);
     try {
@@ -33,7 +33,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (isLoading) {
-      fetchData();
+      getDataFirestore();
     }
   });
 
@@ -49,10 +49,10 @@ export default function ProfilePage() {
   const username = session?.user?.fullname.toUpperCase();
   console.log({ username });
 
-  const path = `/users/${username}` || "";
+  const path = `/users/${username}`;
   console.log({ path });
 
-  const getValue = async () => {
+  const getDataRealtime = async () => {
     console.log({ path });
     if (path !== "/users/undefined") {
       try {
@@ -73,13 +73,14 @@ export default function ProfilePage() {
   };
 
   useEffect(() => {
-    getValue();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (isLoading) {
+      getDataRealtime();
+    }
   });
 
-  const dataPost = snapshot || {};
-  const ObjectData = Object.values(dataPost);
-  console.log(ObjectData);
+  const dataRealtime = snapshot || {};
+  const ObjectDataRealtime = Object.values(dataRealtime);
+  console.log(ObjectDataRealtime);
 
   return (
     <div className="flex justify-center items-center place-items-center text-center rounded-md h-screen mt-10 p-20 flex-col font-bold">
@@ -92,10 +93,11 @@ export default function ProfilePage() {
           ))}
       </h2>
       <h2 className="text-5xl text-sky-400">
-        {ObjectData !== null &&
-          ObjectData.map((data, index) => (
+        {ObjectDataRealtime !== null &&
+          ObjectDataRealtime.map((data, index) => (
             <div key={index}>Realtime : {data?.fullname}</div>
           ))}
+        {ObjectDataRealtime === null && <div>Loading...</div>}
       </h2>
     </div>
   );

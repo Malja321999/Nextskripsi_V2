@@ -86,6 +86,7 @@ export default function ProfilePage() {
     <div className="flex justify-center items-center place-items-center text-center rounded-md h-screen mt-10 p-20 flex-col font-bold">
       {/* {isLoading && <h4>Fetching data...</h4>} */}
       <h1 className="text-9xl text-indigo-500">PROFILE</h1>
+      {isLoading && <h1 className="text-7xl text-teal-400">Loading Data...</h1>}
       <h2 className="text-5xl text-rose-400">
         {ObjectDataFirestore !== null &&
           ObjectDataFirestore.map((data, index) => (

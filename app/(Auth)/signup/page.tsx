@@ -6,6 +6,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Input } from "@material-tailwind/react";
 import { useForm, Controller } from "react-hook-form";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, firestore } from "@/app/lib/firebase/init";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
   const { push } = useRouter();
@@ -51,13 +54,29 @@ const SignUp = () => {
     });
     console.log(res.status);
     if (res.status === 200) {
+      const ref = doc(firestore, "DataUsers", `${e.email}`);
+      setDoc(ref, e)
+        .then((response) => {
+          console.log("success submit data user", response);
+        })
+        .catch((e) => {
+          console.log("failed submit data user", e);
+          alert("failed submit data user");
+        });
       setIsLoading(false);
       push("/signin");
     } else {
-      console.log(res);
-      setError("Email Already Exists");
-      alert(error);
       setIsLoading(false);
+      console.log("catch", e.message);
+      if (e.code === "auth/email-already-in-use") {
+        alert("Email already in use");
+      } else if (e.code === "auth/invalid-email") {
+        alert("Invalid email");
+      } else if (e.code === "auth/weak-password") {
+        alert("Weak password");
+      } else {
+        alert("Something went wrong, please try again");
+      }
     }
   };
 

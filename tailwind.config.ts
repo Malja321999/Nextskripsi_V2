@@ -25,6 +25,9 @@ const config: Config = {
          "dark-purple": "#081A51",
         "light-white": "rgb(255,255,255,0.18)"        
       },
+        backgroundImage: {
+        'profile': "url('/profileBackground.png')",
+      }
     },
   },
   plugins: [],

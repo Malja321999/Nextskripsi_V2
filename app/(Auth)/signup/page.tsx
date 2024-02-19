@@ -9,6 +9,7 @@ import { useForm, Controller } from "react-hook-form";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, firestore } from "@/app/lib/firebase/init";
 import { doc, setDoc } from "firebase/firestore";
+import Bab1_1 from "@/app/pagekuis/bab1_kuis/page";
 
 const SignUp = () => {
   const { push } = useRouter();
@@ -42,6 +43,13 @@ const SignUp = () => {
   });
 
   const onSubmit = async (e: any) => {
+    const kuis = {
+      bab1_kuis: "Belum Mengerjakan Kuis Bab 1",
+      bab2_kuis: "Belum Mengerjakan Kuis Bab 2",
+      bab3_kuis: "Belum Mengerjakan Kuis Bab 3",
+      bab4_kuis: "Belum Mengerjakan Kuis Bab 4",
+    };
+
     setError("");
     setIsLoading(true);
     const res = await fetch("/api/auth/register", {
@@ -55,12 +63,12 @@ const SignUp = () => {
     console.log(res.status);
     if (res.status === 200) {
       const ref = doc(firestore, "DataUsers", `${e.email}`);
-      setDoc(ref, e)
+      setDoc(ref, kuis)
         .then((response) => {
           console.log("success submit data user", response);
         })
-        .catch((e) => {
-          console.log("failed submit data user", e);
+        .catch((error) => {
+          console.log("failed submit data user", error);
           alert("failed submit data user");
         });
       setIsLoading(false);

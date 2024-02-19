@@ -15,8 +15,15 @@ import {
 } from "@material-tailwind/react";
 import { BiLogOut } from "react-icons/bi";
 import { signOut } from "next-auth/react";
+import { GrNext } from "react-icons/gr";
+import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
+  const [adagambar, setAdagambar] = useState(false);
+  const imageProfilUrl =
+    "https://i.pinimg.com/736x/ab/f4/24/abf4246c960d5c90fe27a1bdf262a3f8.jpg";
+
+  const [open, setOpen] = React.useState(0);
   const { data: session }: { data: any } = useSession();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -54,38 +61,12 @@ export default function ProfilePage() {
   const ObjectDataFirestore = Object.values(dataFirestore);
   console.log(ObjectDataFirestore);
 
-  const [adagambar, setAdagambar] = useState(false);
-  const imageProfilUrl =
-    "https://i.pinimg.com/736x/ab/f4/24/abf4246c960d5c90fe27a1bdf262a3f8.jpg";
-
-  function Icon({ id, open }: any) {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={2}
-        stroke="currentColor"
-        className={`${
-          id === open ? "rotate-180" : ""
-        } h-5 w-5 transition-transform`}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-        />
-      </svg>
-    );
-  }
-
-  const [open, setOpen] = React.useState(0);
-
-  const handleOpen = (value: any) => setOpen(open === value ? 0 : value);
+  const router = useRouter();
 
   return (
     <div className="flex justify-start items-start h-screen mt-28">
       <div className="flex gap-5 px-5">
+        {/* Profile */}
         <div className="p-5 w-[20rem] h-[37rem] flex justify-start items-start bg-[url('/profileBackground.png')] rounded-3xl">
           <ul className="flex flex-col gap-5 mx-auto">
             <li>
@@ -126,31 +107,60 @@ export default function ProfilePage() {
             </li>
           </ul>
         </div>
+        {/* Pengaturan */}
         <div className="w-[72rem] h-[37rem] bg-gradient-to-r from-purple-500 to-pink-500 p-5 rounded-md flex flex-col">
-          <div className="p-5 rounded-md bg-gray-700 w-full h-fit  text-xl font-black justify-center items-center">
+          <div>
+            <div className="p-5 rounded-md bg-gray-700 w-full h-fit text-lg font-black justify-center items-center">
+              <div className="flex justify-center items-center gap-[40rem]">
+                <div>HALAMAN BAB</div>
+                <div>NILAI</div>
+              </div>
+            </div>
+            <div>{ObjectDataFirestore === null && "Loading data..."}</div>
+            <div className="p-5 rounded-md bg-gray-500 w-full h-fit mb-5 text-base text-center">
+              {ObjectDataFirestore.map((data) => (
+                <div key={data.id}>
+                  <div className="flex justify-between items-center mb-2 bg-gray-600 h-5">
+                    <div className="pl-40">BAB 1</div>
+                    <div className="pr-10">{data.bab1_kuis}</div>
+                  </div>
+                  <div className="flex justify-between items-center mb-2 bg-gray-700 h-5">
+                    <div className="pl-40">BAB 2</div>
+                    <div className="pr-10">{data.bab2_kuis}</div>
+                  </div>
+                  <div className="flex justify-between items-center mb-2 bg-gray-600 h-5">
+                    <div className="pl-40">BAB 3</div>
+                    <div className="pr-10">{data.bab3_kuis}</div>
+                  </div>
+                  <div className="flex justify-between items-center mb-2 bg-gray-700 h-5">
+                    <div className="pl-40">BAB 4</div>
+                    <div className="pr-10">{data.bab4_kuis}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-5 rounded-md bg-gray-700 w-full h-fit text-xl font-black">
             <div className="flex justify-start items-center gap-2">
               <IoMdSettings />
               PENGATURAN AKUN
             </div>
           </div>
-          <>
-            <Accordion
-              open={open === 1}
-              icon={<Icon id={1} open={open} />}
-              placeholder={undefined}
-            >
-              <AccordionHeader
-                onClick={() => handleOpen(1)}
-                placeholder={undefined}
-                className="mt-5 p-5 rounded-md bg-gray-700 w-full h-fit"
-              >
-                Ubah profil
-              </AccordionHeader>
-              <AccordionBody className="mt-1 p-5 rounded-md bg-gray-600 w-full h-fit">
-                Ganti Username
-              </AccordionBody>
-            </Accordion>
-          </>
+          <button
+            onClick={() => router.push("/profile/changeusername")}
+            className="flex justify-between items-center gap-2 p-5 rounded-md bg-gray-600 text-xl font-black mb-1 mt-1"
+          >
+            Ganti Username
+            <GrNext />
+          </button>
+          <button
+            onClick={() => router.push("/profile/changepassword")}
+            className="flex justify-between items-center gap-2 p-5 rounded-md bg-gray-600 text-xl font-black mb-1"
+          >
+            Ganti Password
+            <GrNext />
+          </button>
         </div>
       </div>
     </div>

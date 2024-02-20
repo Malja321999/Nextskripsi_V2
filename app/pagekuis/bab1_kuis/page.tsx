@@ -1,7 +1,6 @@
 "use client";
 import { useAppContext } from "@/app/context/AppWrapper";
 import { useState } from "react";
-import NavQuestions from "../NavQuestions";
 import Questions from "../Questions";
 
 const Bab1_1 = () => {

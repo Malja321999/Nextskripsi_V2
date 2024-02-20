@@ -4,6 +4,9 @@ import ScoreKuis from "./ScoreKuis";
 import QuizCard from "./QuizCard";
 import ResultQuiz from "./resultquiz/page";
 import NavQuestions from "./NavQuestions";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { firestore } from "../lib/firebase/init";
+import { useSession } from "next-auth/react";
 
 const Questions = ({
   questions,
@@ -29,6 +32,8 @@ const Questions = ({
   const correct = points / ScoreKuis;
   const incorrect = TotalQuestion - correct;
   const [Pass, SetPass] = useState(false);
+  const { data: session }: { data: any } = useSession();
+  const userEmail = session?.user?.email;
 
   const handleAnswerChange = ({ index, selectedOption }: any) => {
     const newAnswers = [...userAnswers];
@@ -43,6 +48,18 @@ const Questions = ({
         totalPoints += 20;
       }
     }
+    const ref = doc(firestore, "DataUsers", `${userEmail}`);
+    updateDoc(ref, {
+      bab1_kuis: totalPoints,
+    })
+      .then((response) => {
+        console.log("success update bab1_kuis", response);
+        alert("success update bab1_kuis");
+      })
+      .catch((error) => {
+        console.log("failed update bab1_kuis", error);
+        alert("failed update bab1_kuisr");
+      });
     setPoints(totalPoints);
     setCurrentQuestion(TotalQuestion);
   };

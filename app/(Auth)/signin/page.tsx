@@ -8,6 +8,8 @@ import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { Input } from "@material-tailwind/react";
 import { useForm, Controller } from "react-hook-form";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { firestore } from "@/app/lib/firebase/init";
 
 const SignIn = ({ searchParams }: any) => {
   const { push } = useRouter();
@@ -54,7 +56,21 @@ const SignIn = ({ searchParams }: any) => {
       });
       if (!res?.error) {
         setIsLoading(false);
-        push(callbackUrl);
+        const q = query(
+          collection(firestore, "users"),
+          where("email", "==", e.email)
+        );
+        const shapshot = await getDocs(q);
+        const user = shapshot.docs.map((doc) => ({
+          id: doc.id,
+          role: doc.data().role,
+        }));
+        console.log(user[0]?.role);
+        if (user[0]?.role === "admin") {
+          push("/dashboardAdmin");
+        } else if (user[0]?.role === "member") {
+          push(callbackUrl);
+        }
       } else {
         setIsLoading(false);
         console.log(res);
@@ -170,9 +186,9 @@ const SignIn = ({ searchParams }: any) => {
               type="submit"
               className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              {isLoading ? "Loading..." : "Login to your account"}
+              {isLoading ? "Loading..." : "Login"}
             </button>
-           {/*  <hr />
+            {/*  <hr />
             <button
               type="button"
               onClick={() => signIn("google")}

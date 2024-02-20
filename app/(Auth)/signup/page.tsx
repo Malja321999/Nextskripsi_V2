@@ -6,10 +6,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Input } from "@material-tailwind/react";
 import { useForm, Controller } from "react-hook-form";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, firestore } from "@/app/lib/firebase/init";
+import { firestore } from "@/app/lib/firebase/init";
 import { doc, setDoc } from "firebase/firestore";
-import Bab1_1 from "@/app/pagekuis/bab1_kuis/page";
 
 const SignUp = () => {
   const { push } = useRouter();
@@ -66,6 +64,7 @@ const SignUp = () => {
       setDoc(ref, kuis)
         .then((response) => {
           console.log("success submit data user", response);
+          alert("success submit data user");
         })
         .catch((error) => {
           console.log("failed submit data user", error);

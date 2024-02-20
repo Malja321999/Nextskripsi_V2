@@ -38,7 +38,7 @@ const Page = () => {
     "bg-gray-900 w-fit mt-20 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
 
   return (
-    <div className="bg-blue-700 h-[37.1rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
+    <div className="bg-blue-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
       <ButttonpnUP p={"/bab2_2"} n={"/bab3_2"} />
       {/* Bab, Prasyarat, dan Tujuan */}
       <div className="mx-2 mt-0 left-[-90.9rem]">

@@ -9,6 +9,7 @@ export function mainMiddleware(request: NextRequest) {
 export default withAuth(mainMiddleware, [
   "/dashboardAdmin",
   "/profile",
+  "/profile/changeusernamepassword",
   "/signin",
   "/signup",
   "/bab1_1",

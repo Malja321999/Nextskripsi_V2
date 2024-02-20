@@ -1,18 +1,11 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { child, get, getDatabase, ref } from "firebase/database";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { firestore } from "../lib/firebase/init";
 import { DocumentData, doc, getDoc } from "firebase/firestore";
-import Link from "next/link";
 import Image from "next/image";
 import { IoMdSettings } from "react-icons/io";
 import React from "react";
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-} from "@material-tailwind/react";
 import { BiLogOut } from "react-icons/bi";
 import { signOut } from "next-auth/react";
 import { GrNext } from "react-icons/gr";
@@ -120,19 +113,19 @@ export default function ProfilePage() {
             <div className="p-5 rounded-md bg-gray-500 w-full h-fit mb-5 text-base text-center">
               {ObjectDataFirestore.map((data) => (
                 <div key={data.id}>
-                  <div className="flex justify-between items-center mb-2 bg-gray-600 h-5">
+                  <div className="flex justify-between items-center mb-2 bg-rose-700 h-5">
                     <div className="pl-40">BAB 1</div>
                     <div className="pr-10">{data.bab1_kuis}</div>
                   </div>
-                  <div className="flex justify-between items-center mb-2 bg-gray-700 h-5">
+                  <div className="flex justify-between items-center mb-2 bg-emerald-700 h-5">
                     <div className="pl-40">BAB 2</div>
                     <div className="pr-10">{data.bab2_kuis}</div>
                   </div>
-                  <div className="flex justify-between items-center mb-2 bg-gray-600 h-5">
+                  <div className="flex justify-between items-center mb-2 bg-blue-700 h-5">
                     <div className="pl-40">BAB 3</div>
                     <div className="pr-10">{data.bab3_kuis}</div>
                   </div>
-                  <div className="flex justify-between items-center mb-2 bg-gray-700 h-5">
+                  <div className="flex justify-between items-center mb-2 bg-fuchsia-600 h-5">
                     <div className="pl-40">BAB 4</div>
                     <div className="pr-10">{data.bab4_kuis}</div>
                   </div>
@@ -148,19 +141,19 @@ export default function ProfilePage() {
             </div>
           </div>
           <button
-            onClick={() => router.push("/profile/changeusername")}
+            onClick={() => router.push("/profile/changeusernamepassword")}
             className="flex justify-between items-center gap-2 p-5 rounded-md bg-gray-600 text-xl font-black mb-1 mt-1"
           >
-            Ganti Username
+            Ganti Username Dan Password
             <GrNext />
           </button>
-          <button
+          {/* <button
             onClick={() => router.push("/profile/changepassword")}
             className="flex justify-between items-center gap-2 p-5 rounded-md bg-gray-600 text-xl font-black mb-1"
           >
             Ganti Password
             <GrNext />
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

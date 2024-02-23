@@ -153,7 +153,7 @@ const Page = () => {
           <br />
           <br />
           <span className={sky}>
-            Penerapan bilangan bulat dalam kehidupan sehari-hari
+            Salah satu contoh penerapan bilangan bulat, dalam kehidupan sehari-hari
           </span>{" "}
           adalah dalam penulisan <span className={sky}>suhu udara</span>,
           misalnya pada salah satu puncak tertinggi di Indonesia adalah Puncak

@@ -112,6 +112,26 @@ const SidebarC = () => {
                         </span>
                       </li>
                     </Link>
+                    <Link href="/bab1_2">
+                      <li
+                        className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
+                          pathname === "/bab1_2" && "bg-blue-600"
+                        }`}
+                      >
+                        <span>
+                          <span className="text-2xl block float-left">
+                            <FaB />
+                          </span>
+                          <span
+                            className={`text-xs font-medium flex-1 ${
+                              !open1 && "hidden"
+                            }`}
+                          >
+                            1.2 Ciri-Ciri Dan Contoh Bilangan Bulat
+                          </span>
+                        </span>
+                      </li>
+                    </Link>
                     <Link href="/bab1_kuis">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
@@ -120,7 +140,7 @@ const SidebarC = () => {
                       >
                         <span>
                           <span className="text-2xl block float-left">
-                            <FaB />
+                            <FaC />
                           </span>
                           <span
                             className={`text-xs font-medium flex-1 ${

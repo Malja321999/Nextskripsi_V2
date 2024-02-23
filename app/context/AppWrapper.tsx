@@ -7,11 +7,6 @@ export const AppContext = createContext<any>(undefined);
 
 export function AppWrapper({ children }: { children: React.ReactNode }) {
   const [darkMode, setdarkMode] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [points, setPoints] = useState(0);
-  const [Attempts, SetAttempts] = useState(0);
-  const index = currentQuestion;
-  const [Pass, SetPass] = useState(false);
 
   return (
     <SessionProvider>
@@ -24,15 +19,6 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
           value={{
             darkMode,
             setdarkMode,
-            currentQuestion,
-            setCurrentQuestion,
-            points,
-            setPoints,
-            Attempts,
-            SetAttempts,
-            index,
-            Pass,
-            SetPass,
           }}
         >
           {children}

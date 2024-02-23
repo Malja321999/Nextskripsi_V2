@@ -16,7 +16,8 @@ const BAb1_Kuis_Page = () => {
           <li>Setiap jawaban yang benar akan diberikan 10 poin.</li>
           <li>
             Pertanyaan memiliki 4 opsi jawaban. Kamu hanya bisa memilih 1
-            jawaban saja
+            jawaban <br />
+            <span className="ml-10">saja.</span>
           </li>
           <li>
             Kamu dapat memeriksa dan mengganti jawaban sebelum menekan tombol{" "}

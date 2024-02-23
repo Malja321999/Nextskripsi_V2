@@ -1,3 +1,3 @@
-const ScoreKuis = 20;
+const ScoreKuis = 10;
 
 export default ScoreKuis;

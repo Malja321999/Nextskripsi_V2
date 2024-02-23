@@ -3,10 +3,14 @@ import { useAppContext } from "@/app/context/AppWrapper";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
-const ResultQuiz = ({ Pass, TotalQuestion, correct, incorrect }: any) => {
+const ResultQuiz = ({
+  Pass,
+  TotalQuestion,
+  correct,
+  incorrect,
+  points,
+}: any) => {
   const { data: session }: { data: any; status: string } = useSession();
-
-  const { points } = useAppContext();
 
   function ResetQuiz() {
     window.location.reload();
@@ -24,13 +28,13 @@ const ResultQuiz = ({ Pass, TotalQuestion, correct, incorrect }: any) => {
               {Pass ? (
                 <>
                   <h1 className="w-full p-5 bg-sky-500 text-center rounded-md shadow-md border-4 border-indigo-200">
-                    Selamat Kamu Lulus!
+                    Selamat Kamu Lulus Kuis Bab 3!
                   </h1>
                 </>
               ) : (
                 <>
                   <h1 className="w-full p-5 bg-rose-500 text-center rounded-md shadow-md border-4 border-indigo-200">
-                    Kamu Belum Lulus
+                    Kamu Belum Lulus Kuis Bab 3
                   </h1>
                 </>
               )}
@@ -61,9 +65,9 @@ const ResultQuiz = ({ Pass, TotalQuestion, correct, incorrect }: any) => {
           <div className="mt-5">
             {Pass ? (
               <div className="w-full flex justify-center items-center">
-                <Link href={"/bab2_1"}>
+                <Link href={"/bab4_1"}>
                   <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
-                    Lannjutkan Ke BAB 2
+                    Lanjutkan Ke Bab 4
                   </button>
                 </Link>
               </div>

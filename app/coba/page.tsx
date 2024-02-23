@@ -1,7 +1,7 @@
 import React from "react";
 
-const Coba = () => {
-  return <div>Coba</div>;
+const page = () => {
+  return <div>page</div>;
 };
 
-export default Coba;
+export default page;

@@ -9,20 +9,18 @@ const QuizCard = ({
   userAnswers,
   handleAnswerChange,
   TotalQuestion,
-  allQuestionsAnswered,
-  calculatePoints,
 }: any) => {
   return (
     <div>
       <div key={index}>
         <h3>{questions[index].question}</h3>
         {questions[index].options.map((option: string, optionIndex: number) => (
-          <div key={optionIndex} className="px-5">
+          <div key={optionIndex} className="px-5 w-fit">
             <input
               className="mr-2 h-6 w-6"
               type="radio"
               id={`${index}-${optionIndex}`}
-              name={`question-${index}`}
+              name={`input-${optionIndex}`}
               value={option}
               checked={userAnswers[index] === option}
               onChange={() =>

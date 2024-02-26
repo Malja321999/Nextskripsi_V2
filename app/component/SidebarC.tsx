@@ -67,8 +67,9 @@ const SidebarC = () => {
                       open1 && "w-[275px]"
                     } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md 
                 ${pathname === "/bab1_1" && "bg-teal-500"}
+                ${pathname === "/bab1_2" && "bg-teal-500"}
                 ${pathname === "/bab1_kuis" && "bg-teal-500"}`}
-                    onClick={() => setSubmenutOpen1(!submenuOpen1)}
+                    onClick={() => setSubmenutOpen2(!submenuOpen2)}
                   >
                     <span className="text-2xl block float-left">
                       <TbCircleNumber1 />
@@ -78,23 +79,22 @@ const SidebarC = () => {
                         !open1 && "hidden"
                       }`}
                     >
-                      Bilangan Bulat
+                      Bilangan Positif Dan Negatif
                     </span>
-
                     {open1 && (
                       <BsChevronRight
                         className={`text-2xl ${
-                          submenuOpen1 && "rotate-90"
+                          submenuOpen2 && "rotate-90"
                         } duration-300`}
                       />
                     )}
                   </li>
                 </Link>
-                {submenuOpen1 && (
+                {submenuOpen2 && (
                   <ul className={`${open1 && "ml-5"}`}>
                     <Link href="/bab1_1">
                       <li
-                        className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
+                        className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
                           pathname === "/bab1_1" && "bg-blue-600"
                         }`}
                       >
@@ -107,14 +107,14 @@ const SidebarC = () => {
                               !open1 && "hidden"
                             }`}
                           >
-                            1.1 Mengenal Bilangan Bulat
+                            1.1 Bilangan Dengan Tanda
                           </span>
                         </span>
                       </li>
                     </Link>
                     <Link href="/bab1_2">
                       <li
-                        className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
+                        className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
                           pathname === "/bab1_2" && "bg-blue-600"
                         }`}
                       >
@@ -127,7 +127,7 @@ const SidebarC = () => {
                               !open1 && "hidden"
                             }`}
                           >
-                            1.2 Ciri-Ciri Dan Contoh Bilangan Bulat
+                            1.2 Membandingkan Bilangan Bulat
                           </span>
                         </span>
                       </li>
@@ -157,7 +157,6 @@ const SidebarC = () => {
               </>
             </ul>
           </li>
-
           <li>
             {/* Bab 2 */}
             <ul className="pt-2">
@@ -166,11 +165,12 @@ const SidebarC = () => {
                   <li
                     className={`${
                       open1 && "w-[275px]"
-                    } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md 
+                    } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
                 ${pathname === "/bab2_1" && "bg-teal-500"}
                 ${pathname === "/bab2_2" && "bg-teal-500"}
-                ${pathname === "/bab2_kuis" && "bg-teal-500"}`}
-                    onClick={() => setSubmenutOpen2(!submenuOpen2)}
+                ${pathname === "/bab2_kuis" && "bg-teal-500"}
+                `}
+                    onClick={() => setSubmenutOpen3(!submenuOpen3)}
                   >
                     <span className="text-2xl block float-left">
                       <TbCircleNumber2 />
@@ -180,18 +180,18 @@ const SidebarC = () => {
                         !open1 && "hidden"
                       }`}
                     >
-                      Bilangan Positif Dan Negatif
+                      Penjumlahan Dan Pengurangan
                     </span>
                     {open1 && (
                       <BsChevronRight
                         className={`text-2xl ${
-                          submenuOpen2 && "rotate-90"
+                          submenuOpen3 && "rotate-90"
                         } duration-300`}
                       />
                     )}
                   </li>
                 </Link>
-                {submenuOpen2 && (
+                {submenuOpen3 && (
                   <ul className={`${open1 && "ml-5"}`}>
                     <Link href="/bab2_1">
                       <li
@@ -208,7 +208,7 @@ const SidebarC = () => {
                               !open1 && "hidden"
                             }`}
                           >
-                            2.1 Bilangan Dengan Tanda
+                            2.1 Penjumalahan Bilangan Bulat
                           </span>
                         </span>
                       </li>
@@ -228,14 +228,14 @@ const SidebarC = () => {
                               !open1 && "hidden"
                             }`}
                           >
-                            2.2 Membandingkan Bilangan Bulat
+                            2.2 Pengurangan Bilangan Bulat
                           </span>
                         </span>
                       </li>
                     </Link>
                     <Link href="/bab2_kuis">
                       <li
-                        className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
+                        className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
                           pathname === "/bab2_kuis" && "bg-blue-600"
                         }`}
                       >
@@ -258,8 +258,9 @@ const SidebarC = () => {
               </>
             </ul>
           </li>
+
           <li>
-            {/* Bab 3 */}
+            {/* Bab 2 */}
             <ul className="pt-2">
               <>
                 <Link href="/bab3_1">
@@ -271,112 +272,10 @@ const SidebarC = () => {
                 ${pathname === "/bab3_2" && "bg-teal-500"}
                 ${pathname === "/bab3_kuis" && "bg-teal-500"}
                 `}
-                    onClick={() => setSubmenutOpen3(!submenuOpen3)}
-                  >
-                    <span className="text-2xl block float-left">
-                      <TbCircleNumber3 />
-                    </span>
-                    <span
-                      className={`text-xs font-medium flex-1 ${
-                        !open1 && "hidden"
-                      }`}
-                    >
-                      Penjumlahan Dan Pengurangan
-                    </span>
-                    {open1 && (
-                      <BsChevronRight
-                        className={`text-2xl ${
-                          submenuOpen3 && "rotate-90"
-                        } duration-300`}
-                      />
-                    )}
-                  </li>
-                </Link>
-                {submenuOpen3 && (
-                  <ul className={`${open1 && "ml-5"}`}>
-                    <Link href="/bab3_1">
-                      <li
-                        className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab3_1" && "bg-blue-600"
-                        }`}
-                      >
-                        <span>
-                          <span className="text-2xl block float-left">
-                            <FaA />
-                          </span>
-                          <span
-                            className={`text-xs font-medium flex-1 ${
-                              !open1 && "hidden"
-                            }`}
-                          >
-                            3.1 Penjumalahan Bilangan Bulat
-                          </span>
-                        </span>
-                      </li>
-                    </Link>
-                    <Link href="/bab3_2">
-                      <li
-                        className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab3_2" && "bg-blue-600"
-                        }`}
-                      >
-                        <span>
-                          <span className="text-2xl block float-left">
-                            <FaB />
-                          </span>
-                          <span
-                            className={`text-xs font-medium flex-1 ${
-                              !open1 && "hidden"
-                            }`}
-                          >
-                            3.2 Pengurangan Bilangan Bulat
-                          </span>
-                        </span>
-                      </li>
-                    </Link>
-                    <Link href="/bab3_kuis">
-                      <li
-                        className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab3_kuis" && "bg-blue-600"
-                        }`}
-                      >
-                        <span>
-                          <span className="text-2xl block float-left">
-                            <FaC />
-                          </span>
-                          <span
-                            className={`text-xs font-medium flex-1 ${
-                              !open1 && "hidden"
-                            }`}
-                          >
-                            Kuis 3
-                          </span>
-                        </span>
-                      </li>
-                    </Link>
-                  </ul>
-                )}
-              </>
-            </ul>
-          </li>
-
-          <li>
-            {/* Bab 4 */}
-            <ul className="pt-2">
-              <>
-                <Link href="/bab4_1">
-                  <li
-                    className={`${
-                      open1 && "w-[275px]"
-                    } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
-                ${pathname === "/bab4_1" && "bg-teal-500"}
-                ${pathname === "/bab4_2" && "bg-teal-500"}
-                ${pathname === "/bab4_kuis" && "bg-teal-500"}
-                `}
                     onClick={() => setSubmenutOpen4(!submenuOpen4)}
                   >
                     <span className="text-2xl block float-left">
-                      <TbCircleNumber4 />
+                      <TbCircleNumber3 />
                     </span>
                     <span
                       className={`text-xs font-medium flex-1 ${
@@ -396,10 +295,10 @@ const SidebarC = () => {
                 </Link>
                 {submenuOpen4 && (
                   <ul className={`${open1 && "ml-5"}`}>
-                    <Link href="/bab4_1">
+                    <Link href="/bab3_1">
                       <li
                         className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab4_1" && "bg-blue-600"
+                          pathname === "/bab3_1" && "bg-blue-600"
                         }`}
                       >
                         <span>
@@ -411,15 +310,15 @@ const SidebarC = () => {
                               !open1 && "hidden"
                             }`}
                           >
-                            4.1 Perkalian Bilangan Bulat
+                            3.1 Perkalian Bilangan Bulat
                           </span>
                         </span>
                       </li>
                     </Link>
-                    <Link href="/bab4_2">
+                    <Link href="/bab3_2">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab4_2" && "bg-blue-600"
+                          pathname === "/bab3_2" && "bg-blue-600"
                         }`}
                       >
                         <span>
@@ -431,15 +330,15 @@ const SidebarC = () => {
                               !open1 && "hidden"
                             }`}
                           >
-                            4.2 Pembagian Bilangan Bulat
+                            3.2 Pembagian Bilangan Bulat
                           </span>
                         </span>
                       </li>
                     </Link>
-                    <Link href="/bab4_kuis">
+                    <Link href="/bab3_kuis">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab4_kuis" && "bg-blue-600"
+                          pathname === "/bab3_kuis" && "bg-blue-600"
                         }`}
                       >
                         <span>
@@ -451,7 +350,7 @@ const SidebarC = () => {
                               !open1 && "hidden"
                             }`}
                           >
-                            Kuis 4
+                            Kuis 3
                           </span>
                         </span>
                       </li>

@@ -1,7 +1,7 @@
 "use client";
 import Questions from "./Questions";
 
-const Bab2_kuis = () => {
+const Bab3_kuis = () => {
   return (
     <div className="flex justify-center items-center h-screen w-screen">
       <div className="ml-[7rem]">
@@ -11,4 +11,4 @@ const Bab2_kuis = () => {
   );
 };
 
-export default Bab2_kuis;
+export default Bab3_kuis;

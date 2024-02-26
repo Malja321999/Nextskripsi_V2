@@ -35,10 +35,10 @@ function NavBar() {
                   />
                   <div
                     className={`${
-                      pathname === "/" ? "text-teal-100" : "text-white"
-                    } text-3xl font-bold`}
+                      pathname === "/" ? "text-teal-300" : "text-white"
+                    } text-xl font-bold hover:text-teal-200`}
                   >
-                    BIL<span className="text-teal-600">BUL</span>
+                    BILANGAN BULAT
                   </div>
                 </div>
               </Link>
@@ -70,7 +70,7 @@ function NavBar() {
                             : "text-white"
                         } pb-1 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                       >
-                        Dashboard Admin
+                        Halaman Guru
                       </span>
                     </Link>
                   ) : null}
@@ -93,7 +93,7 @@ function NavBar() {
                         pathname === "/bab1_1" ? "text-teal-300" : "text-white"
                       } pb-1 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
-                      Content
+                      Materi
                     </span>
                   </Link>
                 </li>
@@ -104,7 +104,7 @@ function NavBar() {
                         pathname === "/about" ? "text-teal-300" : "text-white"
                       } pb-1 text-xl py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
-                      About
+                      Tentang
                     </span>
                   </Link>
                 </li>
@@ -115,7 +115,7 @@ function NavBar() {
                         pathname === "/profile" ? "text-teal-300" : "text-white"
                       } pb-1 text-xl py-2 md:px-6 text-center   hover:bg-teal-500  border-teal-500  md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
-                      Profile
+                      Profil
                     </span>
                   </Link>
                 </li>

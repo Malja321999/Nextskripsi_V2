@@ -19,7 +19,7 @@ const ResultQuiz = ({
     <div className="flex justify-center items-center h-screen w-screen -ml-[7rem]">
       <div className="w-screen mx-20 bg-teal-500 rounded-md p-2 shadow-md text-4xl m-5">
         <h1 className="font-bold bg-sky-700 rounded-md border-4 border-white  text-center p-5 w-full mb-5">
-          Quiz completed!
+          Kuis Selesai!
         </h1>
         <div className="w-full mx-auto bg-white rounded-md border-4 border-sky-400 p-10">
           {/* Display result table here */}
@@ -28,13 +28,13 @@ const ResultQuiz = ({
               {Pass ? (
                 <>
                   <h1 className="w-full p-5 bg-sky-500 text-center rounded-md shadow-md border-4 border-indigo-200">
-                    Selamat Kamu Lulus Kuis Bab 3!
+                    Selamat Kamu Lulus Kuis Bab 4!
                   </h1>
                 </>
               ) : (
                 <>
                   <h1 className="w-full p-5 bg-rose-500 text-center rounded-md shadow-md border-4 border-indigo-200">
-                    Kamu Belum Lulus Kuis Bab 3
+                    Kamu Belum Lulus Kuis Bab 4
                   </h1>
                 </>
               )}
@@ -42,32 +42,37 @@ const ResultQuiz = ({
           </div>
           <ul className="p-5 bg-teal-500 rounded-md">
             <li className="flex justify-between">
-              <span>Username:</span>
+              <span>Nama:</span>
               <span>{session?.user?.fullname}</span>
             </li>
             <li className="flex justify-between">
-              <span>Total Questions:</span>
+              <span>Total Soal:</span>
               <span>{TotalQuestion}</span>
             </li>
             <li className="flex justify-between">
-              <span>Total Correct:</span>
+              <span>Total Benar:</span>
               <span>{correct}</span>
             </li>
             <li className="flex justify-between">
-              <span>Total Incorrect:</span>
+              <span>Total Salah:</span>
               <span>{incorrect}</span>
             </li>
             <li className="flex justify-between">
-              <span>Total Points:</span>
+              <span>Total Nilai:</span>
               <span>{points}</span>
             </li>
           </ul>
           <div className="mt-5">
             {Pass ? (
-              <div className="w-full flex justify-center items-center">
-                <Link href={"/bab4_1"}>
+              <div className="w-full flex justify-between items-center">
+                <Link href={"pagekuis/kuisakhir"}>
                   <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
-                    Lanjutkan Ke Bab 4
+                    Lanjutkan Ke Ulangan Akhir
+                  </button>
+                </Link>
+                <Link href={"/bab1_1"}>
+                  <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
+                    Kembali Ke Menu Bab
                   </button>
                 </Link>
               </div>
@@ -77,7 +82,7 @@ const ResultQuiz = ({
                   onClick={() => ResetQuiz()}
                   className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
                 >
-                  Reset
+                  Ulang Kuis
                 </button>
               </div>
             )}

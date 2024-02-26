@@ -11,64 +11,59 @@ import { useSession } from "next-auth/react";
 const Questions = () => {
   const questions = [
     {
-      question: "Hasil dari 72 +(-28) adalah…",
-      options: ["46", "44", "-44", "-46"],
-      correctAnswer: "44",
+      question: "Hasil dari -6 x (-5) x 11 x 8 =....",
+      options: ["3984", "-460", "39", "2640"],
+      correctAnswer: "2640",
     },
     {
-      question: "Hasil dari -31 + (-65) adalah…",
-      options: ["-94", "-34", "-96", "96"],
-      correctAnswer: "-96",
-    },
-    {
-      question: "Hasil 63 + (-178) + 89=…",
-      options: ["-26", "-24", "24", "26"],
-      correctAnswer: "-26",
-    },
-    {
-      question: "Jika -11 + (-8) - (-18) = n, nilai n =....",
-      options: ["37", "1", "-1", "-37"],
-      correctAnswer: "-1",
+      question: "Hasil dari 180 : (-60 : 15) =....",
+      options: ["-45", "45", "60", "5"],
+      correctAnswer: "-45",
     },
     {
       question:
-        "Diketahui suhu di kota X adalah -27°C dan suhu dikota Y 12°C. jika dikota X turun 5°C dan di kota Y naik 2°C. berapa selisih kedua di kedua kota tersebut?",
-      options: ["46°C", "44°C", "42°C", "38°C"],
-      correctAnswer: "44°C",
-    },
-    {
-      question: "Diketahui -71 + p + (-96) = 25, nilai p adalah…",
-      options: ["-142", "-142", "182", "192"],
-      correctAnswer: "192",
+        "Diketahui Pembagian Bilangan bulat berikut.p= -48 : 4; q= -72 : (-9); r= 54 : (-6). urutan hasil dari yang terkecil adalah...",
+      options: ["p,q,r", "p,r,q", "r,q,p", "r,p,q"],
+      correctAnswer: "p,r,q",
     },
     {
       question:
-        "Jika suhu awal 6°C kemudian turun 12°C, maka suhu akhir angka menunjukan....",
-      options: ["18°C", "6°C", "-18°C", "-6°C"],
-      correctAnswer: "-6°C",
+        "diketahui nilai p = 240, q = -4, r = -60 dan s = 3. Hasil dari (p : q) : (r : s) =…",
+      options: ["-3", "-2", "2", "3"],
+      correctAnswer: "2",
     },
     {
       question:
-        "Diketahui m = -184-(-62) + (-94) dan n = 73 + (-82) - (-126), nilai m - n adalah....",
-      options: ["-343", "-333", "-99", "99"],
-      correctAnswer: "-333",
+        "Untuk membantu korban bencana alam, 54 murid sekolah dasar mengumpulkan uang. Setiap orang menyumbang 1.250 rupiah. Berapa uang yang terkumpul seluruhnya?",
+      options: ["Rp. 67.400", "Rp. 67.500", "Rp. 67.600", "Rp. 67.700"],
+      correctAnswer: "Rp. 67.500",
+    },
+    {
+      question: "Nilai dari (-2)x(-3)x(-4)x(-5)=…",
+      options: ["-14", "-120", "14", "120"],
+      correctAnswer: "120",
     },
     {
       question:
-        "Diketahui a, b, c. anggota Bilangan bulat dengan a<b<c. pernyataan yang benar adalah....",
-      options: [
-        "a - b > b - c",
-        "b - a< - c + a",
-        "-b - c < a - b",
-        "-a + b < b -",
-      ],
-      correctAnswer: "-b - c < a - b",
+        "Di sebuah gudang beras terdapat 550 karung beras. Setiap karung beratnya 25 kg. Berapa kg beras yang ada di gudang itu?",
+      options: ["13.750 kg", "13.760 kg", "13.770 kg", "13.780 kg"],
+      correctAnswer: "13.750 kg",
+    },
+    {
+      question: "Hasil dari (-5)x(-4)x2=…",
+      options: ["-40", "30", "20", "40"],
+      correctAnswer: "40",
     },
     {
       question:
-        "Pada pagi hari, suhu di puncak suatu gunung -1°C, kemudian pada malam hari suhunya turun 6°C jadi suhu pada malam hari adalah....",
-      options: ["-7°C", "-5°C", "5°C", "7"],
-      correctAnswer: "-7°C",
+        "Untuk membantu korban bencana alam, panitia akan membagikan 3.375 kg beras kepada 45 kepala keluarga. Berapa kilogram-kah setiap kepala keluarga menerima beras?",
+      options: ["74 kg", "75 kg", "76 kg", "77 kg"],
+      correctAnswer: "75 kg",
+    },
+    {
+      question: "Hasil dari (-75) : (-25) =…",
+      options: ["3", "4", "-3", "-4"],
+      correctAnswer: "3",
     },
 
     // Add more questions here

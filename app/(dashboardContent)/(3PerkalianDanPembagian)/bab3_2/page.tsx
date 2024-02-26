@@ -1,23 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
-/* Icon Ringkasan */
-import { RiAlarmWarningLine } from "react-icons/ri";
+
 /* Icon Pras */
 import { FaRegCalendarCheck } from "react-icons/fa";
 /* Icon Tujuan */
 import { RiMapPinAddFill } from "react-icons/ri";
 /* Icon Uncheck */
 import { ImCheckboxUnchecked } from "react-icons/im";
-import Bab4_1_G1 from "../../../asset/Bab4_1_G1.png";
-import Bab4_1_G2 from "../../../asset/Bab4_1_G2.png";
-import Bab4_1_G4 from "../../../asset/Bab4_1_G4.png";
-import Bab4_1_G5 from "../../../asset/Bab4_1_G5.png";
-import Bab4_1_G6 from "../../../asset/Bab4_1_G6.png";
-import Bab4_1_G7 from "../../../asset/Bab4_1_G7.png";
-import Bab4_1_G8 from "../../../asset/Bab4_1_G8.png";
-import Bab4_1_G9 from "../../../asset/Bab4_1_G9.png";
-
+import Bab4_2_G1 from "../../../asset/G44_MBab3.png";
+import Bab4_2_G2 from "../../../asset/Bab4_2_G2.png";
+import Bab4_2_G3 from "../../../asset/Bab4_2_G3.png";
+import Bab4_2_G4 from "../../../asset/Bab4_2_G4.png";
+import Bab4_2_G5 from "../../../asset/Bab4_2_G5.png";
 import Cardbab from "@/app/component/Cardbab";
 import Cardsubbab from "@/app/component/Cardsubbab";
 import Cardlatihan from "@/app/component/Cardlatihan";
@@ -38,12 +33,12 @@ const Page = () => {
     "bg-gray-900 w-fit mt-20 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
 
   return (
-    <div className="bg-fuchsia-600 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
-      <ButttonpnUP p={"/bab3_2"} n={"/bab4_2"} />
+    <div className="bg-sky-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
+      <ButttonpnUP p={"/bab3_1"} n={"/bab3_kuis"} />
       {/* Bab, Prasyarat, dan Tujuan */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
         {/* Judul Bab */}
-        <Cardbab n={4} p={"Perkalian Dan Pembagian"} />
+        <Cardbab n={3} p={"Perkalian Dan Pembagian"} />
         <div className="bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
           <button onClick={() => SetCollapse(!Collapse)}>
             <ul className="flex justify-between gap-2">
@@ -110,62 +105,57 @@ const Page = () => {
       {/* Konten Bab */}
       <div className="mx-20 text-justify">
         {/* Judul Sub Bab */}
-        <Cardsubbab n={4.1} p={"Perkalian Bilangan Bulat"} />
+        <Cardsubbab n={3.2} p={"Pembagian Bilangan Bulat"} />
         {/* Isi Sub Bab */}
         <div className="mt-5 mb-2">
-          Pada waktu sekolah dasar, kamu sudah mengetahui bahwa perkalian adalah
-          operasi penjumlahan berulang dengan bilangan yang sama.
-          <br /> <br />
-          Misalkan a dan b Bilangan bulat positif maka ditulis a x b = b + b + b
-          + ….. + b (b ditambahkan sebanyak a suku ).
-          {/* Contoh */}
-          <Cardcontoh />
-          <div className="bg-white text-black p-2 rounded-md border-8 border-black w-fit">
-            <ul className="list-none list-inside grid gap-4 grid-cols-1">
-              <li>3 x 4 = 4 + 4 + 4 = 12</li>
-              <li>4 x -9 = -9 + (-9) + (-9) + (-9) = -36</li>
-            </ul>
-          </div>
+          Dalam matematika, pembagian dapat diartikan sebagai mengurangkan
+          bilangan terhadap bilangan yang tetap hinggga habis. Jika terdapat 15
+          buah Katsuri di bagikan kepada 3 anak, maka dapat digambarkan sebagai
+          berikut :
+          <Cardg g={Bab4_2_G1} a_l={"Bab4_2_G1"} />
+          Maka setiap anak mendapatlkan 5 buah Katsuri . Jadi, 15 : 3 = 5.
+          Pembagian juga bisa disebut operasi kebalikan dari perkaliuan, coba
+          kita ambil contoh dari jawaban diatas. 15 : 3 = 5 ←→ 3 x 5 = 15 maka
+          dapat kita simpulkan bahwa setiap a, b, dan c bilangan bulat maka
+          berlaku :
+          <Cardg g={Bab4_2_G2} p={"Bab4_2_G2"} />
           <div className="mt-5">
             {/* Judul sub per */}
             <Cardsubper
               p={
-                "Beberapa arti dan makna pada Perkalian dua Bilangan bulat sebagai berikut"
+                "Beberapa arti dan makna pada Pembagian dua Bilangan bulat sebagai berikut"
               }
             />
             <ul className="list-none list-inside">
               <li>
-                a. Hasil kali dan Bilangan bertanda sama maka akan menghasilkan
-                Bilangan positif
+                a. Hasil bagi dua bilangan bulat bertanda sama maka akan
+                menghasilkan bilangan positif
               </li>
               <div className="ml-9">
-                <Cardg g={Bab4_1_G1} a_l={"Bab4_1_G1"} />
+                <Cardg g={Bab4_2_G3} a_l={"Bab4_2_G3"} />
               </div>
               <div className="ml-10">
                 <Cardcontoh />
                 <div className={CardSoal}>
                   <ul>
-                    <li>
-                      8&nbsp;&nbsp;&nbsp; &nbsp;x&nbsp;&nbsp;&nbsp;
-                      8&nbsp;&nbsp;= 64
-                    </li>
-                    <li>(-3) x (-2)&nbsp;= 6</li>
+                    <li>16 : 8 = 2</li>
+                    <li>(-10) : (-2) = 5</li>
                   </ul>
                 </div>
               </div>
               <li>
-                b. Hasil kali dua bilangan bertanda berbeda maka akan
+                b. Hasil bagi dua bilangan bertanda berbeda maka akan
                 menghasilkan bilangan negatif
               </li>
               <div className="ml-9">
-                <Cardg g={Bab4_1_G2} a_l={"Bab4_1_G1"} w={287} />
+                <Cardg g={Bab4_2_G4} a_l={"Bab4_2_G1"} w={287} />
               </div>
               <div className="ml-10">
                 <Cardcontoh />
                 <div className={CardSoal}>
                   <ul>
-                    <li>-5 x 8&nbsp; &nbsp; = -40</li>
-                    <li> 9 x (-9) &nbsp;= -81</li>
+                    <li>50 : (-5) = -10</li>
+                    <li>-10 -30 : 3 = -10</li>
                   </ul>
                 </div>
               </div>
@@ -229,147 +219,80 @@ const Page = () => {
           </div>
           <div className="mt-5">
             {/* Judul Sub Per */}
-            <Cardsubper p={"Sifat-sifat Perkalian Bilangan Bulat"} />
-            <div>Sifat-sifat perkalian bilangan bulat sebagai berikut :</div>
+            <Cardsubper p={"Sifat-sifat Pembagian Bilangan bulat"} />
+            <div>Sifat-sifat pembagian bilangan bulat sebagai berikut :</div>
             <ul className="list-decimal list-inside grid gap-10 grid-cols-1 mt-10">
               <li>
-                <span className="font-bold">Sifat Tertutup</span>
+                <span className="font-bold">
+                  Untuk a Bilangan bulat dan a ≠ 0 berlaku 0 : a = 0
+                </span>
                 <div>
                   <div>
-                    <Cardg g={Bab4_1_G4} a_l={"Bab4_1_G4"} />
+                    <Cardcontoh />
                   </div>
-                  <div>
-                    Pada perkalian dua atau lebih bilangan bulat menghasilkan
-                    bilangan bulat (sifat tertutup)
-                  </div>
-                  <div>
-                    <div>
-                      <Cardcontoh />
-                    </div>
-                    <div className={CardSoal}>
-                      <ul>
-                        <li>
-                          -6 x 8 = -42 → (-6,8 dan -42 adalah bilangan bulat)
-                        </li>
-                        <li>
-                          -12 x (-15) = 180 → (-12,-15 dan 180 adalah bilangan
-                          bulat)
-                        </li>
-                      </ul>
-                    </div>
+                  <div className={CardSoal}>
+                    <ul>
+                      <li>0 : 10 = 0</li>
+                      <li>0 : 200 = 0</li>
+                    </ul>
                   </div>
                 </div>
               </li>
               <li>
                 <span className="font-bold">
-                  Hasil perkalian bilangan 0 dengan bilangan bulat lainnya sama
-                  dengan 0
+                  Setiap bilangan bulat yang dibagi 0 hasilnya tidak terdefinisi
                 </span>
                 <div>
                   <div>
-                    <Cardg g={Bab4_1_G5} a_l={"Bab4_1_G5"} />
+                    <Cardcontoh />
                   </div>
-                  <div>
-                    <div>
-                      <Cardcontoh />
-                    </div>
-                    <div className={CardSoal}>
-                      <ul>
-                        <li>13 x 0 = 0</li>
-                        <li>12 x 0 = 0</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <span className="font-bold">Unsur identitas</span>
-                <div>
-                  <div>
-                    Bilangan 1 merupakan unsur identitas pada Perkalian bilangan
-                    bulat. Setiap Bilangan bulat dikalikan dengan 1 menghasilkan
-                    Bilangan itu sendiri.
-                  </div>
-                  <div>
-                    <Cardg g={Bab4_1_G6} a_l={"Bab4_1_G6"} />
-                  </div>
-                  <div>
-                    <div>
-                      <Cardcontoh />
-                    </div>
-                    <div className={CardSoal}>
-                      <ul>
-                        <li>12 x 1 = 12</li>
-                        <li>3 x 1 = 3</li>
-                        <li>5 x 1 = 5</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <span className="font-bold">Sifat komutatif (pertukaran)</span>
-                <div>
-                  <div>
-                    <Cardg g={Bab4_1_G7} a_l={"Bab4_1_G7"} />
-                  </div>
-                  <div>
-                    <div>
-                      <Cardcontoh />
-                    </div>
-                    <div className={CardSoal}>
-                      <ul>
-                        <li>12 x 5 → 5 x 12 = 60</li>
-                        <li>3 x (-5) → -5 x 3 = -15</li>
-                      </ul>
-                    </div>
+                  <div className={CardSoal}>
+                    <ul>
+                      <li>5 : 0 = tidak terdefenisi</li>
+                      <li>-20 : 0 = tidak terdefenisi</li>
+                    </ul>
                   </div>
                 </div>
               </li>
               <li>
                 <span className="font-bold">
-                  Sifat asosiatif (Pengelompokkan)
+                  Setiap a dan b bilangan bulat, hasil dari a : b tidak selalu
+                  bilangan bulat. Jadi pembagian tidak bersifat tertutup.{" "}
                 </span>
-                <div>Perkalian tiga Bilangan bulat bersifat asosiatif.</div>
                 <div>
                   <div>
-                    <Cardg g={Bab4_1_G8} a_l={"Bab4_1_G8"} />
+                    <Cardcontoh />
                   </div>
-                  <div>
-                    <div>
-                      <Cardcontoh />
-                    </div>
-                    <div className={CardSoal}>
-                      <ul>
-                        <li>(3 x (-6)) x 4 = 3 x (-6 x 4) = 72</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <span className="font-bold">Sifat distributif</span>
-                <div>
-                  Perkalian bilangan bulat bersifat distributif (penyetaraan)
-                  terhadap penjumlahan dan Pengurangan.
-                </div>
-                <div>
-                  <div>
-                    <Cardg g={Bab4_1_G9} a_l={"Bab4_1_G9"} />
-                  </div>
-                  <div>
-                    <div>
-                      <Cardcontoh />
-                    </div>
-                    <div className={CardSoal}>
-                      <ul>
-                        <li> -5 x (-27 + 12 ) = -5 x (-27) + (-5) x 12 = 75</li>
-                      </ul>
-                    </div>
+                  <div className={CardSoal}>
+                    <ul>
+                      <li>
+                        9 : 2 =
+                        <div className="frac">
+                          <span>9</span>
+                          <span className="symbol">/</span>
+                          <span className="bottom">2</span>
+                        </div>
+                        = 4
+                        <div className="frac">
+                          <span>1</span>
+                          <span className="symbol">/</span>
+                          <span className="bottom">2</span>
+                        </div>
+                        (bukan Bilangan bulat)
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </li>
             </ul>
+          </div>
+          <div className="mt-5">
+            <div>
+              <CardRang />
+            </div>
+            <div>
+              <Cardg g={Bab4_2_G5} a_l={"Bab4_2_G5"} />
+            </div>
           </div>
           <div className="mt-5">
             <div>
@@ -407,18 +330,18 @@ const Page = () => {
                   </div>
                 </li>
                 <li>
-                  Tentukan hasil Perkalian berikut ini
+                  Tentukan hasil Pembagian berikut ini
                   <ul className="list-disc list-inside ml-10">
-                    <li>10 x 4 &nbsp; &nbsp;= ...</li>
-                    <li>13 x (-4) &nbsp; = ...</li>
-                    <li>-3 x 8 x 2 &nbsp; &nbsp; &nbsp; = ...</li>
+                    <li>10 : 2 &nbsp; &nbsp;= ...</li>
+                    <li>25 : (-5) &nbsp; = ...</li>
+                    <li>5 : 5 &nbsp; &nbsp; = ...</li>
                   </ul>
                 </li>
                 <li>
-                  Jika Perkalian berlaku sifat distributif maka?
+                  Jika Pembagian berlaku a : b = c ←→ b x c = a maka?
                   <ul className="list-disc list-inside ml-10">
-                    <li>10 x (-2 – 23) = (…x…) – (….x….) = ….</li>
-                    <li>3 x (12 + 21) = (…x….) + (….x….) = ….</li>
+                    <li>20 : 2 = (…x….) – (….x….) = ….</li>
+                    <li>100 x 2 = (…x….) + (….x….) = ….</li>
                   </ul>
                 </li>
               </ul>
@@ -426,7 +349,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <ButttonpnDOWN p={"/bab3_2"} n={"/bab4_2"} />
+      <ButttonpnDOWN p={"/bab3_1"} n={"/bab3_kuis"} />
     </div>
   );
 };

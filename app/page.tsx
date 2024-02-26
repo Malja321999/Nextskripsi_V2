@@ -28,22 +28,22 @@ const Home = () => {
             membuat proses belajar menjadi menyenanagkan dan menarik bagi siswa
             dalam mempelajari Bilangan Bulat.
           </p>
-          <ul className="flex justify-start items-center gap-2 w-[350px]">
+          <ul className="flex justify-start items-center gap-2 w-[400px]">
             <li className="flex justify-start items-center">
               <Icon.FaCheckCircle />
-              Online
+              Daring
+            </li>
+            <li className="flex justify-start items-center text-base">
+              <Icon.FaCheckCircle />
+              Kapan pun
             </li>
             <li className="flex justify-start items-center">
               <Icon.FaCheckCircle />
-              Anywhere
+              Pengetahuan
             </li>
             <li className="flex justify-start items-center">
               <Icon.FaCheckCircle />
-              Knowledge
-            </li>
-            <li className="flex justify-start items-center">
-              <Icon.FaCheckCircle />
-              Experience
+              Pengalaman
             </li>
           </ul>
           <ul className="flex justify-start items-center w-48 gap-4">
@@ -54,7 +54,7 @@ const Home = () => {
                     size={25}
                     style={{ color: "white", margin: "5px" }}
                   />
-                  Get Started
+                  Mulai
                 </button>
               </Link>
             </li>
@@ -65,7 +65,7 @@ const Home = () => {
                     size={25}
                     style={{ color: "white", margin: "5px" }}
                   />
-                  Watch Video
+                  Tonton Video
                 </button>
               </Link>
             </li>
@@ -105,7 +105,7 @@ const Home = () => {
             <Link href={"/bab1_1"}>
               <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-emerald-600 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
                 <BsListUl className="w-[35px] h-[35px]" />
-                Content
+                Materi
               </button>
             </Link>
           </li>
@@ -113,7 +113,7 @@ const Home = () => {
             <Link href={"/profile"}>
               <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-[#0dcaf0] hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
                 <MdAccountCircle className="w-[35px] h-[35px]" />
-                Profile
+                Profil
               </button>
             </Link>
           </li>
@@ -122,7 +122,7 @@ const Home = () => {
             <Link href={"/about"}>
               <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-indigo-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
                 <BsFillInfoSquareFill className="w-[35px] h-[35px]" />
-                About
+                Tentang
               </button>
             </Link>
           </li>

@@ -35,12 +35,12 @@ const Page = () => {
     "bg-gray-900 w-fit mt-20 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
 
   return (
-    <div className="bg-blue-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
-      <ButttonpnUP p={"/bab3_1"} n={"/bab3_kuis"} />
+    <div className="bg-emerald-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
+      <ButttonpnUP p={"/bab2_1"} n={"/bab2_kuis"} />
       {/* Bab, Prasyarat, dan Tujuan */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
         {/* Judul Bab */}
-        <Cardbab n={3} p={"Penjumlahan Dan Pengurangan"} />
+        <Cardbab n={2} p={"Penjumlahan Dan Pengurangan"} />
         <div className="bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
           <button onClick={() => SetCollapse(!Collapse)}>
             <ul className="flex justify-between gap-2">
@@ -107,7 +107,7 @@ const Page = () => {
       {/* Konten Bab */}
       <div className="mx-20 text-justify">
         {/* Judul Sub Bab */}
-        <Cardsubbab n={3.2} p={"Pengurangan Bilangan Bulat"} />
+        <Cardsubbab n={2.2} p={"Pengurangan Bilangan Bulat"} />
         {/* Isi Sub Bab */}
         <div className="mt-5 mb-2">
           Seperti pada penjumlahan bilangan bulat, untuk menghitung hasil
@@ -236,7 +236,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <ButttonpnDOWN p={"/bab3_1"} n={"/bab3_kuis"} />
+      <ButttonpnDOWN p={"/bab2_1"} n={"/bab2_kuis"} />
     </div>
   );
 };

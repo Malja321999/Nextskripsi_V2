@@ -144,7 +144,7 @@ export default function ProfilePage() {
             onClick={() => router.push("/profile/changeusernamepassword")}
             className="flex justify-between items-center gap-2 p-5 rounded-md bg-gray-600 text-xl font-black mb-1 mt-1"
           >
-            Ganti Username Dan Password
+            Ganti Nama Pengguna Dan Kata Sandi
             <GrNext />
           </button>
           {/* <button

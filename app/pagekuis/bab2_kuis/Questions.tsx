@@ -11,79 +11,64 @@ import { useSession } from "next-auth/react";
 const Questions = () => {
   const questions = [
     {
+      question: "Hasil dari 72 +(-28) adalah…",
+      options: ["46", "44", "-44", "-46"],
+      correctAnswer: "44",
+    },
+    {
+      question: "Hasil dari -31 + (-65) adalah…",
+      options: ["-94", "-34", "-96", "96"],
+      correctAnswer: "-96",
+    },
+    {
+      question: "Hasil 63 + (-178) + 89=…",
+      options: ["-26", "-24", "24", "26"],
+      correctAnswer: "-26",
+    },
+    {
+      question: "Jika -11 + (-8) - (-18) = n, nilai n =....",
+      options: ["37", "1", "-1", "-37"],
+      correctAnswer: "-1",
+    },
+    {
       question:
-        "Manakah kelompok bilangan yang merupakan bilangan positif dibawah ini?",
+        "Diketahui suhu di kota X adalah -27°C dan suhu dikota Y 12°C. jika dikota X turun 5°C dan di kota Y naik 2°C. berapa selisih kedua di kedua kota tersebut?",
+      options: ["46°C", "44°C", "42°C", "38°C"],
+      correctAnswer: "44°C",
+    },
+    {
+      question: "Diketahui -71 + p + (-96) = 25, nilai p adalah…",
+      options: ["-142", "-142", "182", "192"],
+      correctAnswer: "192",
+    },
+    {
+      question:
+        "Jika suhu awal 6°C kemudian turun 12°C, maka suhu akhir angka menunjukan....",
+      options: ["18°C", "6°C", "-18°C", "-6°C"],
+      correctAnswer: "-6°C",
+    },
+    {
+      question:
+        "Diketahui m = -184-(-62) + (-94) dan n = 73 + (-82) - (-126), nilai m - n adalah....",
+      options: ["-343", "-333", "-99", "99"],
+      correctAnswer: "-333",
+    },
+    {
+      question:
+        "Diketahui a, b, c. anggota Bilangan bulat dengan a<b<c. pernyataan yang benar adalah....",
       options: [
-        "Positif : -12; 7 ; 0 ; -0,6",
-        "Positif : -12; 7 ; 0,6 ; 1,2",
-        "Positif : -12; -3 ; 7 ; 0",
-        "Positif : -12; 7 ; 0 ; 0,6",
+        "a - b > b - c",
+        "b - a< - c + a",
+        "-b - c < a - b",
+        "-a + b < b -",
       ],
-      correctAnswer: "Positif : -12; 7 ; 0 ; 0,6",
+      correctAnswer: "-b - c < a - b",
     },
     {
       question:
-        "Bilangan manakah yang memiliki nilai yang sama dengan 3/5 dibawah ini ?",
-      options: ["0,4", "0,7", "0,6", "0.10"],
-      correctAnswer: "0,6",
-    },
-    {
-      question:
-        "Perbandingan pasangan bilangan +1 ; -3 ; -2 dengan menggunakan tanda pertidaksamaanyang benar adalah...",
-      options: ["1 > -3 > -2", "1 > - 2 > -3", "-2 < 1 > - 3", "-3 < -2 > +1"],
-      correctAnswer: "1 > - 2 > -3",
-    },
-    {
-      question:
-        "Manakah bilangan-bilangan berikut ini yang memiliki nilai mutlak 9 dan 0 berturut-turut?",
-      options: ["-9 dan 0", "0 dan 9/10", "9 dan 1/0", "9/0 dan 1/0"],
-      correctAnswer: "-9 dan 0",
-    },
-    {
-      question:
-        "Manakah di antara bilangan berikut yang merupakan bilangan terkecil?",
-      options: ["-1", "-5", "6", "1"],
-      correctAnswer: "-5",
-    },
-    {
-      question:
-        "Suatu saat suhu di kota Tokyo 6°C dibawah nol, sedangkan suhu di kota banjarmasin 25°C di atas nol, penulisan suhu kedua kota tersebut berturut turut adalah…..",
-      options: [
-        "-6°C dan -25°C",
-        "-6°C dan 25°C",
-        "6°C dan -25°C",
-        "6°C dan 25°C",
-      ],
-      correctAnswer: "-6°C dan 25°C",
-    },
-    {
-      question:
-        "Perhatikan urutan Bilangan-bilangan bulat berikut. Urutan Bilangan dari terkecil yang benar adalah….",
-      options: [
-        "4323, 3231, -2892, -41237",
-        "-3382, -2313, 2232, 2167",
-        "3222, 3322, -2222, 4431",
-        "-5423, -3232, 4222, 5555",
-      ],
-      correctAnswer: "-5423, -3232, 4222, 5555",
-    },
-    {
-      question:
-        "Diketahui suhu udara di kota A -11°C. suhu dikota B adalah 15°C. suhu dikota C adalah -24°C. suhu dikota D adalah 23°C. urutan kota dari yang paling dingin adalah…",
-      options: ["Kota A-B-D-C", "Kota C-A-B-D", "Kota C-B-D-A", "Kota C-D-B-A"],
-      correctAnswer: "Kota C-A-B-D",
-    },
-    {
-      question:
-        "Diketahui bahaw A adalah titik 0 km. Titik 3 km sebelah utara A dinyatakan sebagai +3 km. Bagaimana menyatakan titik 5 km di sebelah selatan?",
-      options: ["(- 5)", "+5", "5", "3/5"],
-      correctAnswer: "(- 5)",
-    },
-    {
-      question:
-        "Perhatikan dua buah bilangan berikut: M = 5abcd N = 8cde Jika setiap huruf pada bilangan diatas mewakili sebuah angka, maka diantara pilihan di bawah ini yang benar adalah...",
-      options: ["M > N", "M < N", "M = N", "M ≤ N"],
-      correctAnswer: "M > N",
+        "Pada pagi hari, suhu di puncak suatu gunung -1°C, kemudian pada malam hari suhunya turun 6°C jadi suhu pada malam hari adalah....",
+      options: ["-7°C", "-5°C", "5°C", "7"],
+      correctAnswer: "-7°C",
     },
 
     // Add more questions here
@@ -152,6 +137,8 @@ const Questions = () => {
   if (points >= 70 && Pass === false) {
     SetPass(!Pass);
   }
+
+  console.log(points);
 
   return (
     <div className="flex justify-center items-center h-screen w-screen">

@@ -131,13 +131,13 @@ const ChangeUsername = () => {
     <div className="h-screen w-screen flex justify-center items-center text-black">
       <div className="w-1/2 h-fit rounded-md bg-gray-100 shadow-lg justify-center items-center mt-20">
         <div className="h-fit w-full justify-center flex items-center pt-2">
-          <span className="text-3xl font-mono font-semibold bg-teal-300 p-3 rounded-lg">
-            Welcome Back {userName}
+          <span className="text-3xl text-center font-mono font-semibold bg-teal-300 p-3 rounded-lg">
+            Selamat Datang <br /> {userName}
           </span>
         </div>
         <div className="w-fit hfit ml-[14.5rem] text-xl mt-4 p-2 border-2 border-fuchsia-500">
           <div className="font-bold">Email: {userEmail}</div>
-          <div className="font-bold">Username: {userName}</div>
+          <div className="font-bold">Nama Pengguna: {userName}</div>
         </div>
         {visibleForm === "" && (
           <>
@@ -146,13 +146,13 @@ const ChangeUsername = () => {
                 className="text-xl cursor-pointer py-1 px-2 bg-yellow-400 rounded-md"
                 onClick={() => setVisibility("username")}
               >
-                Update Username
+                Ganti Nama Pengguna
               </button>
               <button
                 className="text-xl cursor-pointer py-1 px-2 bg-yellow-400 rounded-md"
                 onClick={() => setVisibility("password")}
               >
-                Update Password
+                Ganti Kata Sandi
               </button>
             </div>
             <div className="flex justify-center items-center w-full h-fit px-auto py-2">
@@ -160,7 +160,7 @@ const ChangeUsername = () => {
                 className="text-xl cursor-pointer py-1 px-2 bg-teal-300 rounded-md"
                 onClick={() => router.push("/profile")}
               >
-                Back To Profile
+                Kembali ke Profil
               </button>
             </div>
           </>
@@ -169,7 +169,7 @@ const ChangeUsername = () => {
           <>
             <div className="h-28 w-full justify-center flex items-center">
               <span className="text-3xl  font-mono font-semibold bg-yellow-300 p-3 rounded-lg">
-                Update Username
+                Ganti Nama Pengguna
               </span>
             </div>
 
@@ -182,7 +182,7 @@ const ChangeUsername = () => {
                   htmlFor="fullname"
                   className="text-sm font-medium text-gray-900 block mb-2"
                 >
-                  Your full name
+                  Nama Lengkap
                 </label>
                 <div>
                   <Controller
@@ -229,7 +229,7 @@ const ChangeUsername = () => {
                 className="text-xl cursor-pointer py-1 px-2 bg-teal-300 rounded-md"
                 onClick={() => setVisibility("")}
               >
-                Back
+                Kembali
               </button>
             </div>
           </>
@@ -238,7 +238,7 @@ const ChangeUsername = () => {
           <>
             <div className="h-28 w-full justify-center flex items-center">
               <span className="text-3xl  font-mono font-semibold bg-yellow-300 p-3 rounded-lg">
-                Update Password
+                Ganti Kata Sandi
               </span>
             </div>
             <form
@@ -250,7 +250,7 @@ const ChangeUsername = () => {
                   htmlFor="password"
                   className="text-sm font-medium text-gray-900 block mb-2"
                 >
-                  Your Password
+                  Kata Sandi
                 </label>
                 <div className="flex justify-between items-center">
                   <Controller
@@ -294,7 +294,7 @@ const ChangeUsername = () => {
                   htmlFor="confirmPassword"
                   className="text-sm font-medium text-gray-900 block mb-2"
                 >
-                  Konfirmasi Password
+                  Konfirmasi Kata Sandi
                 </label>
                 <div className="flex justify-between items-center">
                   <Controller
@@ -347,7 +347,7 @@ const ChangeUsername = () => {
                 className="text-xl cursor-pointer py-1 px-2 bg-teal-300 rounded-md"
                 onClick={() => setVisibility("")}
               >
-                Back
+                Kembali
               </button>
             </div>
           </>

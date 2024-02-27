@@ -92,19 +92,6 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Video Intro Bab */}
-      <div className={CVideo}>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/DA4nq8YL80I?si=6N7oOQzwWtgVRFrp"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
-        <h1 className="text-center mt-10 mb-5">Judul Video</h1>
-      </div>
-
       {/* Konten Bab 1 */}
       <div className="mx-20 text-justify">
         {/* Judul Sub Bab */}
@@ -117,6 +104,30 @@ const Page = () => {
           </ul>
         </div>
       </div>
+
+      {/* Video Intro Bab */}
+      <div className={CVideo}>
+        <iframe
+          width="900"
+          height="500"
+          src="https://www.youtube.com/embed/DA4nq8YL80I?si=6N7oOQzwWtgVRFrp"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+        <h1 className="text-center mt-10 mb-5">Judul Video</h1>
+      </div>
+
+      <div className={CVideo}>
+        <iframe
+          width="900"
+          height="500"
+          loading="lazy"
+          src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF94ipRtn4&#x2F;HLkGd7YEHY3GDPvcB2Kmkg&#x2F;view?embed"
+          allowFullScreen
+        ></iframe>
+      </div>
+
       <ButttonpnDOWN p={"/"} n={"/bab1_2"} />
     </div>
   );

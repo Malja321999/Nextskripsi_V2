@@ -35,4 +35,4 @@ const Quiz: React.FC = () => {
   );
 };
 
-export default Quiz;e
+export default Quiz;

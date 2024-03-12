@@ -5,7 +5,7 @@ import { MdSkipPrevious } from "react-icons/md";
 
 const ButttonpnDOWN = ({ p, n }: any) => {
   return (
-    <div className="flex justify-between mt-16">
+    <div className="flex justify-between mt-1">
       <Link href={p}>
         <div className="bg-gray-900 p-2 rounded-md flex justify-between text-xl">
           <MdSkipPrevious className={"mt-[4px]"} />

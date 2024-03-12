@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Bilcon from "../asset/Bilcon.svg";
-import { FaMoon } from "react-icons/fa";
-import { BsSunFill } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";

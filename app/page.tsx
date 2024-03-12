@@ -102,7 +102,7 @@ const Home = () => {
             </Link>
           </li>
           <li>
-            <Link href={"/bab1_1"}>
+            <Link href={"/bab1"}>
               <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-emerald-600 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
                 <BsListUl className="w-[35px] h-[35px]" />
                 Materi

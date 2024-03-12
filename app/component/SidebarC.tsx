@@ -8,7 +8,7 @@ import {
   TbCircleNumber3,
   TbCircleNumber4,
 } from "react-icons/tb";
-import { FaA, FaB, FaC, FaD } from "react-icons/fa6";
+import { FaA, FaB, FaC, FaD, FaM, FaQ } from "react-icons/fa6";
 import { BsArrowLeftShort, BsChevronRight } from "react-icons/bs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -61,13 +61,12 @@ const SidebarC = () => {
             {/* Bab 1 */}
             <ul className="pt-2">
               <>
-                <Link href="/bab1_1">
+                <Link href="/bab1">
                   <li
                     className={`${
                       open1 && "w-[275px]"
                     } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md 
-                ${pathname === "/bab1_1" && "bg-teal-500"}
-                ${pathname === "/bab1_2" && "bg-teal-500"}
+                ${pathname === "/bab1" && "bg-teal-500"}
                 ${pathname === "/bab1_kuis" && "bg-teal-500"}`}
                     onClick={() => setSubmenutOpen2(!submenuOpen2)}
                   >
@@ -92,46 +91,27 @@ const SidebarC = () => {
                 </Link>
                 {submenuOpen2 && (
                   <ul className={`${open1 && "ml-5"}`}>
-                    <Link href="/bab1_1">
+                    <Link href="/bab1">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab1_1" && "bg-blue-600"
+                          pathname === "/bab1" && "bg-blue-600"
                         }`}
                       >
                         <span>
                           <span className="text-2xl block float-left">
-                            <FaA />
+                            <FaM />
                           </span>
                           <span
                             className={`text-xs font-medium flex-1 ${
                               !open1 && "hidden"
                             }`}
                           >
-                            1.1 Bilangan Dengan Tanda
+                            Materi
                           </span>
                         </span>
                       </li>
                     </Link>
-                    <Link href="/bab1_2">
-                      <li
-                        className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab1_2" && "bg-blue-600"
-                        }`}
-                      >
-                        <span>
-                          <span className="text-2xl block float-left">
-                            <FaB />
-                          </span>
-                          <span
-                            className={`text-xs font-medium flex-1 ${
-                              !open1 && "hidden"
-                            }`}
-                          >
-                            1.2 Membandingkan Bilangan Bulat
-                          </span>
-                        </span>
-                      </li>
-                    </Link>
+
                     <Link href="/bab1_kuis">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
@@ -140,7 +120,7 @@ const SidebarC = () => {
                       >
                         <span>
                           <span className="text-2xl block float-left">
-                            <FaC />
+                            <FaQ />
                           </span>
                           <span
                             className={`text-xs font-medium flex-1 ${
@@ -161,13 +141,12 @@ const SidebarC = () => {
             {/* Bab 2 */}
             <ul className="pt-2">
               <>
-                <Link href="/bab2_1">
+                <Link href="/bab2">
                   <li
                     className={`${
                       open1 && "w-[275px]"
                     } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
-                ${pathname === "/bab2_1" && "bg-teal-500"}
-                ${pathname === "/bab2_2" && "bg-teal-500"}
+                ${pathname === "/bab2" && "bg-teal-500"}
                 ${pathname === "/bab2_kuis" && "bg-teal-500"}
                 `}
                     onClick={() => setSubmenutOpen3(!submenuOpen3)}
@@ -193,46 +172,27 @@ const SidebarC = () => {
                 </Link>
                 {submenuOpen3 && (
                   <ul className={`${open1 && "ml-5"}`}>
-                    <Link href="/bab2_1">
+                    <Link href="/bab2">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab2_1" && "bg-blue-600"
+                          pathname === "/bab2" && "bg-blue-600"
                         }`}
                       >
                         <span>
                           <span className="text-2xl block float-left">
-                            <FaA />
+                            <FaM />
                           </span>
                           <span
                             className={`text-xs font-medium flex-1 ${
                               !open1 && "hidden"
                             }`}
                           >
-                            2.1 Penjumalahan Bilangan Bulat
+                            Materi
                           </span>
                         </span>
                       </li>
                     </Link>
-                    <Link href="/bab2_2">
-                      <li
-                        className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab2_2" && "bg-blue-600"
-                        }`}
-                      >
-                        <span>
-                          <span className="text-2xl block float-left">
-                            <FaB />
-                          </span>
-                          <span
-                            className={`text-xs font-medium flex-1 ${
-                              !open1 && "hidden"
-                            }`}
-                          >
-                            2.2 Pengurangan Bilangan Bulat
-                          </span>
-                        </span>
-                      </li>
-                    </Link>
+
                     <Link href="/bab2_kuis">
                       <li
                         className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
@@ -241,7 +201,7 @@ const SidebarC = () => {
                       >
                         <span>
                           <span className="text-2xl block float-left">
-                            <FaC />
+                            <FaQ />
                           </span>
                           <span
                             className={`text-xs font-medium flex-1 ${
@@ -260,16 +220,15 @@ const SidebarC = () => {
           </li>
 
           <li>
-            {/* Bab 2 */}
+            {/* Bab 3 */}
             <ul className="pt-2">
               <>
-                <Link href="/bab3_1">
+                <Link href="/bab3">
                   <li
                     className={`${
                       open1 && "w-[275px]"
                     } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
-                ${pathname === "/bab3_1" && "bg-teal-500"}
-                ${pathname === "/bab3_2" && "bg-teal-500"}
+                ${pathname === "/bab3" && "bg-teal-500"}
                 ${pathname === "/bab3_kuis" && "bg-teal-500"}
                 `}
                     onClick={() => setSubmenutOpen4(!submenuOpen4)}
@@ -295,46 +254,27 @@ const SidebarC = () => {
                 </Link>
                 {submenuOpen4 && (
                   <ul className={`${open1 && "ml-5"}`}>
-                    <Link href="/bab3_1">
+                    <Link href="/bab3">
                       <li
                         className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab3_1" && "bg-blue-600"
+                          pathname === "/bab3" && "bg-blue-600"
                         }`}
                       >
                         <span>
                           <span className="text-2xl block float-left">
-                            <FaA />
+                            <FaM />
                           </span>
                           <span
                             className={`text-xs font-medium flex-1 ${
                               !open1 && "hidden"
                             }`}
                           >
-                            3.1 Perkalian Bilangan Bulat
+                            Materi
                           </span>
                         </span>
                       </li>
                     </Link>
-                    <Link href="/bab3_2">
-                      <li
-                        className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab3_2" && "bg-blue-600"
-                        }`}
-                      >
-                        <span>
-                          <span className="text-2xl block float-left">
-                            <FaB />
-                          </span>
-                          <span
-                            className={`text-xs font-medium flex-1 ${
-                              !open1 && "hidden"
-                            }`}
-                          >
-                            3.2 Pembagian Bilangan Bulat
-                          </span>
-                        </span>
-                      </li>
-                    </Link>
+
                     <Link href="/bab3_kuis">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
@@ -343,7 +283,7 @@ const SidebarC = () => {
                       >
                         <span>
                           <span className="text-2xl block float-left">
-                            <FaC />
+                            <FaQ />
                           </span>
                           <span
                             className={`text-xs font-medium flex-1 ${

@@ -358,7 +358,7 @@ const Page = () => {
             B. Diberikan bilangan-bilangan.
           </h3>
           <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
-            -12;&emsp;+7;&emsp;0;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
+            -12;&emsp;+7;&emsp;100;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
           </h4>
           <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
             <li>Mana yang merupakan bilangan positif? Mana negatif?</li>

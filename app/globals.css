@@ -23,6 +23,41 @@
     border: 3px solid #ffffff;
 }
 
+/* @media only screen and (min-width: 1200px) {
+    .wrapperIfreme {
+        left: 18rem;
+    }
+} */
+
+@media only screen and (min-width: 900px) {
+    .wrapperIfreme {
+        left: 12rem;
+    }
+}
+
+@media only screen and (max-width: 899px) {
+    .wrapperIfreme {
+        left: 6rem;
+    }
+}
+
+
+.wrapperIfreme {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+
+.wrapperIfreme iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 70%;
+    border: solid 10px #111827;
+    border-radius: 6px;
+}
+
 .frac {
     display: inline-block;
     position: relative;
@@ -47,4 +82,3 @@
 body {
     overflow: hidden;
 }
-

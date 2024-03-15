@@ -37,6 +37,36 @@ const Page = () => {
     "mt-5 bg-white w-fit rounded-md border-8 border-gray-900 text-black p-5";
   const CVideo =
     "bg-gray-900 w-fit mt-5 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
+  const [jawaban1status, setjawaban1status] = useState("");
+  const [jawaban2status, setjawaban2status] = useState("");
+
+  function handleSubmitJawaban(e: any) {
+    e.preventDefault();
+    const jawaban1 = e.target.soal1.value.toUpperCase();
+    const jawaban2 = e.target.soal2.value.toUpperCase();
+    if (jawaban1 !== "") {
+      if (jawaban1 === "-5") {
+        setjawaban1status("benar");
+      } else {
+        setjawaban1status("salah");
+      }
+    }
+    if (jawaban2 !== "") {
+      if (jawaban2 === "UNTUNG") {
+        setjawaban2status("benar");
+      } else {
+        setjawaban2status("salah");
+      }
+    }
+    if (jawaban1 === "" || jawaban2 === "") {
+      alert("Jawaban Belum Diisi");
+    }
+  }
+
+  function reset() {
+    setjawaban1status("");
+    setjawaban2status("");
+  }
 
   return (
     <div className="bg-emerald-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
@@ -54,7 +84,7 @@ const Page = () => {
           </ul>
         </div>
       </div>
-      
+
       <div>
         {/* Tujuan Pembelajaran 1.2 */}
         <div className="mx-20 bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
@@ -115,6 +145,134 @@ const Page = () => {
             src="https://www.canva.com/design/DAF_QKcRC0Q/0-bw9LtH5M9guADqDflk4Q/view?embed"
             allowFullScreen
           ></iframe>
+        </div>
+      </div>
+
+      {/* Latihan Soal */}
+      <div>
+        <Cardlatihan n={1} />
+        <div className="mt-1">
+          <h2 className="font-bold">
+            Coba jawablah pertanyaan berikut dengan baik dan benar!
+          </h2>
+          <br />
+          {/* Soal A */}
+          <div id="question">
+            <form onSubmit={handleSubmitJawaban}>
+              <h3 className="text-yellow-200 font-bold">
+                A. Jawablah pertanyaan-pertanyaan berikut ini. Gunakan tanda
+                positif atau negatif untuk menyajikan besaran.
+              </h3>
+              <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
+                <li>
+                  Diketahui bahwa A adalah titik 0 km. Titik "3 km selah utara
+                  A" dinyatakan sebagai +3 km. Bagaimana menyatakan titik “5 km
+                  di sebelah selatan A”?
+                  <div className="flex">
+                    <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
+                      <div className="mr-2">Jawaban :</div> <br />
+                      <input
+                        type="text"
+                        id="soal1"
+                        className="w-[7vh] rounded-md text-center dark:text-white text-black border-4 border-sky-400 p-2 px-2 h-10"
+                      />
+                      <div className="ml-2 mt-1">Km</div>
+                    </div>
+                    <div className="ml-5 mt-5">
+                      {jawaban1status === "benar" ? (
+                        <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
+                          Benar
+                        </p>
+                      ) : (
+                        <div></div>
+                      )}
+                      {jawaban1status === "salah" ? (
+                        <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
+                          Salah
+                        </p>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  Apabila "rugi 200 rupiah" dinyatakan sebagai -200 rupiah,
+                  menyatakan apa +300 rupiah?
+                  <div className="flex">
+                    <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
+                      <div className="mr-2">Jawaban :</div> <br />
+                      <input
+                        type="text"
+                        id="soal2"
+                        className="w-[17vh] rounded-md text-center dark:text-white text-black border-4 border-sky-400 p-2 px-2 h-10"
+                      />
+                      <div className="ml-2 mt-1">, 300</div>
+                      <div className="ml-2 mt-1">Rupiah</div>
+                    </div>
+                    <div className="ml-5 mt-5">
+                      {jawaban2status === "benar" ? (
+                        <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
+                          Benar
+                        </p>
+                      ) : (
+                        <div></div>
+                      )}
+                      {jawaban2status === "salah" ? (
+                        <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
+                          Salah
+                        </p>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <button
+                type="submit"
+                className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
+              >
+                Cek Jawaban
+              </button>
+              {jawaban1status === "salah" ||
+                (jawaban2status === "salah" && (
+                  <button
+                    type="reset"
+                    onClick={() => reset()}
+                    className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
+                  >
+                    Ulang Kuis
+                  </button>
+                ))}
+            </form>
+          </div>
+          {/* Soal B */}
+          <h3 className="mt-20 text-yellow-200 font-bold">
+            B. Diberikan bilangan-bilangan.
+          </h3>
+          <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
+            <li>
+              Mana yang merupakan bilangan positif? Mana yang merupakan bilangan
+              negatif?
+            </li>
+            <iframe
+              className="h-[12rem] w-[60rem] rounded-md border-4 border-gray-800"
+              loading="lazy"
+              src="https://bilangan-ne-po.vercel.app"
+              allowFullScreen
+            ></iframe>
+            <li>
+              Mana yang merupakan bilangan bulat? Mana yang merupakan bilangan
+              asli?
+            </li>
+            <iframe
+              className="h-[12rem] w-[60rem] rounded-md border-4 border-gray-800"
+              loading="lazy"
+              src="https://bilangan-ne-po.vercel.app"
+              allowFullScreen
+            ></iframe>
+          </ul>
         </div>
       </div>
 

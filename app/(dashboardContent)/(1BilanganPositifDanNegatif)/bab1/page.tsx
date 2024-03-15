@@ -348,7 +348,7 @@ const Page = () => {
                     onClick={() => reset()}
                     className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
                   >
-                    Reset Quiz
+                    Ulang Kuis
                   </button>
                 ))}
             </form>
@@ -357,23 +357,24 @@ const Page = () => {
           <h3 className="mt-20 text-yellow-200 font-bold">
             B. Diberikan bilangan-bilangan.
           </h3>
-          <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
+          {/* <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
             -12;&emsp;+7;&emsp;100;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
-          </h4>
+          </h4> */}
           <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
             <li>Mana yang merupakan bilangan positif? Mana negatif?</li>
+
+            <iframe
+              className="h-[12rem] w-[60rem] rounded-md border-4 border-gray-800"
+              loading="lazy"
+              src="https://bilangan-ne-po.vercel.app"
+              allowFullScreen
+            ></iframe>
+
             <li>
               Mana yang merupakan bilangan bulat? Mana yang merupakan bilangan
               asli?
             </li>
           </ul>
-          <div className="wrapperIfreme">
-            <iframe
-              loading="lazy"
-              src="https://tesdrag.vercel.app"
-              allowFullScreen
-            ></iframe>
-          </div>
         </div>
       </div>
       <div>

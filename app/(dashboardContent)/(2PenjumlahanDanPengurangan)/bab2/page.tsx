@@ -128,7 +128,7 @@ const Page = () => {
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/DA4nq8YL80I?si=6N7oOQzwWtgVRFrp"
+            src="https://www.youtube.com/embed/KjetIZJ6vFM?si=JJP-UgBllESKl3fK"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen

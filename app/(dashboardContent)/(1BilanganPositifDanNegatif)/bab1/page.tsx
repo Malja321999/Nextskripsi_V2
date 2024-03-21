@@ -101,7 +101,7 @@ const Page = () => {
             </button>
 
             <button
-              onClick={() => router.push("bab2")}
+              onClick={() => router.push("bab1_kuis")}
               className="bg-gray-900 p-2 rounded-md flex justify-between text-xl"
             >
               Selanjutnya
@@ -549,7 +549,7 @@ const Page = () => {
             </button>
 
             <button
-              onClick={() => router.push("bab2")}
+              onClick={() => router.push("bab1_kuis")}
               className="bg-gray-900 p-2 rounded-md flex justify-between text-xl"
             >
               Selanjutnya

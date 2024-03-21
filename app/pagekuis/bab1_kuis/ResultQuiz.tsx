@@ -65,7 +65,7 @@ const ResultQuiz = ({
           <div className="mt-5">
             {Pass ? (
               <div className="w-full flex justify-center items-center">
-                <Link href={"/bab2_1"}>
+                <Link href={"/bab2"}>
                   <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
                     Lanjutkan Ke Bab 2
                   </button>

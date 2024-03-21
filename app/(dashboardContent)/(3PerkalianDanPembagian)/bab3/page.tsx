@@ -71,7 +71,7 @@ const Page = () => {
 
   return (
     <div className="bg-sky-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
-      <ButttonpnUP p={"/bab2_2"} n={"/bab3_2"} />
+      <ButttonpnUP p={"/bab2_2"} n={"/bab3_kuis"} />
       {/* Judul Bab */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
         <div className="bg-gray-900 w-fit p-2 rounded-md mt-3">
@@ -275,7 +275,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <ButttonpnDOWN p={"/bab2_2"} n={"/bab3_2"} />
+      <ButttonpnDOWN p={"/bab2_2"} n={"/bab3_kuis"} />
     </div>
   );
 };

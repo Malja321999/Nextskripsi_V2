@@ -196,8 +196,7 @@ const Page = () => {
                 <div id="question">
                   <form onSubmit={handleSubmitJawaban}>
                     <h3 className="text-yellow-200 font-bold">
-                      A. Jawablah pertanyaan-pertanyaan berikut ini. Gunakan
-                      tanda positif atau negatif untuk menyajikan besaran.
+                      A. Jawablah pertanyaan-pertanyaan berikut ini.
                     </h3>
                     <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
                       <li>
@@ -284,34 +283,42 @@ const Page = () => {
                   </form>
                 </div>
                 {/* Soal B */}
-                <h3 className="mt-20 text-yellow-200 font-bold">
-                  B. Diberikan bilangan-bilangan.
-                </h3>
-                <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
-                  -12;&emsp;+7;&emsp;100;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
-                </h4>
-                <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
-                  <li>
-                    Mana yang merupakan bilangan positif? Mana yang merupakan
-                    bilangan negatif?
-                  </li>
-                  <iframe
-                    className="h-[12rem] w-[60rem] rounded-md border-4 border-gray-800"
-                    loading="lazy"
-                    src="https://bilangan-ne-po.vercel.app"
-                    allowFullScreen
-                  ></iframe>
-                  <li>
-                    Mana yang merupakan bilangan bulat? Mana yang merupakan
-                    bilangan asli?
-                  </li>
-                  <iframe
-                    className="h-[12rem] w-[60rem] rounded-md border-4 border-gray-800"
-                    loading="lazy"
-                    src="https://bilangan-ne-po.vercel.app"
-                    allowFullScreen
-                  ></iframe>
-                </ul>
+                <div>
+                  <h3 className="mt-20 text-yellow-200 font-bold">
+                    B. Kelompokkan Bilangan-Bilangan berikut ini dengan baik dan
+                    benar.
+                  </h3>
+                  {/* <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
+                    -12;&emsp;+7;&emsp;0;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
+                  </h4> */}
+                  <br />
+                  <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
+                    <li>
+                      Mana yang merupakan bilangan positif? Mana yang merupakan
+                      bilangan negatif?
+                    </li>
+                    <iframe
+                      className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab1_1A"
+                      allowFullScreen
+                    ></iframe>
+                    <li>Mana yang merupakan bilangan bulat?</li>
+                    <iframe
+                      className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab1_1B1"
+                      allowFullScreen
+                    ></iframe>
+                    <li>Mana yang merupakan bilangan asli?</li>
+                    <iframe
+                      className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab1_1B2"
+                      allowFullScreen
+                    ></iframe>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -489,7 +496,7 @@ const Page = () => {
                   B. Diberikan bilangan-bilangan.
                 </h3>
                 <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
-                  -12;&emsp;+7;&emsp;100;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
+                  -12;&emsp;+7;&emsp;0;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
                 </h4>
                 <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
                   <li>

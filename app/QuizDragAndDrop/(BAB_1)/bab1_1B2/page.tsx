@@ -7,12 +7,17 @@ export default function Quiz() {
 
   const checkAnswer = () => {
     // Correct answers array
-    const correctAnswers = [-12, 7, 0, -3, 25];
+    const correctAnswers = [7, 25];
     // Check if selectedNumbers match correctAnswers
     const isCorrect =
       selectedNumbers.length === correctAnswers.length &&
       selectedNumbers.every((val) => correctAnswers.includes(val));
-    alert(isCorrect ? "Correct!" : "Try again!");
+    if (isCorrect) {
+      alert("Jawaban Benar!");
+    } else {
+      alert("Jawaban Salah, Coba lagi!");
+      resetQuiz();
+    }
   };
 
   const resetQuiz = () => {
@@ -85,13 +90,13 @@ export default function Quiz() {
             onClick={checkAnswer}
             className="px-4 py-2 bg-purple-600 text-white rounded shadow"
           >
-            Check Answer
+            Cek Jawaban
           </button>
           <button
             onClick={resetQuiz}
             className="px-4 py-2 bg-rose-600 text-white rounded shadow"
           >
-            Reset Quiz
+            Ulang Kuis
           </button>
         </div>
       </div>

@@ -11,6 +11,7 @@ const UsetateNavbar = () => {
     "signin",
     "coba",
     "pagekuis",
+    "QuizDragAndDrop",
   ];
 
   return (

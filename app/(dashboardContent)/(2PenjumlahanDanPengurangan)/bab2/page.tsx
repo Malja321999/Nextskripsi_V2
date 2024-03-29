@@ -70,7 +70,7 @@ const Page = () => {
 
   return (
     <div className="bg-emerald-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
-      <ButttonpnUP p={"/bab1"} n={"/bab2_kuis"} />
+      <ButttonpnUP p={"/bab1_1"} n={"/bab2_kuis"} />
       {/* Judul Bab */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
         <div className="bg-gray-900 w-fit p-2 rounded-md mt-3">
@@ -148,9 +148,9 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Latihan Soal */}
+      {/* Latihan Soal 2 */}
       <div>
-        <Cardlatihan n={1} />
+        <Cardlatihan n={3} />
         <div className="mt-1">
           <h2 className="font-bold">
             Coba jawablah pertanyaan berikut dengan baik dan benar!
@@ -276,7 +276,7 @@ const Page = () => {
         </div>
       </div>
 
-      <ButttonpnDOWN p={"/bab1"} n={"/bab2_kuis"} />
+      <ButttonpnDOWN p={"/bab1_1"} n={"/bab2_kuis"} />
     </div>
   );
 };

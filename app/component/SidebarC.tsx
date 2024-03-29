@@ -61,12 +61,13 @@ const SidebarC = () => {
             {/* Bab 1 */}
             <ul className="pt-2">
               <>
-                <Link href="/bab1">
+                <Link href="/bab1_1">
                   <li
                     className={`${
                       open1 && "w-[275px]"
                     } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md 
-                ${pathname === "/bab1" && "bg-teal-500"}
+                ${pathname === "/bab1_1" && "bg-teal-500"}
+                ${pathname === "/bab1_2" && "bg-teal-500"}
                 ${pathname === "/bab1_kuis" && "bg-teal-500"}`}
                     onClick={() => setSubmenutOpen2(!submenuOpen2)}
                   >
@@ -91,11 +92,11 @@ const SidebarC = () => {
                 </Link>
                 {submenuOpen2 && (
                   <ul className={`${open1 && "ml-5"}`}>
-                    <Link href="/bab1">
+                    <Link href="/bab1_1">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab1" && "bg-blue-600"
-                        }`}
+                          pathname === "/bab1_1" && "bg-blue-600"
+                        } ${pathname === "/bab1_2" && "bg-blue-600"}`}
                       >
                         <span>
                           <span className="text-2xl block float-left">

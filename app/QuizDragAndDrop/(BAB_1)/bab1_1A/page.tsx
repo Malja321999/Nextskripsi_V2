@@ -81,7 +81,7 @@ export default function Quiz() {
             onDragOver={handleDragOver}
             className="p-4 bg-gray-800 rounded h-[10rem] w-[20rem]"
           >
-            Negative Numbers
+            Taruh Bilangan Negatif Disini
             <div className="flex flex-wrap gap-2">
               {negativeNumbers.map((number, index) => (
                 <div
@@ -100,7 +100,7 @@ export default function Quiz() {
             onDragOver={handleDragOver}
             className="p-4 bg-red-500 rounded h-[10rem] w-[20rem]"
           >
-            Positive Numbers
+            Taruh Bilangan Positif Disini
             <div className="flex flex-wrap gap-2">
               {positiveNumbers.map((number, index) => (
                 <div

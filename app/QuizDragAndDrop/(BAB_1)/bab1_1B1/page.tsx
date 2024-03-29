@@ -71,7 +71,7 @@ export default function Quiz() {
           onDragOver={handleDragOver}
           className="p-4 bg-green-400 rounded mb-4 h-[10rem] w-100 text-center font-bold"
         >
-          Drop numbers here
+          Taruh Bilangan Bulat Disini
           <div className="flex space-x-2">
             {selectedNumbers.map((number, index) => (
               <div

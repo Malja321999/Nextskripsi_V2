@@ -12,12 +12,25 @@ const Page = () => {
 
   const checkAnswer = () => {
     // Correct answers array
-    const correctAnswers = [-12, 7, 0, -3, 25];
+    const correctAnswers1 = [16];
+    const correctAnswers2 = [23];
+    const correctAnswers3 = [1.29];
+    const correctAnswers4 = [0];
     // Check if selectedNumbers match correctAnswers
-    const isCorrect =
-      selectedNumbers1.length === correctAnswers.length &&
-      selectedNumbers1.every((val) => correctAnswers.includes(val));
-    if (isCorrect) {
+    const isCorrect1 =
+      selectedNumbers1.length === correctAnswers1.length &&
+      selectedNumbers1.every((val) => correctAnswers1.includes(val));
+    const isCorrect2 =
+      selectedNumbers2.length === correctAnswers2.length &&
+      selectedNumbers2.every((val) => correctAnswers2.includes(val));
+    const isCorrect3 =
+      selectedNumbers3.length === correctAnswers3.length &&
+      selectedNumbers3.every((val) => correctAnswers3.includes(val));
+    const isCorrect4 =
+      selectedNumbers4.length === correctAnswers4.length &&
+      selectedNumbers4.every((val) => correctAnswers4.includes(val));
+    
+    if (isCorrect1 && isCorrect2 && isCorrect3 && isCorrect4) {
       alert("Jawaban Benar!");
     } else {
       alert("Jawaban Salah, Coba lagi!");
@@ -35,7 +48,6 @@ const Page = () => {
 
   const handleDragStart = (e: any, number: number, origin: string) => {
     e.dataTransfer.setData("number", number);
-    e.dataTransfer.setData("origin", origin);
   };
 
   const handleDrop = (e: any, target: string) => {

@@ -29,7 +29,7 @@ const Page = () => {
     const isCorrect4 =
       selectedNumbers4.length === correctAnswers4.length &&
       selectedNumbers4.every((val) => correctAnswers4.includes(val));
-    
+
     if (isCorrect1 && isCorrect2 && isCorrect3 && isCorrect4) {
       alert("Jawaban Benar!");
     } else {
@@ -48,23 +48,26 @@ const Page = () => {
 
   const handleDragStart = (e: any, number: number, origin: string) => {
     e.dataTransfer.setData("number", number);
+    e.dataTransfer.setData("origin", origin);
   };
 
   const handleDrop = (e: any, target: string) => {
     const number = +e.dataTransfer.getData("number");
-    if (target === "soal1") {
+    const origin = e.dataTransfer.getData("origin");
+
+    if (target === "soal1" && origin === "numbers") {
       setSelectedNumbers1((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal2") {
+    } else if (target === "soal2" && origin === "numbers") {
       setSelectedNumbers2((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal3") {
+    } else if (target === "soal3" && origin === "numbers") {
       setSelectedNumbers3((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal4") {
+    } else if (target === "soal4" && origin === "numbers") {
       setSelectedNumbers4((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
-    } else {
+    } else if (target === "numbers" && origin === "soal1" || origin === "soal2" || origin === "soal3" || origin === "soal4") {
       setNumbers((prev) => [...prev, number]);
       setSelectedNumbers1((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers2((prev) => prev.filter((num) => num !== number));

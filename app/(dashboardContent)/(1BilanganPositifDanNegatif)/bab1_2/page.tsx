@@ -129,14 +129,9 @@ const Page = () => {
             {/* Soal A */}
             <div id="question">
               <h3 className="text-yellow-200 font-bold">
-                A. Tandai titik-titik pada garis bilangan yang sesuai dengan
-                bilangan berikut :
+                A. Letakkan bilangan-bilangan berikut pada garis bilangan dengan
+                tepat.
               </h3>
-              <ul className="list-disc list-inside gap-5 flex flex-col ml-10 mt-2">
-                <li>-5</li>
-                <li>3</li>
-                <li>-2,8</li>
-              </ul>
               <iframe
                 className="h-[30rem] w-[85rem] rounded-md border-4 border-gray-800"
                 loading="lazy"
@@ -147,7 +142,7 @@ const Page = () => {
             {/* Soal B */}
             <h3 className="mt-20 text-yellow-200 font-bold">
               B. Bandingkan bilangan-bilangan berikut dengan mengubah tanda (
-              &gt; atau &lt; ) pada pertanyaan bilangan berikut.
+              &gt; atau &lt; ) pada pernyataan bilangan berikut.
             </h3>
             <iframe
               className="h-[30rem] w-[85rem] rounded-md border-4 border-gray-800"

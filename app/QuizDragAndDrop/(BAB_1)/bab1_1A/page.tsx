@@ -33,19 +33,25 @@ export default function Quiz() {
     setNegativeNumbers([]);
   };
 
-  const handleDragStart = (e: any, number: number) => {
+  const handleDragStart = (e: any, number: number, origin: string) => {
     e.dataTransfer.setData("number", number);
+    e.dataTransfer.setData("origin", origin);
   };
 
   const handleDrop = (e: any, target: string) => {
     const number = +e.dataTransfer.getData("number");
-    if (target === "positive") {
+    const origin = e.dataTransfer.getData("origin");
+
+    if (target === "positive" && origin === "numbers") {
       setPositiveNumbers((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "negative") {
+    } else if (target === "negative" && origin === "numbers") {
       setNegativeNumbers((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
-    } else {
+    } else if (
+      (target === "numbers" && origin === "positive") ||
+      origin === "negative"
+    ) {
       setNumbers((prev) => [...prev, number]);
       setPositiveNumbers((prev) => prev.filter((num) => num !== number));
       setNegativeNumbers((prev) => prev.filter((num) => num !== number));
@@ -68,7 +74,7 @@ export default function Quiz() {
             <div
               key={index}
               draggable
-              onDragStart={(e) => handleDragStart(e, number)}
+              onDragStart={(e) => handleDragStart(e, number, "numbers")}
               className="p-2 bg-blue-500 rounded cursor-pointer text-center w-[12rem] h-[2.5rem]"
             >
               {number}
@@ -87,7 +93,7 @@ export default function Quiz() {
                 <div
                   key={index}
                   draggable
-                  onDragStart={(e) => handleDragStart(e, number)}
+                  onDragStart={(e) => handleDragStart(e, number, "negative")}
                   className="p-2 bg-gray-700 rounded cursor-pointer"
                 >
                   {number}
@@ -106,7 +112,7 @@ export default function Quiz() {
                 <div
                   key={index}
                   draggable
-                  onDragStart={(e) => handleDragStart(e, number)}
+                  onDragStart={(e) => handleDragStart(e, number, "positive")}
                   className="p-2 bg-red-300 rounded cursor-pointer"
                 >
                   {number}

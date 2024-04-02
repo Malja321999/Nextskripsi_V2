@@ -59,7 +59,7 @@ const Page = () => {
                 >
                   {second}
                 </button>
-              )}{" "}
+              )}
               7
             </div>
             <div className="bg-sky-500 p-5 rounded-md">

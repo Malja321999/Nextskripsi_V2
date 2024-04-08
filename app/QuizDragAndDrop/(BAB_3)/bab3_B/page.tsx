@@ -3,10 +3,22 @@ import React, { useState } from "react";
 
 const Page = () => {
   const [numbers, setNumbers] = useState<number[]>([
-    11, 12, 5, 20, -13, -15, -1, 13, -2, -5, 4, -18,
+    10, -5, 9, 5, 6, 14, -2, 4, -15, -4, 3, 24, -6, -3, 18,
   ]);
   const [selectedNumbers1, setSelectedNumbers1] = useState<number[]>([]);
+  const [selectedNumbers1_pro1, setSelectedNumbers1_pro1] = useState<number[]>(
+    []
+  );
+  const [selectedNumbers1_pro2, setSelectedNumbers1_pro2] = useState<number[]>(
+    []
+  );
   const [selectedNumbers2, setSelectedNumbers2] = useState<number[]>([]);
+  const [selectedNumbers2_pro1, setSelectedNumbers2_pro1] = useState<number[]>(
+    []
+  );
+  const [selectedNumbers2_pro2, setSelectedNumbers2_pro2] = useState<number[]>(
+    []
+  );
   const [selectedNumbers3, setSelectedNumbers3] = useState<number[]>([]);
   const [selectedNumbers3_pro1, setSelectedNumbers3_pro1] = useState<number[]>(
     []
@@ -31,24 +43,40 @@ const Page = () => {
 
   const checkAnswer = () => {
     // Correct answers array
-    const correctAnswers1 = [11];
-    const correctAnswers2 = [12];
-    const correctAnswers3 = [-18];
-    const correctAnswers3_pro1 = [-13];
+    const correctAnswers1 = [6];
+    const correctAnswers1_pro1 = [-3];
+    const correctAnswers1_pro2 = [-2];
+    const correctAnswers2 = [-4];
+    const correctAnswers2_pro1 = [10];
+    const correctAnswers2_pro2 = [14];
+    const correctAnswers3 = [9];
+    const correctAnswers3_pro1 = [4];
     const correctAnswers3_pro2 = [5];
-    const correctAnswers4 = [-5];
-    const correctAnswers4_pro1 = [-1];
-    const correctAnswers4_pro2 = [4];
-    const correctAnswers5 = [-15];
-    const correctAnswers5_pro1 = [-2];
-    const correctAnswers5_pro2 = [13];
+    const correctAnswers4 = [-15];
+    const correctAnswers4_pro1 = [-5];
+    const correctAnswers4_pro2 = [3];
+    const correctAnswers5 = [-6];
+    const correctAnswers5_pro1 = [18];
+    const correctAnswers5_pro2 = [24];
     // Check if selectedNumbers match correctAnswers
     const isCorrect1 =
       selectedNumbers1.length === correctAnswers1.length &&
       selectedNumbers1.every((val) => correctAnswers1.includes(val));
+    const isCorrect1_pro1 =
+      selectedNumbers1_pro1.length === correctAnswers1_pro1.length &&
+      selectedNumbers1_pro1.every((val) => correctAnswers1_pro1.includes(val));
+    const isCorrect1_pro2 =
+      selectedNumbers1_pro2.length === correctAnswers1_pro2.length &&
+      selectedNumbers1_pro2.every((val) => correctAnswers1_pro2.includes(val));
     const isCorrect2 =
       selectedNumbers2.length === correctAnswers2.length &&
       selectedNumbers2.every((val) => correctAnswers2.includes(val));
+    const isCorrect2_pro1 =
+      selectedNumbers2_pro1.length === correctAnswers2_pro1.length &&
+      selectedNumbers2_pro1.every((val) => correctAnswers2_pro1.includes(val));
+    const isCorrect2_pro2 =
+      selectedNumbers2_pro2.length === correctAnswers2_pro2.length &&
+      selectedNumbers2_pro2.every((val) => correctAnswers2_pro2.includes(val));
     const isCorrect3 =
       selectedNumbers3.length === correctAnswers3.length &&
       selectedNumbers3.every((val) => correctAnswers3.includes(val));
@@ -79,7 +107,11 @@ const Page = () => {
 
     if (
       isCorrect1 &&
+      isCorrect1_pro1 &&
+      isCorrect1_pro2 &&
       isCorrect2 &&
+      isCorrect2_pro1 &&
+      isCorrect2_pro2 &&
       isCorrect3 &&
       isCorrect3_pro1 &&
       isCorrect3_pro2 &&
@@ -98,9 +130,13 @@ const Page = () => {
   };
 
   const resetQuiz = () => {
-    setNumbers([11, 12, 5, 20, -13, -15, -1, 13, -2, -5, 4, -18]); // Reset the original numbers
+    setNumbers([10, -5, 9, 5, 6, 14, -2, 4, -15, -4, 3, 24, -6, -3, 18]); // Reset the original numbers
     setSelectedNumbers1([]);
+    setSelectedNumbers1_pro1([]);
+    setSelectedNumbers1_pro2([]);
     setSelectedNumbers2([]);
+    setSelectedNumbers2_pro1([]);
+    setSelectedNumbers2_pro2([]);
     setSelectedNumbers3([]);
     setSelectedNumbers3_pro1([]);
     setSelectedNumbers3_pro2([]);
@@ -125,8 +161,20 @@ const Page = () => {
     if (target === "soal1" && origin === "numbers") {
       setSelectedNumbers1((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
+    } else if (target === "soal1_pro1" && origin === "numbers") {
+      setSelectedNumbers1_pro1((prev) => [...prev, number]);
+      setNumbers((prev) => prev.filter((num) => num !== number));
+    } else if (target === "soal1_pro2" && origin === "numbers") {
+      setSelectedNumbers1_pro2((prev) => [...prev, number]);
+      setNumbers((prev) => prev.filter((num) => num !== number));
     } else if (target === "soal2" && origin === "numbers") {
       setSelectedNumbers2((prev) => [...prev, number]);
+      setNumbers((prev) => prev.filter((num) => num !== number));
+    } else if (target === "soal2_pro1" && origin === "numbers") {
+      setSelectedNumbers2_pro1((prev) => [...prev, number]);
+      setNumbers((prev) => prev.filter((num) => num !== number));
+    } else if (target === "soal2_pro2" && origin === "numbers") {
+      setSelectedNumbers2_pro2((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
     } else if (target === "soal3" && origin === "numbers") {
       setSelectedNumbers3((prev) => [...prev, number]);
@@ -157,7 +205,11 @@ const Page = () => {
       setNumbers((prev) => prev.filter((num) => num !== number));
     } else if (
       (target === "numbers" && origin === "soal1") ||
+      origin === "soal1_pro1" ||
+      origin === "soal1_pro2" ||
       origin === "soal2" ||
+      origin === "soal2_pro1" ||
+      origin === "soal2_pro2" ||
       origin === "soal3" ||
       origin === "soal3_pro1" ||
       origin === "soal3_pro2" ||
@@ -170,7 +222,11 @@ const Page = () => {
     ) {
       setNumbers((prev) => [...prev, number]);
       setSelectedNumbers1((prev) => prev.filter((num) => num !== number));
+      setSelectedNumbers1_pro1((prev) => prev.filter((num) => num !== number));
+      setSelectedNumbers1_pro2((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers2((prev) => prev.filter((num) => num !== number));
+      setSelectedNumbers2_pro1((prev) => prev.filter((num) => num !== number));
+      setSelectedNumbers2_pro2((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers3((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers3_pro1((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers3_pro2((prev) => prev.filter((num) => num !== number));
@@ -192,20 +248,19 @@ const Page = () => {
         <div className="p-5 gap-5 flex flex-row bg-indigo-200 text-5xl">
           <div className="flex flex-col gap-2 justify-items-center text-center">
             <div className="bg-red-500 p-5 rounded-md text-[30px]">
-              {" "}
-              -6 - (-17)
+              18 : (-6) x (-2)
             </div>
             <div className="bg-green-500 p-5 rounded-md text-[30px]">
-              0 - (-12)
+              10 + 2 x (-7)
             </div>
             <div className="bg-sky-500 p-5 rounded-md text-[30px]">
-              5 + (-18) + (-5)
+              4 - 15 : (-3)
             </div>
             <div className="bg-amber-500 p-5 rounded-md text-[30px]">
-              -9 - (-8) + (-4)
+              -5 x (9 - 6)
             </div>
             <div className="bg-purple-500 p-5 rounded-md text-[30px]">
-              16 -18 - 13
+              18 + 4 x (1 - 7)
             </div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
@@ -217,16 +272,18 @@ const Page = () => {
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
             <div
-              onDrop={(e) => handleDrop(e, "soal1")}
+              onDrop={(e) => handleDrop(e, "soal1_pro1")}
               onDragOver={handleDragOver}
               className="p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
             >
               <div className="flex space-x-2">
-                {selectedNumbers1.map((number, index) => (
+                {selectedNumbers1_pro1.map((number, index) => (
                   <div
                     key={index}
                     draggable
-                    onDragStart={(e) => handleDragStart(e, number, "soal1")}
+                    onDragStart={(e) =>
+                      handleDragStart(e, number, "soal1_pro1")
+                    }
                     className="p-1 bg-blue-400 rounded cursor-pointer text-3xl"
                   >
                     {number}
@@ -235,16 +292,18 @@ const Page = () => {
               </div>
             </div>
             <div
-              onDrop={(e) => handleDrop(e, "soal2")}
+              onDrop={(e) => handleDrop(e, "soal2_pro1")}
               onDragOver={handleDragOver}
               className="p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
             >
               <div className="flex space-x-2">
-                {selectedNumbers2.map((number, index) => (
+                {selectedNumbers2_pro1.map((number, index) => (
                   <div
                     key={index}
                     draggable
-                    onDragStart={(e) => handleDragStart(e, number, "soal2")}
+                    onDragStart={(e) =>
+                      handleDragStart(e, number, "soal2_pro1")
+                    }
                     className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
                   >
                     {number}
@@ -315,20 +374,54 @@ const Page = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className=" invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
-            <div className="invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"x"}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
-            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"+"}</div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"x"}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className="invisible p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-            <div className="invisible p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
+            <div
+              onDrop={(e) => handleDrop(e, "soal1_pro2")}
+              onDragOver={handleDragOver}
+              className="p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
+            >
+              <div className="flex space-x-2">
+                {selectedNumbers1_pro2.map((number, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) =>
+                      handleDragStart(e, number, "soal1_pro2")
+                    }
+                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
+                  >
+                    {number}
+                  </div>
+                ))}
+              </div>
+            </div>
 
+            <div
+              onDrop={(e) => handleDrop(e, "soal2_pro2")}
+              onDragOver={handleDragOver}
+              className="p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
+            >
+              <div className="flex space-x-2">
+                {selectedNumbers2_pro2.map((number, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) =>
+                      handleDragStart(e, number, "soal2_pro2")
+                    }
+                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
+                  >
+                    {number}
+                  </div>
+                ))}
+              </div>
+            </div>
             <div
               onDrop={(e) => handleDrop(e, "soal3_pro2")}
               onDragOver={handleDragOver}
@@ -391,20 +484,49 @@ const Page = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className=" invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
-            <div className="invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className="invisible p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-            <div className="invisible p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-
+            <div
+              onDrop={(e) => handleDrop(e, "soal1")}
+              onDragOver={handleDragOver}
+              className="p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
+            >
+              <div className="flex space-x-2">
+                {selectedNumbers1.map((number, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, number, "soal1")}
+                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
+                  >
+                    {number}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div
+              onDrop={(e) => handleDrop(e, "soal2")}
+              onDragOver={handleDragOver}
+              className="p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
+            >
+              <div className="flex space-x-2">
+                {selectedNumbers2.map((number, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, number, "soal2")}
+                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
+                  >
+                    {number}
+                  </div>
+                ))}
+              </div>
+            </div>
             <div
               onDrop={(e) => handleDrop(e, "soal3")}
               onDragOver={handleDragOver}

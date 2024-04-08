@@ -3,45 +3,22 @@ import React, { useState } from "react";
 
 const Page = () => {
   const [numbers, setNumbers] = useState<number[]>([
-    11, 12, 5, 20, -13, -15, -1, 13, -2, -5, 4, -18,
+    11, 12, -60, -72, -13, -15, -1, 21, 5, 6, 4, -9,
   ]);
   const [selectedNumbers1, setSelectedNumbers1] = useState<number[]>([]);
   const [selectedNumbers2, setSelectedNumbers2] = useState<number[]>([]);
   const [selectedNumbers3, setSelectedNumbers3] = useState<number[]>([]);
-  const [selectedNumbers3_pro1, setSelectedNumbers3_pro1] = useState<number[]>(
-    []
-  );
-  const [selectedNumbers3_pro2, setSelectedNumbers3_pro2] = useState<number[]>(
-    []
-  );
   const [selectedNumbers4, setSelectedNumbers4] = useState<number[]>([]);
-  const [selectedNumbers4_pro1, setSelectedNumbers4_pro1] = useState<number[]>(
-    []
-  );
-  const [selectedNumbers4_pro2, setSelectedNumbers4_pro2] = useState<number[]>(
-    []
-  );
   const [selectedNumbers5, setSelectedNumbers5] = useState<number[]>([]);
-  const [selectedNumbers5_pro1, setSelectedNumbers5_pro1] = useState<number[]>(
-    []
-  );
-  const [selectedNumbers5_pro2, setSelectedNumbers5_pro2] = useState<number[]>(
-    []
-  );
 
   const checkAnswer = () => {
     // Correct answers array
-    const correctAnswers1 = [11];
-    const correctAnswers2 = [12];
-    const correctAnswers3 = [-18];
-    const correctAnswers3_pro1 = [-13];
-    const correctAnswers3_pro2 = [5];
-    const correctAnswers4 = [-5];
-    const correctAnswers4_pro1 = [-1];
-    const correctAnswers4_pro2 = [4];
-    const correctAnswers5 = [-15];
-    const correctAnswers5_pro1 = [-2];
-    const correctAnswers5_pro2 = [13];
+    const correctAnswers1 = [-72];
+    const correctAnswers2 = [-60];
+    const correctAnswers3 = [21];
+    const correctAnswers4 = [-9];
+    const correctAnswers5 = [5];
+
     // Check if selectedNumbers match correctAnswers
     const isCorrect1 =
       selectedNumbers1.length === correctAnswers1.length &&
@@ -52,44 +29,14 @@ const Page = () => {
     const isCorrect3 =
       selectedNumbers3.length === correctAnswers3.length &&
       selectedNumbers3.every((val) => correctAnswers3.includes(val));
-    const isCorrect3_pro1 =
-      selectedNumbers3_pro1.length === correctAnswers3_pro1.length &&
-      selectedNumbers3_pro1.every((val) => correctAnswers3_pro1.includes(val));
-    const isCorrect3_pro2 =
-      selectedNumbers3_pro2.length === correctAnswers3_pro2.length &&
-      selectedNumbers3_pro2.every((val) => correctAnswers3_pro2.includes(val));
     const isCorrect4 =
       selectedNumbers4.length === correctAnswers4.length &&
       selectedNumbers4.every((val) => correctAnswers4.includes(val));
-    const isCorrect4_pro1 =
-      selectedNumbers4_pro1.length === correctAnswers4_pro1.length &&
-      selectedNumbers4_pro1.every((val) => correctAnswers4_pro1.includes(val));
-    const isCorrect4_pro2 =
-      selectedNumbers4_pro2.length === correctAnswers4_pro2.length &&
-      selectedNumbers4_pro2.every((val) => correctAnswers4_pro2.includes(val));
     const isCorrect5 =
       selectedNumbers5.length === correctAnswers5.length &&
       selectedNumbers5.every((val) => correctAnswers5.includes(val));
-    const isCorrect5_pro1 =
-      selectedNumbers5_pro1.length === correctAnswers5_pro1.length &&
-      selectedNumbers5_pro1.every((val) => correctAnswers5_pro1.includes(val));
-    const isCorrect5_pro2 =
-      selectedNumbers5_pro2.length === correctAnswers5_pro2.length &&
-      selectedNumbers5_pro2.every((val) => correctAnswers5_pro2.includes(val));
 
-    if (
-      isCorrect1 &&
-      isCorrect2 &&
-      isCorrect3 &&
-      isCorrect3_pro1 &&
-      isCorrect3_pro2 &&
-      isCorrect4 &&
-      isCorrect4_pro1 &&
-      isCorrect4_pro2 &&
-      isCorrect5 &&
-      isCorrect5_pro1 &&
-      isCorrect5_pro2
-    ) {
+    if (isCorrect1 && isCorrect2 && isCorrect3 && isCorrect4 && isCorrect5) {
       alert("Jawaban Benar!");
     } else {
       alert("Jawaban Salah, Coba lagi!");
@@ -98,18 +45,13 @@ const Page = () => {
   };
 
   const resetQuiz = () => {
-    setNumbers([11, 12, 5, 20, -13, -15, -1, 13, -2, -5, 4, -18]); // Reset the original numbers
+    setNumbers([11, 12, -60, -72, -13, -15, -1, 21, 5, 6, 4, -9]); // Reset the original numbers
     setSelectedNumbers1([]);
     setSelectedNumbers2([]);
     setSelectedNumbers3([]);
-    setSelectedNumbers3_pro1([]);
-    setSelectedNumbers3_pro2([]);
     setSelectedNumbers4([]);
-    setSelectedNumbers4_pro1([]);
-    setSelectedNumbers4_pro2([]);
     setSelectedNumbers5([]);
-    setSelectedNumbers5_pro1([]);
-    setSelectedNumbers5_pro2([]);
+
     // Clear the answer area
   };
 
@@ -131,55 +73,25 @@ const Page = () => {
     } else if (target === "soal3" && origin === "numbers") {
       setSelectedNumbers3((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal3_pro1" && origin === "numbers") {
-      setSelectedNumbers3_pro1((prev) => [...prev, number]);
-      setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal3_pro2" && origin === "numbers") {
-      setSelectedNumbers3_pro2((prev) => [...prev, number]);
-      setNumbers((prev) => prev.filter((num) => num !== number));
     } else if (target === "soal4" && origin === "numbers") {
       setSelectedNumbers4((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal4_pro1" && origin === "numbers") {
-      setSelectedNumbers4_pro1((prev) => [...prev, number]);
-      setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal4_pro2" && origin === "numbers") {
-      setSelectedNumbers4_pro2((prev) => [...prev, number]);
-      setNumbers((prev) => prev.filter((num) => num !== number));
     } else if (target === "soal5" && origin === "numbers") {
       setSelectedNumbers5((prev) => [...prev, number]);
-      setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal5_pro1" && origin === "numbers") {
-      setSelectedNumbers5_pro1((prev) => [...prev, number]);
-      setNumbers((prev) => prev.filter((num) => num !== number));
-    } else if (target === "soal5_pro2" && origin === "numbers") {
-      setSelectedNumbers5_pro2((prev) => [...prev, number]);
       setNumbers((prev) => prev.filter((num) => num !== number));
     } else if (
       (target === "numbers" && origin === "soal1") ||
       origin === "soal2" ||
       origin === "soal3" ||
-      origin === "soal3_pro1" ||
-      origin === "soal3_pro2" ||
       origin === "soal4" ||
-      origin === "soal4_pro1" ||
-      origin === "soal4_pro2" ||
-      origin === "soal5" ||
-      origin === "soal5_pro1" ||
-      origin === "soal5_pro2"
+      origin === "soal5"
     ) {
       setNumbers((prev) => [...prev, number]);
       setSelectedNumbers1((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers2((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers3((prev) => prev.filter((num) => num !== number));
-      setSelectedNumbers3_pro1((prev) => prev.filter((num) => num !== number));
-      setSelectedNumbers3_pro2((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers4((prev) => prev.filter((num) => num !== number));
-      setSelectedNumbers4_pro1((prev) => prev.filter((num) => num !== number));
-      setSelectedNumbers4_pro2((prev) => prev.filter((num) => num !== number));
       setSelectedNumbers5((prev) => prev.filter((num) => num !== number));
-      setSelectedNumbers5_pro1((prev) => prev.filter((num) => num !== number));
-      setSelectedNumbers5_pro2((prev) => prev.filter((num) => num !== number));
     }
   };
 
@@ -214,11 +126,7 @@ const Page = () => {
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
           </div>
-          <div className="flex flex-col gap-2 justify-items-center text-center">
-            <button className="bg-indigo-500 rounded-md border-2 border-white p-5 text-[30px] h-[4.4rem] w-[5rem]">
-              -
-            </button>
-          </div>
+
           <div className="flex flex-col gap-2 justify-items-center text-center">
             <div
               onDrop={(e) => handleDrop(e, "soal1")}
@@ -256,158 +164,6 @@ const Page = () => {
                 ))}
               </div>
             </div>
-
-            <div
-              onDrop={(e) => handleDrop(e, "soal3_pro1")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-sky-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
-            >
-              <div className="flex space-x-2">
-                {selectedNumbers3_pro1.map((number, index) => (
-                  <div
-                    key={index}
-                    draggable
-                    onDragStart={(e) =>
-                      handleDragStart(e, number, "soal3_pro1")
-                    }
-                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
-                  >
-                    {number}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div
-              onDrop={(e) => handleDrop(e, "soal4_pro1")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-amber-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
-            >
-              <div className="flex space-x-2">
-                {selectedNumbers4_pro1.map((number, index) => (
-                  <div
-                    key={index}
-                    draggable
-                    onDragStart={(e) =>
-                      handleDragStart(e, number, "soal4_pro1")
-                    }
-                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
-                  >
-                    {number}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div
-              onDrop={(e) => handleDrop(e, "soal5_pro1")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-purple-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
-            >
-              <div className="flex space-x-2">
-                {selectedNumbers5_pro1.map((number, index) => (
-                  <div
-                    key={index}
-                    draggable
-                    onDragStart={(e) =>
-                      handleDragStart(e, number, "soal5_pro1")
-                    }
-                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
-                  >
-                    {number}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className=" invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
-            <div className="invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
-            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
-            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
-            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
-          </div>
-          <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className="invisible p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-            <div className="invisible p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-
-            <div
-              onDrop={(e) => handleDrop(e, "soal3_pro2")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-sky-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
-            >
-              <div className="flex space-x-2">
-                {selectedNumbers3_pro2.map((number, index) => (
-                  <div
-                    key={index}
-                    draggable
-                    onDragStart={(e) =>
-                      handleDragStart(e, number, "soal3_pro2")
-                    }
-                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
-                  >
-                    {number}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div
-              onDrop={(e) => handleDrop(e, "soal4_pro2")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-amber-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
-            >
-              <div className="flex space-x-2">
-                {selectedNumbers4_pro2.map((number, index) => (
-                  <div
-                    key={index}
-                    draggable
-                    onDragStart={(e) =>
-                      handleDragStart(e, number, "soal4_pro2")
-                    }
-                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
-                  >
-                    {number}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div
-              onDrop={(e) => handleDrop(e, "soal5_pro2")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-purple-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
-            >
-              <div className="flex space-x-2">
-                {selectedNumbers5_pro2.map((number, index) => (
-                  <div
-                    key={index}
-                    draggable
-                    onDragStart={(e) =>
-                      handleDragStart(e, number, "soal5_pro2")
-                    }
-                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
-                  >
-                    {number}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className=" invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
-            <div className="invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
-            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
-            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
-            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
-          </div>
-          <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className="invisible p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-            <div className="invisible p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
 
             <div
               onDrop={(e) => handleDrop(e, "soal3")}
@@ -464,17 +220,18 @@ const Page = () => {
               </div>
             </div>
           </div>
+
           <div
             onDrop={(e) => handleDrop(e, "numbers")}
             onDragOver={handleDragOver}
-            className="h-[23.9rem] grid grid-cols-3 gap-4 p-5 justify-items-center text-center bg-indigo-300 rounded-md"
+            className="grid grid-cols-3 gap-4 p-5 justify-items-center text-center bg-indigo-300 rounded-md w-[20rem] h-[23.9rem]"
           >
             {numbers.map((number, index) => (
               <div
                 key={index}
                 draggable
                 onDragStart={(e) => handleDragStart(e, number, "numbers")}
-                className="p-2 bg-blue-500 rounded cursor-pointer flex justify-center items-center text-center w-[3rem] h-[3rem] text-2xl"
+                className="p-2 bg-blue-500 rounded cursor-pointer flex justify-center items-center text-center w-[4rem] h-[4rem] text-2xl"
               >
                 {number}
               </div>

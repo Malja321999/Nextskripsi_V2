@@ -73,17 +73,18 @@ const Page = () => {
               <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
                 <ul className="list-decimal list-inside">
                   <li>
-                    Siswa dapat menentukan posisi bilangan pada garis bilangan
-                    dengan benar.
+                    Siswa dapat melakukan proses penjumlahan dua bilangan bulat
+                    dengan tepat.
                   </li>
                   <br />
                   <li>
-                    Siswa dapat membandingkan bilangan-bilangan menggunakan
-                    tanda pertidaksamaan yang tepat.
+                    Siswa dapat melakukan pengurangan dua bilangan bulat dengan
+                    tepat.
                   </li>
                   <br />
                   <li>
-                    Siswa dapat menyatakan nilai mutlak dari suatu bilangan.
+                    Siswa dapat melakukan proses perhitungan yang terdapat dua
+                    operasi (penjumlahan dan pengurangan) dengan benar.
                   </li>
                 </ul>
               </div>

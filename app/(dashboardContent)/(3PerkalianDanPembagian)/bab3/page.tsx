@@ -71,7 +71,7 @@ const Page = () => {
 
   return (
     <div className="bg-sky-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
-      <ButttonpnUP p={"/bab2_2"} n={"/bab3_kuis"} />
+      <ButttonpnUP p={"/bab2"} n={"/bab3_kuis"} />
       {/* Judul Bab */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
         <div className="bg-gray-900 w-fit p-2 rounded-md mt-3">
@@ -80,7 +80,7 @@ const Page = () => {
               <IoBookOutline />
             </li>
             <li>
-              BAB 2 <br /> Penjumlahan dan Pengurangan Bilangan Bulat
+              BAB 3 <br /> Perkalian dan Pembagian Bilangan Bulat
             </li>
           </ul>
         </div>
@@ -104,17 +104,19 @@ const Page = () => {
               <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
                 <ul className="list-decimal list-inside">
                   <li>
-                    Siswa dapat menentukan posisi bilangan pada garis bilangan
-                    dengan benar.
+                    Siswa dapat melakukan proses perkalian dua bilangan bulat
+                    dengan tepat.
                   </li>
                   <br />
                   <li>
-                    Siswa dapat membandingkan bilangan-bilangan menggunakan
-                    tanda pertidaksamaan yang tepat.
+                    Siswa dapat melakukan pembagian dua bilangan bulat dengan
+                    tepat.
                   </li>
                   <br />
                   <li>
-                    Siswa dapat menyatakan nilai mutlak dari suatu bilangan.
+                    Siswa dapat melakukan proses perhitungan dengan kombinasi
+                    empat operasi (penjumlahan, pengurangan, perkalian, dan
+                    pembagian) dengan benar.
                   </li>
                 </ul>
               </div>
@@ -147,9 +149,10 @@ const Page = () => {
             allowFullScreen
           ></iframe>
         </div>
-        {/* Latihan Soal */}
+
+        {/* Latihan Soal 3 */}
         <div>
-          <Cardlatihan n={1} />
+          <Cardlatihan n={3} />
           <div className="mt-1">
             <h2 className="font-bold">
               Coba jawablah pertanyaan berikut dengan baik dan benar!
@@ -157,125 +160,26 @@ const Page = () => {
             <br />
             {/* Soal A */}
             <div id="question">
-              <form onSubmit={handleSubmitJawaban}>
-                <h3 className="text-yellow-200 font-bold">
-                  A. Jawablah pertanyaan-pertanyaan berikut ini. Gunakan tanda
-                  positif atau negatif untuk menyajikan besaran.
-                </h3>
-                <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
-                  <li>
-                    Diketahui bahwa A adalah titik 0 km. Titik "3 km selah utara
-                    A" dinyatakan sebagai +3 km. Bagaimana menyatakan titik “5
-                    km di sebelah selatan A”?
-                    <div className="flex">
-                      <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
-                        <div className="mr-2">Jawaban :</div> <br />
-                        <input
-                          type="text"
-                          id="soal1"
-                          className="w-[7vh] rounded-md text-center dark:text-white text-black border-4 border-sky-400 p-2 px-2 h-10"
-                        />
-                        <div className="ml-2 mt-1">Km</div>
-                      </div>
-                      <div className="ml-5 mt-5">
-                        {jawaban1status === "benar" ? (
-                          <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                            Benar
-                          </p>
-                        ) : (
-                          <div></div>
-                        )}
-                        {jawaban1status === "salah" ? (
-                          <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                            Salah
-                          </p>
-                        ) : (
-                          <div></div>
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    Apabila "rugi 200 rupiah" dinyatakan sebagai -200 rupiah,
-                    menyatakan apa +300 rupiah?
-                    <div className="flex">
-                      <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
-                        <div className="mr-2">Jawaban :</div> <br />
-                        <input
-                          type="text"
-                          id="soal2"
-                          className="w-[17vh] rounded-md text-center dark:text-white text-black border-4 border-sky-400 p-2 px-2 h-10"
-                        />
-                        <div className="ml-2 mt-1">, 300</div>
-                        <div className="ml-2 mt-1">Rupiah</div>
-                      </div>
-                      <div className="ml-5 mt-5">
-                        {jawaban2status === "benar" ? (
-                          <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                            Benar
-                          </p>
-                        ) : (
-                          <div></div>
-                        )}
-                        {jawaban2status === "salah" ? (
-                          <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                            Salah
-                          </p>
-                        ) : (
-                          <div></div>
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-                <button
-                  type="submit"
-                  className="font-bold mt-5 ml-10 w-[78rem] bg-rose-600 p-2 rounded-md text-center hover:bg-sky-400"
-                >
-                  Cek Jawaban
-                </button>
-                {jawaban1status === "salah" ||
-                  (jawaban2status === "salah" && (
-                    <button
-                      type="reset"
-                      onClick={() => reset()}
-                      className="font-bold mt-5 ml-10 w-[78rem] bg-rose-600 p-2 rounded-md text-center hover:bg-sky-400"
-                    >
-                      Ulang Kuis
-                    </button>
-                  ))}
-              </form>
+              <h3 className="text-yellow-200 font-bold">
+                A. Tentukan hasil dari perkalian / pembagian berikut:
+              </h3>
             </div>
-            {/* Soal B */}
-            <h3 className="mt-20 text-yellow-200 font-bold">
-              B. Diberikan bilangan-bilangan.
-            </h3>
-            <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
-              <li>
-                Mana yang merupakan bilangan positif? Mana yang merupakan
-                bilangan negatif?
-              </li>
-              <iframe
-                className="h-[12rem] w-[60rem] rounded-md border-4 border-gray-800"
-                loading="lazy"
-                src="https://bilangan-ne-po.vercel.app"
-                allowFullScreen
-              ></iframe>
-              <li>
-                Mana yang merupakan bilangan bulat? Mana yang merupakan bilangan
-                asli?
-              </li>
-              <iframe
-                className="h-[12rem] w-[60rem] rounded-md border-4 border-gray-800"
-                loading="lazy"
-                src="https://bilangan-ne-po.vercel.app"
-                allowFullScreen
-              ></iframe>
-            </ul>
+            <iframe
+              className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
+              loading="lazy"
+              src="/QuizDragAndDrop/bab3_A"
+              allowFullScreen
+            ></iframe>
+            <iframe
+              className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
+              loading="lazy"
+              src="/QuizDragAndDrop/bab3_B"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </div>
-      <ButttonpnDOWN p={"/bab2_2"} n={"/bab3_kuis"} />
+      <ButttonpnDOWN p={"/bab2"} n={"/bab3_kuis"} />
     </div>
   );
 };

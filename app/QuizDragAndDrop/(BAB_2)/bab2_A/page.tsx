@@ -1,12 +1,19 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import apple from "../../../asset/apple.png";
+import apple_kulkas from "../../../asset/apple_Kulkas.png";
+import apple_market from "../../../asset/apple_Market.jpg";
 
 const Page = () => {
   const JumlahBuah = [
     {
-      img: apple,
+      img: apple_kulkas,
+    },
+  ];
+
+  const JumlahBuahMarket = [
+    {
+      img: apple_market,
     },
   ];
   const [buah1, setbuah1] = useState(0);
@@ -14,35 +21,21 @@ const Page = () => {
   const [buah3, setbuah3] = useState(0);
   const [buah4, setbuah4] = useState(0);
   const [buah5, setbuah5] = useState(0);
-  const [Nebuah1, setNebuah1] = useState(0);
-  const [Nebuah2, setNebuah2] = useState(0);
-  const [Nebuah3, setNebuah3] = useState(0);
-  const [Nebuah4, setNebuah4] = useState(0);
-  const [Nebuah5, setNebuah5] = useState(0);
 
   const checkAnswer = () => {
     // Correct answers array
     const correctAnswers1 = 1;
-    const correctAnswers2 = 0;
-    const correctAnswers3 = 0;
+    const correctAnswers2 = -9;
+    const correctAnswers3 = -10;
     const correctAnswers4 = 0;
     const correctAnswers5 = 6;
-    const NecorrectAnswers1 = 0;
-    const NecorrectAnswers2 = 9; /* -9 */
-    const NecorrectAnswers3 = 10; /* -10 */
-    const NecorrectAnswers4 = 0;
-    const NecorrectAnswers5 = 0;
+
     // Check if selectedNumbers match correctAnswers
-    const isCorrect1 =
-      correctAnswers1 === buah1 && NecorrectAnswers1 === Nebuah1;
-    const isCorrect2 =
-      correctAnswers2 === buah2 && NecorrectAnswers2 === Nebuah2;
-    const isCorrect3 =
-      correctAnswers3 === buah3 && NecorrectAnswers3 === Nebuah3;
-    const isCorrect4 =
-      correctAnswers4 === buah4 && NecorrectAnswers4 === Nebuah4;
-    const isCorrect5 =
-      correctAnswers5 === buah5 && NecorrectAnswers5 === Nebuah5;
+    const isCorrect1 = correctAnswers1 === buah1;
+    const isCorrect2 = correctAnswers2 === buah2;
+    const isCorrect3 = correctAnswers3 === buah3;
+    const isCorrect4 = correctAnswers4 === buah4;
+    const isCorrect5 = correctAnswers5 === buah5;
 
     if (isCorrect1 && isCorrect2 && isCorrect3 && isCorrect4 && isCorrect5) {
       alert("Jawaban Benar!");
@@ -59,15 +52,9 @@ const Page = () => {
     setbuah3(0);
     setbuah4(0);
     setbuah5(0);
-    setNebuah1(0);
-    setNebuah2(0);
-    setNebuah3(0);
-    setNebuah4(0);
-    setNebuah5(0);
   };
 
-  const handleDragStart = (e: any, number: number, origin: string) => {
-    e.dataTransfer.setData("number", number);
+  const handleDragStart = (e: any, origin: string) => {
     e.dataTransfer.setData("origin", origin);
   };
 
@@ -84,17 +71,16 @@ const Page = () => {
       setbuah4(buah4 + 1);
     } else if (target === "soal5" && origin === "numbers") {
       setbuah5(buah5 + 1);
-    }
-    if (target === "Nesoal1" && origin === "numbers") {
-      setNebuah1(Nebuah1 + 1);
-    } else if (target === "Nesoal2" && origin === "numbers") {
-      setNebuah2(Nebuah2 + 1);
-    } else if (target === "Nesoal3" && origin === "numbers") {
-      setNebuah3(Nebuah3 + 1);
-    } else if (target === "Nesoal4" && origin === "numbers") {
-      setNebuah4(Nebuah4 + 1);
-    } else if (target === "Nesoal5" && origin === "numbers") {
-      setNebuah5(Nebuah5 + 1);
+    } else if (target === "soal1" && origin === "numbers_negative") {
+      setbuah1(buah1 - 1);
+    } else if (target === "soal2" && origin === "numbers_negative") {
+      setbuah2(buah2 - 1);
+    } else if (target === "soal3" && origin === "numbers_negative") {
+      setbuah3(buah3 - 1);
+    } else if (target === "soal4" && origin === "numbers_negative") {
+      setbuah4(buah4 - 1);
+    } else if (target === "soal5" && origin === "numbers_negative") {
+      setbuah5(buah5 - 1);
     }
   };
 
@@ -125,108 +111,112 @@ const Page = () => {
               onDragOver={handleDragOver}
               className="p-5 bg-red-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
             >
-              +{buah1}
+              {buah1}
             </div>
             <div
               onDrop={(e) => handleDrop(e, "soal2")}
               onDragOver={handleDragOver}
               className="p-5 bg-green-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
             >
-              +{buah2}
+              {buah2}
             </div>
             <div
               onDrop={(e) => handleDrop(e, "soal3")}
               onDragOver={handleDragOver}
               className="p-5 bg-sky-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
             >
-              +{buah3}
+              {buah3}
             </div>
             <div
               onDrop={(e) => handleDrop(e, "soal4")}
               onDragOver={handleDragOver}
               className="p-5 bg-amber-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
             >
-              +{buah4}
+              {buah4}
             </div>
             <div
               onDrop={(e) => handleDrop(e, "soal5")}
               onDragOver={handleDragOver}
               className="p-5 bg-purple-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
             >
-              +{buah5}
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div
-              onDrop={(e) => handleDrop(e, "Nesoal1")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-red-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
-            >
-              -{Nebuah1}
-            </div>
-            <div
-              onDrop={(e) => handleDrop(e, "Nesoal2")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-green-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
-            >
-              -{Nebuah2}
-            </div>
-            <div
-              onDrop={(e) => handleDrop(e, "Nesoal3")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-sky-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
-            >
-              -{Nebuah3}
-            </div>
-            <div
-              onDrop={(e) => handleDrop(e, "Nesoal4")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-amber-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
-            >
-              -{Nebuah4}
-            </div>
-            <div
-              onDrop={(e) => handleDrop(e, "Nesoal5")}
-              onDragOver={handleDragOver}
-              className="p-5 bg-purple-400 rounded text-center font-bold h-[5.5rem] w-[7.5rem] flex justify-center items-center"
-            >
-              -{Nebuah5}
+              {buah5}
             </div>
           </div>
 
-          <div className="flex flex-col justify-items-center text-center -space-x-[1rem] p-5  bg-indigo-300 rounded-md h-[29.5rem] w-[14rem]">
-            <div className="bg-rose-500 p-5 rounded-md text-center w-fit text-xl font-bold">
-              Seret Buah Apel ke Kolom Postif Atau Negatif untuk memberikan jawaban
+          <div>
+            <div className="bg-teal-500 mb-2 p-5 rounded-md text-center text-xs font-bold w-[30rem]">
+              Suatu hari Kak Ani ingin membuat jus Apel, kemudian dia mengambil
+              Apel tersebut dalam kulkas. Kemudian ia menghitung jumlah Apel
+              didalam kulkas apakah sudah cukup untuk membuat jus apel untuk
+              dirinya dan keluarganya, sebelum akhirnya ia ingin pergi ke pasar
+              untuk membeli apel jika jumlahnya kurang. Jika jumlah apel dalam
+              kulkas di lambangkan bilangan positif dan jumlah apel kurang yang
+              harus dibeli di pasar adalah bilangan negatif maka nyatakanlah
+              jumlah appel yang dimiliki Kak Ani, dengan selesaikanlah soal di
+              samping ini.
             </div>
 
-            {JumlahBuah.map((JumlahBuah, index) => (
-              <div
-                key={index}
-                draggable
-                onDragStart={(e) => handleDragStart(e, index, "numbers")}
-                className="flex justify-center items-center rounded cursor-pointer"
-              >
-                <Image
-                  src={JumlahBuah.img}
-                  alt={"jumlahbuah"}
-                  width={1000}
-                  height={1000}
-                  className="ml-5"
-                />
+            <div className="bg-rose-500 mb-2 p-5 rounded-md text-center text-sm font-bold w-[30rem]">
+              Seret Buah Apel Dari Kulkas Atau Pasar ke Kolom Jawaban Untuk
+              Memberikan Jumlah Apel Yang Dimiliki Saat Ini.
+            </div>
+
+            <div className="flex flex-row gap-8">
+              <div className="flex flex-col justify-items-center text-center p-5  bg-indigo-300 rounded-md h-fit w-[14rem]">
+                {JumlahBuah.map((JumlahBuah, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, "numbers")}
+                    className="flex flex-col justify-center items-center cursor-pointer"
+                  >
+                    <Image
+                      src={JumlahBuah.img}
+                      alt={"jumlahbuah"}
+                      width={1000}
+                      height={1000}
+                    />
+                    <div className="text-xs mt-2 bg-rose-500 p-2 rounded-md">
+                      Buah Didalam Kulkas
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+
+              <div className="flex flex-col justify-items-center text-center p-5  bg-indigo-300 rounded-md h-fit w-[14rem]">
+                {JumlahBuahMarket.map((JumlahBuahMarket, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, "numbers_negative")}
+                    className="flex flex-col justify-center items-center cursor-pointer"
+                  >
+                    <Image
+                      src={JumlahBuahMarket.img}
+                      alt={"JumlahBuahMarket"}
+                      width={1000}
+                      height={1000}
+                      className="flex w-[12rem] bg-slate-500"
+                    />
+                    <div className="text-xs mt-2 bg-rose-500 p-2 rounded-md">
+                      Buah Yang Dijual Di Pasar
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
             <button
               onClick={checkAnswer}
-              className="bg-purple-600 rounded-md border-2 border-white px-5 py-1 h-[14.5rem]"
+              className="bg-purple-600 rounded-md border-2 border-white px-5 py-1 h-[11.7rem] w-60"
             >
               Cek Jawaban
             </button>
             <button
               onClick={resetQuiz}
-              className="bg-rose-600 rounded-md border-2 border-white px-5 py-1 h-[14.5rem]"
+              className="bg-rose-600 rounded-md border-2 border-white px-5 py-1 h-[11.7rem] w-60"
             >
               Ulang Kuis
             </button>

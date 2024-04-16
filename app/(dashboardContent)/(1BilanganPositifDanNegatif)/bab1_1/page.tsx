@@ -23,6 +23,7 @@ import { RiMapPinAddFill } from "react-icons/ri";
 import Cardlatihan from "@/app/component/Cardlatihan";
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import CardFinishRead from "@/app/component/CardFinishRead";
 
 const Page = () => {
   const [Collapse2, SetCollapse2] = useState(false);
@@ -39,6 +40,8 @@ const Page = () => {
 
   const [jawaban1status, setjawaban1status] = useState("");
   const [jawaban2status, setjawaban2status] = useState("");
+
+  const [FinishReading, setFinishReading] = useState(false);
 
   function handleSubmitJawaban(e: any) {
     e.preventDefault();
@@ -143,143 +146,154 @@ const Page = () => {
               src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF94ipRtn4&#x2F;HLkGd7YEHY3GDPvcB2Kmkg&#x2F;view?embed"
               allowFullScreen
             ></iframe>
+            <button onClick={() => setFinishReading(!FinishReading)}>
+              <CardFinishRead />
+            </button>
           </div>
+
           {/* Latihan Soal */}
+
           <div>
-            <Cardlatihan n={1} />
-            <div className="mt-1">
-              <h2 className="font-bold">
-                Coba jawablah pertanyaan berikut dengan baik dan benar!
-              </h2>
-              <br />
-              {/* Soal A */}
-              <div id="question">
-                <form onSubmit={handleSubmitJawaban}>
-                  <h3 className="text-yellow-200 font-bold">
-                    A. Jawablah pertanyaan-pertanyaan berikut ini.
-                  </h3>
-                  <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
-                    <li>
-                      Diketahui bahwa A adalah titik 0 km. Titik "3 km selah
-                      utara A" dinyatakan sebagai +3 km. Bagaimana menyatakan
-                      titik “5 km di sebelah selatan A”?
-                      <div className="flex">
-                        <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
-                          <div className="mr-2">Jawaban :</div> <br />
-                          <input
-                            type="text"
-                            id="soal1"
-                            className="w-[7vh] rounded-md text-center dark:text-white text-black border-4 border-sky-400 p-2 px-2 h-10"
-                          />
-                          <div className="ml-2 mt-1">Km</div>
-                        </div>
-                        <div className="ml-5 mt-5">
-                          {jawaban1status === "benar" ? (
-                            <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                              Benar
-                            </p>
-                          ) : (
-                            <div></div>
-                          )}
-                          {jawaban1status === "salah" ? (
-                            <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                              Salah
-                            </p>
-                          ) : (
-                            <div></div>
-                          )}
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      Apabila "rugi 200 rupiah" dinyatakan sebagai -200 rupiah,
-                      menyatakan apa +300 rupiah?
-                      <div className="flex">
-                        <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
-                          <div className="mr-2">Jawaban :</div> <br />
-                          <input
-                            type="text"
-                            id="soal2"
-                            className="w-[17vh] rounded-md text-center dark:text-white text-black border-4 border-sky-400 p-2 px-2 h-10"
-                          />
-                          <div className="ml-2 mt-1">, 300</div>
-                          <div className="ml-2 mt-1">Rupiah</div>
-                        </div>
-                        <div className="ml-5 mt-5">
-                          {jawaban2status === "benar" ? (
-                            <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                              Benar
-                            </p>
-                          ) : (
-                            <div></div>
-                          )}
-                          {jawaban2status === "salah" ? (
-                            <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                              Salah
-                            </p>
-                          ) : (
-                            <div></div>
-                          )}
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                  <button
-                    type="submit"
-                    className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
-                  >
-                    Cek Jawaban
-                  </button>
-                  {jawaban1status === "salah" ||
-                    (jawaban2status === "salah" && (
+            {FinishReading ? (
+              <div>
+                <Cardlatihan n={1} />
+                <div className="mt-1">
+                  <h2 className="font-bold">
+                    Coba jawablah pertanyaan berikut dengan baik dan benar!
+                  </h2>
+                  <br />
+                  {/* Soal A */}
+                  <div id="question">
+                    <form onSubmit={handleSubmitJawaban}>
+                      <h3 className="text-yellow-200 font-bold">
+                        A. Jawablah pertanyaan-pertanyaan berikut ini.
+                      </h3>
+                      <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
+                        <li>
+                          Diketahui bahwa A adalah titik 0 km. Titik "3 km selah
+                          utara A" dinyatakan sebagai +3 km. Bagaimana
+                          menyatakan titik “5 km di sebelah selatan A”?
+                          <div className="flex">
+                            <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
+                              <div className="mr-2">Jawaban :</div> <br />
+                              <input
+                                type="text"
+                                id="soal1"
+                                className="w-[7vh] rounded-md text-center dark:text-white text-black border-4 border-sky-400 p-2 px-2 h-10"
+                              />
+                              <div className="ml-2 mt-1">Km</div>
+                            </div>
+                            <div className="ml-5 mt-5">
+                              {jawaban1status === "benar" ? (
+                                <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
+                                  Benar
+                                </p>
+                              ) : (
+                                <div></div>
+                              )}
+                              {jawaban1status === "salah" ? (
+                                <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
+                                  Salah
+                                </p>
+                              ) : (
+                                <div></div>
+                              )}
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          Apabila "rugi 200 rupiah" dinyatakan sebagai -200
+                          rupiah, menyatakan apa +300 rupiah?
+                          <div className="flex">
+                            <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
+                              <div className="mr-2">Jawaban :</div> <br />
+                              <input
+                                type="text"
+                                id="soal2"
+                                className="w-[17vh] rounded-md text-center dark:text-white text-black border-4 border-sky-400 p-2 px-2 h-10"
+                              />
+                              <div className="ml-2 mt-1">, 300</div>
+                              <div className="ml-2 mt-1">Rupiah</div>
+                            </div>
+                            <div className="ml-5 mt-5">
+                              {jawaban2status === "benar" ? (
+                                <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
+                                  Benar
+                                </p>
+                              ) : (
+                                <div></div>
+                              )}
+                              {jawaban2status === "salah" ? (
+                                <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
+                                  Salah
+                                </p>
+                              ) : (
+                                <div></div>
+                              )}
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
                       <button
-                        type="reset"
-                        onClick={() => reset()}
+                        type="submit"
                         className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
                       >
-                        Ulang Kuis
+                        Cek Jawaban
                       </button>
-                    ))}
-                </form>
-              </div>
-              {/* Soal B */}
-              <div>
-                <h3 className="mt-20 text-yellow-200 font-bold">
-                  B. Kelompokkan Bilangan-Bilangan berikut ini dengan baik dan
-                  benar.
-                </h3>
-                {/* <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
+                      {jawaban1status === "salah" ||
+                        (jawaban2status === "salah" && (
+                          <button
+                            type="reset"
+                            onClick={() => reset()}
+                            className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
+                          >
+                            Ulang Kuis
+                          </button>
+                        ))}
+                    </form>
+                  </div>
+                  {/* Soal B */}
+                  <div>
+                    <h3 className="mt-20 text-yellow-200 font-bold">
+                      B. Kelompokkan Bilangan-Bilangan berikut ini dengan baik
+                      dan benar.
+                    </h3>
+                    {/* <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
                     -12;&emsp;+7;&emsp;0;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
                   </h4> */}
-                <br />
-                <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
-                  <li>
-                    Mana yang merupakan bilangan positif? Mana yang merupakan
-                    bilangan negatif?
-                  </li>
-                  <iframe
-                    className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
-                    loading="lazy"
-                    src="/QuizDragAndDrop/bab1_1A"
-                    allowFullScreen
-                  ></iframe>
-                  <li>Mana yang merupakan bilangan bulat?</li>
-                  <iframe
-                    className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
-                    loading="lazy"
-                    src="/QuizDragAndDrop/bab1_1B1"
-                    allowFullScreen
-                  ></iframe>
-                  <li>Mana yang merupakan bilangan asli?</li>
-                  <iframe
-                    className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
-                    loading="lazy"
-                    src="/QuizDragAndDrop/bab1_1B2"
-                    allowFullScreen
-                  ></iframe>
-                </ul>
+                    <br />
+                    <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
+                      <li>
+                        Mana yang merupakan bilangan positif? Mana yang
+                        merupakan bilangan negatif?
+                      </li>
+                      <iframe
+                        className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                        loading="lazy"
+                        src="/QuizDragAndDrop/bab1_1A"
+                        allowFullScreen
+                      ></iframe>
+                      <li>Mana yang merupakan bilangan bulat?</li>
+                      <iframe
+                        className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                        loading="lazy"
+                        src="/QuizDragAndDrop/bab1_1B1"
+                        allowFullScreen
+                      ></iframe>
+                      <li>Mana yang merupakan bilangan asli?</li>
+                      <iframe
+                        className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                        loading="lazy"
+                        src="/QuizDragAndDrop/bab1_1B2"
+                        allowFullScreen
+                      ></iframe>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>

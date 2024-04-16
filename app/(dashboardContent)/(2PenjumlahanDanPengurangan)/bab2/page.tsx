@@ -28,6 +28,8 @@ import ButttonpnUP from "@/app/component/ButttonpnUP";
 import ButttonpnDOWN from "@/app/component/ButttonpnDOWN";
 import Cardsubper from "@/app/component/Cardsubper";
 import { IoBookOutline, IoBookmarksOutline } from "react-icons/io5";
+import { BsBookmark } from "react-icons/bs";
+import { BsFillBookmarkCheckFill } from "react-icons/bs";
 
 const Page = () => {
   const [Collapse, SetCollapse] = useState(false);
@@ -38,8 +40,10 @@ const Page = () => {
   const CVideo =
     "bg-gray-900 w-fit mt-5 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
 
+  const [FinishReading, setFinishReading] = useState(false);
+
   return (
-    <div className="bg-emerald-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll">
+    <div className="bg-emerald-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
       <ButttonpnUP p={"/bab1_1"} n={"/bab2_kuis"} />
       {/* Judul Bab */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
@@ -108,7 +112,7 @@ const Page = () => {
         </div>
 
         {/* Konten Bab 2 */}
-        <div className={CVideo}>
+        <div className="wrapperIfreme">
           <iframe
             width="900"
             height="500"
@@ -116,36 +120,51 @@ const Page = () => {
             src="https://www.canva.com/design/DAF_QKcRC0Q/0-bw9LtH5M9guADqDflk4Q/view?embed"
             allowFullScreen
           ></iframe>
+          <button
+            onClick={() => setFinishReading(!FinishReading)}
+            className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+          >
+            <span>
+              {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
+            </span>
+            Selesai Membaca
+          </button>
         </div>
       </div>
 
       {/* Latihan Soal 2 */}
       <div>
-        <Cardlatihan n={3} />
-        <div className="mt-1">
-          <h2 className="font-bold">
-            Coba jawablah pertanyaan berikut dengan baik dan benar!
-          </h2>
-          <br />
-          {/* Soal A */}
-          <div id="question">
-            <h3 className="text-yellow-200 font-bold">
-              A. Tentukan hasil dari penjumlahan / pengurangan berikut:
-            </h3>
+        {FinishReading ? (
+          <div>
+            <Cardlatihan n={3} />
+            <div className="mt-1">
+              <h2 className="font-bold">
+                Coba jawablah pertanyaan berikut dengan baik dan benar!
+              </h2>
+              <br />
+              {/* Soal A */}
+              <div id="question">
+                <h3 className="text-yellow-200 font-bold">
+                  A. Tentukan hasil dari penjumlahan / pengurangan berikut:
+                </h3>
+              </div>
+              <iframe
+                className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
+                loading="lazy"
+                src="/QuizDragAndDrop/bab2_A"
+                allowFullScreen
+              ></iframe>
+              <iframe
+                className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
+                loading="lazy"
+                src="/QuizDragAndDrop/bab2_B"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
-          <iframe
-            className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
-            loading="lazy"
-            src="/QuizDragAndDrop/bab2_A"
-            allowFullScreen
-          ></iframe>
-          <iframe
-            className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
-            loading="lazy"
-            src="/QuizDragAndDrop/bab2_B"
-            allowFullScreen
-          ></iframe>
-        </div>
+        ) : (
+          <></>
+        )}
       </div>
 
       <ButttonpnDOWN p={"/bab1_1"} n={"/bab2_kuis"} />

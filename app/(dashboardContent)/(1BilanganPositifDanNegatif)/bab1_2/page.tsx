@@ -12,7 +12,11 @@ import { IoBookmarksOutline } from "react-icons/io5";
 /* Icon SubPer */
 import { CiBookmarkPlus } from "react-icons/ci";
 /* Icon Latihan */
-import { BsPencilSquare } from "react-icons/bs";
+import {
+  BsBookmark,
+  BsFillBookmarkCheckFill,
+  BsPencilSquare,
+} from "react-icons/bs";
 /* Icon Contoh */
 import { GiInspiration } from "react-icons/gi";
 import Link from "next/link";
@@ -120,8 +124,14 @@ const Page = () => {
             src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF-5u0wRd0&#x2F;KsfvvNbdHZUXR3eAaDUYZw&#x2F;view?embed"
             allowFullScreen
           ></iframe>
-          <button onClick={() => setFinishReading(!FinishReading)}>
-            <CardFinishRead />
+          <button
+            onClick={() => setFinishReading(!FinishReading)}
+            className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+          >
+            <span>
+              {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
+            </span>
+            Selesai Membaca
           </button>
         </div>
         {/* Latihan Soal */}

@@ -12,7 +12,11 @@ import { IoBookmarksOutline } from "react-icons/io5";
 /* Icon SubPer */
 import { CiBookmarkPlus } from "react-icons/ci";
 /* Icon Latihan */
-import { BsPencilSquare } from "react-icons/bs";
+import {
+  BsBookmark,
+  BsFillBookmarkCheckFill,
+  BsPencilSquare,
+} from "react-icons/bs";
 /* Icon Contoh */
 import { GiInspiration } from "react-icons/gi";
 import Link from "next/link";
@@ -47,20 +51,23 @@ const Page = () => {
     e.preventDefault();
     const jawaban1 = e.target.soal1.value.toUpperCase();
     const jawaban2 = e.target.soal2.value.toUpperCase();
-    if (jawaban1 !== "") {
-      if (jawaban1 === "-5") {
-        setjawaban1status("benar");
-      } else {
-        setjawaban1status("salah");
-      }
+
+    if (jawaban1 === "-5") {
+      setjawaban1status("benar");
+    } else if (jawaban1 === "") {
+      setjawaban1status("");
+    } else {
+      setjawaban1status("salah");
     }
-    if (jawaban2 !== "") {
-      if (jawaban2 === "UNTUNG") {
-        setjawaban2status("benar");
-      } else {
-        setjawaban2status("salah");
-      }
+
+    if (jawaban2 === "UNTUNG") {
+      setjawaban2status("benar");
+    } else if (jawaban2 === "") {
+      setjawaban1status("");
+    } else {
+      setjawaban2status("salah");
     }
+
     if (jawaban1 === "" || jawaban2 === "") {
       alert("Jawaban Belum Diisi");
     }
@@ -146,8 +153,14 @@ const Page = () => {
               src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF94ipRtn4&#x2F;HLkGd7YEHY3GDPvcB2Kmkg&#x2F;view?embed"
               allowFullScreen
             ></iframe>
-            <button onClick={() => setFinishReading(!FinishReading)}>
-              <CardFinishRead />
+            <button
+              onClick={() => setFinishReading(!FinishReading)}
+              className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+            >
+              <span>
+                {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
+              </span>
+              Selesai Membaca
             </button>
           </div>
 
@@ -240,16 +253,16 @@ const Page = () => {
                       >
                         Cek Jawaban
                       </button>
-                      {jawaban1status === "salah" ||
-                        (jawaban2status === "salah" && (
-                          <button
-                            type="reset"
-                            onClick={() => reset()}
-                            className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
-                          >
-                            Ulang Kuis
-                          </button>
-                        ))}
+                      {(jawaban1status === "salah" ||
+                        jawaban2status === "salah") && (
+                        <button
+                          type="reset"
+                          onClick={() => reset()}
+                          className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
+                        >
+                          Ulang Kuis
+                        </button>
+                      )}
                     </form>
                   </div>
                   {/* Soal B */}

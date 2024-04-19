@@ -177,9 +177,22 @@ const Page = () => {
                   <br />
                   {/* Soal A */}
                   <div id="question">
+                    <h3 className="text-yellow-200 font-bold">
+                      A. Jawablah pertanyaan-pertanyaan berikut ini.
+                    </h3>
+                    <div className="flex flex-col">
+                      <iframe
+                        className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                        loading="lazy"
+                        src="/QuizDragAndDrop/bab1_1Ta"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+
                     <form onSubmit={handleSubmitJawaban}>
                       <h3 className="text-yellow-200 font-bold">
-                        A. Jawablah pertanyaan-pertanyaan berikut ini.
+                        C. Jawablah pertanyaan-pertanyaan berikut ini dengan
+                        mengisi kolom kosong pada setiap pertanyaan.
                       </h3>
                       <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
                         <li>
@@ -271,9 +284,7 @@ const Page = () => {
                       B. Kelompokkan Bilangan-Bilangan berikut ini dengan baik
                       dan benar.
                     </h3>
-                    {/* <h4 className="ml-7 text-black font-bold bg-white border-4 border-black w-fit rounded-md p-5">
-                    -12;&emsp;+7;&emsp;0;&emsp;+0,6;&emsp;-3;&emsp;+25;&emsp;-8/3
-                  </h4> */}
+
                     <br />
                     <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
                       <li>

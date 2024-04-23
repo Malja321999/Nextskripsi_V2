@@ -182,7 +182,7 @@ const Page = () => {
                     </h3>
                     <div className="flex flex-col">
                       <iframe
-                        className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                        className="h-[35rem] w-100 rounded-md border-4 border-gray-800"
                         loading="lazy"
                         src="/QuizDragAndDrop/bab1_1Ta"
                         allowFullScreen

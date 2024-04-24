@@ -128,7 +128,7 @@ const Page = () => {
             <ul className="list list-disc list-inside">
               <h1 className="font-bold">Petunjuk pengerjaan :</h1>
               <div>
-                <li>Pilihlah jawaban dibawah ini dengan tepat</li>
+                <li>Jawablah pertanyaan dibawah ini dengan tepat</li>
                 <li>
                   Jika jawaban kamu benar, maka akan muncul tulisan jawaban
                   benar

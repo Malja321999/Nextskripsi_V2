@@ -91,21 +91,21 @@ const Page = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="p-4 bg-white shadow rounded">
         <div className="p-5 gap-5 flex flex-row bg-indigo-200 text-5xl">
-          <div className="flex flex-col gap-2 justify-items-center text-center">
+          <div className="select-none flex flex-col gap-2 justify-items-center text-center">
             <div className="bg-red-500 p-5 rounded-md">3 + (-2)</div>
             <div className="bg-green-500 p-5 rounded-md">-14 + 5</div>
             <div className="bg-sky-500 p-5 rounded-md">-4 + (-6)</div>
             <div className="bg-amber-500 p-5 rounded-md">-8 + 8</div>
             <div className="bg-purple-500 p-5 rounded-md">1 - (-5)</div>
           </div>
-          <div className="flex flex-col gap-2 justify-items-center text-center">
+          <div className="select-none flex flex-col gap-2 justify-items-center text-center">
             <div className="bg-gray-500 p-5 rounded-md">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md">{"="}</div>
           </div>
-          <div className="flex flex-col gap-2 justify-items-center text-center">
+          <div className="select-none flex flex-col gap-2 justify-items-center text-center">
             <div
               onDrop={(e) => handleDrop(e, "soal1")}
               onDragOver={handleDragOver}
@@ -144,19 +144,19 @@ const Page = () => {
           </div>
 
           <div>
-            <div className="bg-teal-500 mb-2 p-5 rounded-md text-center text-xs font-bold w-[30rem]">
+            <div className="max-w-base transition duration-300 ease-in-out hover:scale-150 bg-teal-500 mb-2 p-5 rounded-md text-center text-xs font-bold w-[30rem]">
               Suatu hari Kak Ani ingin membuat jus Apel, kemudian dia mengambil
               Apel tersebut dalam kulkas. Kemudian ia menghitung jumlah Apel
               didalam kulkas apakah sudah cukup untuk membuat jus apel untuk
               dirinya dan keluarganya, sebelum akhirnya ia ingin pergi ke pasar
-              untuk membeli apel jika jumlahnya kurang. Jika jumlah apel dalam
+              untuk membeli apel, jika jumlahnya kurang. Jika jumlah apel dalam
               kulkas di lambangkan bilangan positif dan jumlah apel kurang yang
               harus dibeli di pasar adalah bilangan negatif maka nyatakanlah
               jumlah appel yang dimiliki Kak Ani, dengan selesaikanlah soal di
               samping ini.
             </div>
 
-            <div className="bg-rose-500 mb-2 p-5 rounded-md text-center text-sm font-bold w-[30rem]">
+            <div className="max-w-base transition duration-300 ease-in-out hover:scale-150 bg-rose-500 mb-2 p-5 rounded-md text-center text-sm font-bold w-[30rem]">
               Seret Buah Apel Dari Kulkas Atau Pasar ke Kolom Jawaban Untuk
               Memberikan Jumlah Apel Yang Dimiliki Saat Ini.
             </div>

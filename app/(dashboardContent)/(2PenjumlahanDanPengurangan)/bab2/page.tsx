@@ -132,7 +132,7 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Latihan Soal 2 */}
+      {/* Latihan Soal 3 */}
       <div>
         {FinishReading ? (
           <div>
@@ -143,9 +143,21 @@ const Page = () => {
               </h2>
               <br />
               {/* Soal A */}
+              <h3 className="text-yellow-200 font-bold">
+                A. Jawablah pertanyaan-pertanyaan berikut ini.
+              </h3>
+              <div className="flex flex-col">
+                <iframe
+                  className="h-[35rem] w-100 rounded-md border-4 border-gray-800"
+                  loading="lazy"
+                  src="/QuizDragAndDrop/bab2_Ta"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              {/* Soal B */}
               <div id="question">
                 <h3 className="text-yellow-200 font-bold">
-                  A. Tentukan hasil dari penjumlahan / pengurangan berikut:
+                  B. Tentukan hasil dari penjumlahan / pengurangan berikut:
                 </h3>
               </div>
               <iframe

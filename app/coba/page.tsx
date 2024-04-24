@@ -1,75 +1,113 @@
-"use client";
 // pages/index.js
+"use client";
 import { useState } from "react";
-import { DragEvent } from "react";
 
 export default function Home() {
-  const [numbers, setNumbers] = useState(["5", "4", "3", "2", "1"]);
-  const [draggedItem, setDraggedItem] = useState<string | null>(null);
+  const [answers, setAnswers] = useState({
+    Asosiatif: false,
+    Terbuka: false,
+    Tertutup: false,
+    Komutatif: false,
+  });
+  const [result, setResult] = useState("");
 
-  const onDragOver = (event: DragEvent) => {
-    event.preventDefault();
+  const correctAnswers = {
+    Asosiatif: true,
+    Terbuka: false,
+    Tertutup: true,
+    Komutatif: true,
   };
 
-  const onDragStart = (event: DragEvent, number: string) => {
-    setDraggedItem(number);
+  const handleChange = (e: any) => {
+    setAnswers({ ...answers, [e.target.name]: e.target.checked });
   };
 
-  const onDrop = (event: DragEvent, droppedOnNumber: string) => {
-    event.preventDefault();
-    setNumbers((prevNumbers) => {
-      const newNumbers = [...prevNumbers];
-      const draggedIndex = draggedItem ? newNumbers.indexOf(draggedItem) : -1;
-      const droppedIndex = newNumbers.indexOf(droppedOnNumber);
-      if (draggedIndex !== -1) {
-        newNumbers[draggedIndex] = droppedOnNumber;
-        if (draggedItem !== null) {
-          newNumbers[droppedIndex] = draggedItem;
-        }
-      }
-      return newNumbers;
-    });
-  };
-  const checkAnswer = () => {
-    if (numbers.join("") === "12345") {
-      alert("Jawaban Anda benar!");
-    } else {
-      alert("Jawaban Anda salah, coba lagi.");
-    }
+  const checkAnswers = () => {
+    const isCorrect = Object.keys(correctAnswers).every(
+      (key) =>
+        answers[key as keyof typeof answers] ===
+        correctAnswers[key as keyof typeof answers]
+    );
+    console.log(isCorrect);
+    setResult(isCorrect ? "true" : "false");
   };
 
   const resetQuiz = () => {
-    setNumbers(["5", "4", "3", "2", "1"]);
+    setAnswers({
+      Asosiatif: false,
+      Terbuka: false,
+      Tertutup: false,
+      Komutatif: false,
+    });
+    setResult("");
   };
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Urutkan Angka</h2>
-      <div className="flex flex-col space-y-2">
-        {numbers.map((number) => (
-          <div
-            key={number}
-            draggable
-            onDragStart={(event) => onDragStart(event, number)}
-            onDragOver={onDragOver}
-            onDrop={(event) => onDrop(event, number)}
-            className="p-2 border-2 border-gray-300 cursor-move"
-          >
-            {number}
-          </div>
-        ))}
+      <h1 className="text-xl font-bold mb-4">Quiz Matematika</h1>
+      <div className="mb-4">
+        <label className="block">
+          <input
+            type="checkbox"
+            name="Asosiatif"
+            checked={answers.Asosiatif}
+            onChange={handleChange}
+            className="mr-2"
+          />
+          Asosiatif
+        </label>
+        <label className="block">
+          <input
+            type="checkbox"
+            name="Terbuka"
+            checked={answers.Terbuka}
+            onChange={handleChange}
+            className="mr-2"
+          />
+          Terbuka
+        </label>
+        <label className="block">
+          <input
+            type="checkbox"
+            name="Tertutup"
+            checked={answers.Tertutup}
+            onChange={handleChange}
+            className="mr-2"
+          />
+          Tertutup
+        </label>
+        <label className="block">
+          <input
+            type="checkbox"
+            name="Komutatif"
+            checked={answers.Komutatif}
+            onChange={handleChange}
+            className="mr-2"
+          />
+          Komutatif
+        </label>
       </div>
       <button
-        onClick={checkAnswer}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white"
+        onClick={checkAnswers}
+        className="bg-blue-500 text-white px-4 py-2 rounded"
       >
         Cek Jawaban
       </button>
+
+      <div className="mt-4">
+        {result === "true" && (
+          <p className="text-green-500">Selamat! Jawaban Anda benar.</p>
+        )}
+        {result === "false" && (
+          <p className="text-red-500">Jawaban Anda salah. Coba lagi.</p>
+        )}
+      </div>
+
       <button
         onClick={resetQuiz}
-        className="mt-2 px-4 py-2 bg-red-500 text-white"
+        className="bg-gray-500 text-white px-4 py-2 rounded mt-4"
       >
-        Ulang Kuis
+        Ulang Quiz
       </button>
     </div>
   );

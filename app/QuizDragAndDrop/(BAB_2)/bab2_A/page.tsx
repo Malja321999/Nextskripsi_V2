@@ -144,7 +144,7 @@ const Page = () => {
           </div>
 
           <div>
-            <div className="max-w-base transition duration-300 ease-in-out hover:scale-150 bg-teal-500 mb-2 p-5 rounded-md text-center text-xs font-bold w-[30rem]">
+            <div className="cursor-zoom-in max-w-base transition duration-300 ease-in-out hover:scale-150 bg-teal-500 mb-2 p-5 rounded-md text-center text-xs font-bold w-[30rem]">
               Suatu hari Kak Ani ingin membuat jus Apel, kemudian dia mengambil
               Apel tersebut dalam kulkas. Kemudian ia menghitung jumlah Apel
               didalam kulkas apakah sudah cukup untuk membuat jus apel untuk
@@ -156,7 +156,7 @@ const Page = () => {
               samping ini.
             </div>
 
-            <div className="max-w-base transition duration-300 ease-in-out hover:scale-150 bg-rose-500 mb-2 p-5 rounded-md text-center text-sm font-bold w-[30rem]">
+            <div className="cursor-zoom-in max-w-base transition duration-300 ease-in-out hover:scale-150 bg-rose-500 mb-2 p-5 rounded-md text-center text-sm font-bold w-[30rem]">
               Seret Buah Apel Dari Kulkas Atau Pasar ke Kolom Jawaban Untuk
               Memberikan Jumlah Apel Yang Dimiliki Saat Ini.
             </div>

@@ -28,7 +28,7 @@ const Home = () => {
             membuat proses belajar menjadi menyenanagkan dan menarik bagi siswa
             dalam mempelajari Bilangan Bulat.
           </p>
-          <ul className="flex justify-start items-center gap-2 w-[400px]">
+          <ul className="flex justify-start items-center gap-2 w-[420px]">
             <li className="flex justify-start items-center">
               <Icon.FaCheckCircle />
               Daring

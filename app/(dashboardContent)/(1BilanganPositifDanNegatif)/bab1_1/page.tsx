@@ -28,6 +28,9 @@ import Cardlatihan from "@/app/component/Cardlatihan";
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import CardFinishRead from "@/app/component/CardFinishRead";
+import { FaVideo } from "react-icons/fa";
+import { RiSlideshow2Fill } from "react-icons/ri";
+import { MdCenterFocusStrong } from "react-icons/md";
 
 const Page = () => {
   const [Collapse2, SetCollapse2] = useState(false);
@@ -77,6 +80,8 @@ const Page = () => {
     setjawaban1status("");
     setjawaban2status("");
   }
+
+  const [Media, setMedia] = useState("");
 
   return (
     <div className="bg-rose-700 md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
@@ -133,24 +138,87 @@ const Page = () => {
             </div>
           </div>
 
+          {/* Tombol Media */}
+          <div className="mt-20 mb-10">
+            <ul className="flex flex-row gap-5 justify-center items-center text-center cursor-pointer">
+              <li
+                onClick={() => setMedia("")}
+                className="flex justify-center items-center gap-2 bg-gray-800 hover:bg-gray-700 w-[8rem] h-[5rem] p-2 rounded-md text-base"
+              >
+                <MdCenterFocusStrong />
+                Fokus
+              </li>
+              <li
+                onClick={() => setMedia("video")}
+                className="flex justify-center items-center gap-2 bg-gray-800 hover:bg-gray-700 w-[8rem] h-[5rem] p-2 rounded-md text-base"
+              >
+                <FaVideo />
+                Video
+              </li>
+              <li
+                onClick={() => setMedia("slide")}
+                className="flex justify-center items-center gap-2 bg-gray-800 hover:bg-gray-700 w-[8rem] h-[5rem] p-2 rounded-md text-base"
+              >
+                <RiSlideshow2Fill />
+                Slide
+              </li>
+            </ul>
+          </div>
+
           {/* Video Intro Bab */}
-          <div className={CVideo}>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/Q-i7IjBUF6s?si=nXBEewH5Uw6OXp1U"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-            <h1 className="text-center mt-10 mb-5">BILANGAN DENGAN TANDA</h1>
+          <div>
+            {Media === "video" ? (
+              <div className={CVideo}>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/Q-i7IjBUF6s?si=nXBEewH5Uw6OXp1U"
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+                <h1 className="text-center mt-10 mb-5">
+                  BILANGAN DENGAN TANDA
+                </h1>
+                <ul className="ml-5 list-decimal list-inside w-50 text-xs">
+                  <h1 className="mb-2 font-bold">
+                    Tujuan Video Pembelajaran :
+                  </h1>
+                  <li>
+                    Siswa dapat menjelaskan maksud dari tanda “+” dan “-” pada
+                    suatu bilangan dengan benar.
+                  </li>
+                  <li>
+                    Siswa dapat menyatakan besaran-besaran dengan menggunakan
+                    tanda “+” atau “-” dengan tepat.
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+
+          {/* Slide Materi */}
+          <div>
+            {Media === "slide" ? (
+              <div className="wrapperIfreme">
+                <iframe
+                  loading="lazy"
+                  src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF94ipRtn4&#x2F;HLkGd7YEHY3GDPvcB2Kmkg&#x2F;view?embed"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
 
           {/* Konten Bab */}
           <div className="wrapperIfreme">
             <iframe
               loading="lazy"
-              src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF94ipRtn4&#x2F;HLkGd7YEHY3GDPvcB2Kmkg&#x2F;view?embed"
+              src="https://scratch.mit.edu/projects/1008826186/embed"
               allowFullScreen
             ></iframe>
             <button

@@ -22,10 +22,14 @@ import { GiInspiration } from "react-icons/gi";
 import Link from "next/link";
 import ButttonpnUP from "@/app/component/ButttonpnUP";
 import ButttonpnDOWN from "@/app/component/ButttonpnDOWN";
-import { FaRegCalendarCheck } from "react-icons/fa";
-import { RiMapPinAddFill } from "react-icons/ri";
+import { FaRegCalendarCheck, FaVideo } from "react-icons/fa";
+import { RiMapPinAddFill, RiSlideshow2Fill } from "react-icons/ri";
 import Cardlatihan from "@/app/component/Cardlatihan";
-import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
+import {
+  MdCenterFocusStrong,
+  MdSkipNext,
+  MdSkipPrevious,
+} from "react-icons/md";
 import { useRouter } from "next/navigation";
 import CardFinishRead from "@/app/component/CardFinishRead";
 
@@ -43,6 +47,8 @@ const Page = () => {
   const router = useRouter();
 
   const [FinishReading, setFinishReading] = useState(false);
+
+  const [Media, setMedia] = useState("");
 
   return (
     <div className="bg-rose-700 md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
@@ -100,40 +106,117 @@ const Page = () => {
           </div>
         </div>
 
-        {/* Video Intro Bab 1.2 */}
-        <div className={CVideo}>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/WfnTG0q3D6o?si=0HlcHnbHP74JpdeB"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-          <h1 className="text-center mt-10 mb-5">
-            MEMBANDINGKAN BILANGAN BULAT
-          </h1>
+        {/* Tombol Media */}
+        <div className="mt-5 mb-5">
+          <ul className="flex flex-row gap-5 justify-center items-center text-center cursor-pointer">
+            <li
+              onClick={() => setMedia("")}
+              className={`${
+                Media === "" ? "bg-indigo-500" : "bg-gray-800"
+              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
+            >
+              <MdCenterFocusStrong />
+              Fokus
+            </li>
+            <li
+              onClick={() => setMedia("video")}
+              className={`${
+                Media === "video" ? "bg-indigo-500" : "bg-gray-800"
+              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
+            >
+              <FaVideo />
+              Video
+            </li>
+            <li
+              onClick={() => setMedia("slide")}
+              className={`${
+                Media === "slide" ? "bg-indigo-500" : "bg-gray-800"
+              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
+            >
+              <RiSlideshow2Fill />
+              Slide
+            </li>
+          </ul>
         </div>
 
-        {/* Konten Bab 1.2 */}
-        <div className="wrapperIfreme">
-          <iframe
-            width="900"
-            height="500"
-            loading="lazy"
-            src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF-5u0wRd0&#x2F;KsfvvNbdHZUXR3eAaDUYZw&#x2F;view?embed"
-            allowFullScreen
-          ></iframe>
-          <button
-            onClick={() => setFinishReading(!FinishReading)}
-            className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
-          >
-            <span>
-              {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
-            </span>
-            Selesai Membaca
-          </button>
+        {/* Konten Bab */}
+        <div>
+          {Media === "" ? (
+            <div className="wrapperIfreme">
+              <iframe
+                loading="lazy"
+                src="https://scratch.mit.edu/projects/1013160095/embed"
+                allowFullScreen
+              ></iframe>
+              <button
+                onClick={() => setFinishReading(!FinishReading)}
+                className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+              >
+                <span>
+                  {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
+                </span>
+                Selesai Membaca
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
+
+        {/* Video Bab 1.2 */}
+        <div>
+          {Media === "video" ? (
+            <div className={CVideo}>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/WfnTG0q3D6o?si=0HlcHnbHP74JpdeB"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+              <h1 className="text-center mt-10 mb-5">
+                MEMBANDINGKAN BILANGAN BULAT
+              </h1>
+              <ul className="ml-5 list-decimal list-inside w-50 text-xs">
+                <h1 className="mb-2 font-bold">Tujuan Video Pembelajaran :</h1>
+                <li>
+                  Siswa dapat menentukan posisi bilangan pada garis bilangan
+                  dengan benar.
+                </li>
+                <br />
+                <li>
+                  Siswa dapat membandingkan bilangan-bilangan menggunakan tanda
+                  pertidaksamaan yang tepat.
+                </li>
+                <br />
+                <li>
+                  Siswa dapat menyatakan nilai mutlak dari suatu bilangan.
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+
+        {/* Slide Materi */}
+        <div>
+          {Media === "slide" ? (
+            <div className="wrapperIfreme">
+              <iframe
+                width="900"
+                height="500"
+                loading="lazy"
+                src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF-5u0wRd0&#x2F;KsfvvNbdHZUXR3eAaDUYZw&#x2F;view?embed"
+                allowFullScreen
+              ></iframe>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+
         {/* Latihan Soal */}
         <div>
           {FinishReading ? (

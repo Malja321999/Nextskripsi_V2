@@ -139,25 +139,31 @@ const Page = () => {
           </div>
 
           {/* Tombol Media */}
-          <div className="mt-20 mb-10">
+          <div className="mt-5 mb-5">
             <ul className="flex flex-row gap-5 justify-center items-center text-center cursor-pointer">
               <li
                 onClick={() => setMedia("")}
-                className="flex justify-center items-center gap-2 bg-gray-800 hover:bg-gray-700 w-[8rem] h-[5rem] p-2 rounded-md text-base"
+                className={`${
+                  Media === "" ? "bg-indigo-500" : "bg-gray-800"
+                } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
               >
                 <MdCenterFocusStrong />
                 Fokus
               </li>
               <li
                 onClick={() => setMedia("video")}
-                className="flex justify-center items-center gap-2 bg-gray-800 hover:bg-gray-700 w-[8rem] h-[5rem] p-2 rounded-md text-base"
+                className={`${
+                  Media === "video" ? "bg-indigo-500" : "bg-gray-800"
+                } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
               >
                 <FaVideo />
                 Video
               </li>
               <li
                 onClick={() => setMedia("slide")}
-                className="flex justify-center items-center gap-2 bg-gray-800 hover:bg-gray-700 w-[8rem] h-[5rem] p-2 rounded-md text-base"
+                className={`${
+                  Media === "slide" ? "bg-indigo-500" : "bg-gray-800"
+                } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
               >
                 <RiSlideshow2Fill />
                 Slide
@@ -165,7 +171,35 @@ const Page = () => {
             </ul>
           </div>
 
-          {/* Video Intro Bab */}
+          {/* Konten Bab */}
+          <div>
+            {Media === "" ? (
+              <div className="wrapperIfreme">
+                <iframe
+                  loading="lazy"
+                  src="https://scratch.mit.edu/projects/1008826186/embed"
+                  allowFullScreen
+                ></iframe>
+                <button
+                  onClick={() => setFinishReading(!FinishReading)}
+                  className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                >
+                  <span>
+                    {FinishReading ? (
+                      <BsFillBookmarkCheckFill />
+                    ) : (
+                      <BsBookmark />
+                    )}
+                  </span>
+                  Selesai Membaca
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+
+          {/* Video Bab 1.1 */}
           <div>
             {Media === "video" ? (
               <div className={CVideo}>
@@ -185,12 +219,19 @@ const Page = () => {
                     Tujuan Video Pembelajaran :
                   </h1>
                   <li>
-                    Siswa dapat menjelaskan maksud dari tanda “+” dan “-” pada
-                    suatu bilangan dengan benar.
+                    Siswa dapat melakukan proses penjumlahan dua bilangan bulat
+                    dengan tepat.
                   </li>
+                  <br />
                   <li>
-                    Siswa dapat menyatakan besaran-besaran dengan menggunakan
-                    tanda “+” atau “-” dengan tepat.
+                    Siswa dapat melakukan pengurangan dua bilangan bulat dengan
+                    tepat.
+                  </li>
+                  <br />
+                  <li>
+                    Siswa dapat melakukan proses perhitungan yang terdapat dua{" "}
+                    <br />
+                    operasi (penjumlahan dan pengurangan) dengan benar.
                   </li>
                 </ul>
               </div>
@@ -214,26 +255,7 @@ const Page = () => {
             )}
           </div>
 
-          {/* Konten Bab */}
-          <div className="wrapperIfreme">
-            <iframe
-              loading="lazy"
-              src="https://scratch.mit.edu/projects/1008826186/embed"
-              allowFullScreen
-            ></iframe>
-            <button
-              onClick={() => setFinishReading(!FinishReading)}
-              className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
-            >
-              <span>
-                {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
-              </span>
-              Selesai Membaca
-            </button>
-          </div>
-
           {/* Latihan Soal */}
-
           <div>
             {FinishReading ? (
               <div>

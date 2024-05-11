@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 /* Icon Ringkasan */
-import { RiAlarmWarningLine } from "react-icons/ri";
+import { RiAlarmWarningLine, RiSlideshow2Fill } from "react-icons/ri";
 /* Icon Pras */
-import { FaRegCalendarCheck } from "react-icons/fa";
+import { FaRegCalendarCheck, FaVideo } from "react-icons/fa";
 /* Icon Tujuan */
 import { RiMapPinAddFill } from "react-icons/ri";
 /* Icon Uncheck */
@@ -30,6 +30,7 @@ import CardRang from "@/app/component/CardRang";
 import { IoBookOutline } from "react-icons/io5";
 import { BsBookmark } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
+import { MdCenterFocusStrong } from "react-icons/md";
 
 const Page = () => {
   const [Collapse, SetCollapse] = useState(false);
@@ -73,6 +74,8 @@ const Page = () => {
     setjawaban2status("");
   }
 
+  const [Media, setMedia] = useState("");
+
   return (
     <div className="bg-sky-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
       <ButttonpnUP p={"/bab2"} n={"/bab3_kuis"} />
@@ -91,7 +94,7 @@ const Page = () => {
       </div>
 
       <div>
-        {/* Tujuan Pembelajaran 1.2 */}
+        {/* Tujuan Pembelajaran bab 3 */}
         <div className="mx-20 bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
           <button onClick={() => SetCollapse2(!Collapse2)}>
             <ul className="flex justify-between gap-2">
@@ -130,37 +133,126 @@ const Page = () => {
           </div>
         </div>
 
-        {/* Video Intro Bab 2 */}
-        <div className={CVideo}>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/t-iY2WCFRBo?si=bgLmXNyw_6WfCJbS"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-          <h1 className="text-center mt-10 mb-5">Judul Video</h1>
+        {/* Tombol Media */}
+        <div className="mt-5 mb-5">
+          <ul className="flex flex-row gap-5 justify-center items-center text-center cursor-pointer">
+            <li
+              onClick={() => setMedia("")}
+              className={`${
+                Media === "" ? "bg-indigo-500" : "bg-gray-800"
+              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
+            >
+              <MdCenterFocusStrong />
+              Fokus
+            </li>
+            <li
+              onClick={() => setMedia("video")}
+              className={`${
+                Media === "video" ? "bg-indigo-500" : "bg-gray-800"
+              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
+            >
+              <FaVideo />
+              Video
+            </li>
+            <li
+              onClick={() => setMedia("slide")}
+              className={`${
+                Media === "slide" ? "bg-indigo-500" : "bg-gray-800"
+              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
+            >
+              <RiSlideshow2Fill />
+              Slide
+            </li>
+          </ul>
         </div>
 
-        {/* Konten Bab 2 */}
-        <div className="wrapperIfreme">
-          <iframe
-            width="900"
-            height="500"
-            loading="lazy"
-            src="https://www.canva.com/design/DAF_R6HOM2Y/Y8kNAS6dWImI5nouY3ZAAQ/view?embed"
-            allowFullScreen
-          ></iframe>
-          <button
-            onClick={() => setFinishReading(!FinishReading)}
-            className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
-          >
-            <span>
-              {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
-            </span>
-            Selesai Membaca
-          </button>
+        {/* Konten Bab */}
+        <div>
+          {Media === "" ? (
+            <div className="wrapperIfreme">
+              <iframe
+                loading="lazy"
+                src="https://scratch.mit.edu/projects/1013173153/embed"
+                allowFullScreen
+              ></iframe>
+              <button
+                onClick={() => setFinishReading(!FinishReading)}
+                className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+              >
+                <span>
+                  {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
+                </span>
+                Selesai Membaca
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+
+        {/* Video Bab 3 */}
+        <div>
+          {Media === "video" ? (
+            <div className={CVideo}>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/t-iY2WCFRBo?si=bgLmXNyw_6WfCJbS"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+              <h1 className="text-center mt-10 mb-5">
+                Perkalian dan <br /> Pembagian Bilangan Bulat
+              </h1>
+              <ul className="ml-5 list-decimal list-inside w-50 text-xs">
+                <h1 className="mb-2 font-bold">Tujuan Video Pembelajaran :</h1>
+                <li>
+                  Siswa dapat melakukan proses perkalian dua bilangan bulat
+                  dengan tepat.
+                </li>
+                <br />
+                <li>
+                  Siswa dapat melakukan pembagian dua bilangan bulat dengan
+                  tepat.
+                </li>
+                <br />
+                <li>
+                  Siswa dapat melakukan proses perhitungan dengan kombinasi
+                  empat <br /> operasi (penjumlahan, pengurangan, perkalian, dan
+                  pembagian) dengan benar.
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+
+        {/* Slide Bab 3 */}
+        <div>
+          {Media === "slide" ? (
+            <div className="wrapperIfreme">
+              <iframe
+                width="900"
+                height="500"
+                loading="lazy"
+                src="https://www.canva.com/design/DAF_R6HOM2Y/Y8kNAS6dWImI5nouY3ZAAQ/view?embed"
+                allowFullScreen
+              ></iframe>
+              <button
+                onClick={() => setFinishReading(!FinishReading)}
+                className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+              >
+                <span>
+                  {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
+                </span>
+                Selesai Membaca
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
 
         {/* Latihan Soal 3 */}

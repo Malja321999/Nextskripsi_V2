@@ -32,6 +32,7 @@ import {
 } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import CardFinishRead from "@/app/component/CardFinishRead";
+import { BiFullscreen } from "react-icons/bi";
 
 const Page = () => {
   const [Collapse2, SetCollapse2] = useState(false);
@@ -49,6 +50,20 @@ const Page = () => {
   const [FinishReading, setFinishReading] = useState(false);
 
   const [Media, setMedia] = useState("");
+
+  const Tfullscreen = () => {
+    const element = document.getElementById("fullscreenItem");
+
+    const isFullscreen = document.fullscreenElement;
+    console.log("isFullscreen");
+    if (isFullscreen) {
+      document.exitFullscreen();
+      console.log("exit fullscreen");
+    } else {
+      element?.requestFullscreen();
+      console.log("enter fullscreen");
+    }
+  };
 
   return (
     <div className="bg-rose-700 md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
@@ -142,21 +157,36 @@ const Page = () => {
         {/* Konten Bab */}
         <div>
           {Media === "" ? (
-            <div className="wrapperIfreme">
-              <iframe
-                loading="lazy"
-                src="https://scratch.mit.edu/projects/1013160095/embed"
-                allowFullScreen
-              ></iframe>
+            <div className="flex flex-col gap-1">
               <button
-                onClick={() => setFinishReading(!FinishReading)}
-                className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                onClick={Tfullscreen}
+                className="text-2xl ml-[12rem] flex justify-center items-center bg-gray-800 hover:bg-slate-700 w-[58.6rem] rounded-md"
               >
-                <span>
-                  {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
-                </span>
-                Selesai Membaca
+                <BiFullscreen />
+                Fulllscreen
               </button>
+              <div className="wrapperIfreme">
+                <iframe
+                  id="fullscreenItem"
+                  loading="lazy"
+                  src="https://scratch.mit.edu/projects/1013160095/embed"
+                  allowFullScreen
+                ></iframe>
+
+                <button
+                  onClick={() => setFinishReading(!FinishReading)}
+                  className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                >
+                  <span>
+                    {FinishReading ? (
+                      <BsFillBookmarkCheckFill />
+                    ) : (
+                      <BsBookmark />
+                    )}
+                  </span>
+                  Selesai Membaca
+                </button>
+              </div>
             </div>
           ) : (
             <></>

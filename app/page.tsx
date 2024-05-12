@@ -11,9 +11,12 @@ import { BsListUl } from "react-icons/bs";
 import { MdAccountCircle } from "react-icons/md";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { GrUserAdmin } from "react-icons/gr";
+import { Context, useState } from "react";
+import { useAppContext } from "./context/AppWrapper";
 
 const Home = () => {
-  const { data: session, status }: { data: any; status: string } = useSession();
+  const { data: session }: { data: any; status: string } = useSession();
+  const { modalIsOpen, setModalIsOpen } = useAppContext();
 
   return (
     <div className="md:h-screen h-[77vh] w-auto flex flex-col justify-center items-center md:mt-0 mt-24 overflow-y-auto">
@@ -103,7 +106,10 @@ const Home = () => {
           </li>
           <li>
             <Link href={"/bab1_1"}>
-              <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-emerald-600 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
+              <button
+                onClick={() => setModalIsOpen(true)}
+                className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-emerald-600 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold"
+              >
                 <BsListUl className="w-[35px] h-[35px]" />
                 Materi
               </button>
@@ -137,3 +143,6 @@ const Home = () => {
 };
 
 export default Home;
+function useContext(AppContext: Context<any>) {
+  throw new Error("Function not implemented.");
+}

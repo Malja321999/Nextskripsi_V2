@@ -33,6 +33,10 @@ import { RiSlideshow2Fill } from "react-icons/ri";
 import { MdCenterFocusStrong } from "react-icons/md";
 import { set } from "firebase/database";
 import { BiFullscreen } from "react-icons/bi";
+import Modal from "react-modal";
+import { useAppContext } from "@/app/context/AppWrapper";
+import { IoClose } from "react-icons/io5";
+import { FaCircleQuestion } from "react-icons/fa6";
 
 const Page = () => {
   const [Collapse2, SetCollapse2] = useState(false);
@@ -99,9 +103,61 @@ const Page = () => {
     }
   };
 
+  const { modalIsOpen, setModalIsOpen } = useAppContext();
+
   return (
     <div className="bg-rose-700 md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
       <ButttonpnUP p={"/"} n={"/bab1_2"} />
+
+      <div className="flex flex-row gap-2 justify-center items-center">
+        <button
+          onClick={() => setModalIsOpen(true)}
+          className="text-black font-bold bg-yellow-300 p-5 w-fit rounded-md flex flex-col justify-center items-center gap-2"
+        >
+          <FaCircleQuestion />
+          PANDUAN
+        </button>
+      </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel="Video Modal"
+        className="flex justify-center items-center text-5xl p-5 rounded-md w-fit"
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0,0,0,0.7)",
+          },
+          content: {
+            width: "80rem",
+            height: "85vh",
+            margin: "auto", // Center the modal horizontally
+            padding: "0px",
+            border: "none",
+            overflow: "hidden",
+            marginTop: "100px",
+          },
+        }}
+      >
+        <div className="flex flex-col justify-start items-center gap-2">
+          <h1 className="text-3xl text-center font-bold bg-indigo-500 p-5 w-fit rounded-md shadow-md">
+            Panduan Media Pembelajaran <br /> BILANGAN BULAT
+          </h1>
+          <iframe
+            className="w-[38rem] h-[25rem] rounded-md"
+            loading="lazy"
+            src="https://www.canva.com/design/DAGE6nXV6FY/o0-Xg_uhhv8oU5mEts8OVg/view?embed"
+            allowFullScreen
+          />
+          <button
+            onClick={() => setModalIsOpen(false)}
+            className="text-base bg-red-500 p-2 w-fit rounded-md flex flex-col justify-center items-center gap-2"
+          >
+            <IoClose />
+            Tutup
+          </button>
+        </div>
+      </Modal>
 
       {/* Judul Bab */}
       <div className="mx-2 mt-0 left-[-90.9rem]">

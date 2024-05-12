@@ -1,12 +1,12 @@
 "use client";
-import { SessionProvider, useSession } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 import { createContext, useContext, useState } from "react";
 import { ThemeProvider } from "next-themes";
 
 export const AppContext = createContext<any>(undefined);
 
 export function AppWrapper({ children }: { children: React.ReactNode }) {
-  const [darkMode, setdarkMode] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <SessionProvider>
@@ -17,8 +17,8 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
       >
         <AppContext.Provider
           value={{
-            darkMode,
-            setdarkMode,
+            modalIsOpen,
+            setModalIsOpen,
           }}
         >
           {children}

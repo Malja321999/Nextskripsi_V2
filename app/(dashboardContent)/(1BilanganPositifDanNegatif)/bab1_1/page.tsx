@@ -123,6 +123,7 @@ const Page = () => {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Video Modal"
+        /* closeTimeoutMS={500} */
         className="flex justify-center items-center text-5xl p-5 rounded-md w-fit"
         style={{
           overlay: {
@@ -139,7 +140,10 @@ const Page = () => {
           },
         }}
       >
-        <div className="flex flex-col justify-start items-center gap-2">
+        <div
+          style={{ animation: "dropTop .30s linear" }}
+          className="flex flex-col justify-start items-center gap-2"
+        >
           <h1 className="text-3xl text-center font-bold bg-indigo-500 p-5 w-fit rounded-md shadow-md">
             Panduan Media Pembelajaran <br /> BILANGAN BULAT
           </h1>

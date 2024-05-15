@@ -6,14 +6,19 @@ import { BiSolidChalkboard } from "react-icons/bi";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
 import { BsClipboard2CheckFill } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
-
+import DataTable, { createTheme } from "react-data-table-component";
+import dynamic from "next/dynamic";
 const Page = () => {
   const [Collapse, setCollapse] = useState(false);
   const [selectmenu, setselectmenu] = useState("Data Murid");
+  const [value, setValue] = useState("10");
+
+  const NoSSR = dynamic(() => import("../no-ssr/NOSSR"), { ssr: false });
+
   return (
     <div className="flex flex-row justify-start items-start gap-7">
+      {/* Sidebar */}
       <div className="flex justify-left items-center">
-        {/* Sidebar */}
         <div
           className={`${
             Collapse ? "w-[15rem]" : "w-[5rem]"
@@ -101,30 +106,28 @@ const Page = () => {
           {selectmenu === "Data Murid" && (
             <div className="flex flex-col justify-center items-center">
               <div className="flex flex-col justify-center items-start">
-                <div className="text-5xl font-bold text-center bg-teal-500 p-5 w-fit flex justify-start items-start rounded-md">
+                <div className="text-lg font-bold text-center bg-teal-400 p-5 w-fit flex justify-start items-start rounded-md">
                   Data Murid
                 </div>
               </div>
-
-              <div className="mt-10 flex justify-between items-start gap-[55rem]">
+              <div className="mt-2 flex justify-between items-start gap-[55rem]">
                 {/* select class */}
-
                 <div className="flex">
                   <button
                     id="states-button"
                     type="button"
-                    className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none  dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white dark:border-gray-600"
+                    className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-2 focus:outline-none focus:ring-blue-500"
                   >
-                    USA
+                    <label className="font-bold" htmlFor="states">
+                      KELAS :
+                    </label>
                   </button>
-                  <label htmlFor="states" className="sr-only">
-                    Choose a state
-                  </label>
+
                   <select
                     id="states"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-e-lg border-s-gray-100 dark:border-s-gray-700 border-s-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border-2 border-gray-300 text-gray-900 font-bold text-sm rounded-e-lg border-s-gray-100 border-s-2 focus:ring-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   >
-                    <option selected>Choose a state</option>
+                    <option selected>Pilih Kelas</option>
                     <option value="CA">California</option>
                     <option value="TX">Texas</option>
                     <option value="WH">Washinghton</option>
@@ -134,35 +137,47 @@ const Page = () => {
                     <option value="MI">Michigan</option>
                   </select>
                 </div>
-
-                {/* <div className="flex justify-center items-center">
-                  <label
-                    htmlFor="countries"
-                    className="bg-gray-600 text-white rounded-l-lg h-[50px] w-fit flex flex-row  justify-center items-center text-center text-xl  focus:ring-blue-500 focus:border-blue-500 p-2.5"
-                  >
-                    Kelas :
-                  </label>
-                  <form className="max-w-sm mx-auto">
-                    <select
-                      disabled={false}
-                      id="countries"
-                      className="rounded-r-lg h-[52px] w-fit flex flex-row  justify-center items-center text-center text-xl bg-white border-2 border-e-gray-500 border-y-gray-500 text-gray-900 focus:ring-blue-500 focus:border-blue-500 p-2.5"
-                    >
-                      <option selected>Pilih Kelas</option>
-                      <option value="US">United States</option>
-                      <option value="CA">Canada</option>
-                      <option value="FR">France</option>
-                      <option value="DE">Germany</option>
-                    </select>
-                  </form>
-                </div> */}
                 {/* add account */}
                 <button className="flex flex-row justify-center items-center gap-2 bg-white rounded-full p-3 h-fit text-center font-bold text-3xl">
                   <div>
                     <HiUserAdd />
                   </div>
-                  <div className="text-xl">Add Account</div>
+                  <div className="text-base">Add Account</div>
                 </button>
+              </div>
+              <div className="font-bold mt-5 flex justify-between items-start gap-[55rem]">
+                {/* Show Data Student */}
+                <div className="flex flex-row justify-center items-center gap-2">
+                  <div>Tampilkan</div>
+                  <select
+                    value={value}
+                    onChange={(val) => setValue(val.target.value)}
+                    id="showData"
+                    className="bg-gray-50 border-2 border-gray-300 text-gray-900 font-bold text-sm rounded-md border-s-gray-100 border-s-2 focus:ring-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  >
+                    <option value="10" selected>
+                      10
+                    </option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <div>Data</div>
+                </div>
+                {/*input Search Data Student*/}
+                <div className="flex flex-row justify-center items-center gap-2">
+                  <div>Cari :</div>
+                  <div>
+                    <input
+                      type="text"
+                      className="bg-gray-50 rounded-md p-1 px-4 w-40 focus:ring-4 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+              </div>
+              {/* table data student */}
+              <div className="text-gray-900">
+                <NoSSR />
               </div>
             </div>
           )}
@@ -179,3 +194,16 @@ const Page = () => {
 };
 
 export default Page;
+function constcreateTheme(
+  arg0: string,
+  arg1: {
+    text: { primary: string; secondary: string };
+    background: { default: string };
+    context: { background: string; text: string };
+    divider: { default: string };
+    action: { button: string; hover: string; disabled: string };
+  },
+  arg2: string
+) {
+  throw new Error("Function not implemented.");
+}

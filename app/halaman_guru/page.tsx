@@ -93,7 +93,7 @@ const Page = () => {
                 <div>
                   <BsClipboard2CheckFill />
                 </div>
-                <div className={` ${!Collapse && "text-xs"}`}>Hasil Ujian</div>
+                <div className={` ${!Collapse && "text-xs"}`}>Ujian Akhir</div>
               </button>
             </div>
           </div>
@@ -123,7 +123,7 @@ const Page = () => {
         {/* Hasil Kuis */}
         <div>{selectmenu === "Hasil Kuis" && <div>Hasil Kuis</div>}</div>
         {/* Hasil Ujian */}
-        <div>{selectmenu === "Hasil Ujian" && <div>Hasil Ujian</div>}</div>
+        <div>{selectmenu === "Hasil Ujian" && <div>Ujian Akhir</div>}</div>
       </div>
     </div>
   );

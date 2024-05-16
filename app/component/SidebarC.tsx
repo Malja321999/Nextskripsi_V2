@@ -12,6 +12,7 @@ import { FaA, FaB, FaC, FaD, FaM, FaQ } from "react-icons/fa6";
 import { BsArrowLeftShort, BsChevronRight } from "react-icons/bs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BsClipboard2CheckFill } from "react-icons/bs";
 
 const SidebarC = () => {
   const [open1, setOpen1] = useState(true);
@@ -298,6 +299,34 @@ const SidebarC = () => {
                     </Link>
                   </ul>
                 )}
+              </>
+            </ul>
+          </li>
+          <li>
+            {/* Ujian Akhir */}
+            <ul className="pt-2">
+              <>
+                <Link href="/ujian_akhir">
+                  <li
+                    className={`${
+                      open1 && "w-[275px]"
+                    } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
+                ${pathname === "/ujian_akhir" && "bg-teal-500"}
+                `}
+                    onClick={() => setSubmenutOpen4(!submenuOpen4)}
+                  >
+                    <span className="text-2xl block float-left">
+                      <BsClipboard2CheckFill />
+                    </span>
+                    <span
+                      className={`text-xs font-medium flex-1 ${
+                        !open1 && "hidden"
+                      }`}
+                    >
+                      Ujian Akhir
+                    </span>
+                  </li>
+                </Link>
               </>
             </ul>
           </li>

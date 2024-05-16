@@ -37,6 +37,7 @@ export default function ProfilePage() {
     const docRef = await doc(firestore, "DataUsers", `${userEmail}`);
     const docSnap = await getDoc(docRef);
     try {
+      setSync(true);
       if (docSnap.exists()) {
         setsnapshotFirestore([docSnap.data()]); // Converting DocumentData to array and setting it
       } else {
@@ -46,6 +47,9 @@ export default function ProfilePage() {
       console.log("Error getting document:", error);
     }
     setIsLoading(false);
+    setTimeout(function () {
+      setSync(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -63,6 +67,8 @@ export default function ProfilePage() {
   }
 
   const router = useRouter();
+
+  const [sync, setSync] = useState(false);
 
   return (
     <div className="flex justify-start items-start h-screen mt-28">
@@ -115,49 +121,75 @@ export default function ProfilePage() {
         </div>
         {/* Pengaturan */}
         <div className="w-[72rem] h-[37rem] bg-gradient-to-r from-purple-500 to-pink-500 p-5 rounded-md flex flex-col">
-          <div>
-            <div className="p-5 rounded-md bg-gray-700 w-full h-fit text-lg font-black justify-center items-center">
-              <div className="flex flex-col justify-center items-center gap-1">
-                <div className="flex justify-center items-center gap-[65rem]">
-                  <div></div>
-                  <button
-                    onClick={() => getDataFirestore()}
-                    className="hover:text-teal-300 text-white text-xl font-bold"
+          <div className="text-black overflow-y-auto mb-5 rounded-md shadow w-full h-[80rem] border-4 border-gray-500">
+            {ObjectDataFirestore.map((data, index) => (
+              <table key={data.id} className="w-full h-full">
+                <thead>
+                  <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
+                    <th className="border border-slate-600 text-center p-3 px-5">
+                      Kuis
+                    </th>
+                    <th className="flex flex-col justify-center items-center gap-1 border border-slate-600 text-center p-3 px-5">
+                      <div className="flex flex-row justify-center items-center gap-10">
+                        <button
+                          onClick={() => {
+                            getDataFirestore();
+                            setSync(true);
+                          }}
+                          className="hover:text-blue-700 text-xl font-bold"
+                        >
+                          <FaSync
+                            className={`text-4xl rounded cursor-pointer block float-left mr-2 duration-5000 ${
+                              sync && "animate-spin"
+                            }`}
+                          />
+                        </button>
+                      </div>
+                      <div>Nilai</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="font-bold ">
+                  <tr className={`border-b bg-gray-100 `}>
+                    <td className="border border-slate-600 p-3 px-5 text-center">
+                      BAB 1 Bilangan Positif Dan Negatif
+                    </td>
+                    <td className="border border-slate-600 p-3 px-5 text-center">
+                      {data.bab1_kuis}
+                    </td>
+                  </tr>
+                  <tr
+                    className={`border-b  bg-gray-300
+                    `}
                   >
-                    <FaSync />
-                  </button>
-                </div>
-                <div className="flex justify-center items-center gap-[40rem]">
-                  <div>HALAMAN BAB</div>
-                  <div>NILAI</div>
-                </div>
-              </div>
-            </div>
-            <div>{ObjectDataFirestore === null && "Loading data..."}</div>
-            <div className="p-5 rounded-md bg-gray-500 w-full h-fit mb-5 text-base text-center">
-              {ObjectDataFirestore.map((data) => (
-                <div key={data.id}>
-                  <div className="flex justify-between items-center mb-2 bg-rose-700 h-5">
-                    <div className="pl-40">BAB 1</div>
-                    <div className="pr-10">{data.bab1_kuis}</div>
-                  </div>
-                  <div className="flex justify-between items-center mb-2 bg-emerald-700 h-5">
-                    <div className="pl-40">BAB 2</div>
-                    <div className="pr-10">{data.bab2_kuis}</div>
-                  </div>
-                  <div className="flex justify-between items-center mb-2 bg-blue-700 h-5">
-                    <div className="pl-40">BAB 3</div>
-                    <div className="pr-10">{data.bab3_kuis}</div>
-                  </div>
-                  <div className="flex justify-between items-center mb-2 bg-fuchsia-600 h-5">
-                    <div className="pl-40">BAB 4</div>
-                    <div className="pr-10">{data.bab4_kuis}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+                    <td className="border border-slate-600 p-3 px-5 text-center">
+                      BAB 2 Penjumlahan dan Pengurangan Bilangan Bulat
+                    </td>
+                    <td className="border border-slate-600 p-3 px-5 text-center">
+                      {data.bab2_kuis}
+                    </td>
+                  </tr>
 
+                  <tr className={`border-b bg-gray-100`}>
+                    <td className="border border-slate-600 p-3 px-5 text-center">
+                      BAB 3 Perkalian dan Pembagian Bilangan Bulat
+                    </td>
+                    <td className="border border-slate-600 p-3 px-5 text-center">
+                      {data.bab3_kuis}
+                    </td>
+                  </tr>
+                  <tr className={`border-b bg-gray-300`}>
+                    <td className="border border-slate-600 p-3 px-5 text-center">
+                      Ujian Akhir
+                    </td>
+                    <td className="border border-slate-600 p-3 px-5 text-center">
+                      {data.ujian_akhir}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            ))}
+          </div>
           <div className="p-5 rounded-md bg-gray-700 w-full h-fit text-xl font-black">
             <div className="flex justify-start items-center gap-2">
               <IoMdSettings />

@@ -46,6 +46,7 @@ const autOptions: NextAuthOptions = {
         token.fullname = user.fullname;
         token.role = user.role;
         token.class = user.class;
+        token.nisn = user.nisn;
       }
       if (account?.provider === "google") {
         const data = {
@@ -60,6 +61,8 @@ const autOptions: NextAuthOptions = {
               token.email = result.data.email;
               token.fullname = result.data.fullname;
               token.role = result.data.role;
+              token.class = result.data.class;
+              token.nisn = result.data.nisn;
             }
           }
         );
@@ -78,6 +81,9 @@ const autOptions: NextAuthOptions = {
       }
       if ("class" in token) {
         session.user.class = token.class;
+      }
+      if ("nisn" in token) {
+        session.user.nisn = token.nisn;
       }
       return session;
     },

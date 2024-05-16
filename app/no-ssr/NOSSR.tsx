@@ -8,40 +8,38 @@ function NOSSR() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<any>([]);
 
-  const dataStudents = [
-    {
-      id: 1,
-      nisn: "1111",
-      name: "Jamal",
-      class: "A",
-    },
-    {
-      id: 2,
-      nisn: "1999",
-      name: "TBA32",
-      class: "B",
-    },
-    {
-      id: 3,
-      nisn: "1985",
-      name: "Rafa",
-      class: "C",
-    },
-    {
-      id: 4,
-      nisn: "2000",
-      name: "Siti",
-      class: "D",
-    },
-    {
-      id: 5,
-      nisn: "2002",
-      name: "Budi",
-      class: "E",
-    },
-  ];
+  const getData = async () => {
+    try {
+      const req = await fetch("https://fakestoreapi.com/products");
+      const res = await req.json();
+      setData(res);
+      setFilter(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(data);
+  console.log(filter);
+
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const result = data.filter((item: any) => {
+      return item.name.toLowerCase().match(search.toLowerCase());
+    });
+    setFilter(result);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]);
 
   const columns = [
+    {
+      name: "Nama Barang",
+      selector: (row: any) => row.title,
+    },
     {
       name: "NISN",
       selector: (row: any) => row.nisn,
@@ -104,48 +102,13 @@ function NOSSR() {
     },
   };
 
-  const getData = async () => {
-    try {
-      /*       const req = await fetch("https://fakestoreapi.com/products");
-      const res = await req.json();
-      setdata(res);
-      setdataFilter(res); 
-      */
-      dataStudents.map((item) => {
-        setData((p: any) => [...p, item]);
-        setFilter((prev: any) => [...prev, item]);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  console.log(data);
-  console.log(filter);
-
-  useEffect(() => {
-    getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const result = data.filter((item: any) => {
-      return item.name.toLowerCase().match(search.toLowerCase());
-    });
-    setFilter(result);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search]);
-
-  if (filter === null) {
-  }
-
   /* 
   const [uniqueNames, setuniqueNames] = useState([]);
   const uniq = records.name.filter(
     (value: any, index: any, self: any) => self.indexOf(value) === index
   ); */
 
-  /*   const [pending, setPending] = useState(true);
+    const [pending, setPending] = useState(true);
   const [rows, setRows] = useState([]);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -154,7 +117,7 @@ function NOSSR() {
     }, 2000);
     return () => clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); */
+  }, []);
 
   return (
     <div className="px-3 py-0 w-[85rem] rounded-md">
@@ -166,8 +129,7 @@ function NOSSR() {
 
       <div className="rounded-md overflow-y-auto h-[31rem]">
         <DataTable
-          selectableRows
-          /* progressPending={pending} */
+          progressPending={pending}
           customStyles={customStyles}
           columns={columns}
           data={data}

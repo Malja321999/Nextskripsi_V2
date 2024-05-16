@@ -29,6 +29,7 @@ export default function ProfilePage() {
   const userEmail = session?.user?.email;
   const userName = session?.user?.fullname;
   const userClass = session?.user?.class;
+  const userNisn = session?.user?.nisn;
   console.log({ user });
 
   const getDataFirestore = async () => {
@@ -85,6 +86,9 @@ export default function ProfilePage() {
             </li>
             <li className="text-start">
               <h1 className="font-bold text-2xl mb-2 mt-2">{userName}</h1>
+              <h2 className="text-sm mb-2 mt-2 text-gray-400">
+                <span className="font-bold">NISN :</span> {userNisn}
+              </h2>
               <div className="h-1 w-[17rem] bg-white rounded-md"></div>
               <h6 className="mt-10">
                 <span className="font-bold text-lg">Email : </span>
@@ -93,7 +97,7 @@ export default function ProfilePage() {
                 {userClass}
               </h6>
             </li>
-            <li className="mt-60 h-fit w-full text-start text-xl font-bold bg-rose-500 p-3 rounded-md">
+            <li className="mt-[13rem] h-fit w-full text-start text-xl font-bold bg-rose-500 p-3 rounded-md">
               <button
                 className="flex justify-start items-center gap-2"
                 onClick={() => signOut()}

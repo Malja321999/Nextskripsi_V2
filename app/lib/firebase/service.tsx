@@ -35,9 +35,11 @@ export async function retrieveDataById(collectionName: string, id: string) {
 
 export async function register(data: {
   fullname: string;
+  nisn: string;
   email: string;
-  password: string;
+  class?: string;
   role?: string;
+  password: string;
 }) {
   const q = query(
     collection(firestore, "users"),
@@ -52,6 +54,8 @@ export async function register(data: {
     return { status: false, statusCode: 400, message: "Email already exist" };
   } else {
     data.role = "member";
+    /* data.nisn = "1111"; */
+    data.class = "A";
     data.password = await bcrypt.hash(data.password, 10);
     try {
       await addDoc(collection(firestore, "users"), data);
@@ -89,7 +93,7 @@ export async function loginWithGoogle(data: any, callback: any) {
     where("email", "==", data.email)
   );
   const shapshot = await getDocs(q);
-  const user:any = shapshot.docs.map((doc) => ({
+  const user: any = shapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));

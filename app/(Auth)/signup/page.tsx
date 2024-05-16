@@ -18,6 +18,7 @@ const SignUp = () => {
 
   type Inputs = {
     fullname: string;
+    nisn: string;
     email: string;
     password: string;
     confirmPassword: string;
@@ -34,6 +35,7 @@ const SignUp = () => {
   } = useForm<Inputs>({
     defaultValues: {
       fullname: "",
+      nisn: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -54,7 +56,10 @@ const SignUp = () => {
       method: "POST",
       body: JSON.stringify({
         fullname: e.fullname,
+        nisn: e.nisn,
         email: e.email,
+        /* class : findClass,
+        role : findRole, */
         password: e.password,
       }),
     });
@@ -141,6 +146,42 @@ const SignUp = () => {
           </div>
           <div>
             <label
+              htmlFor="nisn"
+              className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
+            >
+              NISN
+            </label>
+            <div>
+              <Controller
+                name="nisn"
+                rules={{
+                  required: "NISN is Required",
+                  pattern: {
+                    value: /^[1-9]{1}[0-9]{9}$/,
+                    message:
+                      "NISN tidak sesuai, pastikan NISN adalah angka maksimal 10 karakter, Digit pertama bukan nol",
+                  },
+                }}
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    placeholder="NISN"
+                    crossOrigin={undefined}
+                    size="lg"
+                    {...field}
+                    error={Boolean(errors?.nisn?.message)}
+                  />
+                )}
+              />
+              {errors?.nisn?.message && (
+                <div className="h-[1px] p-none m-none text-red-500 text-xs font-medium">
+                  {errors?.nisn?.message}
+                </div>
+              )}
+            </div>
+          </div>
+          <div>
+            <label
               htmlFor="email"
               className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
             >
@@ -153,7 +194,7 @@ const SignUp = () => {
                   required: "email is Required",
                   pattern: {
                     value: /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
-                    message: "Email ID is invaild",
+                    message: "Email is invaild",
                   },
                 }}
                 control={control}

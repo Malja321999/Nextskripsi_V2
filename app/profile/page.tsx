@@ -10,6 +10,7 @@ import { BiLogOut } from "react-icons/bi";
 import { signOut } from "next-auth/react";
 import { GrNext } from "react-icons/gr";
 import { useRouter } from "next/navigation";
+import { FaSync } from "react-icons/fa";
 
 export default function ProfilePage() {
   const [adagambar, setAdagambar] = useState(false);
@@ -33,7 +34,7 @@ export default function ProfilePage() {
   console.log({ user });
 
   const getDataFirestore = async () => {
-    const docRef = doc(firestore, "DataUsers", `${userEmail}`);
+    const docRef = await doc(firestore, "DataUsers", `${userEmail}`);
     const docSnap = await getDoc(docRef);
     try {
       if (docSnap.exists()) {
@@ -55,7 +56,11 @@ export default function ProfilePage() {
 
   const dataFirestore = snapshotFirestore || {};
   const ObjectDataFirestore = Object.values(dataFirestore);
-  console.log(ObjectDataFirestore);
+  console.log(dataFirestore);
+
+  if (dataFirestore.length === 0) {
+    getDataFirestore();
+  }
 
   const router = useRouter();
 
@@ -112,9 +117,20 @@ export default function ProfilePage() {
         <div className="w-[72rem] h-[37rem] bg-gradient-to-r from-purple-500 to-pink-500 p-5 rounded-md flex flex-col">
           <div>
             <div className="p-5 rounded-md bg-gray-700 w-full h-fit text-lg font-black justify-center items-center">
-              <div className="flex justify-center items-center gap-[40rem]">
-                <div>HALAMAN BAB</div>
-                <div>NILAI</div>
+              <div className="flex flex-col justify-center items-center gap-1">
+                <div className="flex justify-center items-center gap-[65rem]">
+                  <div></div>
+                  <button
+                    onClick={() => getDataFirestore()}
+                    className="hover:text-teal-300 text-white text-xl font-bold"
+                  >
+                    <FaSync />
+                  </button>
+                </div>
+                <div className="flex justify-center items-center gap-[40rem]">
+                  <div>HALAMAN BAB</div>
+                  <div>NILAI</div>
+                </div>
               </div>
             </div>
             <div>{ObjectDataFirestore === null && "Loading data..."}</div>

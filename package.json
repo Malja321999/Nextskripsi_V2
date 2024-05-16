@@ -12,6 +12,7 @@
     "@custom-react-hooks/use-drag-drop": "^1.4.19",
     "@material-tailwind/react": "^2.1.8",
     "@types/bcryptjs": "^2.4.6",
+    "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
     "firebase": "^10.7.2",
     "next": "14.1.0",

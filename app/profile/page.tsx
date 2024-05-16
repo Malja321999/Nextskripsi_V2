@@ -25,9 +25,11 @@ export default function ProfilePage() {
     []
   ); // Explicitly typing the state as DocumentData array
 
+  const user = session?.user;
   const userEmail = session?.user?.email;
   const userName = session?.user?.fullname;
-  console.log({ userEmail });
+  const userClass = session?.user?.class;
+  console.log({ user });
 
   const getDataFirestore = async () => {
     const docRef = doc(firestore, "DataUsers", `${userEmail}`);
@@ -85,8 +87,10 @@ export default function ProfilePage() {
               <h1 className="font-bold text-2xl mb-2 mt-2">{userName}</h1>
               <div className="h-1 w-[17rem] bg-white rounded-md"></div>
               <h6 className="mt-10">
-                <span className="font-bold text-lg">Email : </span> <br />
-                {userEmail}
+                <span className="font-bold text-lg">Email : </span>
+                {userEmail} <br />
+                <span className="font-bold text-lg">Kelas : </span>
+                {userClass}
               </h6>
             </li>
             <li className="mt-60 h-fit w-full text-start text-xl font-bold bg-rose-500 p-3 rounded-md">

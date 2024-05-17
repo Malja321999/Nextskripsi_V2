@@ -53,8 +53,6 @@ export async function register(data: {
   if (users.length > 0) {
     return { status: false, statusCode: 400, message: "Email already exist" };
   } else {
-    data.role = "member";
-    data.class = "A";
     data.password = await bcrypt.hash(data.password, 10);
     try {
       await addDoc(collection(firestore, "users"), data);
@@ -67,7 +65,11 @@ export async function register(data: {
 
 /* Menghubungkan Signin dengan Firebase */
 
-export async function login(data: { email: string; nisn: string; password: string }) {
+export async function login(data: {
+  email: string;
+  nisn: string;
+  password: string;
+}) {
   console.log(data);
   const q = query(
     collection(firestore, "users"),

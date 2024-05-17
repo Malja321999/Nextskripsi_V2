@@ -15,8 +15,6 @@ const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [findClass, setfindClass] = useState("");
-  const [findRole, setfindRole] = useState("");
 
   type Inputs = {
     fullname: string;
@@ -48,56 +46,53 @@ const SignUp = () => {
 
   const onSubmit = async (e: any) => {
     if (e.token === "G4R4") {
-      setfindRole("admin");
-      setfindClass("ALL");
+        const kuis = {
+          bab1_kuis: "Belum Mengerjakan Kuis Bab 1",
+          bab2_kuis: "Belum Mengerjakan Kuis Bab 2",
+          bab3_kuis: "Belum Mengerjakan Kuis Bab 3",
+          bab4_kuis: "Belum Mengerjakan Kuis Bab 4",
+        };
 
-      const kuis = {
-        bab1_kuis: "Belum Mengerjakan Kuis Bab 1",
-        bab2_kuis: "Belum Mengerjakan Kuis Bab 2",
-        bab3_kuis: "Belum Mengerjakan Kuis Bab 3",
-        bab4_kuis: "Belum Mengerjakan Kuis Bab 4",
-      };
-
-      setError("");
-      setIsLoading(true);
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        body: JSON.stringify({
-          fullname: e.fullname,
-          nisn: e.nisn,
-          email: e.email,
-          class: findClass,
-          role: findRole,
-          password: e.password,
-        }),
-      });
-      console.log(res.status);
-      if (res.status === 200) {
-        const ref = doc(firestore, "DataUsers", `${e.email}`);
-        setDoc(ref, kuis)
-          .then((response) => {
-            console.log("sukkes memasukkan data pengguna", response);
-            alert("sukkes memasukkan data pengguna");
-          })
-          .catch((error) => {
-            console.log("gagal memasukkan data pengguna", error);
-            alert("gagal memasukkan data pengguna");
-          });
-        setIsLoading(false);
-        push("/signin");
-      } else {
-        setIsLoading(false);
-        console.log("catch", e.message);
-        if (e.code === "auth/email-already-in-use") {
-          alert("email sudah digunakan");
-        } else if (e.code === "auth/invalid-email") {
-          alert("Invalid email");
-        } else if (e.code === "auth/weak-password") {
-          alert("password lemah");
+        setError("");
+        setIsLoading(true);
+        const res = await fetch("/api/auth/register", {
+          method: "POST",
+          body: JSON.stringify({
+            fullname: e.fullname,
+            nisn: e.nisn,
+            email: e.email,
+            role: "admin",
+            class: "ALL",
+            password: e.password,
+          }),
+        });
+        console.log(res.status);
+        if (res.status === 200) {
+          const ref = doc(firestore, "DataUsers", `${e.email}`);
+          setDoc(ref, kuis)
+            .then((response) => {
+              console.log("sukkes memasukkan data pengguna", response);
+              alert("sukkes memasukkan data pengguna");
+            })
+            .catch((error) => {
+              console.log("gagal memasukkan data pengguna", error);
+              alert("gagal memasukkan data pengguna");
+            });
+          setIsLoading(false);
+          push("/signin_guru");
         } else {
-          alert("Ada kesalahan yang tidak diketahui, silahkan coba lagi");
+          setIsLoading(false);
+          console.log("catch", e.message);
+          if (e.code === "auth/email-already-in-use") {
+            alert("email sudah digunakan");
+          } else if (e.code === "auth/invalid-email") {
+            alert("Invalid email");
+          } else if (e.code === "auth/weak-password") {
+            alert("password lemah");
+          } else {
+            alert("Ada kesalahan yang tidak diketahui, silahkan coba lagi");
+          }
         }
-      }
     } else if (e.token !== "G4R4") {
       alert("Token Salah atau Tidak Terdaftar, Silahkan Coba Lagi");
     }
@@ -106,7 +101,7 @@ const SignUp = () => {
   return (
     <div className="h-screen flex justify-center items-center bg-white dark:bg-black text-black dark:text-white ">
       <div className=" bg-white w-[60vh] h-fit shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           <h2 className="dark:text-white text-center text-2xl font-bold leading-9 tracking-tight">
             <div className="w-10 h-5 m-1 flex justify-center items-center mx-auto ">
               <Image
@@ -115,7 +110,7 @@ const SignUp = () => {
                 className="mx-auto h-10 w-auto"
               />
             </div>
-            <span className="text-black dark:text-white">Registrasi Siswa</span>
+            <span className="text-black dark:text-white">Registrasi Guru</span>
             <br />
             <span className="text-teal-500">BILANGAN BULAT</span>
           </h2>
@@ -311,7 +306,7 @@ const SignUp = () => {
               </div>
             )}
           </div>
-          <div>
+          <div className="mb-5">
             <label
               htmlFor="nisn"
               className="text-sm font-medium text-gray-900 block dark:text-gray-300"
@@ -357,7 +352,7 @@ const SignUp = () => {
           <div className="text-center text-sm font-medium text-gray-500 dark:text-gray-300">
             Sudah punya akun?
             <Link
-              href="/signin"
+              href="/signin_guru"
               className="ml-1 text-blue-700 hover:underline dark:text-blue-500"
             >
               Login disini

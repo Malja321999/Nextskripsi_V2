@@ -98,7 +98,7 @@ const SignIn = ({ searchParams }: any) => {
                   className="mx-auto h-10 w-auto"
                 />
               </div>
-              <span className="text-black dark:text-white">Login Siswa </span>{" "}
+              <span className="text-black dark:text-white">Login Guru </span>{" "}
               <br />
               <span className="text-teal-500">BILANGAN BULAT</span>
             </h2>
@@ -107,23 +107,23 @@ const SignIn = ({ searchParams }: any) => {
                 htmlFor="nisn"
                 className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
               >
-                NISN
+                NIP
               </label>
               <div>
                 <Controller
                   name="nisn"
                   rules={{
-                    required: "Mohon Masukkan NISN Anda",
+                    required: "Mohon Masukkan NIP Anda",
                     pattern: {
                       value: /^[0-9]{9}$/,
                       message:
-                        "NISN tidak sesuai, pastikan NISN adalah angka minimal 10 karakter",
+                        "NIP tidak sesuai, pastikan NIP adalah angka minimal 10 karakter",
                     },
                   }}
                   control={control}
                   render={({ field }) => (
                     <Input
-                      placeholder="NISN"
+                      placeholder="NIP"
                       crossOrigin={undefined}
                       size="lg"
                       {...field}
@@ -190,9 +190,9 @@ const SignIn = ({ searchParams }: any) => {
               >
                 {isLoading ? "Loading..." : "Masuk"}
               </button>
-              <Link href="/signin_guru">
+              <Link href="/signin">
                 <button className="w-[20rem] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Masuk Sebagai Guru
+                  Masuk Sebagai Siswa
                 </button>
               </Link>
             </div>
@@ -210,7 +210,7 @@ const SignIn = ({ searchParams }: any) => {
             <div className="flex justify-center items-center text-sm font-medium text-gray-500 dark:text-gray-300">
               Belum punya akun?
               <Link
-                href="signup"
+                href="signup_guru"
                 className="ml-1 text-blue-700 hover:underline dark:text-blue-500"
               >
                 Buat Akun

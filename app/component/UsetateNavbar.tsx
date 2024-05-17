@@ -8,7 +8,9 @@ const UsetateNavbar = () => {
   const [darkMode, setDarkMode] = useState(true);
   const disableNavbar = [
     "signup",
+    "signup_guru",
     "signin",
+    "signin_guru",
     "coba",
     "pagekuis",
     "QuizDragAndDrop",

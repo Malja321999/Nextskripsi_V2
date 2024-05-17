@@ -15,14 +15,16 @@ const autOptions: NextAuthOptions = {
       name: "credentials",
       credentials: {
         email: { label: "Email", type: "email" },
+        nisn: { label: "NISN", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const { email, password } = credentials as {
+        const { email, nisn, password } = credentials as {
           email: string;
+          nisn: string;
           password: string;
         };
-        const user: any = await login({ email, password });
+        const user: any = await login({ email, nisn, password });
         if (user) {
           const passwordConfirm = await compare(password, user.password);
           if (passwordConfirm) {

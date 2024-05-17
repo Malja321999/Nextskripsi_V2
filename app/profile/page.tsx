@@ -11,6 +11,8 @@ import { signOut } from "next-auth/react";
 import { GrNext } from "react-icons/gr";
 import { useRouter } from "next/navigation";
 import { FaSync } from "react-icons/fa";
+import { GiTeacher } from "react-icons/gi";
+import { PiStudentFill } from "react-icons/pi";
 
 export default function ProfilePage() {
   const [adagambar, setAdagambar] = useState(false);
@@ -27,8 +29,9 @@ export default function ProfilePage() {
   ); // Explicitly typing the state as DocumentData array
 
   const user = session?.user;
-  const userEmail = session?.user?.email;
   const userName = session?.user?.fullname;
+  const userRole = session?.user?.role;
+  const userEmail = session?.user?.email;
   const userClass = session?.user?.class;
   const userNisn = session?.user?.nisn;
   console.log({ user });
@@ -96,9 +99,18 @@ export default function ProfilePage() {
               )}
             </li>
             <li className="text-start">
+              <h1 className="font-bold text-2xl mb-2 mt-2 flex flex-row justify-start items-center gap-2">
+                <div>
+                  {userRole === "admin" ? <GiTeacher /> : <PiStudentFill />}
+                </div>
+                <div>{userRole === "admin" ? "GURU" : "MURID"}</div>
+              </h1>
               <h1 className="font-bold text-2xl mb-2 mt-2">{userName}</h1>
               <h2 className="text-sm mb-2 mt-2 text-gray-400">
-                <span className="font-bold">NISN :</span> {userNisn}
+                <span className="font-bold">
+                  {userRole === "admin" ? "NIP :" : "NISN :"}
+                </span>
+                {userNisn}
               </h2>
               <div className="h-1 w-[17rem] bg-white rounded-md"></div>
               <h6 className="mt-10">
@@ -108,7 +120,7 @@ export default function ProfilePage() {
                 {userClass}
               </h6>
             </li>
-            <li className="mt-[13rem] h-fit w-full text-start text-xl font-bold bg-rose-500 p-3 rounded-md">
+            <li className="mt-[10rem] h-fit w-full text-start text-xl font-bold bg-rose-500 p-3 rounded-md">
               <button
                 className="flex justify-start items-center gap-2"
                 onClick={() => signOut()}

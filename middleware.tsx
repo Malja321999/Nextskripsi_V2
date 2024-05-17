@@ -7,6 +7,7 @@ export function mainMiddleware(request: NextRequest) {
 }
 
 export default withAuth(mainMiddleware, [
+  "/halaman_guru",
   "/dashboardAdmin",
   "/profile",
   "/profile/changeusernamepassword",

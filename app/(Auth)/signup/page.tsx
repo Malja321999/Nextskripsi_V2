@@ -94,9 +94,9 @@ const SignUp = () => {
 
   return (
     <div className="h-screen flex justify-center items-center bg-white dark:bg-black text-black dark:text-white ">
-      <div className="bg-white w-[60vh] h-[88vh] shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          <h2 className="dark:text-white mb-5 text-center text-2xl font-bold leading-9 tracking-tight">
+      <div className="-mt-10 bg-white w-[60vh] h-[88vh] shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+          <h2 className="dark:text-white mb-2 text-center text-2xl font-bold leading-9 tracking-tight">
             <div className="w-10 h-5 m-1 flex justify-center items-center mx-auto ">
               <Image
                 src={Bilcon}
@@ -104,31 +104,31 @@ const SignUp = () => {
                 className="mx-auto h-10 w-auto"
               />
             </div>
-            <span className="text-black dark:text-white">Sign Up to </span>
-            <span className="text-indigo-600">BIL</span>
-            <span className="text-teal-500">BUL</span>
+            <span className="text-black dark:text-white">Registrasi Siswa</span>
+            <br />
+            <span className="text-teal-500">BILANGAN BULAT</span>
           </h2>
           <div>
             <label
               htmlFor="fullname"
               className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
             >
-              Your full name
+              Nama Lengkap
             </label>
             <div>
               <Controller
                 name="fullname"
                 rules={{
-                  required: "fullname is Required",
+                  required: "Masukkan Nama Lengkap",
                   minLength: {
                     value: 3,
-                    message: "Minimum 3 characters required",
+                    message: "Minimal 3 karakter",
                   },
                 }}
                 control={control}
                 render={({ field }) => (
                   <Input
-                    placeholder="Full name"
+                    placeholder="Nama Lengkap"
                     crossOrigin={undefined}
                     size="lg"
                     {...field}
@@ -155,11 +155,11 @@ const SignUp = () => {
               <Controller
                 name="nisn"
                 rules={{
-                  required: "NISN is Required",
+                  required: "Masukkan NISN",
                   pattern: {
-                    value: /^[1-9]{1}[0-9]{9}$/,
+                    value: /^[0-9]{9}$/,
                     message:
-                      "NISN tidak sesuai, pastikan NISN adalah angka maksimal 10 karakter, Digit pertama bukan nol",
+                      "NISN tidak sesuai, pastikan NISN adalah angka minimal 10 karakter",
                   },
                 }}
                 control={control}
@@ -185,16 +185,16 @@ const SignUp = () => {
               htmlFor="email"
               className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
             >
-              Your email
+              Email
             </label>
             <div>
               <Controller
                 name="email"
                 rules={{
-                  required: "email is Required",
+                  required: "Masukkan Email",
                   pattern: {
                     value: /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
-                    message: "Email is invaild",
+                    message: "Email tidak sesuai",
                   },
                 }}
                 control={control}
@@ -220,24 +220,24 @@ const SignUp = () => {
               htmlFor="password"
               className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
             >
-              Your Password
+              Password
             </label>
             <div className="flex justify-between items-center">
               <Controller
                 name="password"
                 control={control}
                 rules={{
-                  required: "Password is Required",
+                  required: "Masukkan Password",
                   minLength: {
                     value: 8,
-                    message: "Minimum 8 characters required",
+                    message: "Minimal 8 karakter",
                   },
                 }}
                 render={({ field }) => (
                   <Input
                     className="flex-1"
                     crossOrigin={undefined}
-                    placeholder="Confirm Password"
+                    placeholder="Password"
                     type={showPassword ? "text" : "password"}
                     {...field}
                     size="lg"
@@ -271,15 +271,15 @@ const SignUp = () => {
                 name="confirmPassword"
                 control={control}
                 rules={{
-                  required: "Confirm Password is Required",
+                  required: "Masukkan Konfirmasi Password",
                   validate: (value) =>
-                    getValues("password") === value || "Passwords do not match",
+                    getValues("password") === value || "Passwords tidak sama",
                 }}
                 render={({ field }) => (
                   <Input
                     className="flex-1"
                     crossOrigin={undefined}
-                    placeholder="Confirm Password"
+                    placeholder="Konfirmasi Password"
                     type={showConfirmPassword ? "text" : "password"}
                     {...field}
                     size="lg"
@@ -304,17 +304,17 @@ const SignUp = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="cursor-pointer w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            {isLoading ? "Loading..." : "Sign up account"}
+            {isLoading ? "Loading..." : "Daftar"}
           </button>
-          <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Have an account registered?
+          <div className="text-center text-sm font-medium text-gray-500 dark:text-gray-300">
+            Sudah punya akun?
             <Link
               href="/signin"
               className="ml-1 text-blue-700 hover:underline dark:text-blue-500"
             >
-              Sign in here
+              Login disini
             </Link>
           </div>
         </form>

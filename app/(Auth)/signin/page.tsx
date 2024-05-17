@@ -21,7 +21,7 @@ const SignIn = ({ searchParams }: any) => {
 
   type Inputs = {
     fullname: string;
-    email: string;
+    nisn: string;
     password: string;
     confirmPassword: string;
   };
@@ -37,7 +37,7 @@ const SignIn = ({ searchParams }: any) => {
   } = useForm<Inputs>({
     defaultValues: {
       fullname: "",
-      email: "",
+      nisn: "",
       password: "",
       confirmPassword: "",
     },
@@ -46,11 +46,12 @@ const SignIn = ({ searchParams }: any) => {
   const onSubmit = async (e: any) => {
     setError("");
     setIsLoading(true);
-    console.log(e.email, e.password);
+    console.log(e.nisn, e.password);
     try {
       const res = await signIn("credentials", {
         redirect: false,
         email: e.email,
+        nisn: e.nisn,
         password: e.password,
         callbackUrl: callbackUrl,
       });
@@ -58,7 +59,7 @@ const SignIn = ({ searchParams }: any) => {
         setIsLoading(false);
         const q = query(
           collection(firestore, "users"),
-          where("email", "==", e.email)
+          where("nisn", "==", e.nisn)
         );
         const shapshot = await getDocs(q);
         const user = shapshot.docs.map((doc) => ({
@@ -67,7 +68,7 @@ const SignIn = ({ searchParams }: any) => {
         }));
         console.log(user[0]?.role);
         if (user[0]?.role === "admin") {
-          push("/dashboardAdmin");
+          push("/halaman_guru");
         } else if (user[0]?.role === "member") {
           push(callbackUrl);
         }
@@ -75,8 +76,8 @@ const SignIn = ({ searchParams }: any) => {
         setIsLoading(false);
         console.log(res);
         if (res.status === 401) {
-          setError("Email or Password is not correct");
-          alert("Email or Password is not correct");
+          setError("NISN or Password is not correct");
+          alert("NISN or Password is not correct");
         }
       }
     } catch (err) {
@@ -97,42 +98,42 @@ const SignIn = ({ searchParams }: any) => {
                   className="mx-auto h-10 w-auto"
                 />
               </div>
-              <span className="text-black dark:text-white">Sign In to </span>
-              <span className="text-indigo-600">BIL</span>
-              <span className="text-teal-500">BUL</span>
+              <span className="text-black dark:text-white">Login Siswa </span>{" "}
+              <br />
+              <span className="text-teal-500">BILANGAN BULAT</span>
             </h2>
             <div>
               <label
-                htmlFor="email"
+                htmlFor="nisn"
                 className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
               >
-                Your email
+                NISN
               </label>
               <div>
                 <Controller
-                  name="email"
+                  name="nisn"
                   rules={{
-                    required: "email is Required",
+                    required: "Mohon Masukkan NISN Anda",
                     pattern: {
-                      value:
-                        /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
-                      message: "Email ID is invaild",
+                      value: /^[0-9]{9}$/,
+                      message:
+                        "NISN tidak sesuai, pastikan NISN adalah angka minimal 10 karakter",
                     },
                   }}
                   control={control}
                   render={({ field }) => (
                     <Input
-                      placeholder="Email"
+                      placeholder="NISN"
                       crossOrigin={undefined}
                       size="lg"
                       {...field}
-                      error={Boolean(errors?.email?.message)}
+                      error={Boolean(errors?.nisn?.message)}
                     />
                   )}
                 />
-                {errors?.email?.message && (
+                {errors?.nisn?.message && (
                   <div className="h-[1px] p-none m-none text-red-500 text-xs font-medium">
-                    {errors?.email?.message}
+                    {errors?.nisn?.message}
                   </div>
                 )}
               </div>
@@ -142,24 +143,24 @@ const SignIn = ({ searchParams }: any) => {
                 htmlFor="password"
                 className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
               >
-                Your Password
+                Password
               </label>
               <div className="flex justify-between items-center">
                 <Controller
                   name="password"
                   control={control}
                   rules={{
-                    required: "Password is Required",
+                    required: "Masukkan Password Anda",
                     minLength: {
                       value: 8,
-                      message: "Minimum 8 characters required",
+                      message: "Password minimal 8 karakter",
                     },
                   }}
                   render={({ field }) => (
                     <Input
                       className="flex-1"
                       crossOrigin={undefined}
-                      placeholder="Confirm Password"
+                      placeholder="Password"
                       type={showPassword ? "text" : "password"}
                       {...field}
                       size="lg"
@@ -181,13 +182,20 @@ const SignIn = ({ searchParams }: any) => {
                 </div>
               )}
             </div>
-            <button
-              disabled={isLoading}
-              type="submit"
-              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              {isLoading ? "Loading..." : "Login"}
-            </button>
+            <div className="flex flex-col gap-5 justify-center items-center">
+              <button
+                disabled={isLoading}
+                type="submit"
+                className="w-[20rem] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                {isLoading ? "Loading..." : "Masuk"}
+              </button>
+              <Link href="/signin_guru">
+                <button className="w-[20rem] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  Masuk Sebagai Guru
+                </button>
+              </Link>
+            </div>
             {/*  <hr />
             <button
               type="button"
@@ -200,12 +208,12 @@ const SignIn = ({ searchParams }: any) => {
               </span>
             </button> */}
             <div className="flex justify-center items-center text-sm font-medium text-gray-500 dark:text-gray-300">
-              Not registered?
+              Belum punya akun?
               <Link
                 href="signup"
                 className="ml-1 text-blue-700 hover:underline dark:text-blue-500"
               >
-                Create account
+                Buat Akun
               </Link>
             </div>
             {/* 

@@ -2,15 +2,7 @@ import { getData } from "@/services/products";
 import Image from "next/image";
 import Link from "next/link";
 
-type ProductPageProps = {
-  params: {
-    slug: string[];
-  };
-};
-
-export default async function ProductPage(props: ProductPageProps) {
-  const { params } = props;
-
+export default async function ProductPage() {
   const products = await getData(
     `${process.env.NEXT_PUBLIC_API_URL}/api/product`
   );

@@ -60,10 +60,10 @@ function NavBar() {
               <ul className="h-screen md:h-auto md:flex md:flex-row flex flex-col items-center">
                 <li className="text-xl">
                   {session?.user?.role === "admin" ? (
-                    <Link href="/halaman_guru">
+                    <Link href="/halaman_guru/data_murid">
                       <span
                         className={`${
-                          pathname === "/halaman_guru"
+                          pathname === "/halaman_guru/data_murid" || pathname === "/halaman_guru/data_kelas" || pathname === "/halaman_guru/data_hasil_kuis" || pathname === "/halaman_guru/data_ujian_akhir"
                             ? "text-teal-300"
                             : "text-white"
                         } pb-1 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}

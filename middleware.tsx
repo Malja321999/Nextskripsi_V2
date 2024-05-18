@@ -8,6 +8,10 @@ export function mainMiddleware(request: NextRequest) {
 
 export default withAuth(mainMiddleware, [
   "/halaman_guru",
+  "/halaman_guru/data_murid",
+  "/halaman_guru/data_kelas",
+  "/halaman_guru/data_hasil_kuis",
+  "/halaman_guru/data_ujian_akhir",
   "/dashboardAdmin",
   "/profile",
   "/profile/changeusernamepassword",

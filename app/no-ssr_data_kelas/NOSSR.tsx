@@ -2,12 +2,12 @@ import { headers } from "next/headers";
 import { it } from "node:test";
 import React, { useEffect, useState } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaSync } from "react-icons/fa";
 import Modal from "react-modal";
 import { IoClose } from "react-icons/io5";
 import Link from "next/link";
 
-function NOSSR() {
+function NOSSR({ modalIsOpen, setModalIsOpen }: any) {
   const [data, setData] = useState<any>([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<any>([]);
@@ -124,11 +124,78 @@ function NOSSR() {
   }, []);
 
   return (
-    <div>
+    <div className="mt-5">
       <div className="px-3 py-0 w-[85rem] rounded-md">
-        <div></div>
-        <div className="-z-9999 rounded-md overflow-y-auto h-[31rem]">
-          <DataTable
+        <div className="flex flex-row justify-between gap-[55rem]">
+          <div></div>
+          <button
+            onClick={() => setModalIsOpen(true)}
+            className="flex flex-row justify-center items-center gap-2 bg-teal-400 p-2 rounded-md font-bold"
+          >
+            <span className="text-2xl">
+              <FaPlus />
+            </span>
+            Tambah Kelas
+          </button>
+        </div>
+
+        <div className="mt-5 rounded-md overflow-y-auto h-[20rem]">
+          <table className="w-full h-full">
+            <thead>
+              <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
+                <th className="border border-slate-600 text-center p-3 px-5">
+                  Kuis
+                </th>
+                <th className="flex flex-col justify-center items-center gap-1 border border-slate-600 text-center p-3 px-5">
+                  <div className="flex flex-row justify-center items-center gap-10">
+                    <button className="hover:text-blue-700 text-xl font-bold">
+                      <FaSync />
+                    </button>
+                  </div>
+                  <div>Nilai</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="font-bold ">
+              <tr className={`border-b bg-gray-100 `}>
+                <td className="border border-slate-600 p-3 px-5 text-center">
+                  BAB 1 Bilangan Positif Dan Negatif
+                </td>
+                <td className="border border-slate-600 p-3 px-5 text-center">
+                  {data.bab1_kuis}
+                </td>
+              </tr>
+              <tr
+                className={`border-b  bg-gray-300
+                    `}
+              >
+                <td className="border border-slate-600 p-3 px-5 text-center">
+                  BAB 2 Penjumlahan dan Pengurangan Bilangan Bulat
+                </td>
+                <td className="border border-slate-600 p-3 px-5 text-center">
+                  {data.bab2_kuis}
+                </td>
+              </tr>
+
+              <tr className={`border-b bg-gray-100`}>
+                <td className="border border-slate-600 p-3 px-5 text-center">
+                  BAB 3 Perkalian dan Pembagian Bilangan Bulat
+                </td>
+                <td className="border border-slate-600 p-3 px-5 text-center">
+                  {data.bab3_kuis}
+                </td>
+              </tr>
+              <tr className={`border-b bg-gray-300`}>
+                <td className="border border-slate-600 p-3 px-5 text-center">
+                  Ujian Akhir
+                </td>
+                <td className="border border-slate-600 p-3 px-5 text-center">
+                  {data.ujian_akhir}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          {/* <DataTable
             progressPending={pending}
             customStyles={customStyles}
             columns={columns}
@@ -151,21 +218,67 @@ function NOSSR() {
                     />
                   </div>
                   <div>
-                    <Link href={"/halaman_guru/data_kelas/detail"}>
-                      <button className="flex flex-row justify-center items-center gap-2 bg-teal-400 p-2 rounded-md font-bold">
-                        <span className="text-2xl">
-                          <FaPlus />
-                        </span>
-                        Tambah Kelas
-                      </button>
-                    </Link>
+                    <button
+                      onClick={() => setModalIsOpen(true)}
+                      className="flex flex-row justify-center items-center gap-2 bg-teal-400 p-2 rounded-md font-bold"
+                    >
+                      <span className="text-2xl">
+                        <FaPlus />
+                      </span>
+                      Tambah Kelas
+                    </button>
                   </div>
                 </div>
               </div>
             }
-          />
+          /> */}
         </div>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel="Video Modal"
+        /* closeTimeoutMS={500} */
+        className="flex justify-center items-center text-5xl p-5 rounded-md w-fit"
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0,0,0,0.7)",
+          },
+          content: {
+            zIndex: "9999",
+            width: "80rem",
+            height: "85vh",
+            margin: "auto", // Center the modal horizontally
+            padding: "0px",
+            border: "none",
+            overflow: "hidden",
+            marginTop: "100px",
+          },
+        }}
+      >
+        <div
+          style={{ animation: "dropTop .30s linear" }}
+          className="flex flex-col justify-start items-center gap-2"
+        >
+          <h1 className="text-3xl text-center font-bold bg-indigo-500 p-5 w-fit rounded-md shadow-md">
+            Panduan Media Pembelajaran <br /> BILANGAN BULAT
+          </h1>
+
+          <iframe
+            className="w-[38rem] h-[25rem] rounded-md"
+            loading="lazy"
+            src="https://www.canva.com/design/DAGE6nXV6FY/o0-Xg_uhhv8oU5mEts8OVg/view?embed"
+            allowFullScreen
+          />
+          <button
+            onClick={() => setModalIsOpen(false)}
+            className="text-base bg-red-500 p-2 w-fit rounded-md flex flex-col justify-center items-center gap-2"
+          >
+            <IoClose />
+            Tutup
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }

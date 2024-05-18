@@ -135,7 +135,7 @@ const Page = () => {
 
             {/* table data student */}
             <div className="text-gray-900">
-              <NoSSR_data_kelas />
+              <NoSSR_data_kelas modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
             </div>
           </div>
         </div>

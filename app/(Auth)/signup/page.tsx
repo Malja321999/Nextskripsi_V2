@@ -106,7 +106,7 @@ const SignUp = () => {
   return (
     <div className="h-screen flex justify-center items-center bg-white dark:bg-black text-black dark:text-white ">
       <div className=" bg-white w-[60vh] h-fit shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           <h2 className="dark:text-white text-center text-2xl font-bold leading-9 tracking-tight">
             <div className="w-10 h-5 m-1 flex justify-center items-center mx-auto ">
               <Image

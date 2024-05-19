@@ -2,30 +2,61 @@ import { headers } from "next/headers";
 import { it } from "node:test";
 import React, { useEffect, useState } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
+import {
+  addDoc,
+  collection,
+  doc,
+  DocumentData,
+  getDoc,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
+import { firestore } from "../lib/firebase/init";
+import { DiVim } from "react-icons/di";
 
 function NOSSR() {
+  const [IsLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<any>([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<any>([]);
 
-  const getData = async () => {
-    try {
-      const req = await fetch("https://fakestoreapi.com/products");
-      const res = await req.json();
-      setData(res);
-      setFilter(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [DataUsers, setDataUsers] = useState<DocumentData[]>([]);
+
+  useEffect(() => {
+    const GetData = async () => {
+      setIsLoading(true);
+      const q = query(
+        collection(firestore, "users"),
+        where("role", "==", "member")
+      );
+      const snapshot = await getDocs(q);
+
+      try {
+        if (snapshot.empty) {
+          console.log("No such document!");
+        } else {
+          setDataUsers(snapshot.docs.map((doc) => doc.data()));
+        }
+      } catch (error) {
+        console.log("Error getting document:", error);
+      }
+    };
+    GetData();
+
+    /* setTimeout(function () {
+      setIsLoading(false);
+    }, 500); */
+    setIsLoading(false);
+  }, []);
+
+  console.log(DataUsers);
 
   console.log(data);
   console.log(filter);
-
-  useEffect(() => {
-    getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const result = data.filter((item: any) => {
@@ -35,71 +66,9 @@ function NOSSR() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
-  const columns = [
-    {
-      name: "Nama Barang",
-      selector: (row: any) => row.title,
-    },
-    {
-      name: "NISN",
-      selector: (row: any) => row.nisn,
-      sortable: true,
-    },
-    {
-      name: "Nama",
-      selector: (row: any) => row.name,
-      sortable: true,
-    },
-    {
-      name: "Kelas",
-      selector: (row: any) => row.class,
-      sortable: true,
-    },
-    {
-      name: "Tindakan",
-      cell: (row: any) => (
-        <div className="flex flex-row justify-start items-start gap-2">
-          {/* <button
-            type="button"
-            className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-          >
-            Ubah
-          </button> */}
-          <button
-            type="button"
-            className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-            onClick={() => handleDelete(row.id)}
-          >
-            Hapus
-          </button>
-        </div>
-      ),
-    },
-  ];
-
   const handleDelete = (val: any) => {
     const newData = data.filter((item: any) => item.id !== val);
     setData(newData);
-  };
-
-  const customStyles = {
-    headCells: {
-      style: {
-        backgroundColor: "#2dd4bf",
-        fontSize: "20px",
-      },
-    },
-    pagination: {
-      style: {
-        color: "blue",
-        borderRadius: "10px",
-      },
-    },
-    rows: {
-      style: {
-        minHeight: "34px", // override the row height
-      },
-    },
   };
 
   /* 
@@ -108,7 +77,7 @@ function NOSSR() {
     (value: any, index: any, self: any) => self.indexOf(value) === index
   ); */
 
-    const [pending, setPending] = useState(true);
+  const [pending, setPending] = useState(true);
   const [rows, setRows] = useState([]);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -126,8 +95,68 @@ function NOSSR() {
 
         <div className="mb-5 flex flex-row justify-center items-center gap-2"></div>
       </div>
-
-      <div className="rounded-md overflow-y-auto h-[31rem]">
+      <div className="mt-5 rounded-md overflow-y-auto h-[20rem]">
+        {IsLoading ? (
+          <div className="flex justify-center items-center text-center text-black font-bold text-9xl">Loading...</div>
+        ) : (
+          <table className="w-full h-full">
+            <thead>
+              <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
+                <th className="border border-slate-600 text-center p-3 px-5">
+                  NISN
+                </th>
+                <th className="border border-slate-600 text-center p-3 px-5">
+                  Nama
+                </th>
+                <th className="border border-slate-600 text-center p-3 px-5">
+                  Kelas
+                </th>
+                <th className="border border-slate-600 text-center p-3 px-5">
+                  Tindakan
+                </th>
+              </tr>
+            </thead>
+            <tbody className="font-bold ">
+              {DataUsers.map((val, index) => (
+                <tr
+                  key={val.id}
+                  className={`border-b ${
+                    index % 2 === 0 ? "bg-slate-300" : "bg-white"
+                  } `}
+                >
+                  <td className="border border-slate-600 p-3 px-5 text-center">
+                    {val.nisn}
+                  </td>
+                  <td className="border border-slate-600 p-3 px-5 text-center">
+                    {val.fullname}
+                  </td>
+                  <td className="border border-slate-600 p-3 px-5 text-center">
+                    {val.class}
+                  </td>
+                  <td className="border border-slate-600 p-3 px-5 text-center">
+                    <div className="flex flex-row justify-center items-start gap-2">
+                      {/* <button
+                        type="button"
+                        className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white p-4 rounded focus:outline-none focus:shadow-outline"
+                      >
+                        Ubah
+                      </button> */}
+                      <button
+                        type="button"
+                        className="text-sm bg-red-500 hover:bg-red-600 text-white p-4 rounded focus:outline-none focus:shadow-outline"
+                        /* onClick={() => handleDelete(row.id)} */
+                      >
+                        Hapus
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+      {/*  <div className="rounded-md overflow-y-auto h-[31rem]">
         <DataTable
           progressPending={pending}
           customStyles={customStyles}
@@ -174,7 +203,7 @@ function NOSSR() {
             </div>
           }
         />
-      </div>
+      </div> */}
     </div>
   );
 }

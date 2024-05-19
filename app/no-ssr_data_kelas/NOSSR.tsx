@@ -1,127 +1,49 @@
-import { headers } from "next/headers";
-import { it } from "node:test";
 import React, { useEffect, useState } from "react";
-import DataTable, { createTheme } from "react-data-table-component";
 import { FaPlus, FaSync } from "react-icons/fa";
 import Modal from "react-modal";
 import { IoClose } from "react-icons/io5";
 import Link from "next/link";
+import {
+  addDoc,
+  collection,
+  doc,
+  DocumentData,
+  getDoc,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
+import { firestore } from "../lib/firebase/init";
+import { useRouter } from "next/router";
 
 function NOSSR({ modalIsOpen, setModalIsOpen }: any) {
-  const [data, setData] = useState<any>([]);
-  const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState<any>([]);
-
-  const getData = async () => {
-    try {
-      const req = await fetch("https://fakestoreapi.com/products");
-      const res = await req.json();
-      setData(res);
-      setFilter(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  console.log(data);
-  console.log(filter);
+  const [DataUsers, setDataUsers] = useState<DocumentData[]>([]);
 
   useEffect(() => {
-    getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const GetData = async () => {
+      const q = query(
+        collection(firestore, "users"),
+        where("role", "==", "member")
+      );
+      const snapshot = await getDocs(q);
+
+      try {
+        if (snapshot.empty) {
+          console.log("No such document!");
+        } else {
+          setDataUsers(snapshot.docs.map((doc) => doc.data()));
+        }
+      } catch (error) {
+        console.log("Error getting document:", error);
+      }
+    };
+    GetData();
   }, []);
 
-  useEffect(() => {
-    const result = data.filter((item: any) => {
-      return item.name.toLowerCase().match(search.toLowerCase());
-    });
-    setFilter(result);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search]);
-
-  const columns = [
-    {
-      name: "Nama Barang",
-      selector: (row: any) => row.title,
-    },
-    {
-      name: "NISN",
-      selector: (row: any) => row.nisn,
-      sortable: true,
-    },
-    {
-      name: "Nama",
-      selector: (row: any) => row.name,
-      sortable: true,
-    },
-    {
-      name: "Kelas",
-      selector: (row: any) => row.class,
-      sortable: true,
-    },
-    {
-      name: "Tindakan",
-      cell: (row: any) => (
-        <div className="flex flex-row justify-start items-start gap-2">
-          {/* <button
-            type="button"
-            className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-          >
-            Ubah
-          </button> */}
-          <button
-            type="button"
-            className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-            onClick={() => handleDelete(row.id)}
-          >
-            Hapus
-          </button>
-        </div>
-      ),
-    },
-  ];
-
-  const handleDelete = (val: any) => {
-    const newData = data.filter((item: any) => item.id !== val);
-    setData(newData);
-  };
-
-  const customStyles = {
-    headCells: {
-      style: {
-        backgroundColor: "#2dd4bf",
-        fontSize: "20px",
-      },
-    },
-    pagination: {
-      style: {
-        color: "blue",
-        borderRadius: "10px",
-      },
-    },
-    rows: {
-      style: {
-        minHeight: "34px", // override the row height
-      },
-    },
-  };
-
-  /* 
-  const [uniqueNames, setuniqueNames] = useState([]);
-  const uniq = records.name.filter(
-    (value: any, index: any, self: any) => self.indexOf(value) === index
-  ); */
-
-  const [pending, setPending] = useState(true);
-  const [rows, setRows] = useState([]);
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setRows(data);
-      setPending(false);
-    }, 2000);
-    return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  console.log(DataUsers);
 
   return (
     <div className="mt-5">
@@ -144,57 +66,58 @@ function NOSSR({ modalIsOpen, setModalIsOpen }: any) {
             <thead>
               <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
                 <th className="border border-slate-600 text-center p-3 px-5">
-                  Kuis
+                  NISN
                 </th>
-                <th className="flex flex-col justify-center items-center gap-1 border border-slate-600 text-center p-3 px-5">
-                  <div className="flex flex-row justify-center items-center gap-10">
-                    <button className="hover:text-blue-700 text-xl font-bold">
-                      <FaSync />
-                    </button>
-                  </div>
-                  <div>Nilai</div>
+                <th className="border border-slate-600 text-center p-3 px-5">
+                  Nama
+                </th>
+                <th className="border border-slate-600 text-center p-3 px-5">
+                  Kelas
+                </th>
+                <th className="border border-slate-600 text-center p-3 px-5">
+                  Tindakan
                 </th>
               </tr>
             </thead>
             <tbody className="font-bold ">
-              <tr className={`border-b bg-gray-100 `}>
-                <td className="border border-slate-600 p-3 px-5 text-center">
-                  BAB 1 Bilangan Positif Dan Negatif
-                </td>
-                <td className="border border-slate-600 p-3 px-5 text-center">
-                  {data.bab1_kuis}
-                </td>
-              </tr>
-              <tr
-                className={`border-b  bg-gray-300
-                    `}
-              >
-                <td className="border border-slate-600 p-3 px-5 text-center">
-                  BAB 2 Penjumlahan dan Pengurangan Bilangan Bulat
-                </td>
-                <td className="border border-slate-600 p-3 px-5 text-center">
-                  {data.bab2_kuis}
-                </td>
-              </tr>
-
-              <tr className={`border-b bg-gray-100`}>
-                <td className="border border-slate-600 p-3 px-5 text-center">
-                  BAB 3 Perkalian dan Pembagian Bilangan Bulat
-                </td>
-                <td className="border border-slate-600 p-3 px-5 text-center">
-                  {data.bab3_kuis}
-                </td>
-              </tr>
-              <tr className={`border-b bg-gray-300`}>
-                <td className="border border-slate-600 p-3 px-5 text-center">
-                  Ujian Akhir
-                </td>
-                <td className="border border-slate-600 p-3 px-5 text-center">
-                  {data.ujian_akhir}
-                </td>
-              </tr>
+              {DataUsers.map((val, index) => (
+                <tr
+                  key={val.id}
+                  className={`border-b ${
+                    index % 2 === 0 ? "bg-slate-300" : "bg-white"
+                  } `}
+                >
+                  <td className="border border-slate-600 p-3 px-5 text-center">
+                    {val.nisn}
+                  </td>
+                  <td className="border border-slate-600 p-3 px-5 text-center">
+                    {val.fullname}
+                  </td>
+                  <td className="border border-slate-600 p-3 px-5 text-center">
+                    {val.class}
+                  </td>
+                  <td className="border border-slate-600 p-3 px-5 text-center">
+                    <div className="flex flex-row justify-center items-start gap-2">
+                      {/* <button
+                        type="button"
+                        className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white p-4 rounded focus:outline-none focus:shadow-outline"
+                      >
+                        Ubah
+                      </button> */}
+                      <button
+                        type="button"
+                        className="text-sm bg-red-500 hover:bg-red-600 text-white p-4 rounded focus:outline-none focus:shadow-outline"
+                        /* onClick={() => handleDelete(row.id)} */
+                      >
+                        Hapus
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
+
           {/* <DataTable
             progressPending={pending}
             customStyles={customStyles}

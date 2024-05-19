@@ -134,7 +134,7 @@ export default function ProfilePage() {
         {/* Pengaturan */}
         <div className="w-[72rem] h-[37rem] bg-gradient-to-r from-purple-500 to-pink-500 p-5 rounded-md flex flex-col">
           <div className="text-black overflow-y-auto mb-5 rounded-md shadow w-full h-[80rem] border-4 border-gray-500">
-            {ObjectDataFirestore.map((data, index) => (
+            {ObjectDataFirestore.map((data) => (
               <table key={data.id} className="w-full h-full">
                 <thead>
                   <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">

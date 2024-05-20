@@ -264,10 +264,12 @@ function NOSSR() {
                   aria-label="Pagination"
                 >
                   <button
-                    disabled={npage === 0 || currentPage === firstIndex}
+                    disabled={
+                      numbers.length === 0 || currentPage === firstIndex
+                    }
                     onClick={() => prePage()}
                     className={`relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 ${
-                      npage !== 0 && "hover:bg-blue-200"
+                      numbers.length !== 0 && "hover:bg-blue-200"
                     } focus:z-20 focus:outline-offset-0`}
                   >
                     <span className="sr-only">Sebelumnya</span>
@@ -285,6 +287,14 @@ function NOSSR() {
                     </svg>
                   </button>
 
+                  {numbers.length === 0 && (
+                    <button
+                      className={`hover:bg-blue-200 bg-blue-500 relative z-10 inline-flex items-center  px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"`}
+                    >
+                      1
+                    </button>
+                  )}
+
                   {numbers.map((i) => (
                     <button
                       key={i}
@@ -298,10 +308,10 @@ function NOSSR() {
                   ))}
 
                   <button
-                    disabled={npage === 0 || currentPage === lastIndex}
+                    disabled={numbers.length === 0 || currentPage === lastIndex}
                     onClick={() => nextPage()}
-                    className={`relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-blue-200 focus:z-20 focus:outline-offset-0 ${
-                      npage !== 0 && "hover:bg-blue-200"
+                    className={`relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 ${
+                      numbers.length !== 0 && "hover:bg-blue-200"
                     } `}
                   >
                     <span className="sr-only">Selanjutnya</span>

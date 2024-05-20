@@ -27,17 +27,6 @@ function NOSSR() {
   const [Filter, setFilter] = useState<any>([]);
   const [DataUsers, setDataUsers] = useState<DocumentData[]>([]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 5;
-  const lastIndex = currentPage * recordsPerPage;
-  const firstIndex = lastIndex - recordsPerPage;
-  const records = DataUsers.slice(firstIndex, lastIndex);
-  let npage = Math.ceil(DataUsers.length / recordsPerPage);
-  if (npage === 1) return null;
-  const numbers = Array.from({ length: npage }, (_, i) => i + 1);
-  console.log(numbers);
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const GetData = async () => {
       setIsLoading(true);
@@ -61,11 +50,6 @@ function NOSSR() {
     setIsLoading(false);
   }, []);
 
-  console.log(DataUsers);
-
-  console.log(Filter);
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const result = DataUsers.filter((item: any) => {
       return item.name.toLowerCase().match(search.toLowerCase());
@@ -73,6 +57,22 @@ function NOSSR() {
     setFilter(result);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage, setRecordsPerPage] = useState("5");
+  const recordsPerPageNumber = parseInt(recordsPerPage, 10);
+  const lastIndex = currentPage * recordsPerPageNumber;
+  const firstIndex = lastIndex - recordsPerPageNumber;
+  const records = DataUsers.slice(firstIndex, lastIndex);
+  let npage = Math.ceil(DataUsers.length / recordsPerPageNumber);
+  if (npage === 1) npage = 0;
+  const numbers = Array.from({ length: npage }, (_, i) => i + 1);
+
+  console.log(recordsPerPageNumber);
+
+  console.log(DataUsers);
+
+  console.log(Filter);
 
   const handleDelete = (val: any) => {
     const newData = DataUsers.filter((item: any) => item.id !== val);
@@ -107,28 +107,89 @@ function NOSSR() {
  */
   return (
     <div className="px-3 py-0 w-[85rem] rounded-md">
-      <div className="flex flex-row justify-center items-center gap-[55rem]">
-        {/* select class */}
-
-        <div className="mb-5 flex flex-row justify-center items-center gap-2"></div>
-      </div>
-      <div className="mt-5 rounded-md">
+      <div className={`mt-0 rounded-md overflow-y-auto h-[30rem]`}>
         {IsLoading ? (
           <div className="flex justify-center items-center text-center text-black font-bold text-9xl">
             Loading...
           </div>
         ) : (
-          <div className="flex flex-col justify-center items-center gap-1 overflow-y-auto overflow-x-hidden h-[30rem]">
-            <div className="mt-10 relative flex flex-1">
-              <input
-                type="text"
-                className="bg-white w-full border border-gray-200 py-2 pl-10 text-sm outline-2 rounded-sm"
-                placeholder="Search..."
-              />
-              <IoSearch className="absolute left-3 top-2 h-5 w-5 text-gray-500" />
+          <div className={`flex flex-col justify-center items-center w-full`}>
+            <div className={`flex justify-between items-center w-full p-5`}>
+              <div className="font-bold">
+                <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
+                  Tampilkan
+                  <select
+                    value={recordsPerPage}
+                    onChange={(e) => setRecordsPerPage(e.target.value)}
+                    id="countries"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  >
+                    <option value="5" selected>
+                      5
+                    </option>
+                    <option value="10" disabled={DataUsers.length < 10}>
+                      10
+                    </option>
+                    <option value="25" disabled={DataUsers.length < 25}>
+                      25
+                    </option>
+                    <option value="50" disabled={DataUsers.length < 50}>
+                      50
+                    </option>
+                    <option value="100" disabled={DataUsers.length < 100}>
+                      100
+                    </option>
+                  </select>
+                  data
+                </form>
+              </div>
+
+              <div>
+                <form className="max-w-md mx-auto">
+                  <label
+                    htmlFor="default-search"
+                    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                  >
+                    Search
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <svg
+                        className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      type="search"
+                      id="default-search"
+                      className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+                      placeholder="Cari NISN/Nama"
+                      required
+                    />
+                    {/* <button
+                      type="submit"
+                      className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Search
+                    </button> */}
+                  </div>
+                </form>
+              </div>
             </div>
-            <div>
-              <table className="w-[80rem] h-full">
+            {/* table */}
+            <div className="mb-5 rounded-md shadow w-fit  border-4 border-black">
+              <table className="w-[80rem] rounded-md">
                 <thead>
                   <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
                     <th className="border border-slate-600 text-center p-3  h-fit">
@@ -153,16 +214,16 @@ function NOSSR() {
                         index % 2 === 0 ? "bg-slate-300" : "bg-white"
                       } `}
                     >
-                      <td className="text-base border border-slate-600 p-3 text-center h-5">
+                      <td className="text-xs border border-slate-600 p-3 text-center h-2">
                         {val.nisn}
                       </td>
-                      <td className="text-base border border-slate-600 p-3  text-center h-5">
+                      <td className="text-xs border border-slate-600 p-3  text-center h-2">
                         {val.fullname}
                       </td>
-                      <td className="text-base border border-slate-600 p-3  text-center h-5">
+                      <td className="text-xs border border-slate-600 p-3  text-center h-2">
                         {val.class}
                       </td>
-                      <td className="text-base border border-slate-600 p-3  text-center h-5">
+                      <td className="text-xs border border-slate-600 p-3  text-center h-2">
                         <div className="flex flex-row justify-center items-start gap-2">
                           {/* <button
                         type="button"
@@ -172,7 +233,7 @@ function NOSSR() {
                       </button> */}
                           <button
                             type="button"
-                            className="text-sm bg-red-500 hover:bg-red-600 text-white p-4 rounded focus:outline-none focus:shadow-outline"
+                            className="text-xs bg-red-500 hover:bg-red-600 text-white p-4 rounded focus:outline-none focus:shadow-outline"
                             /* onClick={() => handleDelete(row.id)} */
                           >
                             Hapus
@@ -184,114 +245,85 @@ function NOSSR() {
                 </tbody>
               </table>
             </div>
-            <div>
-              <nav
-                className="bg-white isolate inline-flex -space-x-px rounded-md shadow-sm"
-                aria-label="Pagination"
-              >
-                <button
-                  onClick={() => prePage()}
-                  className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            {/* akhir table */}
+            <div className="flex justify-between w-full px-4">
+              <div className="font-bold p-2 rounded-md">
+                Tampilkan{" "}
+                <span className="bg-white p-2 rounded-md">
+                  {recordsPerPage}
+                </span>{" "}
+                data dari{" "}
+                <span className="bg-white p-2 rounded-md">
+                  {DataUsers.length}
+                </span>{" "}
+                data
+              </div>
+              <div>
+                <nav
+                  className="bg-white isolate inline-flex -space-x-px rounded-md shadow-sm"
+                  aria-label="Pagination"
                 >
-                  <span className="sr-only">Previous</span>
-                  <svg
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-
-                {numbers.map((i) => (
                   <button
-                    key={i}
-                    className={`${
-                      currentPage === i ? "bg-blue-500" : "bg-white"
-                    } relative z-10 inline-flex items-center  px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"`}
-                    onClick={() => changePage(i)}
+                    disabled={npage === 0 || currentPage === firstIndex}
+                    onClick={() => prePage()}
+                    className={`relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 ${
+                      npage !== 0 && "hover:bg-blue-200"
+                    } focus:z-20 focus:outline-offset-0`}
                   >
-                    {i}
+                    <span className="sr-only">Sebelumnya</span>
+                    <svg
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
                   </button>
-                ))}
 
-                <button
-                  onClick={() => nextPage()}
-                  className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                >
-                  <span className="sr-only">Next</span>
-                  <svg
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
+                  {numbers.map((i) => (
+                    <button
+                      key={i}
+                      className={`hover:bg-blue-200 ${
+                        currentPage === i ? "bg-blue-500" : "bg-white"
+                      } relative z-10 inline-flex items-center  px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"`}
+                      onClick={() => changePage(i)}
+                    >
+                      {i}
+                    </button>
+                  ))}
+
+                  <button
+                    disabled={npage === 0 || currentPage === lastIndex}
+                    onClick={() => nextPage()}
+                    className={`relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-blue-200 focus:z-20 focus:outline-offset-0 ${
+                      npage !== 0 && "hover:bg-blue-200"
+                    } `}
                   >
-                    <path
-                      fill-rule="evenodd"
-                      d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </nav>
+                    <span className="sr-only">Selanjutnya</span>
+                    <svg
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </nav>
+              </div>
             </div>
           </div>
         )}
       </div>
-
-      {/*  <div className="rounded-md overflow-y-auto h-[31rem]">
-        <DataTable
-          progressPending={pending}
-          customStyles={customStyles}
-          columns={columns}
-          data={data}
-          pagination
-          fixedHeader
-          highlightOnHover
-          subHeader
-          subHeaderComponent={
-            <div className="flex flex-row justify-center items-center gap-[57.8rem]">
-              <div className="flex">
-                <button
-                  id="states-button"
-                  type="button"
-                  className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200"
-                >
-                  <label className="font-bold" htmlFor="states">
-                    KELAS :
-                  </label>
-                </button>
-
-                <select
-                  id="states"
-                  className="bg-gray-50 border-2 border-gray-300 text-gray-900 font-bold text-sm rounded-e-lg border-s-gray-100 border-s-2 block w-full p-2.5"
-                >
-                  <option selected>Pilih Kelas</option>
-                  {data.map(
-                    (data: any, index: React.Key | null | undefined) => (
-                      <option key={index}>{data.class}</option>
-                    )
-                  )}
-                </select>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Cari..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="border-2 border-gray-400 bg-gray-50 rounded-md p-1 px-4 w-40"
-                />
-              </div>
-            </div>
-          }
-        />
-      </div> */}
     </div>
   );
 }

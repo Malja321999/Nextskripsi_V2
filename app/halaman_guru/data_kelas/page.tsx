@@ -17,7 +17,7 @@ const Page = () => {
   const [selectmenu, setselectmenu] = useState("Data Murid");
   const [value, setValue] = useState("10");
 
-  const NoSSR = dynamic(() => import("../../no-ssr_data_murid/NOSSR"), {
+  const NoSSR = dynamic(() => import("../../no-ssr_data_siswa/NOSSR"), {
     ssr: false,
   });
   const NoSSR_data_kelas = dynamic(
@@ -57,10 +57,10 @@ const Page = () => {
               }`}
             >
               {/* button Menu */}
-              <Link href="/halaman_guru/data_murid">
+              <Link href="/halaman_guru/data_siswa">
                 <button
                   className={`${
-                    pathname === "/halaman_guru/data_murid" && "bg-teal-500 "
+                    pathname === "/halaman_guru/data_siswa" && "bg-teal-500 "
                   }  rounded-md p-2 hover:bg-teal-400 text-2xl flex justify-start items-center ${
                     Collapse ? "flex-row gap-2" : "flex-col gap-0"
                   } `}
@@ -68,7 +68,7 @@ const Page = () => {
                   <div>
                     <FaUser />
                   </div>
-                  <div className={` ${!Collapse && "text-xs"}`}>Data Murid</div>
+                  <div className={` ${!Collapse && "text-xs"}`}>Data Siswa</div>
                 </button>
               </Link>
               <Link href="/halaman_guru/data_kelas">
@@ -135,7 +135,10 @@ const Page = () => {
 
             {/* table data student */}
             <div className="text-gray-900">
-              <NoSSR_data_kelas modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
+              <NoSSR_data_kelas
+                modalIsOpen={modalIsOpen}
+                setModalIsOpen={setModalIsOpen}
+              />
             </div>
           </div>
         </div>

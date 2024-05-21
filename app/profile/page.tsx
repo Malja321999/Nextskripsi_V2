@@ -103,7 +103,7 @@ export default function ProfilePage() {
                 <div>
                   {userRole === "admin" ? <GiTeacher /> : <PiStudentFill />}
                 </div>
-                <div>{userRole === "admin" ? "GURU" : "MURID"}</div>
+                <div>{userRole === "admin" ? "GURU" : "SiSWA"}</div>
               </h1>
               <h1 className="font-bold text-2xl mb-2 mt-2">{userName}</h1>
               <h2 className="text-sm mb-2 mt-2 text-gray-400">

@@ -14,10 +14,8 @@ import { usePathname } from "next/navigation";
 
 const Page = () => {
   const [Collapse, setCollapse] = useState(false);
-  const [selectmenu, setselectmenu] = useState("Data Murid");
-  const [value, setValue] = useState("10");
 
-  const NoSSR = dynamic(() => import("../../no-ssr_data_murid/NOSSR"), {
+  const NoSSR = dynamic(() => import("../../no-ssr_data_siswa/NOSSR"), {
     ssr: false,
   });
   const NoSSR_data_kelas = dynamic(
@@ -57,10 +55,10 @@ const Page = () => {
               }`}
             >
               {/* button Menu */}
-              <Link href="/halaman_guru/data_murid">
+              <Link href="/halaman_guru/data_siswa">
                 <button
                   className={`${
-                    pathname === "/halaman_guru/data_murid" && "bg-teal-500 "
+                    pathname === "/halaman_guru/data_siswa" && "bg-teal-500 "
                   }  rounded-md p-2 hover:bg-teal-400 text-2xl flex justify-start items-center ${
                     Collapse ? "flex-row gap-2" : "flex-col gap-0"
                   } `}
@@ -68,7 +66,7 @@ const Page = () => {
                   <div>
                     <FaUser />
                   </div>
-                  <div className={` ${!Collapse && "text-xs"}`}>Data Murid</div>
+                  <div className={` ${!Collapse && "text-xs"}`}>Data Siswa</div>
                 </button>
               </Link>
               <Link href="/halaman_guru/data_kelas">
@@ -124,12 +122,12 @@ const Page = () => {
       </div>
       {/* Content Menu */}
       <div className="text-black mt-[6.5rem] flex justify-center items-start bg-gradient-to-r from-purple-500 to-pink-500 shadow-md w-[88rem] h-[38.5rem] p-5 rounded-md">
-        {/* Data Murid */}
+        {/* Data Siswa */}
         <div>
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center items-start">
               <div className="text-md font-bold text-center bg-teal-400 p-5 w-fit flex justify-start items-start rounded-md">
-                Data Murid
+                Data Siswa
               </div>
             </div>
 

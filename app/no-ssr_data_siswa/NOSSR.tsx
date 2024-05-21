@@ -22,9 +22,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function NOSSR() {
   const [IsLoading, setIsLoading] = useState(true);
-
   const [search, setSearch] = useState("");
-  const [Filter, setFilter] = useState<any>([]);
   const [DataUsers, setDataUsers] = useState<DocumentData[]>([]);
 
   useEffect(() => {
@@ -41,6 +39,7 @@ function NOSSR() {
           console.log("No such document!");
         } else {
           setDataUsers(snapshot.docs.map((doc) => doc.data()));
+          setFilter(snapshot.docs.map((doc) => doc.data()));
         }
       } catch (error) {
         console.log("Error getting document:", error);
@@ -50,20 +49,12 @@ function NOSSR() {
     setIsLoading(false);
   }, []);
 
-  useEffect(() => {
-    const result = DataUsers.filter((item: any) => {
-      return item.name.toLowerCase().match(search.toLowerCase());
-    });
-    setFilter(result);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search]);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState("5");
   const recordsPerPageNumber = parseInt(recordsPerPage, 10);
   const lastIndex = currentPage * recordsPerPageNumber;
   const firstIndex = lastIndex - recordsPerPageNumber;
-  const records = DataUsers.slice(firstIndex, lastIndex);
+  let records = DataUsers.slice(firstIndex, lastIndex);
   let npage = Math.ceil(DataUsers.length / recordsPerPageNumber);
   if (npage === 1) npage = 0;
   const numbers = Array.from({ length: npage }, (_, i) => i + 1);
@@ -72,12 +63,7 @@ function NOSSR() {
 
   console.log(DataUsers);
 
-  console.log(Filter);
-
-  const handleDelete = (val: any) => {
-    const newData = DataUsers.filter((item: any) => item.id !== val);
-    setDataUsers(newData);
-  };
+  console.log(records);
 
   /* 
   const [uniqueNames, setuniqueNames] = useState([]);
@@ -105,6 +91,24 @@ function NOSSR() {
   const pathname = usePathname();
   const { replace } = useRouter();
  */
+
+  const [Filter, setFilter] = useState<DocumentData[]>([]);
+
+  /* Fungsi Search */
+  useEffect(() => {
+    console.log("us");
+    const result = DataUsers.filter((item) => {
+      return item.fullname.toLowerCase().match(search.toLowerCase());
+    });
+    setFilter(result);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]);
+
+  const handleDelete = (val: any) => {
+    const newData = DataUsers.filter((item: any) => item.id !== val);
+    setDataUsers(newData);
+  };
+
   return (
     <div className="px-3 py-0 w-[85rem] rounded-md">
       <div className={`mt-0 rounded-md overflow-y-auto h-[30rem]`}>
@@ -115,33 +119,49 @@ function NOSSR() {
         ) : (
           <div className={`flex flex-col justify-center items-center w-full`}>
             <div className={`flex justify-between items-center w-full p-5`}>
-              <div className="font-bold">
-                <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
-                  Tampilkan
-                  <select
-                    value={recordsPerPage}
-                    onChange={(e) => setRecordsPerPage(e.target.value)}
-                    id="countries"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  >
-                    <option value="5" selected>
-                      5
-                    </option>
-                    <option value="10" disabled={DataUsers.length < 10}>
-                      10
-                    </option>
-                    <option value="25" disabled={DataUsers.length < 25}>
-                      25
-                    </option>
-                    <option value="50" disabled={DataUsers.length < 50}>
-                      50
-                    </option>
-                    <option value="100" disabled={DataUsers.length < 100}>
-                      100
-                    </option>
-                  </select>
-                  data
-                </form>
+              <div className="font-bold flex flex-col justify-start gap-5">
+                <div>
+                  <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
+                    <select
+                      value={recordsPerPage}
+                      onChange={(e) => setRecordsPerPage(e.target.value)}
+                      id="countries"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    >
+                      <option value="A" selected>
+                        Pilih Kelas
+                      </option>
+                      <option value="A">A</option>
+                    </select>
+                  </form>
+                </div>
+                <div>
+                  <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
+                    <select
+                      value={recordsPerPage}
+                      onChange={(e) => setRecordsPerPage(e.target.value)}
+                      id="countries"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    >
+                      <option value="5" selected>
+                        Tampilkan Data
+                      </option>
+                      <option value="5">5</option>
+                      <option value="10" disabled={DataUsers.length < 10}>
+                        10
+                      </option>
+                      <option value="25" disabled={DataUsers.length < 25}>
+                        25
+                      </option>
+                      <option value="50" disabled={DataUsers.length < 50}>
+                        50
+                      </option>
+                      <option value="100" disabled={DataUsers.length < 100}>
+                        100
+                      </option>
+                    </select>
+                  </form>
+                </div>
               </div>
 
               <div>
@@ -171,10 +191,12 @@ function NOSSR() {
                       </svg>
                     </div>
                     <input
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
                       type="search"
                       id="default-search"
                       className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-                      placeholder="Cari NISN/Nama"
+                      placeholder="Cari Nama Siswa"
                       required
                     />
                     {/* <button
@@ -210,7 +232,46 @@ function NOSSR() {
                   {records.map((val, index) => (
                     <tr
                       key={val.id}
-                      className={`h-5  border-b ${
+                      className={`${
+                        search === "" ? "visible" : "hidden"
+                      } h-5 border-b ${
+                        index % 2 === 0 ? "bg-slate-300" : "bg-white"
+                      } `}
+                    >
+                      <td className="text-xs border border-slate-600 p-3 text-center h-2">
+                        {val.nisn}
+                      </td>
+                      <td className="text-xs border border-slate-600 p-3  text-center h-2">
+                        {val.fullname}
+                      </td>
+                      <td className="text-xs border border-slate-600 p-3  text-center h-2">
+                        {val.class}
+                      </td>
+                      <td className="text-xs border border-slate-600 p-3  text-center h-2">
+                        <div className="flex flex-row justify-center items-start gap-2">
+                          {/* <button
+                        type="button"
+                        className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white p-4 rounded focus:outline-none focus:shadow-outline"
+                      >
+                        Ubah
+                      </button> */}
+                          <button
+                            type="button"
+                            className="text-xs bg-red-500 hover:bg-red-600 text-white p-4 rounded focus:outline-none focus:shadow-outline"
+                            /* onClick={() => handleDelete(row.id)} */
+                          >
+                            Hapus
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                  {Filter.map((val, index) => (
+                    <tr
+                      key={val.id}
+                      className={`${
+                        search === "" ? "hidden" : "visible"
+                      } h-5 border-b ${
                         index % 2 === 0 ? "bg-slate-300" : "bg-white"
                       } `}
                     >
@@ -247,13 +308,13 @@ function NOSSR() {
             </div>
             {/* akhir table */}
             <div className="flex justify-between w-full px-4">
-              <div className="font-bold p-2 rounded-md">
+              <div className="bg-white font-bold p-2 rounded-md">
                 Tampilkan{" "}
-                <span className="bg-white p-2 rounded-md">
+                <span className="bg-blue-500 p-2 rounded-md">
                   {recordsPerPage}
                 </span>{" "}
                 data dari{" "}
-                <span className="bg-white p-2 rounded-md">
+                <span className="bg-blue-500 p-2 rounded-md">
                   {DataUsers.length}
                 </span>{" "}
                 data

@@ -147,7 +147,7 @@ function NOSSR() {
   }, [search]);
 
   const handleDelete = async (val: any) => {
-    console.log(val);
+    /* hapus data siswa didatabase */
     const db = query(
       collection(firestore, "users"),
       where("fullname", "==", `${val}`)
@@ -155,11 +155,15 @@ function NOSSR() {
     const docRef = (await getDocs(db)).docs[0].ref;
     await deleteDoc(docRef);
 
+    /* hapus data siswa ditabel */
     const newData = DataUsers.filter((item: any) => item.fullname !== val);
     setFilter(newData);
+
+    /* relaod data siswa lagi */
     GetData();
-/*     window.location.reload();
- */  };
+    /*     window.location.reload();
+     */
+  };
 
   return (
     <div className="px-3 py-0 w-[85rem] rounded-md">

@@ -86,7 +86,7 @@ const Home = () => {
         <ul className="md:flex justify-between items-center md:w-fit w-full p-1 bg-indigo-600 dark:bg-[#111827] border-10 rounded-3xl mx-auto mt-5 mb-16 border-2 border-teal-300 dark:border-[#0d6efd]">
           {session?.user?.role === "admin" ? (
             <li>
-              <Link href={"/halaman_guru/data_murid"}>
+              <Link href={"/halaman_guru/data_siswa"}>
                 <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center rounded-lg bg-amber-500 hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
                   <GiTeacher className="w-[35px] h-[35px]" />
                   Halaman Guru

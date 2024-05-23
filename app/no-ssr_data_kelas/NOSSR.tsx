@@ -18,15 +18,22 @@ import {
 } from "firebase/firestore";
 import { firestore } from "../lib/firebase/init";
 import { useRouter } from "next/router";
+import DataTable from "react-data-table-component";
+import { TableStyles, Theme, Themes } from "./types.";
 
-function NOSSR({ modalIsOpen, setModalIsOpen }: any) {
+function NOSSR() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [IsLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState("");
   const [DataUsers, setDataUsers] = useState<DocumentData[]>([]);
+  const [Filter, setFilter] = useState<DocumentData[]>([]);
 
   useEffect(() => {
     const GetData = async () => {
+      setIsLoading(true);
       const q = query(
-        collection(firestore, "users"),
-        where("role", "==", "member")
+        collection(firestore, "users")
+        /* where("role", "==", "member") */
       );
       const snapshot = await getDocs(q);
 
@@ -35,15 +42,106 @@ function NOSSR({ modalIsOpen, setModalIsOpen }: any) {
           console.log("No such document!");
         } else {
           setDataUsers(snapshot.docs.map((doc) => doc.data()));
+          setFilter(snapshot.docs.map((doc) => doc.data()));
         }
       } catch (error) {
         console.log("Error getting document:", error);
       }
     };
     GetData();
+    setIsLoading(false);
   }, []);
 
-  console.log(DataUsers);
+  const columns = [
+    {
+      name: "nisn",
+      selector: (row: any) => row.nisn,
+    },
+    {
+      name: "nama",
+      selector: (row: any) => row.fullname,
+    },
+    {
+      name: "kelas",
+      selector: (row: any) => row.class,
+    },
+    {
+      name: "Tindakan",
+      cell: (row: any) => (
+        <div className="flex flex-row justify-center items-center gap-2">
+          <Link
+            href={`/no-ssr_data_siswa/${row.nisn}`}
+            className="flex flex-row justify-center items-center gap-2 bg-teal-400 p-2 rounded-md font-bold"
+          >
+            <span className="text-2xl">
+              <FaSync />
+            </span>
+            Edit
+          </Link>
+        </div>
+      ),
+    },
+  ];
+  const customStyles: TableStyles = {
+    table: {
+      style: {
+        color: "white",
+        backgroundColor: "black",
+      },
+    },
+    tableWrapper: {
+      style: {
+        display: "table",
+      },
+    },
+    responsiveWrapper: {
+      style: {},
+    },
+    header: {
+      style: {
+        fontSize: "22px",
+        color: "white",
+        backgroundColor: "black",
+        minHeight: "56px",
+        paddingLeft: "16px",
+        paddingRight: "8px",
+      },
+    },
+    subHeader: {
+      style: {
+        backgroundColor: "black",
+        minHeight: "52px",
+      },
+    },
+    head: {
+      style: {
+        color: "white",
+        fontSize: "12px",
+        fontWeight: 500,
+      },
+    },
+    headRow: {
+      style: {
+        backgroundColor: "black",
+        minHeight: "52px",
+        borderBottomWidth: "1px",
+        borderBottomColor: "white",
+        borderBottomStyle: "solid",
+      },
+      denseStyle: {
+        minHeight: "32px",
+      },
+    },
+    headCells: {
+      style: {
+        paddingLeft: "16px",
+        paddingRight: "16px",
+      },
+      draggingStyle: {
+        cursor: "move",
+      },
+    },
+  };
 
   return (
     <div className="mt-5">
@@ -62,69 +160,11 @@ function NOSSR({ modalIsOpen, setModalIsOpen }: any) {
         </div>
 
         <div className="mt-5 rounded-md overflow-y-auto h-[20rem]">
-          <table className="w-full h-full">
-            <thead>
-              <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
-                <th className="border border-slate-600 text-center p-3 px-5">
-                  NISN
-                </th>
-                <th className="border border-slate-600 text-center p-3 px-5">
-                  Nama
-                </th>
-                <th className="border border-slate-600 text-center p-3 px-5">
-                  Kelas
-                </th>
-                <th className="border border-slate-600 text-center p-3 px-5">
-                  Tindakan
-                </th>
-              </tr>
-            </thead>
-            <tbody className="font-bold ">
-              {DataUsers.map((val, index) => (
-                <tr
-                  key={val.id}
-                  className={`border-b ${
-                    index % 2 === 0 ? "bg-slate-300" : "bg-white"
-                  } `}
-                >
-                  <td className="border border-slate-600 p-3 px-5 text-center">
-                    {val.nisn}
-                  </td>
-                  <td className="border border-slate-600 p-3 px-5 text-center">
-                    {val.fullname}
-                  </td>
-                  <td className="border border-slate-600 p-3 px-5 text-center">
-                    {val.class}
-                  </td>
-                  <td className="border border-slate-600 p-3 px-5 text-center">
-                    <div className="flex flex-row justify-center items-start gap-2">
-                      {/* <button
-                        type="button"
-                        className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white p-4 rounded focus:outline-none focus:shadow-outline"
-                      >
-                        Ubah
-                      </button> */}
-                      <button
-                        type="button"
-                        className="text-sm bg-red-500 hover:bg-red-600 text-white p-4 rounded focus:outline-none focus:shadow-outline"
-                        /* onClick={() => handleDelete(row.id)} */
-                      >
-                        Hapus
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* <DataTable
-            progressPending={pending}
+          <DataTable
             customStyles={customStyles}
             columns={columns}
-            data={data}
+            data={DataUsers}
             pagination
-            fixedHeader
             highlightOnHover
             subHeader
             subHeaderComponent={
@@ -154,7 +194,7 @@ function NOSSR({ modalIsOpen, setModalIsOpen }: any) {
                 </div>
               </div>
             }
-          /> */}
+          />
         </div>
       </div>
       <Modal

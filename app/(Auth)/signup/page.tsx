@@ -1,13 +1,20 @@
 "use client";
 import Bilcon from "../../asset/Bilcon.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Input } from "@material-tailwind/react";
 import { useForm, Controller } from "react-hook-form";
 import { firestore } from "@/app/lib/firebase/init";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 
 const SignUp = () => {
   const { push } = useRouter();
@@ -15,7 +22,6 @@ const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [findClass, setfindClass] = useState("");
 
   type Inputs = {
     fullname: string;
@@ -45,19 +51,36 @@ const SignUp = () => {
     },
   });
 
+  let FindClass;
+
   const onSubmit = async (e: any) => {
     if (e.token !== "G4R4") {
-      setfindClass("ALL");
+      const q = query(
+        collection(firestore, "TokenClass"),
+        where("token", "==", e.token)
+      );
+      const snapshot = await getDocs(q);
+      interface UserData {
+        class: string;
+        // Add other properties as needed
+      }
+      const users = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...(doc.data() as UserData),
+      }));
+      FindClass = users[0].class;
+      console.log(FindClass);
       setError("");
       setIsLoading(true);
-      console.log(findClass);
+      console.log(FindClass);
+
       const res = await fetch("/api/auth/register", {
         method: "POST",
         body: JSON.stringify({
           fullname: e.fullname,
           nisn: e.nisn,
           email: e.email,
-          class: `${findClass}`,
+          class: `${FindClass}`,
           role: "member",
           password: e.password,
           bab1_kuis: "Belum Mengerjakan Kuis Bab 1",

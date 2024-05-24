@@ -37,8 +37,8 @@ export async function register(data: {
   fullname: string;
   nisn: string;
   email: string;
-  class?: string;
-  role?: string;
+  class: string;
+  role: string;
   password: string;
 }) {
   const q = query(

@@ -322,11 +322,10 @@ const SignUp = () => {
               <Controller
                 name="token"
                 rules={{
-                  required: "Masukkan Token",
-                  pattern: {
-                    value: /^[A-Z0-9]{4}$/,
-                    message:
-                      "Token tidak sesuai, pastikan Token adalah angka dan huruf minimal 4 karakter",
+                  required: "Masukkan Password Anda",
+                  minLength: {
+                    value: 8,
+                    message: "Password minimal 8 karakter",
                   },
                 }}
                 control={control}

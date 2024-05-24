@@ -47,7 +47,7 @@ const SignUp = () => {
   });
 
   const onSubmit = async (e: any) => {
-    if (e.token === "G4R4") {
+    if (e.token !== "G4R4") {
       setfindRole("admin");
       setfindClass("ALL");
 
@@ -98,7 +98,7 @@ const SignUp = () => {
           alert("Ada kesalahan yang tidak diketahui, silahkan coba lagi");
         }
       }
-    } else if (e.token !== "G4R4") {
+    } else if (e.token === "G4R4") {
       alert("Token Salah atau Tidak Terdaftar, Silahkan Coba Lagi");
     }
   };

@@ -322,10 +322,10 @@ const SignUp = () => {
               <Controller
                 name="token"
                 rules={{
-                  required: "Masukkan Password Anda",
+                  required: "Masukkan Token",
                   minLength: {
-                    value: 8,
-                    message: "Password minimal 8 karakter",
+                    value: 4,
+                    message: "Minimal 4 karakter",
                   },
                 }}
                 control={control}

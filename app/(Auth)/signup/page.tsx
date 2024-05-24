@@ -48,16 +48,9 @@ const SignUp = () => {
   const onSubmit = async (e: any) => {
     if (e.token !== "G4R4") {
       setfindClass("ALL");
-
-      const kuis = {
-        bab1_kuis: "Belum Mengerjakan Kuis Bab 1",
-        bab2_kuis: "Belum Mengerjakan Kuis Bab 2",
-        bab3_kuis: "Belum Mengerjakan Kuis Bab 3",
-        bab4_kuis: "Belum Mengerjakan Kuis Bab 4",
-      };
-
       setError("");
       setIsLoading(true);
+      console.log(findClass);
       const res = await fetch("/api/auth/register", {
         method: "POST",
         body: JSON.stringify({
@@ -67,26 +60,21 @@ const SignUp = () => {
           class: `${findClass}`,
           role: "member",
           password: e.password,
+          bab1_kuis: "Belum Mengerjakan Kuis Bab 1",
+          bab2_kuis: "Belum Mengerjakan Kuis Bab 2",
+          bab3_kuis: "Belum Mengerjakan Kuis Bab 3",
+          bab4_kuis: "Belum Mengerjakan Kuis Bab 4",
+          ujian_akhir: "Belum Mengerjakan Ujian Akhir",
         }),
       });
       console.log(res.status);
       if (res.status === 200) {
-        const ref = doc(firestore, "DataUsers", `${e.email}`);
-        setDoc(ref, kuis)
-          .then((response) => {
-            console.log("sukkes memasukkan data pengguna", response);
-            alert("sukkes memasukkan data pengguna");
-          })
-          .catch((error) => {
-            console.log("gagal memasukkan data pengguna", error);
-            alert("gagal memasukkan data pengguna");
-          });
         setIsLoading(false);
         push("/signin");
       } else {
         setIsLoading(false);
         console.log("catch", e.message);
-        if (e.code === "auth/email-already-in-use") {
+        if (e === "catch" || e) {
           alert("email sudah digunakan");
         } else if (e.code === "auth/invalid-email") {
           alert("Invalid email");

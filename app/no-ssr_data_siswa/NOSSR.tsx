@@ -3,6 +3,7 @@ import { it } from "node:test";
 import React, { useEffect, useState } from "react";
 import DataTable, {
   createTheme,
+  SortOrder,
   TableStyles,
 } from "react-data-table-component";
 import {
@@ -40,8 +41,8 @@ function NOSSR() {
     setIsLoading(true);
     setSync(true);
     const q = query(
-      collection(firestore, "users")
-      /* where("role", "==", "member") */
+      collection(firestore, "users"),
+      where("role", "==", "member")
     );
     const snapshot = await getDocs(q);
 
@@ -67,27 +68,27 @@ function NOSSR() {
 
   const columns = [
     {
-      name: "nisn",
+      name: "NISN",
       selector: (row: any) => row.nisn,
       sortable: true,
     },
     {
-      name: "nama",
+      name: "NAMA",
       selector: (row: any) => row.fullname,
       sortable: true,
       sortField: "nama",
     },
     {
-      name: "kelas",
+      name: "KELAS",
       selector: (row: any) => row.class,
       sortable: true,
     },
     {
-      name: "Tindakan",
+      name: "TINDAKAN",
       cell: (row: any) => (
         <div className="flex flex-row justify-center items-center gap-2">
           <button
-            className="text-base p-2 bg-[#dc3545] w-fit rounded-md"
+            className="text-white text-base p-2 bg-red-700 hover:bg-rose-500 w-fit rounded-md"
             onClick={() => handleDelete(row.fullname)}
           >
             Hapus
@@ -125,6 +126,11 @@ function NOSSR() {
         cursor: "move",
       },
     },
+    rows: {
+      style: {
+        border: "1px solid",
+      },
+    },
   };
 
   /*   const [currentPage, setCurrentPage] = useState(1);
@@ -137,12 +143,34 @@ function NOSSR() {
   if (npage === 1) npage = 0;
   const numbers = Array.from({ length: npage }, (_, i) => i + 1); */
 
+  function handleSelect(event: any) {
+    setSearch(event.target.value);
+  }
+
+  console.log(search.length === 1);
+
   /* Fungsi Search */
   useEffect(() => {
-    const result = DataUsers.filter((item) => {
-      return item.fullname.toLowerCase().match(search.toLowerCase());
-    });
-    setFilter(result);
+    if (Number.isNaN(Number(search))) {
+      if (search.length > 1) {
+        const result = DataUsers.filter((item) => {
+          return item.fullname.toLowerCase().match(search.toLowerCase());
+        });
+        setFilter(result);
+      } else if (search.length === 1) {
+        const result3 = DataUsers.filter((item) => {
+          return item.class.toLowerCase().match(search.toLowerCase());
+        });
+        console.log(result3);
+        setFilter(result3);
+      }
+    } else {
+      const result2 = DataUsers.filter((item) => {
+        return item.nisn.toLowerCase().match(search.toLowerCase());
+      });
+      console.log(result2);
+      setFilter(result2);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
@@ -164,6 +192,11 @@ function NOSSR() {
     /*     window.location.reload();
      */
   };
+
+  const SumClass = Object.values(DataUsers);
+  console.log(DataUsers);
+  console.log(SumClass);
+  console.log(search);
 
   return (
     <div className="px-3 py-0 w-[85rem] rounded-md">
@@ -189,47 +222,25 @@ function NOSSR() {
                       <div>
                         <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
                           <select
-                            /* value={recordsPerPage}
-                            onChange={(e) => setRecordsPerPage(e.target.value)} */
+                            value={search}
+                            onChange={handleSelect}
                             id="countries"
                             className="bg-teal-400 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                           >
-                            <option value="A" selected>
-                              Pilih Kelas
+                            <option selected value="">
+                              Semua Kelas
                             </option>
-                            <option value="A">A</option>
+                            {SumClass.map((item) => (
+                              <option
+                                className="bg-gray-50"
+                                key={item.id}
+                                value={item.class}
+                              >
+                                {item.class}
+                              </option>
+                            ))}
                           </select>
                         </form>
-                      </div>
-                      <div>
-                        {/* <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
-                          <select
-                            value={recordsPerPage}
-                            onChange={(e) => setRecordsPerPage(e.target.value)}
-                            id="countries"
-                            className="bg-teal-400 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          >
-                            <option value="5" selected>
-                              Tampilkan Data
-                            </option>
-                            <option value="5">5</option>
-                            <option value="10" disabled={DataUsers.length < 10}>
-                              10
-                            </option>
-                            <option value="25" disabled={DataUsers.length < 25}>
-                              25
-                            </option>
-                            <option value="50" disabled={DataUsers.length < 50}>
-                              50
-                            </option>
-                            <option
-                              value="100"
-                              disabled={DataUsers.length < 100}
-                            >
-                              100
-                            </option>
-                          </select>
-                        </form> */}
                       </div>
                     </div>
                     <div className="flex flex-col justify-center items-center gap-2">
@@ -265,35 +276,11 @@ function NOSSR() {
                               type="search"
                               id="default-search"
                               className="block w-40 p-1 px-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-                              placeholder="Nama Siswa"
+                              placeholder="Nama / NISN"
                               required
                             />
                           </div>
                         </form>
-                      </div>
-                      <div className="flex flex-row gap-2 justify-center items-center ">
-                        <button
-                          onClick={() => setModalIsOpen(true)}
-                          className="bg-teal-400 flex flex-row justify-center items-center gap-2 p-2 rounded-md font-bold"
-                        >
-                          <span className="text-2xl">
-                            <FaPlus />
-                          </span>
-                          Tambah Kelas
-                        </button>
-                        <button
-                          onClick={() => {
-                            GetData();
-                            setSync(true);
-                          }}
-                          className="hover:text-blue-700 text-xl font-bold"
-                        >
-                          <FaSync
-                            className={`text-xl rounded cursor-pointer block float-left mr-2 duration-5000 ${
-                              sync && "animate-spin"
-                            }`}
-                          />
-                        </button>
                       </div>
                     </div>
                   </div>

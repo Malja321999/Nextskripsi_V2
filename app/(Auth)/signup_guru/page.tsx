@@ -46,13 +46,6 @@ const SignUp = () => {
 
   const onSubmit = async (e: any) => {
     if (e.token === "G4R4") {
-      const kuis = {
-        bab1_kuis: "Belum Mengerjakan Kuis Bab 1",
-        bab2_kuis: "Belum Mengerjakan Kuis Bab 2",
-        bab3_kuis: "Belum Mengerjakan Kuis Bab 3",
-        bab4_kuis: "Belum Mengerjakan Kuis Bab 4",
-      };
-
       setError("");
       setIsLoading(true);
       const res = await fetch("/api/auth/register", {
@@ -61,23 +54,18 @@ const SignUp = () => {
           fullname: e.fullname,
           nisn: e.nisn,
           email: e.email,
-          role: "admin",
           class: "ALL",
+          role: "admin",
           password: e.password,
+          bab1_kuis: "Belum Mengerjakan Kuis Bab 1",
+          bab2_kuis: "Belum Mengerjakan Kuis Bab 2",
+          bab3_kuis: "Belum Mengerjakan Kuis Bab 3",
+          bab4_kuis: "Belum Mengerjakan Kuis Bab 4",
+          ujian_akhir: "Belum Mengerjakan Ujian Akhir",
         }),
       });
       console.log(res.status);
       if (res.status === 200) {
-        const ref = doc(firestore, "DataUsers", `${e.email}`);
-        setDoc(ref, kuis)
-          .then((response) => {
-            console.log("sukkes memasukkan data pengguna", response);
-            alert("sukkes memasukkan data pengguna");
-          })
-          .catch((error) => {
-            console.log("gagal memasukkan data pengguna", error);
-            alert("gagal memasukkan data pengguna");
-          });
         setIsLoading(false);
         push("/signin_guru");
       } else {
@@ -320,10 +308,9 @@ const SignUp = () => {
                 name="token"
                 rules={{
                   required: "Masukkan Token",
-                  pattern: {
-                    value: /^[A-Z0-9]{4}$/,
-                    message:
-                      "Token tidak sesuai, pastikan Token adalah angka dan huruf minimal 4 karakter",
+                  minLength: {
+                    value: 4,
+                    message: "Minimal 4 karakter",
                   },
                 }}
                 control={control}

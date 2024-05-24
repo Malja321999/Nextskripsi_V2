@@ -2,7 +2,16 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { firestore } from "../lib/firebase/init";
-import { DocumentData, doc, getDoc } from "firebase/firestore";
+import {
+  DocumentData,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import Image from "next/image";
 import { IoMdSettings } from "react-icons/io";
 import React from "react";
@@ -36,38 +45,32 @@ export default function ProfilePage() {
   const userNisn = session?.user?.nisn;
   console.log({ user });
 
-  const getDataFirestore = async () => {
-    const docRef = await doc(firestore, "DataUsers", `${userEmail}`);
-    const docSnap = await getDoc(docRef);
+  const GetData = async () => {
+    setIsLoading(true);
+    setSync(true);
+    const q = query(collection(firestore, "users"));
+    const snapshot = await getDocs(q);
+
     try {
-      setSync(true);
-      if (docSnap.exists()) {
-        setsnapshotFirestore([docSnap.data()]); // Converting DocumentData to array and setting it
-      } else {
+      if (snapshot.empty) {
         console.log("No such document!");
+      } else {
+        setsnapshotFirestore(snapshot.docs.map((doc) => doc.data()));
       }
     } catch (error) {
       console.log("Error getting document:", error);
     }
     setIsLoading(false);
-    setTimeout(function () {
-      setSync(false);
-    }, 1000);
+    setSync(false);
   };
 
   useEffect(() => {
-    if (isLoading) {
-      getDataFirestore();
-    }
-  });
+    GetData();
+  }, []);
 
   const dataFirestore = snapshotFirestore || {};
   const ObjectDataFirestore = Object.values(dataFirestore);
-  console.log(dataFirestore);
-
-  if (dataFirestore.length === 0) {
-    getDataFirestore();
-  }
+  console.log(snapshotFirestore);
 
   const router = useRouter();
 
@@ -120,21 +123,19 @@ export default function ProfilePage() {
                 {userClass}
               </h6>
             </li>
-            <li className="mt-[10rem] h-fit w-full text-start text-xl font-bold bg-rose-500 p-3 rounded-md">
-              <button
-                className="flex justify-start items-center gap-2"
-                onClick={() => signOut()}
-              >
-                <BiLogOut />
-                Logout
-              </button>
-            </li>
+            <button
+              className="mt-[10rem] h-fit w-full text-start text-xl font-bold bg-rose-500 p-3 rounded-md flex justify-start items-center gap-2"
+              onClick={() => signOut()}
+            >
+              <BiLogOut />
+              Logout
+            </button>
           </ul>
         </div>
         {/* Pengaturan */}
         <div className="w-[72rem] h-[37rem] bg-gradient-to-r from-purple-500 to-pink-500 p-5 rounded-md flex flex-col">
-          <div className="text-black overflow-y-auto mb-5 rounded-md shadow w-full h-[80rem] border-4 border-gray-500">
-            {ObjectDataFirestore.map((data) => (
+          <div className="text-black overflow-hidden mb-5 rounded-md shadow w-full h-[80rem] border-4 border-gray-500">
+            {snapshotFirestore.map((data) => (
               <table key={data.id} className="w-full h-full">
                 <thead>
                   <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
@@ -145,7 +146,7 @@ export default function ProfilePage() {
                       <div className="flex flex-row justify-center items-center gap-10">
                         <button
                           onClick={() => {
-                            getDataFirestore();
+                            GetData();
                             setSync(true);
                           }}
                           className="hover:text-blue-700 text-xl font-bold"

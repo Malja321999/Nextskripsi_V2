@@ -45,8 +45,8 @@ export async function register(data: {
     collection(firestore, "users"),
     where("email", "==", data.email)
   );
-  const shapshot = await getDocs(q);
-  const users = shapshot.docs.map((doc) => ({
+  const snapshot = await getDocs(q);
+  const users = snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
@@ -75,8 +75,8 @@ export async function login(data: {
     collection(firestore, "users"),
     where("nisn", "==", data.nisn)
   );
-  const shapshot = await getDocs(q);
-  const user = shapshot.docs.map((doc) => ({
+  const snapshot = await getDocs(q);
+  const user = snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
@@ -94,8 +94,8 @@ export async function loginWithGoogle(data: any, callback: any) {
     collection(firestore, "users"),
     where("email", "==", data.email)
   );
-  const shapshot = await getDocs(q);
-  const user: any = shapshot.docs.map((doc) => ({
+  const snapshot = await getDocs(q);
+  const user: any = snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));

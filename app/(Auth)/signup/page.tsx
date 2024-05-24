@@ -16,7 +16,6 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [findClass, setfindClass] = useState("");
-  const [findRole, setfindRole] = useState("");
 
   type Inputs = {
     fullname: string;
@@ -48,7 +47,6 @@ const SignUp = () => {
 
   const onSubmit = async (e: any) => {
     if (e.token !== "G4R4") {
-      setfindRole("admin");
       setfindClass("ALL");
 
       const kuis = {
@@ -66,8 +64,8 @@ const SignUp = () => {
           fullname: e.fullname,
           nisn: e.nisn,
           email: e.email,
-          class: findClass,
-          role: findRole,
+          class: `${findClass}`,
+          role: "member",
           password: e.password,
         }),
       });

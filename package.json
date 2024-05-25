@@ -14,6 +14,7 @@
     "@types/bcryptjs": "^2.4.6",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
+    "file-saver": "^2.0.5",
     "firebase": "^10.7.2",
     "next": "14.1.0",
     "next-auth": "^4.24.5",
@@ -29,10 +30,14 @@
     "react-icons": "^5.0.1",
     "react-modal": "^3.16.1",
     "react-player": "^2.16.0",
+    "react-to-pdf": "^1.0.1",
+    "react-to-print": "^2.15.1",
     "react-toastify": "^10.0.4",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-beautiful-dnd": "^13.1.8",

@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import { it } from "node:test";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DataTable, {
   createTheme,
   SortOrder,
@@ -26,8 +26,14 @@ import { IoClose, IoSearch } from "react-icons/io5";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Modal from "react-modal";
 import Link from "next/link";
-import { FaPlus, FaSync } from "react-icons/fa";
-import { IoTriangleSharp } from "react-icons/io5";
+import { FaFilePdf } from "react-icons/fa6";
+import { SiMicrosoftexcel } from "react-icons/si";
+import { FaPrint } from "react-icons/fa6";
+import { useReactToPrint } from "react-to-print";
+import { usePDF } from "react-to-pdf";
+import { ExportToExcel } from "./ExportToExcel";
+import * as FileSaver from "file-saver";
+import * as XLSX from "xlsx";
 
 function NOSSR() {
   const [IsLoading, setIsLoading] = useState(true);
@@ -84,17 +90,8 @@ function NOSSR() {
       sortable: true,
     },
     {
-      name: "TINDAKAN",
-      cell: (row: any) => (
-        <div className="flex flex-row justify-center items-center gap-2">
-          <button
-            className="text-white text-base p-2 bg-red-700 hover:bg-rose-500 w-fit rounded-md"
-            onClick={() => handleDelete(row.fullname)}
-          >
-            Hapus
-          </button>
-        </div>
-      ),
+      name: "NIlai",
+      selector: (row: any) => row.ujian_akhir,
     },
   ];
   const customStyles: TableStyles = {
@@ -138,16 +135,6 @@ function NOSSR() {
     },
   };
 
-  /*   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage, setRecordsPerPage] = useState("5");
-  const recordsPerPageNumber = parseInt(recordsPerPage, 10);
-  const lastIndex = currentPage * recordsPerPageNumber;
-  const firstIndex = lastIndex - recordsPerPageNumber;
-  let records = DataUsers.slice(firstIndex, lastIndex);
-  let npage = Math.ceil(DataUsers.length / recordsPerPageNumber);
-  if (npage === 1) npage = 0;
-  const numbers = Array.from({ length: npage }, (_, i) => i + 1); */
-
   function handleSelect(event: any) {
     setSearch(event.target.value);
   }
@@ -179,29 +166,33 @@ function NOSSR() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
-  const handleDelete = async (val: any) => {
-    /* hapus data siswa didatabase */
-    const db = query(
-      collection(firestore, "users"),
-      where("fullname", "==", `${val}`)
-    );
-    const docRef = (await getDocs(db)).docs[0].ref;
-    await deleteDoc(docRef);
-
-    /* hapus data siswa ditabel */
-    const newData = DataUsers.filter((item: any) => item.fullname !== val);
-    setFilter(newData);
-
-    /* relaod data siswa lagi */
-    GetData();
-    /*     window.location.reload();
-     */
-  };
-
   const SumClass = Object.values(DataUsers);
   console.log(DataUsers);
   console.log(SumClass);
   console.log(search);
+
+  /* Fungsi PDF */
+  const { toPDF, targetRef } = usePDF({ filename: "Data Ujian Akhir.pdf" });
+
+  /* Fungsi Excel */
+  const ExportToExcel = () => {
+    const fileType =
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+    const fileExtension = ".xlsx";
+
+    const ws = XLSX.utils.json_to_sheet(DataUsers);
+    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const data = new Blob([excelBuffer], { type: fileType });
+    FileSaver.saveAs(data, "Data Exel Ujian Akhir" + fileExtension);
+  };
+
+  /* Fungsi Print */
+  const componentRef = useRef<HTMLDivElement | null>(null);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current || null,
+    documentTitle: "Data Ujian Akhir",
+  });
 
   return (
     <div className="px-3 py-0 w-[85rem] rounded-md">
@@ -213,7 +204,13 @@ function NOSSR() {
         ) : (
           <div className={`flex flex-col justify-center items-center w-full`}>
             {/* table */}
-            <div className="mt-5 rounded-md overflow-y-auto h-full">
+            <div
+              ref={(element) => {
+                componentRef.current = element;
+                targetRef.current = element;
+              }}
+              className="mt-5 rounded-md overflow-y-auto h-full"
+            >
               <DataTable
                 customStyles={customStyles}
                 columns={columns}
@@ -222,8 +219,8 @@ function NOSSR() {
                 highlightOnHover
                 subHeader
                 subHeaderComponent={
-                  <div className="flex flex-row justify-center items-center gap-[57.8rem]">
-                    <div className="font-bold flex flex-col justify-start gap-5">
+                  <div className="flex flex-row justify-center items-center gap-[50rem]">
+                    <div className="font-bold flex flex-col justify-start gap-5 mr-[3rem]">
                       <div>
                         <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
                           <select
@@ -286,6 +283,29 @@ function NOSSR() {
                             />
                           </div>
                         </form>
+                      </div>
+                      <div className="flex flex-row items-center gap-2 font-bold text-gray-50">
+                        <button
+                          onClick={() => toPDF()}
+                          className="flex justify-center items-center gap-2 w-fit p-2 bg-rose-500 hover:bg-rose-400 rounded-md"
+                        >
+                          <FaFilePdf />
+                          PDF
+                        </button>
+                        <button
+                          onClick={() => ExportToExcel()}
+                          className="flex justify-center items-center gap-2 w-fit p-2 bg-emerald-500 hover:bg-emerald-400 rounded-md"
+                        >
+                          <SiMicrosoftexcel />
+                          EXCEL
+                        </button>
+                        <button
+                          onClick={handlePrint}
+                          className="flex justify-center items-center gap-2 w-fit p-2 bg-gray-400 hover:bg-gray-300 rounded-md"
+                        >
+                          <FaPrint />
+                          PRINT
+                        </button>
                       </div>
                     </div>
                   </div>

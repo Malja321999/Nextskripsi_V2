@@ -97,6 +97,11 @@ function NOSSR() {
     },
   ];
   const customStyles: TableStyles = {
+    table: {
+      style: {
+        width: "80rem",
+      },
+    },
     head: {
       style: {
         color: "white",

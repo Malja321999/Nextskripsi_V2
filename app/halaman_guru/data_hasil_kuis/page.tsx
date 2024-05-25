@@ -17,7 +17,7 @@ const Page = () => {
   const [selectmenu, setselectmenu] = useState("Data Siswa");
   const [value, setValue] = useState("10");
 
-  const NoSSR = dynamic(() => import("../../no-ssr_data_siswa/NOSSR"), {
+  const NoSSR = dynamic(() => import("../../no-ssr_hasil_kuis/NOSSR"), {
     ssr: false,
   });
 
@@ -123,7 +123,7 @@ const Page = () => {
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center items-start">
               <div className="text-md font-bold text-center bg-teal-400 p-5 w-fit flex justify-start items-start rounded-md">
-                Data Hasil Kuis
+                Hasil Kuis
               </div>
             </div>
 

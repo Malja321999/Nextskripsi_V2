@@ -17,7 +17,7 @@ const Page = () => {
   const [selectmenu, setselectmenu] = useState("Data Murid");
   const [value, setValue] = useState("10");
 
-  const NoSSR = dynamic(() => import("../../no-ssr_data_siswa/NOSSR"), {
+  const NoSSR = dynamic(() => import("../../no-ssr_ujian_akhir/NOSSR"), {
     ssr: false,
   });
   const NoSSR_data_kelas = dynamic(
@@ -124,16 +124,16 @@ const Page = () => {
       </div>
       {/* Content Menu */}
       <div className="text-black mt-[6.5rem] flex justify-center items-start bg-gradient-to-r from-purple-500 to-pink-500 shadow-md w-[88rem] h-[38.5rem] p-5 rounded-md">
-        {/* Data Murid */}
+        {/* Ujian Akhir */}
         <div>
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center items-start">
               <div className="text-md font-bold text-center bg-teal-400 p-5 w-fit flex justify-start items-start rounded-md">
-                Data Murid
+                Ujian Akhir
               </div>
             </div>
 
-            {/* table data student */}
+            {/* table data Ujian Akhir */}
             <div className="text-gray-900">
               <NoSSR />
             </div>

@@ -60,7 +60,6 @@ const SignUp = () => {
           bab1_kuis: "Belum Mengerjakan Kuis Bab 1",
           bab2_kuis: "Belum Mengerjakan Kuis Bab 2",
           bab3_kuis: "Belum Mengerjakan Kuis Bab 3",
-          bab4_kuis: "Belum Mengerjakan Kuis Bab 4",
           ujian_akhir: "Belum Mengerjakan Ujian Akhir",
         }),
       });

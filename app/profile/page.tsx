@@ -30,7 +30,8 @@ export default function ProfilePage() {
 
   const [open, setOpen] = React.useState(0);
   const { data: session }: { data: any } = useSession();
-  const [isLoading, setIsLoading] = useState(true);
+  let isLoading = false;
+  let sync = false;
 
   /* Get Data Firestore */
   const [snapshotFirestore, setsnapshotFirestore] = useState<DocumentData[]>(
@@ -46,8 +47,8 @@ export default function ProfilePage() {
   console.log({ user });
 
   const GetData = async () => {
-    setIsLoading(true);
-    setSync(true);
+    isLoading = true;
+    sync = true;
     const db = query(
       collection(firestore, "users"),
       where("email", "==", `${userEmail}`)
@@ -62,22 +63,20 @@ export default function ProfilePage() {
     } catch (error) {
       console.log("Error getting document:", error);
     }
-    setIsLoading(false);
-    setSync(false);
+    isLoading = false;
+    sync = false;
   };
 
   useEffect(() => {
     GetData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const dataFirestore = snapshotFirestore || {};
-  const ObjectDataFirestore = Object.values(dataFirestore);
-  console.log(snapshotFirestore);
 
   const router = useRouter();
 
-  const [sync, setSync] = useState(false);
+  if (snapshotFirestore.length === 0) {
+    GetData();
+  }
 
   return (
     <div className="flex justify-start items-start h-screen mt-28">
@@ -150,7 +149,6 @@ export default function ProfilePage() {
                         <button
                           onClick={() => {
                             GetData();
-                            setSync(true);
                           }}
                           className="hover:text-blue-700 text-xl font-bold"
                         >

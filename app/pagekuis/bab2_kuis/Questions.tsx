@@ -4,9 +4,10 @@ import ScoreKuis from "../ScoreKuis";
 import QuizCard from "../QuizCard";
 import ResultQuiz from "./ResultQuiz";
 import NavQuestions from "../NavQuestions";
-import { doc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { firestore } from "../../lib/firebase/init";
 import { useSession } from "next-auth/react";
+import { ref } from "firebase/database";
 
 const Questions = () => {
   const questions = [
@@ -104,7 +105,7 @@ const Questions = () => {
     setUserAnswers(newAnswers);
   };
 
-  const calculatePoints = () => {
+  const calculatePoints = async () => {
     let totalPoints = 0;
     for (let i = 0; i < questions.length; i++) {
       if (userAnswers[i] === questions[i].correctAnswer) {
@@ -118,8 +119,13 @@ const Questions = () => {
         );
       }
     }
-    const ref = doc(firestore, "DataUsers", `${userEmail}`);
-    updateDoc(ref, {
+    const db = query(
+      collection(firestore, "users"),
+      where("email", "==", `${userEmail}`)
+    );
+    const querySnapshot = await getDocs(db);
+    const docRef = querySnapshot.docs[0].ref;
+    updateDoc(docRef, {
       bab2_kuis: totalPoints,
     })
       .then((response) => {

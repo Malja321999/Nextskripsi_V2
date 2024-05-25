@@ -48,9 +48,11 @@ export default function ProfilePage() {
   const GetData = async () => {
     setIsLoading(true);
     setSync(true);
-    const q = query(collection(firestore, "users"));
-    const snapshot = await getDocs(q);
-
+    const db = query(
+      collection(firestore, "users"),
+      where("email", "==", `${userEmail}`)
+    );
+    const snapshot = await getDocs(db);
     try {
       if (snapshot.empty) {
         console.log("No such document!");
@@ -66,6 +68,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     GetData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const dataFirestore = snapshotFirestore || {};

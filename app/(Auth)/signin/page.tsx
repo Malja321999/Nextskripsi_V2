@@ -68,7 +68,7 @@ const SignIn = ({ searchParams }: any) => {
         }));
         console.log(user[0]?.role);
         if (user[0]?.role === "admin") {
-          push("/halaman_guru/data_murid");
+          push("/halaman_guru/data_siswa");
         } else if (user[0]?.role === "member") {
           push(callbackUrl);
         }

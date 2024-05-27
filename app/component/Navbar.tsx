@@ -83,7 +83,7 @@ function NavBar() {
                         pathname === "/capem" ? "text-teal-300" : "text-white"
                       } pb-1 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
-                      Capain Pembelajaran
+                      Kurikulum
                     </span>
                   </Link>
                 </li>

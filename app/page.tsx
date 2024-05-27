@@ -22,7 +22,7 @@ const Home = () => {
     <div className="md:h-screen h-[77vh] w-auto flex flex-col justify-center items-center md:mt-0 mt-24 overflow-y-auto">
       {/* Judul */}
       <div className="flex justify-center items-center md:w-1/2 w-fit md:mt-20 mt-[21rem]">
-        <div className="text-black dark:text-white">
+        <div className="text-white">
           <h1 className="flex justify-start text-left text-5xl font-bold md:w-[412px] w-auto">
             BILANGAN BULAT KELAS VII SMP
           </h1>

@@ -35,7 +35,7 @@ export default function RootLayout({
         <link rel="icon" href="/Bilcon.png" />
       </head>
       <body
-        className={`${ubuntu.className} dark:bg-[#111827] text-white h-screen w-screen`}
+        className={`${ubuntu.className} bg-[url('./asset/BgAll.jpg')] text-white h-screen w-screen`}
       >
         <AppWrapper>
           <UsetateNavbar />

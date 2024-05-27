@@ -86,7 +86,7 @@ const SignIn = ({ searchParams }: any) => {
   };
 
   return (
-    <div className="bg-white dark:bg-black min-h-screen flex items-center justify-center text-white mx-auto">
+    <div className="min-h-screen flex items-center justify-center text-white mx-auto">
       <div className="h-screen w-auto flex justify-center items-center flex-col">
         <div className="bg-white w-[60vh] shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>

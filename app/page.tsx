@@ -100,7 +100,7 @@ const Home = () => {
             <Link href={"/capem"}>
               <button className="w-[12rem] p-5 text-center m-5 flex flex-col justify-center items-center  rounded-lg bg-[#dc3545] hover:bg-teal-300 shadow-2xl cursor-pointer font-bold">
                 <FaFlag className="w-[35px] h-[35px]" />
-                CaPem
+                Kurikulum
               </button>
             </Link>
           </li>

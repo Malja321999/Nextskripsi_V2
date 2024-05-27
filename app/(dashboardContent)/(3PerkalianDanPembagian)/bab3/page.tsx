@@ -34,8 +34,8 @@ import { MdCenterFocusStrong } from "react-icons/md";
 import { BiFullscreen } from "react-icons/bi";
 
 const Page = () => {
-  const [Collapse, SetCollapse] = useState(false);
-  const [Collapse2, SetCollapse2] = useState(false);
+  const [Collapse, SetCollapse] = useState(true);
+
   const sky = "text-sky-400 font-bold";
   const CardSoal =
     "mt-5 bg-white w-fit rounded-md border-8 border-gray-900 text-black p-5";
@@ -110,18 +110,18 @@ const Page = () => {
       <div>
         {/* Tujuan Pembelajaran bab 3 */}
         <div className="mx-20 bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
-          <button onClick={() => SetCollapse2(!Collapse2)}>
+          <button onClick={() => SetCollapse(!Collapse)}>
             <ul className="flex justify-between gap-2">
               <li className="flex justify-between gap-2 text-2xl">
                 <RiMapPinAddFill className={"mt-[2.5px]"} />
                 Tujuan Pembelajaran
               </li>
-              <li>{Collapse2 ? <IoIosArrowDown /> : <IoIosArrowForward />}</li>
+              <li>{Collapse ? <IoIosArrowDown /> : <IoIosArrowForward />}</li>
             </ul>
           </button>
 
           <div>
-            {Collapse2 ? (
+            {Collapse ? (
               <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
                 <ul className="list-decimal list-inside">
                   <li>

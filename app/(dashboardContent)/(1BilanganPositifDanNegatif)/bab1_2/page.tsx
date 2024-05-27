@@ -35,7 +35,7 @@ import CardFinishRead from "@/app/component/CardFinishRead";
 import { BiFullscreen } from "react-icons/bi";
 
 const Page = () => {
-  const [Collapse2, SetCollapse2] = useState(false);
+  const [Collapse2, SetCollapse2] = useState(true);
   const sky = "text-sky-400 font-bold";
   const CardSoal =
     "mt-5 bg-white w-fit rounded-md border-8 border-gray-900 text-black p-5";

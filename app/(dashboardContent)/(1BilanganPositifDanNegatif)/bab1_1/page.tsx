@@ -39,7 +39,7 @@ import { IoClose } from "react-icons/io5";
 import { FaCircleQuestion } from "react-icons/fa6";
 
 const Page = () => {
-  const [Collapse2, SetCollapse2] = useState(false);
+  const [Collapse2, SetCollapse2] = useState(true);
   const sky = "text-sky-400 font-bold";
   const CardSoal =
     "mt-5 bg-white w-fit rounded-md border-8 border-gray-900 text-black p-5";

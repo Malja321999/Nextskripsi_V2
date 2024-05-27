@@ -6,7 +6,7 @@ const Footer = () => {
     <>
       <footer className="fixed bottom-0 w-max-screen md:w-full p-5 bg-indigo-600 top-auto left-0 right-0 z-10 shadow-inherit">
         <p className="text-center">
-          Copyright &copy;2023; Designed by
+          Copyright &copy;2024; Designed by
           <span
             style={{
               opacity: "0.7",

@@ -7,6 +7,7 @@ export function mainMiddleware(request: NextRequest) {
 }
 
 export default withAuth(mainMiddleware, [
+  "/",
   "/halaman_guru",
   "/halaman_guru/data_siswa",
   "/halaman_guru/data_kelas",

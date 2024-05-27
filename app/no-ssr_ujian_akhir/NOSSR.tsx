@@ -31,7 +31,6 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { FaPrint } from "react-icons/fa6";
 import { useReactToPrint } from "react-to-print";
 import { usePDF } from "react-to-pdf";
-import { ExportToExcel } from "./ExportToExcel";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 

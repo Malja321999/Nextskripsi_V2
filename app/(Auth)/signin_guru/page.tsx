@@ -17,7 +17,7 @@ const SignIn = ({ searchParams }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const callbackUrl = searchParams?.callbackUrl || "/";
+  const callbackUrl = searchParams?.callbackUrl || "/HomePage";
 
   type Inputs = {
     fullname: string;

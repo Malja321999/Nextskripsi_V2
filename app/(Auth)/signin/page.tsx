@@ -109,7 +109,7 @@ const SignIn = ({ searchParams }: any) => {
               >
                 NISN
               </label>
-              <div>
+              <div className="text-black dark:text-white">
                 <Controller
                   name="nisn"
                   rules={{
@@ -138,7 +138,7 @@ const SignIn = ({ searchParams }: any) => {
                 )}
               </div>
             </div>
-            <div>
+            <div className="text-black dark:text-white">
               <label
                 htmlFor="password"
                 className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"

@@ -102,13 +102,8 @@ const SignIn = ({ searchParams }: any) => {
               <br />
               <span className="text-teal-500">BILANGAN BULAT</span>
             </h2>
-            <div>
-              <label
-                htmlFor="nisn"
-                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
-              >
-                NIP
-              </label>
+            <div className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">
+              <label htmlFor="nisn">NIP</label>
               <div>
                 <Controller
                   name="nisn"
@@ -138,13 +133,8 @@ const SignIn = ({ searchParams }: any) => {
                 )}
               </div>
             </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
-              >
-                Password
-              </label>
+            <div className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">
+              <label htmlFor="password">Password</label>
               <div className="flex justify-between items-center">
                 <Controller
                   name="password"

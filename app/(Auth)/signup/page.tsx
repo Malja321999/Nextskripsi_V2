@@ -127,13 +127,8 @@ const SignUp = () => {
             <br />
             <span className="text-teal-500">BILANGAN BULAT</span>
           </h2>
-          <div>
-            <label
-              htmlFor="fullname"
-              className="text-sm font-medium text-gray-900 block dark:text-gray-300"
-            >
-              Nama Lengkap
-            </label>
+          <div className="text-sm font-medium text-gray-900 block dark:text-gray-300">
+            <label htmlFor="fullname">Nama Lengkap</label>
             <div>
               <Controller
                 name="fullname"
@@ -162,13 +157,8 @@ const SignUp = () => {
               )}
             </div>
           </div>
-          <div>
-            <label
-              htmlFor="nisn"
-              className="text-sm font-medium text-gray-900 block dark:text-gray-300"
-            >
-              NISN
-            </label>
+          <div className="text-sm font-medium text-gray-900 block dark:text-gray-300">
+            <label htmlFor="nisn">NISN</label>
             <div>
               <Controller
                 name="nisn"
@@ -198,13 +188,8 @@ const SignUp = () => {
               )}
             </div>
           </div>
-          <div>
-            <label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-900 block dark:text-gray-300"
-            >
-              Email
-            </label>
+          <div className="text-sm font-medium text-gray-900 block dark:text-gray-300">
+            <label htmlFor="email">Email</label>
             <div>
               <Controller
                 name="email"
@@ -233,13 +218,8 @@ const SignUp = () => {
               )}
             </div>
           </div>
-          <div>
-            <label
-              htmlFor="password"
-              className="text-sm font-medium text-gray-900 block dark:text-gray-300"
-            >
-              Password
-            </label>
+          <div className="text-sm font-medium text-gray-900 block dark:text-gray-300">
+            <label htmlFor="password">Password</label>
             <div className="flex justify-between items-center">
               <Controller
                 name="password"
@@ -277,13 +257,8 @@ const SignUp = () => {
               </div>
             )}
           </div>
-          <div>
-            <label
-              htmlFor="confirmPassword"
-              className="text-sm font-medium text-gray-900 block dark:text-gray-300"
-            >
-              Konfirmasi Password
-            </label>
+          <div className="text-sm font-medium text-gray-900 block dark:text-gray-300">
+            <label htmlFor="confirmPassword">Konfirmasi Password</label>
             <div className="flex justify-between items-center">
               <Controller
                 name="confirmPassword"
@@ -319,13 +294,8 @@ const SignUp = () => {
               </div>
             )}
           </div>
-          <div>
-            <label
-              htmlFor="nisn"
-              className="text-sm font-medium text-gray-900 block dark:text-gray-300"
-            >
-              Token
-            </label>
+          <div className="text-sm font-medium text-gray-900 block dark:text-gray-300">
+            <label htmlFor="nisn">Token</label>
             <div>
               <Controller
                 name="token"

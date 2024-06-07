@@ -192,11 +192,10 @@ const Page = () => {
         <div className="p-5 gap-5 flex flex-row bg-indigo-200 text-5xl">
           <div className="flex flex-col gap-2 justify-items-center text-center">
             <div className="bg-red-500 p-5 rounded-md text-[30px]">
-              {" "}
-              -6 - (-17)
+              (-1) + (-4) - (-7)
             </div>
             <div className="bg-green-500 p-5 rounded-md text-[30px]">
-              0 - (-12)
+              (+6) - (-8) - (+16)
             </div>
             <div className="bg-sky-500 p-5 rounded-md text-[30px]">
               5 + (-18) + (-5)
@@ -205,7 +204,7 @@ const Page = () => {
               -9 - (-8) + (-4)
             </div>
             <div className="bg-purple-500 p-5 rounded-md text-[30px]">
-              16 -18 - 13
+              16 - 18 - 13
             </div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
@@ -315,19 +314,54 @@ const Page = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className=" invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
-            <div className="invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"-"}</div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className="invisible p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-            <div className="invisible p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
+            <div
+              onDrop={(e) => handleDrop(e, "soal3_pro2")}
+              onDragOver={handleDragOver}
+              className="p-5 bg-rose-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
+            >
+              <div className="flex space-x-2">
+                {selectedNumbers3_pro2.map((number, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) =>
+                      handleDragStart(e, number, "soal3_pro2")
+                    }
+                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
+                  >
+                    {number}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div
+              onDrop={(e) => handleDrop(e, "soal3_pro2")}
+              onDragOver={handleDragOver}
+              className="p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
+            >
+              <div className="flex space-x-2">
+                {selectedNumbers3_pro2.map((number, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) =>
+                      handleDragStart(e, number, "soal3_pro2")
+                    }
+                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
+                  >
+                    {number}
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <div
               onDrop={(e) => handleDrop(e, "soal3_pro2")}
@@ -391,20 +425,49 @@ const Page = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className=" invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
-            <div className="invisible bg-gray-500 p-5 rounded-md text-[30px]">
-              {"="}
-            </div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
+            <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className="invisible p-5 bg-red-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-            <div className="invisible p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"></div>
-
+            <div
+              onDrop={(e) => handleDrop(e, "soal3")}
+              onDragOver={handleDragOver}
+              className="p-5 bg-rose-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
+            >
+              <div className="flex space-x-2">
+                {selectedNumbers3.map((number, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, number, "soal3")}
+                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
+                  >
+                    {number}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div
+              onDrop={(e) => handleDrop(e, "soal3")}
+              onDragOver={handleDragOver}
+              className="p-5 bg-green-400 rounded text-center font-bold h-[4.4rem] w-[5rem] flex justify-center items-center"
+            >
+              <div className="flex space-x-2">
+                {selectedNumbers3.map((number, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, number, "soal3")}
+                    className="p-2 bg-blue-400 rounded cursor-pointer text-3xl"
+                  >
+                    {number}
+                  </div>
+                ))}
+              </div>
+            </div>
             <div
               onDrop={(e) => handleDrop(e, "soal3")}
               onDragOver={handleDragOver}

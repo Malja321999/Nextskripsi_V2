@@ -289,38 +289,53 @@ const Page = () => {
           {/* Video Bab 1.1 */}
           <div>
             {Media === "video" ? (
-              <div className={CVideo}>
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/Q-i7IjBUF6s?si=nXBEewH5Uw6OXp1U"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-                <h1 className="text-center mt-10 mb-5">
-                  BILANGAN DENGAN TANDA
-                </h1>
-                <ul className="ml-5 list-decimal list-inside w-50 text-xs">
-                  <h1 className="mb-2 font-bold">
-                    Tujuan Video Pembelajaran :
+              <div>
+                <div className={CVideo}>
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/Q-i7IjBUF6s?si=nXBEewH5Uw6OXp1U"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                  <h1 className="text-center mt-10 mb-5">
+                    BILANGAN DENGAN TANDA
                   </h1>
-                  <li>
-                    Siswa dapat melakukan proses penjumlahan dua bilangan bulat
-                    dengan tepat.
-                  </li>
-                  <br />
-                  <li>
-                    Siswa dapat melakukan pengurangan dua bilangan bulat dengan
-                    tepat.
-                  </li>
-                  <br />
-                  <li>
-                    Siswa dapat melakukan proses perhitungan yang terdapat dua{" "}
+                  <ul className="ml-5 list-decimal list-inside w-50 text-xs">
+                    <h1 className="mb-2 font-bold">
+                      Tujuan Video Pembelajaran :
+                    </h1>
+                    <li>
+                      Siswa dapat melakukan proses penjumlahan dua bilangan
+                      bulat dengan tepat.
+                    </li>
                     <br />
-                    operasi (penjumlahan dan pengurangan) dengan benar.
-                  </li>
-                </ul>
+                    <li>
+                      Siswa dapat melakukan pengurangan dua bilangan bulat
+                      dengan tepat.
+                    </li>
+                    <br />
+                    <li>
+                      Siswa dapat melakukan proses perhitungan yang terdapat dua{" "}
+                      <br />
+                      operasi (penjumlahan dan pengurangan) dengan benar.
+                    </li>
+                  </ul>
+                </div>
+                <button
+                  onClick={() => setFinishReading(!FinishReading)}
+                  className="ml-[26.5rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                >
+                  <span>
+                    {FinishReading ? (
+                      <BsFillBookmarkCheckFill />
+                    ) : (
+                      <BsBookmark />
+                    )}
+                  </span>
+                  Selesai Membaca
+                </button>
               </div>
             ) : (
               <></>
@@ -336,6 +351,19 @@ const Page = () => {
                   src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF94ipRtn4&#x2F;HLkGd7YEHY3GDPvcB2Kmkg&#x2F;view?embed"
                   allowFullScreen
                 ></iframe>
+                <button
+                  onClick={() => setFinishReading(!FinishReading)}
+                  className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                >
+                  <span>
+                    {FinishReading ? (
+                      <BsFillBookmarkCheckFill />
+                    ) : (
+                      <BsBookmark />
+                    )}
+                  </span>
+                  Selesai Membaca
+                </button>
               </div>
             ) : (
               <></>

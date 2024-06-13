@@ -265,7 +265,7 @@ const ChangeUsername = () => {
                     }}
                     render={({ field }) => (
                       <Input
-                        className="flex-1 text-black dark:text-white"
+                        className="flex-1 text-black"
                         crossOrigin={undefined}
                         placeholder="Confirm Password"
                         type={showPassword ? "text" : "password"}
@@ -308,7 +308,7 @@ const ChangeUsername = () => {
                     }}
                     render={({ field }) => (
                       <Input
-                        className="flex-1 text-black dark:text-white"
+                        className="flex-1 text-black"
                         crossOrigin={undefined}
                         placeholder="Confirm Password"
                         type={showConfirmPassword ? "text" : "password"}

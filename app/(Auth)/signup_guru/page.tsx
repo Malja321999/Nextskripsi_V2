@@ -143,13 +143,13 @@ const SignUp = () => {
               htmlFor="nisn"
               className="text-sm font-medium text-gray-900 block dark:text-gray-300"
             >
-              NISN
+              NIP
             </label>
             <div>
               <Controller
                 name="nisn"
                 rules={{
-                  required: "Masukkan NISN",
+                  required: "Masukkan NIP",
                   pattern: {
                     value: /^[0-9]{9}$/,
                     message:

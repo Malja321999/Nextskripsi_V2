@@ -55,7 +55,6 @@ const Page = () => {
 
   /* soal 2 */
   const [JawabanSoal2, setJawabanSoal2] = useState("");
-
   const [Soal2Benar, setSoal2Benar] = useState("");
   const correctAnswersoal2 = "68";
 
@@ -98,7 +97,7 @@ const Page = () => {
             </ul>
           </div>
           <div>
-            <div className="font-bold mt-2">{N} dari 4</div>
+            <div className="font-bold mt-2">{N} dari 5</div>
             {/* soal 1 */}
             <div className="mt-2">
               {N === 1 && (

@@ -252,7 +252,7 @@ const ChangeUsername = () => {
                 >
                   Kata Sandi
                 </label>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center text-gray-900">
                   <Controller
                     name="password"
                     control={control}
@@ -292,11 +292,11 @@ const ChangeUsername = () => {
               <div className="py-2">
                 <label
                   htmlFor="confirmPassword"
-                  className="text-sm font-medium text-gray-900 block mb-2"
+                  className="text-sm font-medium block mb-2"
                 >
                   Konfirmasi Kata Sandi
                 </label>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center text-gray-900">
                   <Controller
                     name="confirmPassword"
                     control={control}

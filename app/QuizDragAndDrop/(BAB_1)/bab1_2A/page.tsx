@@ -6,7 +6,7 @@ import { FaArrowDown } from "react-icons/fa";
 import { DiVim } from "react-icons/di";
 
 const Page = () => {
-  const [numbers, setNumbers] = useState<number[]>([-5, 3, -2.8]);
+  const [numbers, setNumbers] = useState<number[]>([-5, 2, -2]);
   const [selectedNumbers1, setSelectedNumbers1] = useState<number[]>([]);
   const [selectedNumbers2, setSelectedNumbers2] = useState<number[]>([]);
   const [selectedNumbers3, setSelectedNumbers3] = useState<number[]>([]);
@@ -23,8 +23,8 @@ const Page = () => {
   const checkAnswer = () => {
     // Correct answers array
     const correctAnswers1 = [-5];
-    const correctAnswers2 = [3];
-    const correctAnswers3 = [-2.8];
+    const correctAnswers2 = [2];
+    const correctAnswers3 = [-2];
 
     // Check if selectedNumbers match correctAnswers
     const isCorrect1 =
@@ -47,7 +47,7 @@ const Page = () => {
   };
 
   const resetQuiz = () => {
-    setNumbers([-5, 3, -2.8]); // Reset the original numbers
+    setNumbers([-5, 2, -2]); // Reset the original numbers
     setSelectedNumbers1([]);
     setSelectedNumbers2([]);
     setSelectedNumbers3([]);
@@ -137,12 +137,16 @@ const Page = () => {
         <div className="p-5 flex flex-row bg-indigo-200 text-4xl">
           <div>
             {/* kolom Jawaaban */}
-            <div className="flex flex-row justify-items-center text-center">
-              <div className="-top-[80px] flex flex-col justify-center items-center ml-[77px] mt-10">
+            <div className="z-10 top-8 absolute flex flex-row justify-items-center text-center">
+              <div
+                className={`${
+                  BenarSemua === "benar" ? "opacity-0" : "opacity-100"
+                } -top-[80px] flex flex-col justify-center items-center ml-[77px] mt-10`}
+              >
                 <div
                   onDrop={(e) => handleDrop(e, "soal1")}
                   onDragOver={handleDragOver}
-                  className="p-5 ml-0.5 bg-teal-400 rounded text-center font-bold h-[3rem] w-[3.5rem] flex justify-center items-center"
+                  className="p-5 ml-0.5 bg-indigo-400 rounded text-center font-bold h-[2.7rem] w-[3.5rem] flex justify-center items-center"
                 >
                   <div className="flex space-x-2">
                     {selectedNumbers1.map((number, index) => (
@@ -157,15 +161,16 @@ const Page = () => {
                     ))}
                   </div>
                 </div>
-                <div className="text-black p-2 -mt-3">
-                  <FaArrowDown />
-                </div>
               </div>
-              <div className="-top-[80px] flex flex-col justify-center items-center ml-[31.7rem] mt-10">
+              <div
+                className={`${
+                  BenarSemua === "benar" ? "opacity-0" : "opacity-100"
+                } -top-[80px] flex flex-col justify-center items-center ml-[27.3rem] mt-10`}
+              >
                 <div
                   onDrop={(e) => handleDrop(e, "soal2")}
                   onDragOver={handleDragOver}
-                  className="p-5 ml-0.5 bg-teal-400 rounded text-center font-bold h-[3rem] w-[3.5rem] flex justify-center items-center"
+                  className="p-5 ml-0.5 bg-indigo-400 rounded text-center font-bold h-[2.7rem] w-[3.5rem] flex justify-center items-center"
                 >
                   <div className="flex space-x-2">
                     {selectedNumbers2.map((number, index) => (
@@ -180,15 +185,16 @@ const Page = () => {
                     ))}
                   </div>
                 </div>
-                <div className="text-black p-2 -mt-3">
-                  <FaArrowDown />
-                </div>
               </div>
-              <div className="-top-[80px] flex flex-col justify-center items-center -ml-[28.5rem] mt-10">
+              <div
+                className={`${
+                  BenarSemua === "benar" ? "opacity-0" : "opacity-100"
+                } -top-[80px] flex flex-col justify-center items-center -ml-[21.4rem] mt-10`}
+              >
                 <div
                   onDrop={(e) => handleDrop(e, "soal3")}
                   onDragOver={handleDragOver}
-                  className="p-5 ml-0.5 bg-teal-400 rounded text-center font-bold h-[3rem] w-[3.5rem] flex justify-center items-center"
+                  className="p-5 ml-0.5 bg-indigo-400 rounded text-center font-bold h-[2.7rem] w-[3.5rem] flex justify-center items-center"
                 >
                   <div className="flex space-x-2">
                     {selectedNumbers3.map((number, index) => (
@@ -203,21 +209,7 @@ const Page = () => {
                     ))}
                   </div>
                 </div>
-                <div className="text-black p-2 -mt-3">
-                  <FaArrowDown />
-                </div>
               </div>
-              {/* perlihatkan jawaban */}
-              <div
-                className={`${
-                  BenarSemua === "benar" ? "opacity-0" : "opacity-100"
-                } bg-[#c6e0f5] p-5 ml-[30rem] w-[16.5rem] h-10 absolute top-[12.8rem]`}
-              ></div>
-              <div
-                className={`${
-                  BenarSemua === "benar" ? "opacity-0" : "opacity-100"
-                } bg-[#c6e0f5] p-5 ml-[3.3rem] w-[19.5rem] h-10 absolute top-[12.8rem]`}
-              ></div>
             </div>
             {/* akhir kolom Jawaaban */}
             {/* kolom gambar */}

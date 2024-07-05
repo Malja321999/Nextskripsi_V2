@@ -132,7 +132,7 @@ export default function Quiz() {
             onClick={resetQuiz}
             className="px-4 py-2 mt-2 bg-rose-600 text-white rounded shadow"
           >
-            Ulang Kuis
+            Coba Lagi
           </button>
         </div>
       </div>

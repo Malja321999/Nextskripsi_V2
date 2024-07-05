@@ -37,6 +37,9 @@ import Modal from "react-modal";
 import { useAppContext } from "@/app/context/AppWrapper";
 import { IoClose } from "react-icons/io5";
 import { FaCircleQuestion } from "react-icons/fa6";
+import Mnb from "@/app/component/Mnb";
+import Mbb from "@/app/component/Mbb";
+import Ab from "@/app/component/Ab";
 
 const Page = () => {
   const [Collapse2, SetCollapse2] = useState(true);
@@ -54,7 +57,7 @@ const Page = () => {
   const [jawaban1status, setjawaban1status] = useState("");
   const [jawaban2status, setjawaban2status] = useState("");
 
-  const [FinishReading, setFinishReading] = useState(false);
+  const [FinishReading, setFinishReading] = useState(true);
 
   function handleSubmitJawaban(e: any) {
     e.preventDefault();
@@ -180,7 +183,7 @@ const Page = () => {
       <div>
         <div>
           {/* Tujuan Pembelajaran */}
-          <div className="mx-20 bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
+          <div className="mx-20 bg-gray-900 w-[74rem] p-2 rounded-md mt-2 flex flex-col relative">
             <button onClick={() => SetCollapse2(!Collapse2)}>
               <ul className="flex justify-between gap-2">
                 <li className="flex justify-between gap-2 text-2xl">
@@ -195,16 +198,16 @@ const Page = () => {
 
             <div>
               {Collapse2 ? (
-                <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
+                <div className="bg-gray-800 w-[73rem] p-2 rounded-md text-base text-start">
                   <ul className="list-decimal list-inside">
                     <li>
-                      Siswa dapat menjelaskan maksud dari tanda “+” dan “-” pada
-                      suatu bilangan dengan benar.
+                      Siswa dapat menjelaskan “Bilangan Positif” dan “Bilangan
+                      Negatif” pada suatu bilangan bulat dengan benar.
                     </li>
                     <br />
                     <li>
                       Siswa dapat menyatakan besaran-besaran dengan menggunakan
-                      tanda “+” atau “-” dengan tepat.
+                      “Bilangan Positif” atau “Bilangan Negatif” dengan tepat.
                     </li>
                   </ul>
                 </div>
@@ -277,7 +280,7 @@ const Page = () => {
                         <BsBookmark />
                       )}
                     </span>
-                    Selesai Membaca
+                    Materi Selesai
                   </button>
                 </div>
               </div>
@@ -374,120 +377,106 @@ const Page = () => {
           <div>
             {FinishReading ? (
               <div>
-                <Cardlatihan n={1} />
-                <div className="mt-1">
-                  <h2 className="font-bold">
-                    Coba jawablah pertanyaan berikut dengan baik dan benar!
-                  </h2>
-                  <br />
+                <div className="mb-5">
+                  <Cardlatihan n={1} />
+                  <span className="ml-5">
+                    Setelah menonton video diatas, jawablah pertanyaan dibawah
+                    ini.
+                  </span>
+                </div>
+                <div>
                   {/* Soal A */}
-                  <h3 className="text-yellow-200 font-bold">
-                    A. Jawablah pertanyaan-pertanyaan berikut ini.
+                  <Mnb />
+                  <h3 className="ml-5">
+                    Nyatakan besaran-besaran berikut ini menggunakan Bilangan
+                    Positif atau Bilangan Negatif, dengan cara memasangkan
+                    jawaban yang ada di kolom pendapatmu dengan sesuai! Jika
+                    jawabanmu benar maka akan ditampilkan teks jawaban
+                    <span className="text-green-400">“Kamu Benar!”</span>{" "}
+                    sedangkan jika jawabanmu salah maka akan ditampilkan teks
+                    jawaban <span className="text-red-400">“Kamu Salah!”.</span>
                   </h3>
                   <div className="flex flex-col">
                     <iframe
                       className="h-[35rem] w-100 rounded-md border-4 border-gray-800"
                       loading="lazy"
-                      src="/QuizDragAndDrop/bab1_1Ta"
+                      src="/QuizDragAndDrop/bab1_1_mnb"
                       allowFullScreen
                     ></iframe>
                   </div>
 
-                  <form onSubmit={handleSubmitJawaban}>
-                    <h3 className="mt-20 text-yellow-200 font-bold">
-                      B. Jawablah pertanyaan-pertanyaan berikut ini dengan
-                      mengisi kolom kosong pada setiap pertanyaan.
+                  {/* soal b */}
+                  <div className="mt-10">
+                    <Mbb />
+                    <h3 className="ml-5">
+                      Hitunglah benda pada sebelah kiri kemudian pilih lambang
+                      bilangan Positif dan bilangan Negatif di sebelah kanan.
+                      Benda yang berwarna{" "}
+                      <span className="text-red-400 font-bold bg-black p-1 rounded-lg">
+                        Merah
+                      </span>{" "}
+                      akan dilambangkan sebagai bilangan{" "}
+                      <span className="text-red-400 font-bold bg-black p-1 rounded-lg">
+                        Positif
+                      </span>{" "}
+                      dan benda berwarna
+                      <span className="font-bold text-black bg-white rounded-lg">
+                        Hitam
+                      </span>{" "}
+                      akan dilambangkan sebagai bilangan{" "}
+                      <span className="font-bold text-black bg-white rounded-lg">
+                        Negatif.
+                      </span>{" "}
+                      sedangkan jika jawabanmu salah maka akan ditampilkan teks
+                      jawaban.
                     </h3>
-                    <ul className="list-decimal list-inside gap-5 flex flex-col ml-10">
-                      <li>
-                        Diketahui bahwa A adalah titik 0 km. Titik "3 km selah
-                        utara A" dinyatakan sebagai +3 km. Bagaimana menyatakan
-                        titik “5 km di sebelah selatan A”?
-                        <div className="flex">
-                          <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
-                            <div className="mr-2">Jawaban :</div> <br />
-                            <input
-                              type="text"
-                              placeholder="..."
-                              id="soal1"
-                              className="w-[7vh] rounded-md text-center placeholder-indigo-500 bg-green-50 text-black border-4 border-sky-400 p-2 px-2 h-10"
-                            />
-                            <div className="ml-2 mt-1">Km</div>
-                          </div>
-                          <div className="ml-5 mt-5">
-                            {jawaban1status === "benar" ? (
-                              <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                                Benar
-                              </p>
-                            ) : (
-                              <div></div>
-                            )}
-                            {jawaban1status === "salah" ? (
-                              <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                                Salah
-                              </p>
-                            ) : (
-                              <div></div>
-                            )}
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        Apabila "rugi 200 rupiah" dinyatakan sebagai -200
-                        rupiah, menyatakan apa +300 rupiah?
-                        <div className="flex">
-                          <div className="flex mt-5 text-black bg-white border-4 border-black w-fit rounded-md p-5">
-                            <div className="mr-2">Jawaban :</div> <br />
-                            <input
-                              type="text"
-                              placeholder="..."
-                              id="soal2"
-                              className="w-[17vh] rounded-md text-center placeholder-indigo-500 bg-green-50 text-black border-4 border-sky-400 p-2 px-2 h-10"
-                            />
-                            <div className="ml-2 mt-1">, 300</div>
-                            <div className="ml-2 mt-1">Rupiah</div>
-                          </div>
-                          <div className="ml-5 mt-5">
-                            {jawaban2status === "benar" ? (
-                              <p className="text-teal-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                                Benar
-                              </p>
-                            ) : (
-                              <div></div>
-                            )}
-                            {jawaban2status === "salah" ? (
-                              <p className="text-rose-500 bg-white border-4 border-black w-fit rounded-md p-5">
-                                Salah
-                              </p>
-                            ) : (
-                              <div></div>
-                            )}
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <button
-                      type="submit"
-                      className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
-                    >
-                      Cek Jawaban
-                    </button>
-                    {(jawaban1status === "salah" ||
-                      jawaban2status === "salah") && (
-                      <button
-                        type="reset"
-                        onClick={() => reset()}
-                        className="font-bold mt-5 ml-10 w-[78rem] bg-sky-600 p-2 rounded-md text-center hover:bg-sky-400"
-                      >
-                        Ulang Kuis
-                      </button>
-                    )}
-                  </form>
+                    <div className="flex flex-col">
+                      <iframe
+                        className="h-[45rem] w-100 rounded-md border-4 border-gray-800"
+                        loading="lazy"
+                        src="/QuizDragAndDrop/bab1_1_mbb"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </div>
 
-                  {/* Soal B */}
+                  {/* Soal c */}
+                  <div className="mt-10">
+                    <Ab />
+                    <h3 className="ml-5 mb-5 text-black">
+                      <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                        <ul className="list list-disc list-inside">
+                          <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                          <div>
+                            <li>
+                              Jawablah pertanyaan dibawah ini dengan tepat
+                            </li>
+                            <li>
+                              Jika jawaban kamu benar, maka akan muncul tulisan
+                              jawaban benar
+                            </li>
+                            <li>
+                              Jika jawaban kamu salah, maka akan muncul tulisan
+                              jawaban salah disertai pembahasan
+                            </li>
+                          </div>
+                        </ul>
+                      </div>
+                    </h3>
+                    <div className="flex flex-col">
+                      <iframe
+                        className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                        loading="lazy"
+                        src="/QuizDragAndDrop/bab1_1ab"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  {/* Soal f */}
                   <div>
                     <h3 className="mt-20 text-yellow-200 font-bold">
-                      C. Kelompokkan Bilangan-Bilangan berikut ini dengan baik
+                      f. Kelompokkan Bilangan-Bilangan berikut ini dengan baik
                       dan benar.
                     </h3>
 

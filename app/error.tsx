@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Error({
@@ -14,21 +13,16 @@ export default function Error({
     /*   reset(); */
   }, [error]);
   return (
-    <div className="flex flex-col justify-center items-center bg-rose-500 text-center rounded-md h-screen p-20 gap-5">
-      <h1 className=" text-center text-9xl p-5 rounded-md w-fit">
+    <div className="bg-white flex flex-col gap-2 justify-center items-center place-items-center text-center rounded-md h-screen p-20">
+      <h1 className="bg-rose-500 text-center text-9xl p-5 rounded-md w-fit">
         Something went wrong!
       </h1>
       <button
         onClick={() => reset()}
-        className="bg-emerald-500 p-5 rounded-full border border-gray-200 w-fit text-center hover:bg-emerald-400 text-5xl"
+        className="bg-sky-500 p-5 rounded-md w-fit text-center hover:bg-teal-500"
       >
         Try Again
       </button>
-      <Link href="/">
-        <button className="bg-emerald-500 p-5 rounded-full border border-gray-200 w-fit text-center hover:bg-emerald-400 text-5xl">
-          Back To Home
-        </button>
-      </Link>
     </div>
   );
 }

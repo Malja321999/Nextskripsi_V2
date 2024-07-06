@@ -40,6 +40,7 @@ import { FaCircleQuestion } from "react-icons/fa6";
 import Mnb from "@/app/component/Mnb";
 import Mbb from "@/app/component/Mbb";
 import Ab from "@/app/component/Ab";
+import Am from "@/app/component/Am";
 
 const Page = () => {
   const [Collapse2, SetCollapse2] = useState(true);
@@ -465,7 +466,7 @@ const Page = () => {
                     </h3>
                     <div className="flex flex-col">
                       <iframe
-                        className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                        className="h-[45rem] w-100 rounded-md border-4 border-gray-800"
                         loading="lazy"
                         src="/QuizDragAndDrop/bab1_1ab"
                         allowFullScreen
@@ -473,10 +474,54 @@ const Page = () => {
                     </div>
                   </div>
 
-                  {/* Soal f */}
-                  <div>
-                    <h3 className="mt-20 text-yellow-200 font-bold">
-                      f. Kelompokkan Bilangan-Bilangan berikut ini dengan baik
+                  {/* Soal d */}
+                  <div className="mt-10">
+                    <Am />
+                    <h3 className="ml-5 mb-5 text-black">
+                      <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                        <ul className="flex flex-col gap-4 ist list-disc list-inside">
+                          <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                          <li>
+                            Kamu telah menonton video mengenai Bilangan Dengan
+                            Tanda. Sekarang pasangkanlah banyak benda dengan
+                            lambang bilangan bulat di bawah ini.
+                          </li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">benar</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                              Kamu Benar!
+                            </span>
+                            .
+                          </li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">salah</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                              Kamu Salah!
+                            </span>
+                            .
+                          </li>
+                        </ul>
+                      </div>
+                    </h3>
+                    <div className="flex flex-col">
+                      <iframe
+                        className="h-[140rem] w-100 rounded-md border-4 border-gray-800"
+                        loading="lazy"
+                        src="/QuizDragAndDrop/bab1_1_am"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  {/* Soal e */}
+                  <div className="mt-10">
+                    <Am />
+                    <h3 className="text-yellow-200 font-bold">
+                      Kelompokkan Bilangan-Bilangan berikut ini dengan baik
                       dan benar.
                     </h3>
 

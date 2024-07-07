@@ -162,147 +162,147 @@ export default function Quiz() {
   function CekjawabanMNB4() {
     if (MNB7 !== "") {
       if (MNB7 === "1") {
-        setketMNB6("Kamu Benar, Bilangan Positif!");
+        setketMNB7("Kamu Benar, Bilangan Positif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Positif!");
+        setketMNB7("Kamu Salah, Bilangan Positif!");
       }
     } else if (MNB7 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Positif!");
+      setketMNB7("Kamu Harus Memilih Jawaban Bilangan Positif!");
     }
     if (MNB8 !== "") {
       if (MNB8 === "-2") {
-        setketMNB6("Kamu Benar, Bilangan Negatif!");
+        setketMNB8("Kamu Benar, Bilangan Negatif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Negatif!");
+        setketMNB8("Kamu Salah, Bilangan Negatif!");
       }
     } else if (MNB8 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Negatif!");
+      setketMNB8("Kamu Harus Memilih Jawaban Bilangan Negatif!");
     }
   }
 
   function CekjawabanMNB5() {
     if (MNB9 !== "") {
       if (MNB9 === "3") {
-        setketMNB6("Kamu Benar, Bilangan Positif!");
+        setketMNB9("Kamu Benar, Bilangan Positif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Positif!");
+        setketMNB9("Kamu Salah, Bilangan Positif!");
       }
     } else if (MNB9 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Positif!");
+      setketMNB9("Kamu Harus Memilih Jawaban Bilangan Positif!");
     }
     if (MNB10 !== "") {
       if (MNB10 === "-3") {
-        setketMNB6("Kamu Benar, Bilangan Negatif!");
+        setketMNB10("Kamu Benar, Bilangan Negatif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Negatif!");
+        setketMNB10("Kamu Salah, Bilangan Negatif!");
       }
     } else if (MNB10 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Negatif!");
+      setketMNB10("Kamu Harus Memilih Jawaban Bilangan Negatif!");
     }
   }
 
   function CekjawabanMNB6() {
     if (MNB11 !== "") {
       if (MNB11 === "5") {
-        setketMNB6("Kamu Benar, Bilangan Positif!");
+        setketMNB11("Kamu Benar, Bilangan Positif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Positif!");
+        setketMNB11("Kamu Salah, Bilangan Positif!");
       }
     } else if (MNB11 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Positif!");
+      setketMNB11("Kamu Harus Memilih Jawaban Bilangan Positif!");
     }
     if (MNB12 !== "") {
       if (MNB12 === "-5") {
-        setketMNB6("Kamu Benar, Bilangan Negatif!");
+        setketMNB12("Kamu Benar, Bilangan Negatif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Negatif!");
+        setketMNB12("Kamu Salah, Bilangan Negatif!");
       }
     } else if (MNB12 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Negatif!");
+      setketMNB12("Kamu Harus Memilih Jawaban Bilangan Negatif!");
     }
   }
 
   function CekjawabanMNB7() {
     if (MNB13 !== "") {
       if (MNB13 === "2") {
-        setketMNB6("Kamu Benar, Bilangan Positif!");
+        setketMNB13("Kamu Benar, Bilangan Positif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Positif!");
+        setketMNB13("Kamu Salah, Bilangan Positif!");
       }
     } else if (MNB13 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Positif!");
+      setketMNB13("Kamu Harus Memilih Jawaban Bilangan Positif!");
     }
     if (MNB14 !== "") {
       if (MNB14 === "-1") {
-        setketMNB6("Kamu Benar, Bilangan Negatif!");
+        setketMNB14("Kamu Benar, Bilangan Negatif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Negatif!");
+        setketMNB14("Kamu Salah, Bilangan Negatif!");
       }
     } else if (MNB14 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Negatif!");
+      setketMNB14("Kamu Harus Memilih Jawaban Bilangan Negatif!");
     }
   }
 
   function CekjawabanMNB8() {
     if (MNB15 !== "") {
       if (MNB15 === "1") {
-        setketMNB6("Kamu Benar, Bilangan Positif!");
+        setketMNB15("Kamu Benar, Bilangan Positif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Positif!");
+        setketMNB15("Kamu Salah, Bilangan Positif!");
       }
     } else if (MNB15 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Positif!");
+      setketMNB15("Kamu Harus Memilih Jawaban Bilangan Positif!");
     }
     if (MNB16 !== "") {
       if (MNB16 === "-6") {
-        setketMNB6("Kamu Benar, Bilangan Negatif!");
+        setketMNB16("Kamu Benar, Bilangan Negatif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Negatif!");
+        setketMNB16("Kamu Salah, Bilangan Negatif!");
       }
     } else if (MNB16 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Negatif!");
+      setketMNB16("Kamu Harus Memilih Jawaban Bilangan Negatif!");
     }
   }
 
   function CekjawabanMNB9() {
     if (MNB17 !== "") {
       if (MNB17 === "5") {
-        setketMNB6("Kamu Benar, Bilangan Positif!");
+        setketMNB17("Kamu Benar, Bilangan Positif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Positif!");
+        setketMNB17("Kamu Salah, Bilangan Positif!");
       }
     } else if (MNB17 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Positif!");
+      setketMNB17("Kamu Harus Memilih Jawaban Bilangan Positif!");
     }
     if (MNB18 !== "") {
       if (MNB18 === "-3") {
-        setketMNB6("Kamu Benar, Bilangan Negatif!");
+        setketMNB18("Kamu Benar, Bilangan Negatif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Negatif!");
+        setketMNB18("Kamu Salah, Bilangan Negatif!");
       }
     } else if (MNB18 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Negatif!");
+      setketMNB18("Kamu Harus Memilih Jawaban Bilangan Negatif!");
     }
   }
 
   function CekjawabanMNB10() {
     if (MNB19 !== "") {
       if (MNB19 === "4") {
-        setketMNB6("Kamu Benar, Bilangan Positif!");
+        setketMNB19("Kamu Benar, Bilangan Positif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Positif!");
+        setketMNB19("Kamu Salah, Bilangan Positif!");
       }
     } else if (MNB19 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Positif!");
+      setketMNB19("Kamu Harus Memilih Jawaban Bilangan Positif!");
     }
     if (MNB20 !== "") {
       if (MNB20 === "-5") {
-        setketMNB6("Kamu Benar, Bilangan Negatif!");
+        setketMNB20("Kamu Benar, Bilangan Negatif!");
       } else {
-        setketMNB6("Kamu Salah, Bilangan Negatif!");
+        setketMNB20("Kamu Salah, Bilangan Negatif!");
       }
     } else if (MNB20 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Negatif!");
+      setketMNB20("Kamu Harus Memilih Jawaban Bilangan Negatif!");
     }
   }
 

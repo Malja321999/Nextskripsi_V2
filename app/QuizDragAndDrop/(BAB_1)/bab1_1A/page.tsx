@@ -2,14 +2,14 @@
 import { useState } from "react";
 
 export default function Quiz() {
-  const [numbers, setNumbers] = useState([-12, 7, 0, 0.6, -3, 25, -2.67]);
+  const [numbers, setNumbers] = useState([-12, 7, 0, 6, -3, 25, -2]);
   const [positiveNumbers, setPositiveNumbers] = useState<number[]>([]);
   const [negativeNumbers, setNegativeNumbers] = useState<number[]>([]);
 
   const checkAnswer = () => {
     // Correct answers
-    const correctPositive = [0.6, 7, 25];
-    const correctNegative = [-12, -3, -2.67];
+    const correctPositive = [6, 7, 25];
+    const correctNegative = [-12, -3, -2];
 
     // Check if answers match
     const isPositiveCorrect =
@@ -28,7 +28,7 @@ export default function Quiz() {
   };
 
   const resetQuiz = () => {
-    setNumbers([-12, 7, 0, 0.6, -3, 25, -2.67]);
+    setNumbers([-12, 7, 0, 6, -3, 25, -2]);
     setPositiveNumbers([]);
     setNegativeNumbers([]);
   };

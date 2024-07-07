@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const Page = () => {
   const [numbers, setNumbers] = useState<number[]>([
-    -23, -12, 7, -1, -21, 23, 10, 16, 5, 17, 1.29, 0,
+    -23, -12, 7, -1, -21, 23, 10, 16, 5, 17, 1, 0,
   ]);
   const [selectedNumbers1, setSelectedNumbers1] = useState<number[]>([]);
   const [selectedNumbers2, setSelectedNumbers2] = useState<number[]>([]);
@@ -14,7 +14,7 @@ const Page = () => {
     // Correct answers array
     const correctAnswers1 = [16];
     const correctAnswers2 = [23];
-    const correctAnswers3 = [1.29];
+    const correctAnswers3 = [1];
     const correctAnswers4 = [0];
     // Check if selectedNumbers match correctAnswers
     const isCorrect1 =
@@ -39,7 +39,7 @@ const Page = () => {
   };
 
   const resetQuiz = () => {
-    setNumbers([-23, -12, 7, -1, -21, 23, 10, 16, 5, 17, 1.29, 0]); // Reset the original numbers
+    setNumbers([-23, -12, 7, -1, -21, 23, 10, 16, 5, 17, 1, 0]); // Reset the original numbers
     setSelectedNumbers1([]);
     setSelectedNumbers2([]);
     setSelectedNumbers3([]);
@@ -86,7 +86,7 @@ const Page = () => {
           <div className="flex flex-col gap-2 justify-items-center text-center">
             <div className="bg-red-500 p-5 rounded-md">16</div>
             <div className="bg-green-500 p-5 rounded-md">-23</div>
-            <div className="bg-sky-500 p-5 rounded-md">-9/7</div>
+            <div className="bg-sky-500 p-5 rounded-md">1</div>
             <div className="bg-amber-500 p-5 rounded-md">0</div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">

@@ -1,13 +1,14 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import { useState } from "react";
-import { DragEvent } from "react";
+import ab from "../../../asset/bab2_ab.png";
 
 const Page = () => {
   const [N, setN] = useState(1);
 
   const [selectedOption, setSelectedOption] = useState("");
-  const correctAnswer = "-10 km"; // Ganti dengan jawaban yang benar
+  const correctAnswer = "d"; // Ganti dengan jawaban yang benar
   const [jawabanbenar, setjawabanbenar] = useState("");
 
   const checkAnswer = () => {
@@ -21,7 +22,7 @@ const Page = () => {
         setjawabanbenar("salah");
         alert("Jawaban Salah!");
         alert(
-          "Penjelasan : Selatan ke arah bawah dari titik A yang berada di pusat mata angin. Arah selatan menjadi bernilai negatif terhadap titik A. 10 km  di sebelah arah selatan = - 10 km."
+          "Penjelasan : Dapat kita lihat pada garis bilangan bilangan bulat 1 memang tidak diperlihatkan, tetapi dengan bantuan semua angka lainnya yang terlihat dan garis di setiap angka bilangan bulat pada garis bilangan dapat kita simpulkan bahwa bilangan bulat 1 berada di titik D."
         );
       }
     }
@@ -29,7 +30,7 @@ const Page = () => {
 
   /* soal 2 */
   const [selectedOption2, setSelectedOption2] = useState("");
-  const correctAnswer2 = "b"; // Ganti dengan jawaban yang benar
+  const correctAnswer2 = "a"; // Ganti dengan jawaban yang benar
   const [jawabanbenar2, setjawabanbenar2] = useState("");
 
   const checkAnswer2 = () => {
@@ -43,7 +44,7 @@ const Page = () => {
         setjawabanbenar2("salah");
         alert("Jawaban Salah!");
         alert(
-          "Penjelasan : Berdasarkan pernyataan di atas, tanda (-) negatif dinyatakan sebagai kerugian sehingga tanga (+) dinyatakan sebagai keuntungan. Jadi, +300 rupiah dinyatakan sebagai untung sebesar 300 rupiah."
+          "Penjelasan : Berdasarkan garis bilangan pada no.1 dapat kita simpulkan sama seperti pada titik D, dimana kita dapat melihat semua angka yang terlihat sebelumnya maupun setelahnya kemudian kita melihat gari, sehingga dapat simpulkan titik A bersesuian dengan -3."
         );
       }
     }
@@ -51,7 +52,7 @@ const Page = () => {
 
   /* soal 3 */
   const [selectedOption3, setSelectedOption3] = useState("");
-  const correctAnswer3 = "c"; // Ganti dengan jawaban yang benar
+  const correctAnswer3 = "b"; // Ganti dengan jawaban yang benar
   const [jawabanbenar3, setjawabanbenar3] = useState("");
 
   const checkAnswer3 = () => {
@@ -65,7 +66,7 @@ const Page = () => {
         setjawabanbenar3("salah");
         alert("Jawaban Salah!");
         alert(
-          "Penjelasan : Dari pilihan jawaban diatas didapatakan bahwa yang merupakan kelompok Bilangan Bulat yang tepat adalah Positif : 3 ; 14 ; 50 ; Negatif : -24 ; -6 ; -4;"
+          "Penjelasan :Pada bilangan bulat Bilangan Positif nilai yang lebih tinggi daripada bilangan Negatif, dan bilangan positif memiliki nilai semakin tinggi ketika nilai angkanya lebih besar, sebaliknya jika bilangan Negatif semakin besar angkanya memiliki nilai semakin kecil, maka dapat di simpulkan bahwa 3 memiliki nilai lebih besar dari -4 atau dilambangkan menjadai 3 > -4."
         );
       }
     }
@@ -74,7 +75,7 @@ const Page = () => {
 
   /* soal 4 */
   const [selectedOption4, setSelectedOption4] = useState("");
-  const correctAnswer4 = "a"; // Ganti dengan jawaban yang benar
+  const correctAnswer4 = "b"; // Ganti dengan jawaban yang benar
   const [jawabanbenar4, setjawabanbenar4] = useState("");
 
   const checkAnswer4 = () => {
@@ -88,15 +89,16 @@ const Page = () => {
         setjawabanbenar4("salah");
         alert("Jawaban Salah!");
         alert(
-          "Penjelasan : Di papan pengumuman lomba lari, kecepatan angin buritan adalah +. Angin haluan dinyatakan dengan tanda -. Pada hal ini, perlu untuk memastikan bahwa titik pangkal adalah 0 m/s menyatakan keadaan tanpa angin. Dan juga, satuan kecepatan m/s, biasanya dibaca “meter per second” atau “meter per detik”. Maka dari soal ini jawaban yang tepat adalah a. Ada angin buritan dengan kecepatan 5 m/detik."
+          "Penjelasan : Jarak antara bilangan bulat dan titik 0 disebut Nilai Mutlak, di soal ini kita membandingkan manakah bilangan bulat manakah yang memiliki nilai mutlak paling besar antara 8 dan -12 maka dapat kita simpulkan berdasarkan pengertian Nilai Mutlak sebelumnya bilangan bulat yang memiliki Nilai Mutlak paling tinggi atau jarak paling jauh dari titik 0 adalaah -12  yang memiliki Nilai Mutlak 12."
         );
       }
     }
+    console.log(selectedOption4 === correctAnswer4);
   };
 
   /* soal 5 */
   const [selectedOption5, setSelectedOption5] = useState("");
-  const correctAnswer5 = "b"; // Ganti dengan jawaban yang benar
+  const correctAnswer5 = "d"; // Ganti dengan jawaban yang benar
   const [jawabanbenar5, setjawabanbenar5] = useState("");
 
   const checkAnswer5 = () => {
@@ -110,10 +112,12 @@ const Page = () => {
         setjawabanbenar5("salah");
         alert("Jawaban Salah!");
         alert(
-          "Penjelasan : Di soal ini suhu 6°C lebih tinggi dibandingkan suhu tertinggi kemarin kemarin dinyatakan sebagai +6°C. Maka 8°C lebih rendah dibandingkan suhu tertinggi kemarin dapat dinyatakan sebagai -8°C."
+          "Penjelasan : Sama seperti pada soal no.4 kita dapat mengetahui nilai mutlak dari sesuatu bilangan bulat dengan melihat jarak antara bilangan bulat tersebut dengan titik 0, atau sederhana cukup hilangkan saja tanda Negatif ataupun Positif dari bilangan bulat sehingga kita mendapatkan Nilai Mutlaknya."
         );
       }
     }
+    /*     console.log(selectedOption5 === correctAnswer5);
+     */ console.log(jawabanbenar5);
   };
 
   return (
@@ -143,9 +147,11 @@ const Page = () => {
               {N === 1 && (
                 <div>
                   <h1 className="p-2">
-                    1. Diketahui bahwa A adalah titik 0 km. Titik ”6 km sebelah
-                    utara A” dinyatakan sebagai +6 km. <br /> Bagaimana
-                    menyatakan titik ”10 km di sebelah selatan A”?...
+                    1. Berikan garis bilangan sebagai berikut :
+                    <span className="ml-5 p-2 border-2 border-teal-400 bg-white font-bold flex justify-center items-center text-center">
+                      <Image className="w-100" src={ab} alt="ab" />
+                    </span>
+                    Berada di titik manakah bilngan bulat 1?...
                   </h1>
                   <form className="mt-2 ml-5 flex flex-col gap-2">
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -153,12 +159,12 @@ const Page = () => {
                         type="radio"
                         name="pg"
                         id="a"
-                        value={"-10 km"}
+                        value={"a"}
                         onChange={(e) => setSelectedOption(e.target.value)}
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="a" className="cursor-pointer">
-                        -10 km
+                        A
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -166,12 +172,12 @@ const Page = () => {
                         type="radio"
                         name="pg"
                         id="b"
-                        value={"-9 km"}
+                        value={"b"}
                         onChange={(e) => setSelectedOption(e.target.value)}
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="b" className="cursor-pointer">
-                        -9 km
+                        B
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -179,12 +185,12 @@ const Page = () => {
                         type="radio"
                         name="pg"
                         id="c"
-                        value={"1 km"}
+                        value={"c"}
                         onChange={(e) => setSelectedOption(e.target.value)}
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="c" className="cursor-pointer">
-                        1 km
+                        C
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -192,12 +198,12 @@ const Page = () => {
                         type="radio"
                         name="pg"
                         id="d"
-                        value={"10 km"}
+                        value={"d"}
                         onChange={(e) => setSelectedOption(e.target.value)}
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="d" className="cursor-pointer">
-                        10 km
+                        D
                       </label>
                     </div>
                   </form>
@@ -213,10 +219,12 @@ const Page = () => {
                         {(jawabanbenar === "benar" ||
                           jawabanbenar === "salah") && (
                           <div className="text-xs w-[50rem]">
-                            Penjelasan : Selatan ke arah bawah dari titik A yang
-                            berada di pusat mata angin. Arah selatan menjadi
-                            bernilai negatif terhadap titik A. 10 km di sebelah
-                            arah selatan = - 10 km.
+                            Penjelasan : Dapat kita lihat pada garis bilangan
+                            bilangan bulat 1 memang tidak diperlihatkan, tetapi
+                            dengan bantuan semua angka lainnya yang terlihat dan
+                            garis di setiap angka bilangan bulat pada garis
+                            bilangan dapat kita simpulkan bahwa bilangan bulat 1
+                            berada di titik D.
                           </div>
                         )}
                       </div>
@@ -231,8 +239,8 @@ const Page = () => {
               {N === 2 && (
                 <div>
                   <h1 className="p-2">
-                    2. Apabila “rugi 200 rupiah” dinyatakan sebagai -200 rupiah,
-                    menyatakan apa +300 rupiah?...
+                    2. Berdasarkan garis bilangan pada nomor 1. Bilangan bulat
+                    apa yang bersesuian dengan titik A?...
                   </h1>
                   <form className="mt-2 ml-5 flex flex-col gap-2">
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -245,7 +253,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="a" className="cursor-pointer">
-                        ”untung 600 rupiah”
+                        -3
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -258,7 +266,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="b" className="cursor-pointer">
-                        "untung 300 rupiah"
+                        -2
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -271,7 +279,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="c" className="cursor-pointer">
-                        "rugi 300 rupiah"
+                        1
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -284,7 +292,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="d" className="cursor-pointer">
-                        "Tidak untung dan rugi 1000 rupiah"
+                        3
                       </label>
                     </div>
                   </form>
@@ -300,10 +308,12 @@ const Page = () => {
                         {(jawabanbenar2 === "benar" ||
                           jawabanbenar2 === "salah") && (
                           <div className="text-xs w-[50rem]">
-                            Penjelasan : Berdasarkan pernyataan di atas, tanda
-                            (-) negatif dinyatakan sebagai kerugian sehingga
-                            tanga (+) dinyatakan sebagai keuntungan. Jadi, +300
-                            rupiah dinyatakan sebagai untung sebesar 300 rupiah.
+                            Penjelasan : Berdasarkan garis bilangan pada no.1
+                            dapat kita simpulkan sama seperti pada titik D,
+                            dimana kita dapat melihat semua angka yang terlihat
+                            sebelumnya maupun setelahnya kemudian kita melihat
+                            gari, sehingga dapat simpulkan titik A bersesuian
+                            dengan -3.
                           </div>
                         )}
                       </div>
@@ -318,11 +328,9 @@ const Page = () => {
               {N === 3 && (
                 <div>
                   <h1 className="p-2">
-                    3. Diberikan bilangan-bilangan.
-                    <span className="ml-5 p-2 border-2 border-teal-400 bg-white font-bold flex justify-center items-center text-center">
-                      -24 ; -6 ; -4 ; 0 ; 3 ; 14 ; 50
-                    </span>
-                    Mana yang merupakan bilangan positif? Mana yang negatif?...
+                    3. Di sajikan bilangan bulat 3 dan -4. Manakah peryataan
+                    pertidaksamaan dibawah ini yang benar berdasarkan <br />
+                    perbandingan dua bilangan bulat tersebut...
                   </h1>
                   <form className="mt-2 ml-5 flex flex-col gap-2">
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -335,8 +343,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="a" className="cursor-pointer">
-                        Positif : 14 ; 3 ; 0 ; -6 ; <br /> Negatif : -4; 50 ;
-                        -24 ;
+                        3 = -4
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -349,8 +356,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="b" className="cursor-pointer">
-                        Positif : -4 ; 3 ; 0 ; -6 ; <br /> Negatif : 14; 50 ;
-                        -24 ;
+                        3 {">"} -4
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -363,7 +369,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="c" className="cursor-pointer">
-                        Positif : 3 ; 14 ; 50 ; <br /> Negatif : -24 ; -6 ; -4;
+                        3 {"<"} -4
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -376,7 +382,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="d" className="cursor-pointer">
-                        Positif : 3 ; 14 ; -4 ; <br /> Negatif : -24 ; -6 ; 50;
+                        -4 {">"} 3
                       </label>
                     </div>
                   </form>
@@ -392,10 +398,14 @@ const Page = () => {
                         {(jawabanbenar3 === "benar" ||
                           jawabanbenar3 === "salah") && (
                           <div className="text-xs w-[50rem]">
-                            Penjelasan : Dari pilihan jawaban diatas didapatakan
-                            bahwa yang merupakan kelompok Bilangan Bulat yang
-                            tepat adalah <br /> Positif : 3 ; 14 ; 50 ; <br />{" "}
-                            Negatif : -24 ; -6 ; -4;.
+                            Penjelasan : Pada bilangan bulat Bilangan Positif
+                            nilai yang lebih tinggi daripada bilangan Negatif,
+                            dan bilangan positif memiliki nilai semakin tinggi
+                            ketika nilai angkanya lebih besar, sebaliknya jika
+                            bilangan Negatif semakin besar angkanya memiliki
+                            nilai semakin kecil, maka dapat di simpulkan bahwa 3
+                            memiliki nilai lebih besar dari -4 atau dilambangkan
+                            menjadai 3 {">"} -4.
                           </div>
                         )}
                       </div>
@@ -410,10 +420,9 @@ const Page = () => {
               {N === 4 && (
                 <div>
                   <h1 className="p-2">
-                    4. Papan pengumuman lomba lari cepat 100 m menunjukkan bahwa
-                    kecepatan angin buritan adalah 1 m per detik <br />{" "}
-                    dinyatakan sebagai “1 m /detik. ” Apa artinya 5 m
-                    /detik”?...
+                    4. Ketika kita sajikan 8 dan -12 pada garis bilangan,
+                    bilangan manakah yang terletak lebih jauh dari titik
+                    asal?...
                   </h1>
                   <form className="mt-2 ml-5 flex flex-col gap-2">
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -426,7 +435,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="a" className="cursor-pointer">
-                        Ada angin buritan dengan kecepatan 5 m/detik
+                        8
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -439,7 +448,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="b" className="cursor-pointer">
-                        Ada angin haluan dengan kecepatan 10 m/detik
+                        -12
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -452,7 +461,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="c" className="cursor-pointer">
-                        Ada angain buirtan dengan kecepatan 10 m/detik
+                        16
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -465,7 +474,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="d" className="cursor-pointer">
-                        Ada angin haluan dengan kecepatan 5 m/detik
+                        24
                       </label>
                     </div>
                   </form>
@@ -481,15 +490,14 @@ const Page = () => {
                         {(jawabanbenar4 === "benar" ||
                           jawabanbenar4 === "salah") && (
                           <div className="text-xs w-[50rem]">
-                            Penjelasan : Di papan pengumuman lomba lari,
-                            kecepatan angin buritan adalah +. Angin haluan
-                            dinyatakan dengan tanda -. Pada hal ini, perlu untuk
-                            memastikan bahwa titik pangkal adalah 0 m/s
-                            menyatakan keadaan tanpa angin. Dan juga, satuan
-                            kecepatan m/s, biasanya dibaca “meter per secon”
-                            atau “meter per detik”. Maka dari soal ini jawaban
-                            yang tepat adalah a. Ada angin buritan dengan
-                            kecepatan 5 m/detik.
+                            Penjelasan : Jarak antara bilangan bulat dan titik 0
+                            disebut Nilai Mutlak, di soal ini kita membandingkan
+                            manakah bilangan bulat manakah yang memiliki nilai
+                            mutlak paling besar antara 8 dan -12 maka dapat kita
+                            simpulkan berdasarkan pengertian Nilai Mutlak
+                            sebelumnya bilangan bulat yang memiliki Nilai Mutlak
+                            paling tinggi atau jarak paling jauh dari titik 0
+                            adalaah -12 yang memiliki Nilai Mutlak 12.
                           </div>
                         )}
                       </div>
@@ -504,11 +512,8 @@ const Page = () => {
               {N === 5 && (
                 <div>
                   <h1 className="p-2">
-                    Bagaimana menyatakan”8°C lebih rendah dibandingkan suhu
-                    tertinggi kemarin” jika berdasarkan suhu tertinggi hari ini,{" "}
-                    <br />
-                    ”6°C lebih tinggi dibandingkan suhu tertinggi kemarin”
-                    dinyatakan sebagai 6°C maka ...
+                    5. Berturut-turut, tentukan nilai-nilai mutlak dari -7 dan
+                    5...
                   </h1>
                   <form className="mt-2 ml-5 flex flex-col gap-2">
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -521,7 +526,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="a" className="cursor-pointer">
-                        -16°C
+                        14 dan 10
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -534,7 +539,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="b" className="cursor-pointer">
-                        -8°C
+                        1 dan 2
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -547,7 +552,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="c" className="cursor-pointer">
-                        -4°C
+                        7 dan -5
                       </label>
                     </div>
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -560,7 +565,7 @@ const Page = () => {
                         className="h-5 w-5 cursor-pointer"
                       />
                       <label htmlFor="d" className="cursor-pointer">
-                        8°C
+                        7 dan 5
                       </label>
                     </div>
                   </form>
@@ -576,11 +581,12 @@ const Page = () => {
                         {(jawabanbenar5 === "benar" ||
                           jawabanbenar5 === "salah") && (
                           <div className="text-xs w-[50rem]">
-                            Penjelasan : Di soal ini suhu 6°C lebih tinggi
-                            dibandingkan suhu tertinggi kemarin kemarin
-                            dinyatakan sebagai +6°C. Maka 8°C lebih rendah
-                            dibandingkan suhu tertinggi kemarin dapat dinyatakan
-                            sebagai -8°C.
+                            Penjelasan : Sama seperti pada soal no.4 kita dapat
+                            mengetahui nilai mutlak dari sesuatu bilangan bulat
+                            dengan melihat jarak antara bilangan bulat tersebut
+                            dengan titik 0, atau sederhana cukup hilangkan saja
+                            tanda Negatif ataupun Positif dari bilangan bulat
+                            sehingga kita mendapatkan Nilai Mutlaknya.
                           </div>
                         )}
                       </div>

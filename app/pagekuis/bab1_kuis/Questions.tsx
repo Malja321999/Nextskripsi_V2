@@ -4,7 +4,14 @@ import ScoreKuis from "../ScoreKuis";
 import QuizCard from "../QuizCard";
 import ResultQuiz from "./ResultQuiz";
 import NavQuestions from "../NavQuestions";
-import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { firestore } from "../../lib/firebase/init";
 import { useSession } from "next-auth/react";
 
@@ -12,37 +19,37 @@ const Questions = () => {
   const questions = [
     {
       question:
-        "Manakah kelompok bilangan yang merupakan bilangan positif dibawah ini?",
+        "Manakah kelompok bilangan yang merupakan bilangan positif dan negatif dibawah ini?",
       options: [
-        "Positif : -12; 7 ; 0 ; -0,6",
-        "Positif : -12; 7 ; 0,6 ; 1,2",
-        "Positif : -12; -3 ; 7 ; 0",
-        "Positif : -12; 7 ; 0 ; 0,6",
+        "Positif : -12 ;  0  ; 6 ; 7. Negatif  : -8 ; -3 ; 5 ; 25",
+        "Positif : -12 ;  6 ;  7. Negatif  : -3;  0 ;  25",
+        "Positif : -12 ;  -3;  0 ;  7. Negatif  : -8 ; -3 ; 6 ; 25",
+        "Positif : 6 ; 7 ; 25 ; 10. Negatif  : -25 ; -8 ; -5 ; -3",
       ],
-      correctAnswer: "Positif : -12; 7 ; 0 ; 0,6",
+      correctAnswer: "Positif : 6 ; 7 ; 25 ; 10. Negatif  : -25 ; -8 ; -5 ; -3",
     },
     {
       question:
-        "Bilangan manakah yang memiliki nilai yang sama dengan 3/5 dibawah ini ?",
-      options: ["0,4", "0,7", "0,6", "0.10"],
-      correctAnswer: "0,6",
+        "Bilangan manakah yang memiliki nilai mutlak yang sama dengan +3 dibawah ini ?",
+      options: ["-10", "-3", "3", "10"],
+      correctAnswer: "3",
     },
     {
       question:
         "Perbandingan pasangan bilangan +1 ; -3 ; -2 dengan menggunakan tanda pertidaksamaanyang benar adalah...",
-      options: ["1 > -3 > -2", "1 > - 2 > -3", "-2 < 1 > - 3", "-3 < -2 > +1"],
+      options: ["1 > -3 > -2", "1 > - 2 > -3", "-2 < 1 > - 3", "-3 < -2 > 1"],
       correctAnswer: "1 > - 2 > -3",
     },
     {
       question:
-        "Manakah bilangan-bilangan berikut ini yang memiliki nilai mutlak 9 dan 0 berturut-turut?",
-      options: ["-9 dan 0", "0 dan 9/10", "9 dan 1/0", "9/0 dan 1/0"],
-      correctAnswer: "-9 dan 0",
+        "Ditetapkan titik A sebagai titik pangkal 0 km. Titik ”6 km di sebelah Timur A” sebagai +6 km. Titik ”4 km di sebelah Barat A” dinyatakan sebagai...",
+      options: ["-4", "4", "5", "10"],
+      correctAnswer: "-4",
     },
     {
       question:
         "Manakah di antara bilangan berikut yang merupakan bilangan terkecil?",
-      options: ["-1", "-5", "6", "1"],
+      options: ["-5", "-1", "1", "6"],
       correctAnswer: "-5",
     },
     {
@@ -76,14 +83,14 @@ const Questions = () => {
     {
       question:
         "Diketahui bahaw A adalah titik 0 km. Titik 3 km sebelah utara A dinyatakan sebagai +3 km. Bagaimana menyatakan titik 5 km di sebelah selatan?",
-      options: ["(- 5)", "+5", "5", "3/5"],
-      correctAnswer: "(- 5)",
+      options: ["(-5)", "0", "+5", "5"],
+      correctAnswer: "(-5)",
     },
     {
       question:
-        "Perhatikan dua buah bilangan berikut: M = 5abcd N = 8cde Jika setiap huruf pada bilangan diatas mewakili sebuah angka, maka diantara pilihan di bawah ini yang benar adalah...",
+        "Perhatikan dua buah bilangan berikut: M = 5 N = 8, maka diantara pilihan di bawah ini yang benar adalah...",
       options: ["M > N", "M < N", "M = N", "M ≤ N"],
-      correctAnswer: "M > N",
+      correctAnswer: "M < N",
     },
 
     // Add more questions here
@@ -133,12 +140,12 @@ const Questions = () => {
         );
       }
     }
-     const db = query(
-       collection(firestore, "users"),
-       where("email", "==", `${userEmail}`)
-     );
-     const querySnapshot = await getDocs(db);
-     const docRef = querySnapshot.docs[0].ref;
+    const db = query(
+      collection(firestore, "users"),
+      where("email", "==", `${userEmail}`)
+    );
+    const querySnapshot = await getDocs(db);
+    const docRef = querySnapshot.docs[0].ref;
     updateDoc(docRef, {
       bab1_kuis: totalPoints,
     })

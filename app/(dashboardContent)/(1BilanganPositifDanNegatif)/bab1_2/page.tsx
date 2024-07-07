@@ -33,6 +33,9 @@ import {
 import { useRouter } from "next/navigation";
 import CardFinishRead from "@/app/component/CardFinishRead";
 import { BiFullscreen } from "react-icons/bi";
+import Melebb from "@/app/component/Melebb";
+import Ab from "@/app/component/Ab";
+import Am from "@/app/component/Am";
 
 const Page = () => {
   const [Collapse2, SetCollapse2] = useState(true);
@@ -47,7 +50,7 @@ const Page = () => {
   const [next, setnext] = useState("part1");
   const router = useRouter();
 
-  const [FinishReading, setFinishReading] = useState(false);
+  const [FinishReading, setFinishReading] = useState(true);
 
   const [Media, setMedia] = useState("");
 
@@ -85,7 +88,7 @@ const Page = () => {
 
       <div>
         {/* Tujuan Pembelajaran 1.2 */}
-        <div className="mx-20 bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
+        <div className="mx-20 bg-gray-900 w-[74rem] p-2 rounded-md mt-2 flex flex-col relative">
           <button onClick={() => SetCollapse2(!Collapse2)}>
             <ul className="flex justify-between gap-2">
               <li className="flex justify-between gap-2 text-2xl">
@@ -98,7 +101,7 @@ const Page = () => {
 
           <div>
             {Collapse2 ? (
-              <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
+              <div className="bg-gray-800 w-[73rem] p-2 rounded-md text-base text-start">
                 <ul className="list-decimal list-inside">
                   <li>
                     Siswa dapat menentukan posisi bilangan pada garis bilangan
@@ -273,17 +276,20 @@ const Page = () => {
         <div>
           {FinishReading ? (
             <div>
-              <Cardlatihan n={2} />
               <div className="mt-1">
-                <h2 className="font-bold">
-                  Coba jawablah pertanyaan berikut dengan baik dan benar!
-                </h2>
-                <br />
+                <Cardlatihan n={2} />
+                Setelah menonton video diatas, jawablah pertanyaan dibawah ini.
                 {/* Soal A */}
-                <div id="question">
-                  <h3 className="text-yellow-200 font-bold">
-                    A. Letakkan bilangan-bilangan berikut pada garis bilangan
-                    dengan tepat.
+                <div className="mt-5">
+                  <Melebb />
+                  <h3>
+                    Setelah menonton video diatas, Jawablah pertanyaan dibawah
+                    ini dengan cara meletakkan bilangan bulat pada kolom opsi
+                    jawaban ke kolom jawaban sesuai dengan letaknya pada garis
+                    bilangan! Jika jawabanmu benar maka akan ditampilkan teks
+                    jawaban<span className="text-green-400">“Kamu Benar!”</span>{" "}
+                    sedangkan jika jawabanmu salah maka akan ditampilkan teks
+                    jawaban <span className="text-red-400">“Kamu Salah!”.</span>
                   </h3>
                   <iframe
                     className="h-[30rem] w-[85rem] rounded-md border-4 border-gray-800"
@@ -293,27 +299,140 @@ const Page = () => {
                   ></iframe>
                 </div>
                 {/* Soal B */}
-                <h3 className="mt-20 text-yellow-200 font-bold">
-                  B. Bandingkan bilangan-bilangan berikut dengan mengubah tanda
-                  ( &gt; atau &lt; ) pada pernyataan bilangan berikut.
-                </h3>
-                <iframe
-                  className="h-[30rem] w-[85rem] rounded-md border-4 border-gray-800"
-                  loading="lazy"
-                  src="/QuizDragAndDrop/bab1_2B"
-                  allowFullScreen
-                ></iframe>
-
+                <div className="mt-10">
+                  <Ab />
+                  <h3 className="ml-5 mb-5 text-black">
+                    <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                      <ul className="list list-disc list-inside">
+                        <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                        <div>
+                          <li>Jawablah pertanyaan dibawah ini dengan tepat</li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">benar</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                              Kamu Benar!
+                            </span>
+                            .
+                          </li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">salah</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                              Kamu Salah!
+                            </span>
+                            .
+                          </li>
+                        </div>
+                      </ul>
+                    </div>
+                  </h3>
+                  <div className="flex flex-col">
+                    <iframe
+                      className="h-[45rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab1_2_ab"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
                 {/* Soal C */}
-                <h3 className="mt-20 text-yellow-200 font-bold">
-                  C. Tentukan nilai mutlak dari bilangan berikut :
-                </h3>
-                <iframe
-                  className="h-[30rem] w-[85rem] rounded-md border-4 border-gray-800"
-                  loading="lazy"
-                  src="/QuizDragAndDrop/bab1_2C"
-                  allowFullScreen
-                ></iframe>
+                <div className="mt-10">
+                  <Am />
+                  <h3 className="ml-5 mb-5 text-black">
+                    <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                      <ul className="list list-disc list-inside">
+                        <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                        <div>
+                          <li>
+                            Kamu sudah menonton video mengenai membandingkan
+                            bilangan bulat . Sekarang pasangkanlah simbol{" "}
+                            <span className="font-bold">
+                              lebih dari {"(<)"}, kurang dari {"(>)"} dan sama
+                              banyak
+                              {"(=)"}
+                            </span>
+                            dengan bilangan bulat di bawah ini.
+                          </li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">benar</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                              Kamu Benar!
+                            </span>
+                            .
+                          </li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">salah</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                              Kamu Salah!
+                            </span>
+                            .
+                          </li>
+                        </div>
+                      </ul>
+                    </div>
+                  </h3>
+                  <div className="flex flex-col">
+                    <iframe
+                      className="h-[25rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab1_2B"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+                {/* Soal d */}
+                <div className="mt-10">
+                  <Am />
+                  <h3 className="ml-5 mb-5 text-black">
+                    <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                      <ul className="list list-disc list-inside">
+                        <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                        <div>
+                          <li>
+                            Kamu sudah menonton video mengenai membandingkan
+                            bilangan bulat . Sekarang pasangkanlah
+                            <span className="font-bold">Nilai Mutlak</span> yang
+                            ada di kotak sebelah kiri dengan semua bilangan
+                            bulat di bawah ini.
+                          </li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">benar</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                              Kamu Benar!
+                            </span>
+                            .
+                          </li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">salah</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                              Kamu Salah!
+                            </span>
+                            .
+                          </li>
+                        </div>
+                      </ul>
+                    </div>
+                  </h3>
+                  <div className="flex flex-col">
+                    <iframe
+                      className="h-[30rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab1_2C"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
               </div>
             </div>
           ) : (

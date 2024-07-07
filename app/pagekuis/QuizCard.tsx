@@ -13,9 +13,9 @@ const QuizCard = ({
   return (
     <div>
       <div key={index}>
-        <h3>{questions[index].question}</h3>
+        <h3 className="mb-5">{questions[index].question}</h3>
         {questions[index].options.map((option: string, optionIndex: number) => (
-          <div key={optionIndex} className="px-5 w-fit">
+          <div key={optionIndex} className="px-5 mt-2 w-fit text-2xl">
             <input
               className="mr-2 h-6 w-6"
               type="radio"

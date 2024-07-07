@@ -63,7 +63,7 @@ const Page = () => {
               7
             </div>
             <div className="bg-sky-500 p-5 rounded-md">
-              -1,6{" "}
+              -1{" "}
               {third === ">" ? (
                 <button
                   className="bg-indigo-500 rounded-md border-2 border-white px-5 py-1"
@@ -79,7 +79,7 @@ const Page = () => {
                   {third}
                 </button>
               )}{" "}
-              -2,4
+              -2
             </div>
           </div>
           <div className="flex flex-col gap-2">

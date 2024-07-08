@@ -4,7 +4,14 @@ import ScoreKuis from "../ScoreKuis";
 import QuizCard from "../QuizCard";
 import ResultQuiz from "./ResultQuiz";
 import NavQuestions from "../NavQuestions";
-import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { firestore } from "../../lib/firebase/init";
 import { useSession } from "next-auth/react";
 import { ref } from "firebase/database";
@@ -18,11 +25,11 @@ const Questions = () => {
     },
     {
       question: "Hasil dari -31 + (-65) adalah…",
-      options: ["-94", "-34", "-96", "96"],
+      options: ["-96", "-94", "-34", "96"],
       correctAnswer: "-96",
     },
     {
-      question: "Hasil 63 + (-178) + 89=…",
+      question: "Hasil 63 + (-178) + 89 = …",
       options: ["-26", "-24", "24", "26"],
       correctAnswer: "-26",
     },
@@ -35,17 +42,17 @@ const Questions = () => {
       question:
         "Diketahui suhu di kota X adalah -27°C dan suhu dikota Y 12°C. jika dikota X turun 5°C dan di kota Y naik 2°C. berapa selisih kedua di kedua kota tersebut?",
       options: ["46°C", "44°C", "42°C", "38°C"],
-      correctAnswer: "44°C",
+      correctAnswer: "46°C",
     },
     {
       question: "Diketahui -71 + p + (-96) = 25, nilai p adalah…",
-      options: ["-142", "-142", "182", "192"],
+      options: ["-142", "142", "182", "192"],
       correctAnswer: "192",
     },
     {
       question:
         "Jika suhu awal 6°C kemudian turun 12°C, maka suhu akhir angka menunjukan....",
-      options: ["18°C", "6°C", "-18°C", "-6°C"],
+      options: ["18°C", "6°C", "-6°C", "-18°C"],
       correctAnswer: "-6°C",
     },
     {

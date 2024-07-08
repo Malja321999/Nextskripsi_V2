@@ -189,23 +189,13 @@ const Page = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="p-4 bg-white shadow rounded">
-        <div className="p-5 gap-5 flex flex-row bg-indigo-200 text-5xl">
-          <div className="flex flex-col gap-2 justify-items-center text-center">
-            <div className="bg-red-500 p-5 rounded-md text-[30px]">
-              (-1) + (-4) - (-7)
-            </div>
-            <div className="bg-green-500 p-5 rounded-md text-[30px]">
-              (+6) - (-8) - (+16)
-            </div>
-            <div className="bg-sky-500 p-5 rounded-md text-[30px]">
-              5 + (-18) + (-5)
-            </div>
-            <div className="bg-amber-500 p-5 rounded-md text-[30px]">
-              -9 - (-8) + (-4)
-            </div>
-            <div className="bg-purple-500 p-5 rounded-md text-[30px]">
-              16 - 18 - 13
-            </div>
+        <div className="text-xl p-5 gap-5 flex flex-row bg-indigo-200">
+          <div className="text-xl flex flex-col gap-2 justify-items-center text-center">
+            <div className="bg-red-500 p-5 rounded-md">(-1) + (-4) - (-7)</div>
+            <div className="bg-green-500 p-5 rounded-md ">(+6) - (-8) - 16</div>
+            <div className="bg-sky-500 p-5 rounded-md ">5 + (-18) + (-5)</div>
+            <div className="bg-amber-500 p-5 rounded-md ">-9 - (-8) + (-4)</div>
+            <div className="bg-purple-500 p-5 rounded-md ">16 - 18 - 13</div>
           </div>
           <div className="flex flex-col gap-2 justify-items-center text-center">
             <div className="bg-gray-500 p-5 rounded-md text-[30px]">{"="}</div>

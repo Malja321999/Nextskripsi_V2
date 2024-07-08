@@ -453,12 +453,22 @@ const Page = () => {
                               Jawablah pertanyaan dibawah ini dengan tepat
                             </li>
                             <li>
-                              Jika jawaban kamu benar, maka akan muncul tulisan
-                              jawaban benar
+                              Jika jawabanmu{" "}
+                              <span className="font-bold">benar</span>, maka
+                              akan ditampilkan teks Jawaban{" "}
+                              <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                                Kamu Benar!
+                              </span>
+                              .
                             </li>
                             <li>
-                              Jika jawaban kamu salah, maka akan muncul tulisan
-                              jawaban salah disertai pembahasan
+                              Jika jawabanmu{" "}
+                              <span className="font-bold">salah</span>, maka
+                              akan ditampilkan teks Jawaban{" "}
+                              <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                                Kamu Salah!
+                              </span>
+                              .
                             </li>
                           </div>
                         </ul>
@@ -521,8 +531,8 @@ const Page = () => {
                   <div className="mt-10">
                     <Am />
                     <h3 className="text-yellow-200 font-bold">
-                      Kelompokkan Bilangan-Bilangan berikut ini dengan baik
-                      dan benar.
+                      Kelompokkan Bilangan-Bilangan berikut ini dengan baik dan
+                      benar.
                     </h3>
 
                     <br />

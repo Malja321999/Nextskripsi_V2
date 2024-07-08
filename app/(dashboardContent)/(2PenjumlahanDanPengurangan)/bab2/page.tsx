@@ -32,6 +32,8 @@ import { BsBookmark } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { MdCenterFocusStrong } from "react-icons/md";
 import { BiFullscreen } from "react-icons/bi";
+import Ab from "@/app/component/Ab";
+import Am from "@/app/component/Am";
 
 const Page = () => {
   const [Collapse, SetCollapse] = useState(true);
@@ -42,7 +44,7 @@ const Page = () => {
   const CVideo =
     "bg-gray-900 w-fit mt-5 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
 
-  const [FinishReading, setFinishReading] = useState(false);
+  const [FinishReading, setFinishReading] = useState(true);
 
   const [Media, setMedia] = useState("");
   const Tfullscreen = () => {
@@ -78,7 +80,7 @@ const Page = () => {
 
       <div>
         {/* Tujuan Pembelajaran 1.2 */}
-        <div className="mx-20 bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
+        <div className="mx-20 bg-gray-900 w-[74rem] p-2 rounded-md mt-2 flex flex-col relative">
           <button onClick={() => SetCollapse(!Collapse)}>
             <ul className="flex justify-between gap-2">
               <li className="flex justify-between gap-2 text-2xl">
@@ -91,7 +93,7 @@ const Page = () => {
 
           <div>
             {Collapse ? (
-              <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
+              <div className="bg-gray-800 w-[73rem] p-2 rounded-md text-base text-start">
                 <ul className="list-decimal list-inside">
                   <li>
                     Siswa dapat melakukan proses penjumlahan dua bilangan bulat
@@ -276,35 +278,150 @@ const Page = () => {
               </h2>
               <br />
               {/* Soal A */}
-              <h3 className="text-yellow-200 font-bold">
-                A. Jawablah pertanyaan-pertanyaan berikut ini.
-              </h3>
-              <div className="flex flex-col">
-                <iframe
-                  className="h-[35rem] w-100 rounded-md border-4 border-gray-800"
-                  loading="lazy"
-                  src="/QuizDragAndDrop/bab2_Ta"
-                  allowFullScreen
-                ></iframe>
+              <div className="mt-10">
+                <Ab />
+                <h3 className="ml-5 mb-5 text-black">
+                  <div className="text-justify border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                    Kamu telah menonton Video Penjumlahan Dan Pengurangan
+                    Bilangan Bulat, jawablah pertanyaan dengan benar pada kolom
+                    yang tersedia. Tekan tombol Cek Jawaban apabila telah
+                    menjawab seluruh pertanyaan. Jika jawabanmu
+                    <span className="font-bold"> benar, </span>maka akan
+                    ditampilkan teks Jawaban
+                    <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                      Kamu Benar!
+                    </span>
+                    , sedangkan jika jawabanmu
+                    <span className="font-bold"> salah, </span>maka akan
+                    ditampilkan teks Jawaban
+                    <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                      Kamu Salah!
+                    </span>
+                  </div>
+                </h3>
+                <div className="flex flex-col">
+                  <iframe
+                    className="h-[60rem] w-100 rounded-md border-4 border-gray-800"
+                    loading="lazy"
+                    src="/QuizDragAndDrop/bab2_1_ab"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
               {/* Soal B */}
-              <div id="question">
-                <h3 className="text-yellow-200 font-bold">
-                  B. Tentukan hasil dari penjumlahan / pengurangan berikut:
+              <div className="mt-10">
+                <Ab />
+                <h3 className="ml-5 mb-5 text-black">
+                  <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                    <ul className="list list-disc list-inside">
+                      <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                      <div>
+                        <li>Jawablah pertanyaan dibawah ini dengan tepat</li>
+                        <li>
+                          Jika jawabanmu{" "}
+                          <span className="font-bold">benar</span>, maka akan
+                          ditampilkan teks Jawaban{" "}
+                          <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                            Kamu Benar!
+                          </span>
+                          .
+                        </li>
+                        <li>
+                          Jika jawabanmu{" "}
+                          <span className="font-bold">salah</span>, maka akan
+                          ditampilkan teks Jawaban{" "}
+                          <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                            Kamu Salah!
+                          </span>
+                          .
+                        </li>
+                      </div>
+                    </ul>
+                  </div>
                 </h3>
+                <div className="flex flex-col">
+                  <iframe
+                    className="h-[31rem] w-100 rounded-md border-4 border-gray-800"
+                    loading="lazy"
+                    src="/QuizDragAndDrop/bab2_2_ab"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
-              <iframe
-                className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
-                loading="lazy"
-                src="/QuizDragAndDrop/bab2_A"
-                allowFullScreen
-              ></iframe>
-              <iframe
-                className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
-                loading="lazy"
-                src="/QuizDragAndDrop/bab2_B"
-                allowFullScreen
-              ></iframe>
+              {/* Soal c */}
+              <div className="mt-10">
+                <Am />
+                <h3 className="ml-5 mb-5 text-black">
+                  <div className="text-justify border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                    Kamu telah menonton Video Penjumlahan Dan Pengurangan
+                    Bilangan Bulat, jawablah pertanyaan dibawah ini dengan cara
+                    menyerat buah yang ada di kulkas untuk menambahkan bilangan
+                    positif dan buah yang ada di pasar untuk menambahkan
+                    bilangan negatif sebanyak angka jawaban bilangan bulat di
+                    kolom jawaban sesuai dengan letaknya pada soal! Jika
+                    jawabanmu benar maka akan ditampilkan teks jawaban
+                    <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                      Kamu Benar!
+                    </span>
+                    sedangkan jika jawabanmu salah maka akan ditampilkan teks
+                    jawaban
+                    <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                      Kamu Salah!
+                    </span>
+                    .
+                  </div>
+                </h3>
+                <div className="flex flex-col">
+                  <iframe
+                    className="h-[35rem] w-100 rounded-md border-4 border-gray-800"
+                    loading="lazy"
+                    src="/QuizDragAndDrop/bab2_A"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+              {/* Soal d */}
+              <div className="mt-10">
+                <Am />
+                <h3 className="ml-5 mb-5 text-black">
+                  <div className="text-justify border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                    Kamu telah menonton Video Penjumlahan Dan Pengurangan
+                    Bilangan Bulat, jawablah pertanyaan dengan meletakkan
+                    bilangan yang benar pada kolom yang tersedia. Tekan tombol
+                    Cek Jawaban apabila telah menjawab seluruh pertanyaan. Jika
+                    jawabanmu benar, maka akan ditampilkan teks Jawaban{" "}
+                    <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                      Kamu Benar!
+                    </span>
+                    , sedangkan jika jawabanmu salah, maka akan ditampilkan teks
+                    Jawaban{" "}
+                    <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                      Kamu Salah!
+                    </span>
+                    .
+                  </div>
+                  <div className="hidden mt-5 flex-col px-[20rem] gap-2 justify-center">
+                    <div className="bg-yellow-500 p-4 rounded-md text-black font-bold text-5xl w-fit">
+                      Contoh :
+                    </div>
+                    <Image
+                      width={700}
+                      height={500}
+                      className="rounded-md border-2 border-black p-1"
+                      src={"/contoh.png"}
+                      alt="contoh"
+                    />
+                  </div>
+                </h3>
+                <div className="flex flex-col">
+                  <iframe
+                    className="h-[35rem] w-100 rounded-md border-4 border-gray-800"
+                    loading="lazy"
+                    src="/QuizDragAndDrop/bab2_B"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
             </div>
           </div>
         ) : (

@@ -18,59 +18,147 @@ import { useSession } from "next-auth/react";
 const Questions = () => {
   const questions = [
     {
-      question: "Hasil dari -6 x (-5) x 11 x 8 =....",
-      options: ["3984", "-460", "39", "2640"],
-      correctAnswer: "2640",
+      question:
+        "Diketahui bahwa A adalah titik 0 km. Titik ”20 km sebelah utara A” dinyatakan sebagai +20 km. Bagaimana menyatakan titik ” 80 km di sebelah selatan A”?...",
+      options: ["-80 km", "-40 km", "+40 km", "+80 km"],
+      correctAnswer: "+80 km",
     },
     {
-      question: "Hasil dari 180 : (-60 : 15) =....",
-      options: ["-45", "45", "60", "5"],
+      question:
+        "Apabila “rugi 400 rupiah” dinyatakan sebagai -400 rupiah, menyatakan apa +600 rupiah?...",
+      options: [
+        "Untung 600 rupiah",
+        "Untung 300 rupiah",
+        "Rugi 300 rupiah",
+        "Untung 600 rupiah",
+      ],
       correctAnswer: "-45",
     },
     {
       question:
-        "Diketahui Pembagian Bilangan bulat berikut.p= -48 : 4; q= -72 : (-9); r= 54 : (-6). urutan hasil dari yang terkecil adalah...",
-      options: ["p,q,r", "p,r,q", "r,q,p", "r,p,q"],
-      correctAnswer: "p,r,q",
+        "Diberikan bilangan-bilangan. -42 ; -12 ; -8 ; 0 ; 6 ; 28 ; 25 ; Mana yang merupakan bilangan positif? Mana yang negatif?...",
+      options: [
+        "Positif : 42 ; 6 ; 0 ; -12. Negatif : -8 ; 25 ; -42.",
+        "Positif : -8 ; 6 ; 0 ; -12. Negatif : 28 ; 25 ; -42.",
+        "Positif : 6 ; 28 ; 25. Negatif : -24 ; -12 ; -8.",
+        "Positif : 6 ; 28 ; -8. Negatif : -42; + ; -12 ; 25.",
+      ],
+      correctAnswer: "Positif : 6 ; 28 ; 25. Negatif : -24 ; -12 ; -8.",
     },
     {
       question:
-        "diketahui nilai p = 240, q = -4, r = -60 dan s = 3. Hasil dari (p : q) : (r : s) =…",
-      options: ["-3", "-2", "2", "3"],
+        "Papan pengumuman lomba lari cepat 100 m menunjukkan bahwa kecepatan angin buritan adalah 2 m per detik dinyatakan sebagai “2 m /detik. ” Apa artinya 6 m /detik”?...",
+      options: [
+        "Ada angin buritan dengan kecepatan 6 m/detik",
+        "Ada angin haluan dengan kecepatan 12 m/detik",
+        "Ada angain buirtan dengan kecepatan 12 m/detik",
+        "Ada angin haluan dengan kecepatan 6 m/detik",
+      ],
+      correctAnswer: "Ada angin buritan dengan kecepatan 6 m/detik",
+    },
+    {
+      question:
+        "Bagaimana menyatakan ”16°C lebih rendah dibandingkan suhu tertinggi kemarin” jika berdasarkan suhu tertinggi hari ini,  ”12°C lebih tinggi dibandingkan suhu tertinggi kemarin” dinyatakan sebagai 12°C maka ...",
+      options: ["-16°C", "-12°C", "-8°C", "10°C"],
+      correctAnswer: "-12°C",
+    },
+    {
+      question: "Berada di titik manakah bilngan bulat -3?...",
+      g: true,
+      options: ["A", "B", "C", "D"],
+      correctAnswer: "A",
+    },
+    {
+      question:
+        "Berdasarkan garis bilangan pada nomor 6. Bilangan bulat apa yang bersesuian dengan titik D?...",
+      options: ["-3", "-2", "-1", "1"],
+      correctAnswer: "-3",
+    },
+    {
+      question:
+        "Di sajikan  bilangan bulat 6 dan -8. Manah peryataan pertidaksamaan dibawah ini yang benar berdasarkan perbandingan dua bilangan bulat tersebut...",
+      options: ["6 = -8", "6 > -8", "6 < -8", "-8 > 6"],
+      correctAnswer: "6 > -8",
+    },
+    {
+      question:
+        "Ketika kita sajikan 16 dan -24 pada garis bilangan, bilangan manakah yang terletak lebih jauh dari titik asal?...",
+      options: ["8", "12", "16", "24"],
+      correctAnswer: "24",
+    },
+    {
+      question:
+        "Berturut-turut, tentukan nilai-nilai mutlak dari -14 dan 10...",
+      options: ["14 dan 10", "1 dan 2", "7 dan -5", "7 dan 5"],
+      correctAnswer: "14 dan 10",
+    },
+    {
+      question: "Jika m = -6 dan n = -8 maka nilai dari m - n adalah...",
+      options: ["8", "6", "4", "2"],
       correctAnswer: "2",
     },
     {
       question:
-        "Untuk membantu korban bencana alam, 54 murid sekolah dasar mengumpulkan uang. Setiap orang menyumbang 1.250 rupiah. Berapa uang yang terkumpul seluruhnya?",
-      options: ["Rp. 67.400", "Rp. 67.500", "Rp. 67.600", "Rp. 67.700"],
-      correctAnswer: "Rp. 67.500",
+        "Pada malam hari, suhu di puncak suatu gunung -10°C, kemudian pada siang hari suhunya naik 24°C jadi suhu pada siang hari adalah...",
+      options: ["12", "14", "20", "34"],
+      correctAnswer: "14",
     },
     {
-      question: "Nilai dari (-2)x(-3)x(-4)x(-5)=…",
-      options: ["-14", "-120", "14", "120"],
-      correctAnswer: "120",
-    },
-    {
-      question:
-        "Di sebuah gudang beras terdapat 550 karung beras. Setiap karung beratnya 25 kg. Berapa kg beras yang ada di gudang itu?",
-      options: ["13.750 kg", "13.760 kg", "13.770 kg", "13.780 kg"],
-      correctAnswer: "13.750 kg",
-    },
-    {
-      question: "Hasil dari (-5)x(-4)x2=…",
-      options: ["-40", "30", "20", "40"],
-      correctAnswer: "40",
+      question: "Diketahui -24 + y + (-52) = 60, nilai y adalah...",
+      options: [
+        "Positif : 42 ; 6 ; 0 ; -12. Negatif : -8 ; 25 ; -42.",
+        "Positif : -8 ; 6 ; 0 ; -12. Negatif : 28 ; 25 ; -42.",
+        "Positif : 6 ; 28 ; 25. Negatif : -24 ; -12 ; -8.",
+        "Positif : 6 ; 28 ; -8. Negatif : -42; + ; -12 ; 25.",
+      ],
+      correctAnswer: "Positif : 6 ; 28 ; 25. Negatif : -24 ; -12 ; -8.",
     },
     {
       question:
-        "Untuk membantu korban bencana alam, panitia akan membagikan 3.375 kg beras kepada 45 kepala keluarga. Berapa kilogram-kah setiap kepala keluarga menerima beras?",
-      options: ["74 kg", "75 kg", "76 kg", "77 kg"],
-      correctAnswer: "75 kg",
+        "Papan pengumuman lomba lari cepat 100 m menunjukkan bahwa kecepatan angin buritan adalah 2 m per detik dinyatakan sebagai “2 m /detik. ” Apa artinya 6 m /detik”?...",
+      options: [
+        "Ada angin buritan dengan kecepatan 6 m/detik",
+        "Ada angin haluan dengan kecepatan 12 m/detik",
+        "Ada angain buirtan dengan kecepatan 12 m/detik",
+        "Ada angin haluan dengan kecepatan 6 m/detik",
+      ],
+      correctAnswer: "Ada angin buritan dengan kecepatan 6 m/detik",
     },
     {
-      question: "Hasil dari (-75) : (-25) =…",
-      options: ["3", "4", "-3", "-4"],
-      correctAnswer: "3",
+      question:
+        "Bagaimana menyatakan ”16°C lebih rendah dibandingkan suhu tertinggi kemarin” jika berdasarkan suhu tertinggi hari ini,  ”12°C lebih tinggi dibandingkan suhu tertinggi kemarin” dinyatakan sebagai 12°C maka ...",
+      options: ["-16°C", "-12°C", "-8°C", "10°C"],
+      correctAnswer: "-12°C",
+    },
+    {
+      question: "Berada di titik manakah bilngan bulat -3?...",
+      g: true,
+      options: ["A", "B", "C", "D"],
+      correctAnswer: "A",
+    },
+    {
+      question:
+        "Berdasarkan garis bilangan pada nomor 6. Bilangan bulat apa yang bersesuian dengan titik D?...",
+      options: ["-3", "-2", "-1", "1"],
+      correctAnswer: "-3",
+    },
+    {
+      question:
+        "Di sajikan  bilangan bulat 6 dan -8. Manah peryataan pertidaksamaan dibawah ini yang benar berdasarkan perbandingan dua bilangan bulat tersebut...",
+      options: ["6 = -8", "6 > -8", "6 < -8", "-8 > 6"],
+      correctAnswer: "6 > -8",
+    },
+    {
+      question:
+        "Ketika kita sajikan 16 dan -24 pada garis bilangan, bilangan manakah yang terletak lebih jauh dari titik asal?...",
+      options: ["8", "12", "16", "24"],
+      correctAnswer: "24",
+    },
+    {
+      question:
+        "Berturut-turut, tentukan nilai-nilai mutlak dari -14 dan 10...",
+      options: ["14 dan 10", "1 dan 2", "7 dan -5", "7 dan 5"],
+      correctAnswer: "14 dan 10",
     },
 
     // Add more questions here

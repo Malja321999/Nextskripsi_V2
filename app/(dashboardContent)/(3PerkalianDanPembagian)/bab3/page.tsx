@@ -32,6 +32,9 @@ import { BsBookmark } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { MdCenterFocusStrong } from "react-icons/md";
 import { BiFullscreen } from "react-icons/bi";
+import Am from "@/app/component/Am";
+import Ab from "@/app/component/Ab";
+import Image from "next/image";
 
 const Page = () => {
   const [Collapse, SetCollapse] = useState(true);
@@ -45,7 +48,7 @@ const Page = () => {
   const [jawaban1status, setjawaban1status] = useState("");
   const [jawaban2status, setjawaban2status] = useState("");
 
-  const [FinishReading, setFinishReading] = useState(false);
+  const [FinishReading, setFinishReading] = useState(true);
 
   function handleSubmitJawaban(e: any) {
     e.preventDefault();
@@ -109,7 +112,7 @@ const Page = () => {
 
       <div>
         {/* Tujuan Pembelajaran bab 3 */}
-        <div className="mx-20 bg-gray-900 w-[23rem] p-2 rounded-md mt-2 flex flex-col relative">
+        <div className="mx-20 bg-gray-900 w-[74rem] p-2 rounded-md mt-2 flex flex-col relative">
           <button onClick={() => SetCollapse(!Collapse)}>
             <ul className="flex justify-between gap-2">
               <li className="flex justify-between gap-2 text-2xl">
@@ -122,7 +125,7 @@ const Page = () => {
 
           <div>
             {Collapse ? (
-              <div className="bg-gray-800 w-[22rem] p-2 rounded-md text-base text-start">
+              <div className="bg-gray-800 w-[73rem] p-2 rounded-md text-base text-start">
                 <ul className="list-decimal list-inside">
                   <li>
                     Siswa dapat melakukan proses perkalian dua bilangan bulat
@@ -210,7 +213,7 @@ const Page = () => {
                       <BsBookmark />
                     )}
                   </span>
-                  Selesai Membaca
+                  Video Sudah Ditonton
                 </button>
               </div>
             </div>
@@ -263,7 +266,7 @@ const Page = () => {
                 <span>
                   {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
                 </span>
-                Selesai Membaca
+                Video Sudah Ditonton
               </button>
             </div>
           ) : (
@@ -289,7 +292,7 @@ const Page = () => {
                 <span>
                   {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
                 </span>
-                Selesai Membaca
+                Video Sudah Ditonton
               </button>
             </div>
           ) : (
@@ -306,25 +309,149 @@ const Page = () => {
                 <h2 className="font-bold">
                   Coba jawablah pertanyaan berikut dengan baik dan benar!
                 </h2>
-                <br />
                 {/* Soal A */}
-                <div id="question">
-                  <h3 className="text-yellow-200 font-bold">
-                    A. Tentukan hasil dari perkalian / pembagian berikut:
+                <div className="mt-10">
+                  <Ab />
+                  <h3 className="ml-5 mb-5 text-black">
+                    <div className="text-justify border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                      Kamu telah menonton Video Perkalian Dan Pembagian Bilangan
+                      Bulat, jawablah pertanyaan dengan benar pada kolom yang
+                      tersedia. Tekan tombol Cek Jawaban apabila telah menjawab
+                      seluruh pertanyaan. Jika jawabanmu
+                      <span className="font-bold"> benar, </span>maka akan
+                      ditampilkan teks Jawaban
+                      <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                        Kamu Benar!
+                      </span>
+                      , sedangkan jika jawabanmu
+                      <span className="font-bold"> salah, </span>maka akan
+                      ditampilkan teks Jawaban
+                      <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                        Kamu Salah!
+                      </span>
+                    </div>
                   </h3>
+                  <div className="flex flex-col">
+                    <iframe
+                      className="h-[65rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab3_1_ab"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
                 </div>
-                <iframe
-                  className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
-                  loading="lazy"
-                  src="/QuizDragAndDrop/bab3_A"
-                  allowFullScreen
-                ></iframe>
-                <iframe
-                  className="h-[40rem] w-[85rem] rounded-md border-4 border-gray-800"
-                  loading="lazy"
-                  src="/QuizDragAndDrop/bab3_B"
-                  allowFullScreen
-                ></iframe>
+                {/* Soal B */}
+                <div className="mt-10">
+                  <Ab />
+                  <h3 className="ml-5 mb-5 text-black">
+                    <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                      <ul className="list list-disc list-inside">
+                        <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                        <div>
+                          <li>Jawablah pertanyaan dibawah ini dengan tepat</li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">benar</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                              Kamu Benar!
+                            </span>
+                            .
+                          </li>
+                          <li>
+                            Jika jawabanmu{" "}
+                            <span className="font-bold">salah</span>, maka akan
+                            ditampilkan teks Jawaban{" "}
+                            <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                              Kamu Salah!
+                            </span>
+                            .
+                          </li>
+                        </div>
+                      </ul>
+                    </div>
+                  </h3>
+                  <div className="flex flex-col">
+                    <iframe
+                      className="h-[37rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab3_2_ab"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+                {/* Soal c */}
+                <div className="mt-10">
+                  <Am />
+                  <h3 className="ml-5 mb-5 text-black">
+                    <div className="text-justify border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                      Kamu telah menonton Video Perkalian Dan Pembagian Bilangan
+                      Bulat, jawablah pertanyaan dengan meletakkan bilangan yang
+                      benar pada kolom yang tersedia. Tekan tombol Cek Jawaban
+                      apabila telah menjawab seluruh pertanyaan. Jika jawabanmu
+                      benar, maka akan ditampilkan teks Jawaban{" "}
+                      <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                        Kamu Benar!
+                      </span>
+                      , sedangkan jika jawabanmu salah, maka akan ditampilkan
+                      teks Jawaban Kamu{" "}
+                      <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                        Kamu Salah!
+                      </span>
+                      .
+                    </div>
+                  </h3>
+                  <div className="flex flex-col">
+                    <iframe
+                      className="h-[35rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab3_A"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+                {/* Soal d */}
+                <div className="mt-10">
+                  <Am />
+                  <h3 className="ml-5 mb-5 text-black">
+                    <div className="text-justify border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                      Kamu telah menonton Video Perkalian Dan Pembagian Bilangan
+                      Bulat, jawablah pertanyaan dengan meletakkan bilangan yang
+                      benar pada kolom yang tersedia. Tekan tombol Cek Jawaban
+                      apabila telah menjawab seluruh pertanyaan. Jika jawabanmu
+                      benar, maka akan ditampilkan teks Jawaban{" "}
+                      <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                        Kamu Benar!
+                      </span>
+                      , sedangkan jika jawabanmu salah, maka akan ditampilkan
+                      teks Jawaban Kamu{" "}
+                      <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                        Kamu Salah!
+                      </span>
+                      .
+                    </div>
+                    <div className="mt-5 flex-col px-[20rem] gap-2 justify-center">
+                      <div className="bg-yellow-500 p-4 rounded-md text-black font-bold text-5xl w-fit">
+                        Contoh :
+                      </div>
+                      <Image
+                        width={700}
+                        height={500}
+                        className="rounded-md border-2 border-black p-1"
+                        src={"/contoh2.png"}
+                        alt="contoh2"
+                      />
+                    </div>
+                  </h3>
+                  <div className="flex flex-col">
+                    <iframe
+                      className="h-[35rem] w-100 rounded-md border-4 border-gray-800"
+                      loading="lazy"
+                      src="/QuizDragAndDrop/bab3_B"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
               </div>
             </div>
           ) : (

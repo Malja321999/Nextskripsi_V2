@@ -281,7 +281,7 @@ const Page = () => {
                         <BsBookmark />
                       )}
                     </span>
-                    Materi Selesai
+                    Video Sudah Ditonton
                   </button>
                 </div>
               </div>
@@ -338,7 +338,7 @@ const Page = () => {
                       <BsBookmark />
                     )}
                   </span>
-                  Selesai Membaca
+                  Video Sudah Ditonton
                 </button>
               </div>
             ) : (
@@ -366,7 +366,7 @@ const Page = () => {
                       <BsBookmark />
                     )}
                   </span>
-                  Selesai Membaca
+                  Video Sudah Ditonton
                 </button>
               </div>
             ) : (

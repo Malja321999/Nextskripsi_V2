@@ -187,7 +187,7 @@ const Page = () => {
                       <BsBookmark />
                     )}
                   </span>
-                  Selesai Membaca
+                  Video Sudah Ditonton
                 </button>
               </div>
             </div>
@@ -238,7 +238,7 @@ const Page = () => {
                 <span>
                   {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
                 </span>
-                Selesai Membaca
+                Video Sudah Ditonton
               </button>
             </div>
           ) : (
@@ -264,7 +264,7 @@ const Page = () => {
                 <span>
                   {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
                 </span>
-                Selesai Membaca
+                Video Sudah Ditonton
               </button>
             </div>
           ) : (

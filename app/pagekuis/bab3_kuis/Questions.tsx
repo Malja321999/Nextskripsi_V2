@@ -4,7 +4,14 @@ import ScoreKuis from "../ScoreKuis";
 import QuizCard from "../QuizCard";
 import ResultQuiz from "./ResultQuiz";
 import NavQuestions from "../NavQuestions";
-import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { firestore } from "../../lib/firebase/init";
 import { useSession } from "next-auth/react";
 
@@ -12,23 +19,23 @@ const Questions = () => {
   const questions = [
     {
       question: "Hasil dari -6 x (-5) x 11 x 8 =....",
-      options: ["3984", "-460", "39", "2640"],
-      correctAnswer: "2640",
+      options: ["-3.984", "-2.460", "460", "2.640"],
+      correctAnswer: "2.640",
     },
     {
       question: "Hasil dari 180 : (-60 : 15) =....",
-      options: ["-45", "45", "60", "5"],
+      options: ["-45", "5", "45", "60"],
       correctAnswer: "-45",
     },
     {
       question:
-        "Diketahui Pembagian Bilangan bulat berikut.p= -48 : 4; q= -72 : (-9); r= 54 : (-6). urutan hasil dari yang terkecil adalah...",
+        "Diketahui Pembagian Bilangan bulat berikut. p= -48 : 4; q= -72 : (-9); r= 54 : (-6). urutan hasil dari yang terkecil adalah...",
       options: ["p,q,r", "p,r,q", "r,q,p", "r,p,q"],
       correctAnswer: "p,r,q",
     },
     {
       question:
-        "diketahui nilai p = 240, q = -4, r = -60 dan s = 3. Hasil dari (p : q) : (r : s) =…",
+        "Diketahui nilai p = 240, q = -4, r = -60 dan s = 3. Hasil dari (p : q) : (r : s) =…",
       options: ["-3", "-2", "2", "3"],
       correctAnswer: "2",
     },
@@ -40,7 +47,7 @@ const Questions = () => {
     },
     {
       question: "Nilai dari (-2)x(-3)x(-4)x(-5)=…",
-      options: ["-14", "-120", "14", "120"],
+      options: ["-120", "-14", "14", "120"],
       correctAnswer: "120",
     },
     {
@@ -51,18 +58,18 @@ const Questions = () => {
     },
     {
       question: "Hasil dari (-5)x(-4)x2=…",
-      options: ["-40", "30", "20", "40"],
+      options: ["-40", "20", "30", "40"],
       correctAnswer: "40",
     },
     {
       question:
-        "Untuk membantu korban bencana alam, panitia akan membagikan 3.375 kg beras kepada 45 kepala keluarga. Berapa kilogram-kah setiap kepala keluarga menerima beras?",
-      options: ["74 kg", "75 kg", "76 kg", "77 kg"],
-      correctAnswer: "75 kg",
+        "Untuk membantu korban bencana alam, panitia akan membagikan 2.700 kg beras kepada 300 kepala keluarga. Berapa kilogram-kah setiap kepala keluarga menerima beras?",
+      options: ["-8 kg", "-3 kg", "5 kg", "9 kg"],
+      correctAnswer: "9 kg",
     },
     {
       question: "Hasil dari (-75) : (-25) =…",
-      options: ["3", "4", "-3", "-4"],
+      options: ["4", "3", "-3", "-4"],
       correctAnswer: "3",
     },
 

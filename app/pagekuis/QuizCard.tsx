@@ -1,5 +1,6 @@
 import React from "react";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import Image from "next/image";
 
 const QuizCard = ({
   UbahcurrentQuestionsNext,
@@ -13,7 +14,20 @@ const QuizCard = ({
   return (
     <div>
       <div key={index}>
-        <h3 className="mb-5">{questions[index].question}</h3>
+        <h3 className="mb-5">
+          {questions[index].question}{" "}
+          {questions[index].g && (
+            <span className="w-fit ml-5 p-2 border-2 border-blue-500 bg-white font-bold flex justify-center items-center text-center">
+              <Image
+                width={800}
+                height={300}
+                className="w-100"
+                src={"/g6.png"}
+                alt="g6"
+              />
+            </span>
+          )}
+        </h3>
         {questions[index].options.map((option: string, optionIndex: number) => (
           <div key={optionIndex} className="px-5 mt-2 w-fit text-2xl">
             <input

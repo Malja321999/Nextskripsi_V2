@@ -110,7 +110,7 @@ const Questions = () => {
     let totalPoints = 0;
     for (let i = 0; i < questions.length; i++) {
       if (userAnswers[i] === questions[i].correctAnswer) {
-        totalPoints += 10;
+        totalPoints += ScoreKuis;
       } else if (userAnswers[i] !== questions[i].correctAnswer) {
         console.log(
           "wrong answer",

@@ -14,7 +14,7 @@ const QuizCard = ({
   return (
     <div>
       <div key={index}>
-        <h3 className="mb-5">
+        <h3 className="mb-5 text-2xl">
           {questions[index].question}{" "}
           {questions[index].g && (
             <span className="w-fit ml-5 p-2 border-2 border-blue-500 bg-white font-bold flex justify-center items-center text-center">

@@ -204,7 +204,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`bg-white rounded-md p-2 mt-1 ${
                           jawabanbenar === "benar" && "text-green-500"
                         } ${jawabanbenar === "salah" && "text-red-500"}`}
                       >
@@ -291,7 +291,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar2 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar2 === "benar" && "text-green-500"
                         } ${jawabanbenar2 === "salah" && "text-red-500"}`}
                       >
@@ -383,7 +383,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar3 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar3 === "benar" && "text-green-500"
                         } ${jawabanbenar3 === "salah" && "text-red-500"}`}
                       >
@@ -472,7 +472,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar4 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar4 === "benar" && "text-green-500"
                         } ${jawabanbenar4 === "salah" && "text-red-500"}`}
                       >
@@ -567,7 +567,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar5 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar5 === "benar" && "text-green-500"
                         } ${jawabanbenar5 === "salah" && "text-red-500"}`}
                       >

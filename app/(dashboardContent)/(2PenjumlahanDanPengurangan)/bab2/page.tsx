@@ -44,7 +44,7 @@ const Page = () => {
   const CVideo =
     "bg-gray-900 w-fit mt-5 mb-10 mx-auto p-4 rounded-md flex flex-col relative";
 
-  const [FinishReading, setFinishReading] = useState(true);
+  const [FinishReading, setFinishReading] = useState(false);
 
   const [Media, setMedia] = useState("");
   const Tfullscreen = () => {
@@ -171,7 +171,7 @@ const Page = () => {
 
                 <button
                   onClick={() => setFinishReading(!FinishReading)}
-                  className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                  className="ml-[10rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
                 >
                   <span>
                     {FinishReading ? (
@@ -296,6 +296,11 @@ const Page = () => {
                     <span className="font-bold text-red-400 bg-white rounded-md p-1">
                       Kamu Salah!
                     </span>
+                    . Tekan tombol{" "}
+                    <span className="font-bold bg-white rounded-md">
+                      Cek Jawaban
+                    </span>{" "}
+                    ketika kamu sudah menjawab semua pertanyaan.
                   </div>
                 </h3>
                 <div className="flex flex-col">
@@ -334,6 +339,13 @@ const Page = () => {
                           </span>
                           .
                         </li>
+                        <li>
+                          Tekan tombol{" "}
+                          <span className="font-bold bg-white rounded-md">
+                            Cek Jawaban
+                          </span>{" "}
+                          ketika kamu sudah menjawab 1 pertanyaan.
+                        </li>
                       </div>
                     </ul>
                   </div>
@@ -367,7 +379,11 @@ const Page = () => {
                     <span className="font-bold text-red-400 bg-white rounded-md p-1">
                       Kamu Salah!
                     </span>
-                    .
+                    . Tekan tombol{" "}
+                    <span className="font-bold bg-white rounded-md">
+                      Cek Jawaban
+                    </span>{" "}
+                    ketika kamu sudah menjawab semua pertanyaan.
                   </div>
                 </h3>
                 <div className="flex flex-col">
@@ -397,7 +413,11 @@ const Page = () => {
                     <span className="font-bold text-red-400 bg-white rounded-md p-1">
                       Kamu Salah!
                     </span>
-                    .
+                    . Tekan tombol{" "}
+                    <span className="font-bold bg-white rounded-md">
+                      Cek Jawaban
+                    </span>{" "}
+                    ketika kamu sudah menjawab semua pertanyaan.
                   </div>
                   <div className="hidden mt-5 flex-col px-[20rem] gap-2 justify-center">
                     <div className="bg-yellow-500 p-4 rounded-md text-black font-bold text-5xl w-fit">

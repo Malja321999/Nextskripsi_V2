@@ -138,10 +138,10 @@ export default function ProfilePage() {
         <div className="w-[72rem] h-[37rem] bg-gradient-to-r from-purple-500 to-pink-500 p-5 rounded-md flex flex-col">
           <div className="text-black overflow-hidden mb-5 rounded-md shadow w-full h-[80rem] border-4 border-gray-500">
             {snapshotFirestore.map((data) => (
-              <table key={data.id} className="w-full h-full">
+              <table key={data.id} className="w-full h-full text-4xl">
                 <thead>
-                  <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
-                    <th className="border border-slate-600 text-center p-3 px-5 text-2xl">
+                  <tr className="p-5 rounded-md bg-teal-400 h-fit font-black justify-center items-center">
+                    <th className="border border-slate-600 text-center p-3 px-5">
                       Kuis
                     </th>
                     <th className="flex flex-col justify-center items-center gap-1 border border-slate-600 text-center p-3 px-5">
@@ -167,9 +167,9 @@ export default function ProfilePage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="font-bold ">
+                <tbody className="text-left font-bold text-3xl">
                   <tr className={`border-b bg-gray-100 `}>
-                    <td className="border border-slate-600 p-3 px-5 text-center">
+                    <td className="border border-slate-600 p-3 px-5">
                       BAB 1 Bilangan Positif Dan Negatif
                     </td>
                     <td className="border border-slate-600 p-3 px-5 text-center">
@@ -180,7 +180,7 @@ export default function ProfilePage() {
                     className={`border-b  bg-gray-300
                     `}
                   >
-                    <td className="border border-slate-600 p-3 px-5 text-center">
+                    <td className="border border-slate-600 p-3 px-5">
                       BAB 2 Penjumlahan dan Pengurangan Bilangan Bulat
                     </td>
                     <td className="border border-slate-600 p-3 px-5 text-center">
@@ -189,7 +189,7 @@ export default function ProfilePage() {
                   </tr>
 
                   <tr className={`border-b bg-gray-100`}>
-                    <td className="border border-slate-600 p-3 px-5 text-center">
+                    <td className="border border-slate-600 p-3 px-5">
                       BAB 3 Perkalian dan Pembagian Bilangan Bulat
                     </td>
                     <td className="border border-slate-600 p-3 px-5 text-center">
@@ -197,7 +197,7 @@ export default function ProfilePage() {
                     </td>
                   </tr>
                   <tr className={`border-b bg-gray-300`}>
-                    <td className="border border-slate-600 p-3 px-5 text-center">
+                    <td className="border border-slate-600 p-3 px-5">
                       Ujian Akhir
                     </td>
                     <td className="border border-slate-600 p-3 px-5 text-center">

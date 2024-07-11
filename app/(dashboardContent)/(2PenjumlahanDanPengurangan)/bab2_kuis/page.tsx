@@ -12,7 +12,11 @@ const BAb3_Kuis_Page = () => {
         <div className="bg-[#146b43] w-full h-[0.5px]" />
         {/* List */}
         <ul className="list-inside list-decimal mt-2 text-4xl py-5 px-10 font-medium flex flex-col gap-5">
-          <li>Kamu akan ditanya 10 pertayaan</li>
+          <li>Kamu akan diberikan 10 pertayaan.</li>
+          <li>
+            Waktu pengerjaan semua soal sebanyak{" "}
+            <span className="">20 menit.</span>
+          </li>
           <li>Setiap jawaban yang benar akan diberikan 10 poin.</li>
           <li>
             Pertanyaan memiliki 4 opsi jawaban. Kamu hanya bisa memilih 1
@@ -20,15 +24,17 @@ const BAb3_Kuis_Page = () => {
             <span className="ml-10">saja.</span>
           </li>
           <li>
-            Kamu dapat memeriksa dan mengganti jawaban sebelum menekan tombol{" "}
+            Kamu dapat memeriksa dan mengganti jawaban selama waktu belum
             <br />
-            <span className="ml-10">Menyelesaikan kuis.</span>
+            <span className="ml-10">
+              habis dan tidak menekan tombol Menyelesaikan kuis.
+            </span>
           </li>
         </ul>
         <div className="flex justify-center items-center">
           <button
             onClick={() => router.replace("/pagekuis/bab2_kuis")}
-            className="mt-7 bg-yellow-300 hover:bg-yellow-200 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
+            className="mt-3 bg-yellow-300 hover:bg-yellow-200 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
           >
             Mulai Kuis
           </button>

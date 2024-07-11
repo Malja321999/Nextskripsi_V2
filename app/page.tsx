@@ -52,7 +52,7 @@ const Home = () => {
           <ul className="flex justify-start items-center w-48 gap-4">
             <li>
               <Link href={"/bab1_1"}>
-                <button className="flex justify-start items-center bg-[#198754] w-48 p-4 rounded-lg cursor-pointer font-bold text-white hover:bg-teal-500 shadow-2xl">
+                <button className="flex justify-start items-center bg-[#0d6efd] w-48 p-4 rounded-lg cursor-pointer font-bold text-white hover:bg-blue-400 shadow-2xl">
                   <Iconb.BsFillArrowRightCircleFill
                     size={25}
                     style={{ color: "white", margin: "5px" }}
@@ -61,7 +61,7 @@ const Home = () => {
                 </button>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href={"/watch"}>
                 <button className="flex justify-start items-center bg-[#0d6efd] w-48 p-4 rounded-lg cursor-pointer font-bold text-white hover:bg-blue-400 shadow-2xl">
                   <Iconb.BsFillArrowRightCircleFill
@@ -71,7 +71,7 @@ const Home = () => {
                   Tonton Video
                 </button>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         {/* Image Home */}

@@ -58,7 +58,7 @@ const Page = () => {
   const [jawaban1status, setjawaban1status] = useState("");
   const [jawaban2status, setjawaban2status] = useState("");
 
-  const [FinishReading, setFinishReading] = useState(true);
+  const [FinishReading, setFinishReading] = useState(false);
 
   function handleSubmitJawaban(e: any) {
     e.preventDefault();
@@ -157,6 +157,9 @@ const Page = () => {
             src="https://www.canva.com/design/DAGE6nXV6FY/o0-Xg_uhhv8oU5mEts8OVg/view?embed"
             allowFullScreen
           />
+          <div className="text-center font-bold text-xs">
+            Klik Gambar Untuk Berpindah <br /> Sebelumnya dan Selanjutnya
+          </div>
           <button
             onClick={() => setModalIsOpen(false)}
             className="text-base bg-red-500 p-2 w-fit rounded-md flex flex-col justify-center items-center gap-2"
@@ -272,7 +275,7 @@ const Page = () => {
 
                   <button
                     onClick={() => setFinishReading(!FinishReading)}
-                    className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                    className="ml-[10rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
                   >
                     <span>
                       {FinishReading ? (
@@ -388,14 +391,24 @@ const Page = () => {
                 <div>
                   {/* Soal A */}
                   <Mnb />
-                  <h3 className="ml-5">
+                  <h3 className="ml-5 mb-5 text-left border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5 text-black">
                     Nyatakan besaran-besaran berikut ini menggunakan Bilangan
                     Positif atau Bilangan Negatif, dengan cara memasangkan
                     jawaban yang ada di kolom pendapatmu dengan sesuai! Jika
                     jawabanmu benar maka akan ditampilkan teks jawaban
-                    <span className="text-green-400">“Kamu Benar!”</span>{" "}
+                    <span className="text-green-400 bg-white rounded-md">
+                      “Kamu Benar!”
+                    </span>{" "}
                     sedangkan jika jawabanmu salah maka akan ditampilkan teks
-                    jawaban <span className="text-red-400">“Kamu Salah!”.</span>
+                    jawaban{" "}
+                    <span className="text-red-400 bg-white rounded-md">
+                      “Kamu Salah!”.
+                    </span>{" "}
+                    Tekan tombol{" "}
+                    <span className="font-bold bg-white rounded-md">
+                      Cek Jawaban
+                    </span>{" "}
+                    ketika kamu sudah menjawab semua pertanyaan.
                   </h3>
                   <div className="flex flex-col">
                     <iframe
@@ -409,7 +422,7 @@ const Page = () => {
                   {/* soal b */}
                   <div className="mt-10">
                     <Mbb />
-                    <h3 className="ml-5">
+                    <h3 className="ml-5 mb-5 text-left border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5 text-black">
                       Hitunglah benda pada sebelah kiri kemudian pilih lambang
                       bilangan Positif dan bilangan Negatif di sebelah kanan.
                       Benda yang berwarna{" "}
@@ -428,8 +441,20 @@ const Page = () => {
                       <span className="font-bold text-black bg-white rounded-lg">
                         Negatif.
                       </span>{" "}
+                      Jika jawabanmu benar maka akan ditampilkan teks jawaban
+                      <span className="text-green-400 bg-white rounded-md">
+                        “Kamu Benar!”
+                      </span>{" "}
                       sedangkan jika jawabanmu salah maka akan ditampilkan teks
-                      jawaban.
+                      jawaban{" "}
+                      <span className="text-red-400 bg-white rounded-md">
+                        “Kamu Salah!”.
+                      </span>{" "}
+                      Tekan tombol{" "}
+                      <span className="font-bold bg-white rounded-md">
+                        Cek Jawaban
+                      </span>{" "}
+                      ketika kamu sudah menjawab semua pertanyaan.
                     </h3>
                     <div className="flex flex-col">
                       <iframe
@@ -469,6 +494,14 @@ const Page = () => {
                                 Kamu Salah!
                               </span>
                               .
+                            </li>
+                            <li>
+                              {" "}
+                              Tekan tombol{" "}
+                              <span className="font-bold bg-white rounded-md">
+                                Cek Jawaban
+                              </span>{" "}
+                              ketika kamu sudah menjawab 1 pertanyaan.
                             </li>
                           </div>
                         </ul>
@@ -530,9 +563,46 @@ const Page = () => {
                   {/* Soal e */}
                   <div className="mt-10">
                     <Am />
-                    <h3 className="text-yellow-200 font-bold">
-                      Kelompokkan Bilangan-Bilangan berikut ini dengan baik dan
-                      benar.
+                    <h3 className="ml-5 mb-5 text-black">
+                      <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                        <ul className="list list-disc list-inside">
+                          <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                          <div>
+                            <li>
+                              Kamu sudah menonton video mengenai Bilangan Dengan
+                              Tanda. Sekarang kelompokkanlah{" "}
+                              <span className="font-bold">Bilangan</span> pada
+                              kotak yang tersedia berdasarkan kelompok bilangan
+                              di setiap pertanyaan di bawah ini.
+                            </li>
+                            <li>
+                              Jika jawabanmu{" "}
+                              <span className="font-bold">benar</span>, maka
+                              akan ditampilkan teks Jawaban{" "}
+                              <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                                Kamu Benar!
+                              </span>
+                              .
+                            </li>
+                            <li>
+                              Jika jawabanmu{" "}
+                              <span className="font-bold">salah</span>, maka
+                              akan ditampilkan teks Jawaban{" "}
+                              <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                                Kamu Salah!
+                              </span>
+                              .
+                            </li>
+                            <li>
+                              Tekan tombol{" "}
+                              <span className="font-bold bg-white rounded-md">
+                                Cek Jawaban
+                              </span>{" "}
+                              ketika kamu sudah menjawab semua pertanyaan.
+                            </li>
+                          </div>
+                        </ul>
+                      </div>
                     </h3>
 
                     <br />

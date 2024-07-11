@@ -201,7 +201,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar === "benar" && "text-green-500"
                         } ${jawabanbenar === "salah" && "text-red-500"}`}
                       >
@@ -288,7 +288,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar2 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar2 === "benar" && "text-green-500"
                         } ${jawabanbenar2 === "salah" && "text-red-500"}`}
                       >
@@ -376,7 +376,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar3 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar3 === "benar" && "text-green-500"
                         } ${jawabanbenar3 === "salah" && "text-red-500"}`}
                       >
@@ -403,8 +403,8 @@ const Page = () => {
                 <div>
                   <h1 className="p-2">
                     4. seorang pedagang mempunyai 215 ekor kambing Kemudian ia
-                    membeli lagi 282 ekor kambing, <br /> Seminggu kemudian 235 ekor
-                    kambing laku terjual Berapa banyak kambing yang belum
+                    membeli lagi 282 ekor kambing, <br /> Seminggu kemudian 235
+                    ekor kambing laku terjual Berapa banyak kambing yang belum
                     terjual...
                   </h1>
                   <form className="mt-2 ml-5 flex flex-col gap-2">
@@ -464,7 +464,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar4 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar4 === "benar" && "text-green-500"
                         } ${jawabanbenar4 === "salah" && "text-red-500"}`}
                       >
@@ -492,8 +492,8 @@ const Page = () => {
                 <div>
                   <h1 className="p-2">
                     5. Suhu di suatu ruangan pendingin adalah -5 derajat
-                    celcius. <br /> Suhu di dalam ruangan 24 derajat celcius. Selisih
-                    suhu ruangan pendingin dengan suhu ruangan adalah...
+                    celcius. <br /> Suhu di dalam ruangan 24 derajat celcius.
+                    Selisih suhu ruangan pendingin dengan suhu ruangan adalah...
                   </h1>
                   <form className="mt-2 ml-5 flex flex-col gap-2">
                     <div className="flex gap-2 text-center items-center cursor-pointer">
@@ -552,7 +552,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar5 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar5 === "benar" && "text-green-500"
                         } ${jawabanbenar5 === "salah" && "text-red-500"}`}
                       >

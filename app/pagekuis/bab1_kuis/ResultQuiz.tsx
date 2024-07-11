@@ -72,13 +72,22 @@ const ResultQuiz = ({
                 </Link>
               </div>
             ) : (
-              <div className="w-full flex justify-center items-center">
-                <button
-                  onClick={() => ResetQuiz()}
-                  className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
-                >
-                  Ulang Kuis
-                </button>
+              <div className="w-full flex gap-2 justify-center items-center">
+                <div>
+                  <button
+                    onClick={() => ResetQuiz()}
+                    className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
+                  >
+                    Ulang Kuis
+                  </button>
+                </div>
+                <div className="w-full flex justify-center items-center">
+                  <Link href={"/bab1_1"}>
+                    <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
+                      Kembali Ke Bab 1
+                    </button>
+                  </Link>
+                </div>
               </div>
             )}
           </div>

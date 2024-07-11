@@ -48,7 +48,7 @@ const Page = () => {
   const [jawaban1status, setjawaban1status] = useState("");
   const [jawaban2status, setjawaban2status] = useState("");
 
-  const [FinishReading, setFinishReading] = useState(true);
+  const [FinishReading, setFinishReading] = useState(false);
 
   function handleSubmitJawaban(e: any) {
     e.preventDefault();
@@ -204,7 +204,7 @@ const Page = () => {
 
                 <button
                   onClick={() => setFinishReading(!FinishReading)}
-                  className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                  className="ml-[10rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
                 >
                   <span>
                     {FinishReading ? (
@@ -329,6 +329,11 @@ const Page = () => {
                       <span className="font-bold text-red-400 bg-white rounded-md p-1">
                         Kamu Salah!
                       </span>
+                      . Tekan tombol{" "}
+                      <span className="font-bold bg-white rounded-md">
+                        Cek Jawaban
+                      </span>{" "}
+                      ketika kamu sudah menjawab semua pertanyaan.
                     </div>
                   </h3>
                   <div className="flex flex-col">
@@ -366,6 +371,14 @@ const Page = () => {
                               Kamu Salah!
                             </span>
                             .
+                          </li>{" "}
+                          <li>
+                            {" "}
+                            Tekan tombol{" "}
+                            <span className="font-bold bg-white rounded-md">
+                              Cek Jawaban
+                            </span>{" "}
+                            ketika kamu sudah menjawab 1 pertanyaan.
                           </li>
                         </div>
                       </ul>
@@ -398,7 +411,11 @@ const Page = () => {
                       <span className="font-bold text-red-400 bg-white rounded-md p-1">
                         Kamu Salah!
                       </span>
-                      .
+                      . Tekan tombol{" "}
+                      <span className="font-bold bg-white rounded-md">
+                        Cek Jawaban
+                      </span>{" "}
+                      ketika kamu sudah menjawab semua pertanyaan.
                     </div>
                   </h3>
                   <div className="flex flex-col">
@@ -428,7 +445,11 @@ const Page = () => {
                       <span className="font-bold text-red-400 bg-white rounded-md p-1">
                         Kamu Salah!
                       </span>
-                      .
+                      . Tekan tombol{" "}
+                      <span className="font-bold bg-white rounded-md">
+                        Cek Jawaban
+                      </span>{" "}
+                      ketika kamu sudah menjawab semua pertanyaan.
                     </div>
                     <div className="mt-5 flex-col px-[20rem] gap-2 justify-center">
                       <div className="bg-yellow-500 p-4 rounded-md text-black font-bold text-5xl w-fit">

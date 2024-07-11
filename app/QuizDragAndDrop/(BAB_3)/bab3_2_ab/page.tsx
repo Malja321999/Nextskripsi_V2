@@ -203,7 +203,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar === "benar" && "text-green-500"
                         } ${jawabanbenar === "salah" && "text-red-500"}`}
                       >
@@ -292,7 +292,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar2 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar2 === "benar" && "text-green-500"
                         } ${jawabanbenar2 === "salah" && "text-red-500"}`}
                       >
@@ -380,7 +380,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar3 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar3 === "benar" && "text-green-500"
                         } ${jawabanbenar3 === "salah" && "text-red-500"}`}
                       >
@@ -466,7 +466,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar4 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar4 === "benar" && "text-green-500"
                         } ${jawabanbenar4 === "salah" && "text-red-500"}`}
                       >
@@ -494,8 +494,8 @@ const Page = () => {
                 <div>
                   <h1 className="p-2">
                     5. Seorang siswa mengerjakan 18 soal dari 25 soal ujian.
-                    Tiga jawabannya ternyata salah dan sisanya benar. <br /> Jika
-                    jawaban benar bernilai 4, jawaban salah bernilai -1 dan
+                    Tiga jawabannya ternyata salah dan sisanya benar. <br />{" "}
+                    Jika jawaban benar bernilai 4, jawaban salah bernilai -1 dan
                     tidak menjawab bernilai 0. Maka nilai ujian siswa tersebut
                     adalah...
                   </h1>
@@ -556,7 +556,7 @@ const Page = () => {
                   <div className="ml-5 font-bold">
                     {jawabanbenar5 !== "" && (
                       <div
-                        className={`mt-1 ${
+                        className={`mt-1 bg-white rounded-md p-2 ${
                           jawabanbenar5 === "benar" && "text-green-500"
                         } ${jawabanbenar5 === "salah" && "text-red-500"}`}
                       >

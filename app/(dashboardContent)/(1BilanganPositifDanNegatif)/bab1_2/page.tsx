@@ -50,7 +50,7 @@ const Page = () => {
   const [next, setnext] = useState("part1");
   const router = useRouter();
 
-  const [FinishReading, setFinishReading] = useState(true);
+  const [FinishReading, setFinishReading] = useState(false);
 
   const [Media, setMedia] = useState("");
 
@@ -178,7 +178,7 @@ const Page = () => {
 
                 <button
                   onClick={() => setFinishReading(!FinishReading)}
-                  className="ml-[15rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                  className="ml-[10rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
                 >
                   <span>
                     {FinishReading ? (
@@ -282,14 +282,25 @@ const Page = () => {
                 {/* Soal A */}
                 <div className="mt-5">
                   <Melebb />
-                  <h3>
+                  <h3 className="ml-5 text-left border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5 text-black">
                     Setelah menonton video diatas, Jawablah pertanyaan dibawah
                     ini dengan cara meletakkan bilangan bulat pada kolom opsi
                     jawaban ke kolom jawaban sesuai dengan letaknya pada garis
                     bilangan! Jika jawabanmu benar maka akan ditampilkan teks
-                    jawaban<span className="text-green-400">“Kamu Benar!”</span>{" "}
+                    jawaban{" "}
+                    <span className="text-green-400 bg-white rounded-md">
+                      “Kamu Benar!”
+                    </span>{" "}
                     sedangkan jika jawabanmu salah maka akan ditampilkan teks
-                    jawaban <span className="text-red-400">“Kamu Salah!”.</span>
+                    jawaban{" "}
+                    <span className="text-red-400 bg-white rounded-md">
+                      “Kamu Salah!”.
+                    </span>{" "}
+                    Tekan tombol{" "}
+                    <span className="font-bold bg-white rounded-md">
+                      Cek Jawaban
+                    </span>{" "}
+                    ketika kamu sudah menjawab semua pertanyaan.
                   </h3>
                   <iframe
                     className="h-[30rem] w-[85rem] rounded-md border-4 border-gray-800"
@@ -324,6 +335,14 @@ const Page = () => {
                               Kamu Salah!
                             </span>
                             .
+                          </li>
+                          <li>
+                            {" "}
+                            Tekan tombol{" "}
+                            <span className="font-bold bg-white rounded-md">
+                              Cek Jawaban
+                            </span>{" "}
+                            ketika kamu sudah menjawab 1 pertanyaan.
                           </li>
                         </div>
                       </ul>
@@ -374,6 +393,13 @@ const Page = () => {
                             </span>
                             .
                           </li>
+                          <li>
+                            Tekan tombol{" "}
+                            <span className="font-bold bg-white rounded-md">
+                              Cek Jawaban
+                            </span>{" "}
+                            ketika kamu sudah menjawab semua pertanyaan.
+                          </li>
                         </div>
                       </ul>
                     </div>
@@ -419,6 +445,13 @@ const Page = () => {
                               Kamu Salah!
                             </span>
                             .
+                          </li>
+                          <li>
+                            Tekan tombol{" "}
+                            <span className="font-bold bg-white rounded-md">
+                              Cek Jawaban
+                            </span>{" "}
+                            ketika kamu sudah menjawab semua pertanyaan.
                           </li>
                         </div>
                       </ul>

@@ -6,7 +6,7 @@ const page = () => {
       <table className="table-auto border-separate border-spacing-2 border-2 border-teal-500">
         <thead className="bg-indigo-700 text-center">
           <tr>
-            <th className="text-center text-teal-500 dark:text-white">
+            <th className="text-center text-white">
               <h1>Capaian Pembelajaran</h1>
             </th>
           </tr>
@@ -14,18 +14,13 @@ const page = () => {
         <tbody className="bg-teal-800 text-justify">
           <tr>
             <td>
-              <p className="col-12">
+              <div className="col-12 p-4 ">
                 Di akhir fase D, peserta didik dapat membaca, menulis, dan
-                membandingkan bilangan bulat, bilangan rasional dan irasional,
-                bilangan desimal, bilangan berpangkat bulat dan akar, bilangan
-                dalam notasi ilmiah.
-                <br /> <br />
-                Mereka dapat menerapkan operasi aritmetika pada bilangan real,
-                dan memberikan estimasi/perkiraan dalam menyelesaikan masalah
-                (termasuk berkaitan dengan literasi finansial). Peserta didik
-                dapat menggunakan faktorisasi prima dan pengertian rasio (skala,
-                proporsi, dan laju perubahan) dalam penyelesaian masalah.
-              </p>
+                membandingkan bilangan bulat. Mereka dapat menerapkan operasi
+                aritmetika pada bilangan bulat, dan memberikan
+                estimasi/perkiraan dalam menyelesaikan masalah (termasuk
+                berkaitan dengan literasi finansial).
+              </div>
             </td>
           </tr>
         </tbody>

@@ -16,6 +16,8 @@ export default withAuth(mainMiddleware, [
   "/dashboardAdmin",
   "/profile",
   "/profile/changeusernamepassword",
+  "/profile/changeusernamepassword/GantiNama",
+  "/profile/changeusernamepassword/GantiSandi",
   "/signin",
   "/signup",
   "/bab1_1",

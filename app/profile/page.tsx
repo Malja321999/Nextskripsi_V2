@@ -141,7 +141,7 @@ export default function ProfilePage() {
               <table key={data.id} className="w-full h-full">
                 <thead>
                   <tr className="p-5 rounded-md bg-teal-400 h-fit text-lg font-black justify-center items-center">
-                    <th className="border border-slate-600 text-center p-3 px-5">
+                    <th className="border border-slate-600 text-center p-3 px-5 text-2xl">
                       Kuis
                     </th>
                     <th className="flex flex-col justify-center items-center gap-1 border border-slate-600 text-center p-3 px-5">
@@ -152,7 +152,11 @@ export default function ProfilePage() {
                           }}
                           className="hover:text-blue-700 text-xl font-bold"
                         >
-                          <FaSync
+                          <Image
+                            src={"/nilai.png"}
+                            alt="sync"
+                            width={70}
+                            height={70}
                             className={`text-4xl rounded cursor-pointer block float-left mr-2 duration-5000 ${
                               sync && "animate-spin"
                             }`}
@@ -211,7 +215,9 @@ export default function ProfilePage() {
             </div>
           </div>
           <button
-            onClick={() => router.push("/profile/changeusernamepassword")}
+            onClick={() =>
+              router.push("/profile/changeusernamepassword/GantiNama")
+            }
             className="flex justify-between items-center gap-2 p-5 rounded-md bg-gray-600 text-xl font-black mb-1 mt-1"
           >
             Ganti Nama Pengguna Dan Kata Sandi

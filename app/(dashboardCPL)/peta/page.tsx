@@ -8,7 +8,7 @@ const peta = () => {
       <table className="table-auto border-separate border-spacing-2 border-2 border-teal-500">
         <thead className="bg-indigo-700 text-center">
           <tr>
-            <th className="text-center text-teal-500 dark:text-white">
+            <th className="text-center text-white">
               <h1>
                 PETA KONSEP <br /> MATERI BILANGAN BULAT <br /> KELAS VII SMP
               </h1>

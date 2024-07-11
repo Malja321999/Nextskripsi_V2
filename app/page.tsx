@@ -28,7 +28,7 @@ const Home = () => {
           </h1>
           <p className="font-medium flex text-justify md:w-[400px] w-[380px] my-2">
             Pembelajaran online untuk Kelas VII SMP. Media pembelajaran yang
-            membuat proses belajar menjadi menyenanagkan dan menarik bagi siswa
+            membuat proses belajar menjadi menyenangkan dan menarik bagi siswa
             dalam mempelajari Bilangan Bulat.
           </p>
           <ul className="flex justify-start items-center gap-2 w-[420px]">
@@ -42,11 +42,11 @@ const Home = () => {
             </li>
             <li className="flex justify-start items-center">
               <Icon.FaCheckCircle />
-              Pengetahuan
+              Di mana pun
             </li>
             <li className="flex justify-start items-center">
               <Icon.FaCheckCircle />
-              Pengalaman
+              Tanpa batas
             </li>
           </ul>
           <ul className="flex justify-start items-center w-48 gap-4">

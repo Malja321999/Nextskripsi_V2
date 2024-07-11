@@ -10,6 +10,8 @@ import { Input } from "@material-tailwind/react";
 import { useForm, Controller } from "react-hook-form";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "@/app/lib/firebase/init";
+import * as Icon from "react-icons/fa";
+import GHome from "../../asset/home.png";
 
 const SignIn = ({ searchParams }: any) => {
   const { push } = useRouter();
@@ -86,7 +88,45 @@ const SignIn = ({ searchParams }: any) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-white mx-auto">
+    <div className="bg-teal-500 h-[35rem] w-[60rem] mt-[5rem] rounded-md p-2 flex flex-row gap-5 items-center justify-center text-white mx-auto">
+      {/* pengenalan aplikasi */}
+      <div className="bg-blue-700 h-fit p-6 rounded-md flex flex-col gap-2 justify-center items-center w-1/2">
+        <div className="text-white">
+          <h1 className="bg-white p-2 rounded-md text-teal-500 flex justify-start text-left text-2xl font-bold md:w-[412px] w-auto">
+            BILANGAN BULAT KELAS VII SMP
+          </h1>
+          <p className="font-medium flex text-justify md:w-[400px] w-[380px] my-2">
+            Pembelajaran online untuk Kelas VII SMP. Media pembelajaran yang
+            membuat proses belajar menjadi menyenangkan dan menarik bagi siswa
+            dalam mempelajari Bilangan Bulat.
+          </p>
+          <ul className="flex justify-start items-center gap-2 w-[420px]">
+            <li className="flex justify-start items-center">
+              <Icon.FaCheckCircle />
+              Daring
+            </li>
+            <li className="flex justify-start items-center text-base">
+              <Icon.FaCheckCircle />
+              Kapan pun
+            </li>
+            <li className="flex justify-start items-center">
+              <Icon.FaCheckCircle />
+              Di mana pun
+            </li>
+            <li className="flex justify-start items-center">
+              <Icon.FaCheckCircle />
+              Tanpa batas
+            </li>
+          </ul>
+        </div>
+        {/* Image Home */}
+        <div className="md:flex hidden w-[32rem] rounded-3xl mx-7">
+          <div className="mx-auto">
+            <Image src={GHome} alt="gambar home" width={350} />
+          </div>
+        </div>
+      </div>
+      {/* input login */}
       <div className="h-screen w-auto flex justify-center items-center flex-col">
         <div className="bg-white w-[60vh] shadow-md border border-gray-500 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -186,17 +226,6 @@ const SignIn = ({ searchParams }: any) => {
                 </button>
               </Link>
             </div>
-            {/*  <hr />
-            <button
-              type="button"
-              onClick={() => signIn("google")}
-              className="flex justify-center items-center w-full text-black bg-white border border-gray-400 hover:bg-blue-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  dark:hover:bg-blue-100 dark:focus:ring-blue-800"
-            >
-              <span className="flex justify-between items-center px-[5px]">
-                <FcGoogle className="w-5 h-5 mr-1" />
-                Login with Google
-              </span>
-            </button> */}
             <div className="flex justify-center items-center text-sm font-medium text-gray-500 dark:text-gray-300">
               Belum punya akun?
               <Link
@@ -206,20 +235,6 @@ const SignIn = ({ searchParams }: any) => {
                 Buat Akun
               </Link>
             </div>
-            {/* 
-            <div className="flex justify-between items-center ">
-              <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
-              <h1 className="text-black dark:text-white">OR</h1>
-              <div className=" bg-[#ccd0d5] rounded-md w-[8rem] h-[0.5px]"></div>
-            </div>
-            <div className="flex justify-center items-center">
-              <Link
-                href={"/signinAdmin"}
-                className="text-blue-700 hover:underline dark:text-blue-500 text-center text-sm font-medium"
-              >
-                Masuk Sebagai Guru
-              </Link>
-            </div> */}
           </form>
         </div>
       </div>

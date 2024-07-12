@@ -5,10 +5,7 @@ import { firestore } from "../lib/firebase/init";
 import {
   DocumentData,
   collection,
-  doc,
-  getDoc,
   getDocs,
-  orderBy,
   query,
   where,
 } from "firebase/firestore";

@@ -17,6 +17,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { FaBars, FaUser } from "react-icons/fa";
 import Link from "next/link";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { useAppContext } from "@/app/context/AppWrapper";
 
 const GantiNama = () => {
   const { data: session }: { data: any } = useSession();
@@ -28,6 +29,8 @@ const GantiNama = () => {
   const pathname = usePathname();
 
   let isLoading = false;
+
+  const { UpdateUserName, setUpdateUserName } = useAppContext();
 
   /* Get Data Firestore */
   const [snapshotFirestore, setsnapshotFirestore] = useState<DocumentData[]>(
@@ -55,6 +58,7 @@ const GantiNama = () => {
       console.log("Error getting document:", error);
     }
     isLoading = false;
+    setUpdateUserName(true);
   };
 
   useEffect(() => {

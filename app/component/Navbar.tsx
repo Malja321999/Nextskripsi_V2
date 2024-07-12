@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Bilcon from "../asset/Bilcon.svg";
 import { FaBars } from "react-icons/fa";
@@ -10,12 +10,75 @@ import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { MdAccountCircle } from "react-icons/md";
 import ThemeSwitch from "./ThemeSwitch";
+import { firestore } from "../lib/firebase/init";
+import {
+  DocumentData,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import { useAppContext } from "../context/AppWrapper";
+
 function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const pathname = usePathname();
 
   const { data: session, status }: { data: any; status: string } = useSession();
   const username = session?.user?.fullname;
+
+  let isLoading = false;
+  let sync = false;
+
+  const user = session?.user;
+  const userName = session?.user?.fullname;
+  const userRole = session?.user?.role;
+  const userEmail = session?.user?.email;
+  const userClass = session?.user?.class;
+  const userNisn = session?.user?.nisn;
+  console.log({ user });
+
+  const { UpdateUserName, setUpdateUserName } = useAppContext();
+
+  /* Get Data Firestore */
+  const [snapshotFirestore, setsnapshotFirestore] = useState<DocumentData[]>(
+    []
+  ); // Explicitly typing the state as DocumentData array
+
+  const GetData = async () => {
+    isLoading = true;
+    sync = true;
+    const db = query(
+      collection(firestore, "users"),
+      where("email", "==", `${userEmail}`)
+    );
+    const snapshot = await getDocs(db);
+    try {
+      if (snapshot.empty) {
+        console.log("No such document!");
+      } else {
+        setsnapshotFirestore(snapshot.docs.map((doc) => doc.data()));
+      }
+    } catch (error) {
+      console.log("Error getting document:", error);
+    }
+    isLoading = false;
+    sync = false;
+    setUpdateUserName(false);
+  };
+
+  useEffect(() => {
+    GetData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (snapshotFirestore.length === 0) {
+    GetData();
+  }
+
+  if (UpdateUserName) {
+    GetData();
+  }
 
   return (
     <div>
@@ -80,7 +143,11 @@ function NavBar() {
                   <Link href="/capem">
                     <span
                       className={`${
-                        pathname === "/capem" || pathname === "/tujuan" || pathname === "/peta" ? "text-teal-300" : "text-white"
+                        pathname === "/capem" ||
+                        pathname === "/tujuan" ||
+                        pathname === "/peta"
+                          ? "text-teal-300"
+                          : "text-white"
                       } pb-1 text-xl py-2 px-6 text-center  hover:bg-teal-500 border-teal-500 md:hover:text-teal-200 md:hover:bg-transparent rounded-md`}
                     >
                       Kurikulum
@@ -133,7 +200,11 @@ function NavBar() {
                       <div className="flex justify-center items-center">
                         <MdAccountCircle className="w-[5vh] h-auto bg-black rounded-full" />
                       </div>
-                      <h4>{username}</h4>
+                      <h4>
+                        {snapshotFirestore.map((data) => (
+                          <div key={data.id}>{data.fullname}</div>
+                        ))}
+                      </h4>
                       <button onClick={() => signOut()}>
                         <span className="pb-1 py-2 md:px-6 text-center font-bold hover:bg-indigo-500 border-teal-500 text-rose-400 hover:text-rose-300 md:hover:bg-transparent rounded-md">
                           Logout

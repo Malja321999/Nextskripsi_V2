@@ -7,6 +7,7 @@ export const AppContext = createContext<any>(undefined);
 
 export function AppWrapper({ children }: { children: React.ReactNode }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [UpdateUserName, setUpdateUserName] = useState(true);
 
   return (
     <SessionProvider>
@@ -19,6 +20,8 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
           value={{
             modalIsOpen,
             setModalIsOpen,
+            UpdateUserName,
+            setUpdateUserName,
           }}
         >
           {children}

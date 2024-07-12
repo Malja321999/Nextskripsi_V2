@@ -171,7 +171,9 @@ function NOSSR() {
   console.log(search);
 
   /* Fungsi PDF */
-  const { toPDF, targetRef } = usePDF({ filename: "Data Ujian Akhir.pdf" });
+  const { toPDF, targetRef } = usePDF({
+    filename: `${search || "Semua Kelas"}`,
+  });
 
   /* Fungsi Excel */
   const ExportToExcel = () => {
@@ -183,16 +185,15 @@ function NOSSR() {
     const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
     const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
     const data = new Blob([excelBuffer], { type: fileType });
-    FileSaver.saveAs(data, "Data Exel Ujian Akhir" + fileExtension);
+    FileSaver.saveAs(data, `${search || "Semua Kelas"}` + fileExtension);
   };
 
   /* Fungsi Print */
   const componentRef = useRef<HTMLDivElement | null>(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current || null,
-    documentTitle: "Data Ujian Akhir",
+    documentTitle: `${search || "Semua Kelas"}`,
   });
-
   return (
     <div className="px-3 py-0 w-[85rem] rounded-md">
       <div className={`mt-0 rounded-md overflow-y-auto h-[30rem]`}>
@@ -218,33 +219,34 @@ function NOSSR() {
                 highlightOnHover
                 subHeader
                 subHeaderComponent={
-                  <div className="flex flex-row justify-center items-center gap-[50rem]">
+                  <div className="flex flex-row justify-center items-center gap-5">
+                    {/*  Atur Kelas yang akan ditampilkan  */}
                     <div className="font-bold flex flex-col justify-start gap-5 mr-[3rem]">
-                      <div>
-                        <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
-                          <select
-                            value={search}
-                            onChange={handleSelect}
-                            id="countries"
-                            className="bg-teal-400 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          >
-                            <option selected value="">
-                              Semua Kelas
+                      <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
+                        <select
+                          value={search}
+                          onChange={handleSelect}
+                          id="countries"
+                          className="bg-teal-400 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        >
+                          <option selected value="">
+                            Semua Kelas
+                          </option>
+                          {SumClass.map((item) => (
+                            <option
+                              className="bg-gray-50"
+                              key={item.id}
+                              value={item.class}
+                            >
+                              Kelas {item.class}
                             </option>
-                            {SumClass.map((item) => (
-                              <option
-                                className="bg-gray-50"
-                                key={item.id}
-                                value={item.class}
-                              >
-                                Kelas {item.class}
-                              </option>
-                            ))}
-                          </select>
-                        </form>
-                      </div>
+                          ))}
+                        </select>
+                      </form>
                     </div>
+
                     <div className="flex flex-col justify-center items-center gap-2">
+                      {/* Cari siswa */}
                       <div>
                         <form className="max-w-md mx-auto">
                           <label
@@ -283,14 +285,15 @@ function NOSSR() {
                           </div>
                         </form>
                       </div>
+                      {/* Tombol Export */}
                       <div className="flex flex-row items-center gap-2 font-bold text-gray-50">
-                        <button
+                       {/*  <button
                           onClick={() => toPDF()}
                           className="flex justify-center items-center gap-2 w-fit p-2 bg-rose-500 hover:bg-rose-400 rounded-md"
                         >
                           <FaFilePdf />
                           PDF
-                        </button>
+                        </button> */}
                         <button
                           onClick={() => ExportToExcel()}
                           className="flex justify-center items-center gap-2 w-fit p-2 bg-emerald-500 hover:bg-emerald-400 rounded-md"

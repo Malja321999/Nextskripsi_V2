@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { firestore } from "../../lib/firebase/init";
 import { useSession } from "next-auth/react";
+import TimerUjianAkhir from "../TimerUjianAkhir";
 
 const Questions = () => {
   const questions = [
@@ -271,6 +272,7 @@ const Questions = () => {
                   setCurrentQuestion={setCurrentQuestion}
                   allQuestionsAnswered={allQuestionsAnswered}
                   calculatePoints={() => calculatePoints()}
+                  TimerUjianAkhir={TimerUjianAkhir}
                 />
               </div>
             )}

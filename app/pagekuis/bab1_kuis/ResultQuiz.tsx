@@ -26,21 +26,35 @@ const ResultQuiz = ({
           <div className="flex justify-center items-center">
             <div className="w-1/2 mb-5 ">
               {Pass ? (
-                <>
-                  <h1 className="w-full p-5 bg-sky-500 text-center rounded-md shadow-md border-4 border-indigo-200">
+                <div className="flex flex-col gap-5 justify-center items-center">
+                  <h1 className="text-lg w-fit p-5 bg-teal-500 text-center rounded-md shadow-md border-4 border-indigo-200">
                     Selamat Kamu Lulus Kuis Bab 1!
                   </h1>
-                </>
+                  <h2 className="text-base w-[80rem] font-bold p-5 bg-sky-500 text-center rounded-md shadow-md border-4 border-indigo-200">
+                    "Selamat! Usaha keras dan dedikasimu telah membuahkan hasil
+                    yang luar biasa. Kegigihanmu dalam mempelajari materi telah
+                    terbayar dengan keberhasilan ini. Teruslah bersemangat dan
+                    jadikan ini sebagai batu loncatan untuk meraih lebih banyak
+                    lagi prestasi di masa depan. Kita semua bangga padamu!"
+                  </h2>
+                </div>
               ) : (
-                <>
-                  <h1 className="w-full p-5 bg-rose-500 text-center rounded-md shadow-md border-4 border-indigo-200">
+                <div className="flex flex-col gap-5 justify-center items-center">
+                  <h1 className="text-lg w-fit p-5 bg-rose-500 text-center rounded-md shadow-md border-4 border-indigo-200">
                     Kamu Belum Lulus Kuis Bab 1
                   </h1>
-                </>
+                  <h2 className="text-base w-[80rem] font-bold p-5 bg-sky-500 text-center rounded-md shadow-md border-4 border-indigo-200">
+                    "Kamu mungkin belum lulus kali ini, tapi jangan menyerah!
+                    Ingatlah bahwa kegagalan adalah awal dari kesuksesan. Ayo
+                    pelajari kembali materi sebelumnya dengan tekun, agar kamu
+                    dapat mengatasi kesulitan dan berhasil lulus di kuis
+                    berikutnya."
+                  </h2>
+                </div>
               )}
             </div>
           </div>
-          <ul className="p-5 bg-teal-500 rounded-md">
+          <ul className="p-5 bg-teal-500 rounded-md text-lg">
             <li className="flex justify-between">
               <span>Nama Pengguna:</span>
               <span>{session?.user?.fullname}</span>
@@ -62,9 +76,16 @@ const ResultQuiz = ({
               <span>{points}</span>
             </li>
           </ul>
-          <div className="mt-5">
+          <div className="mt-5 w-full flex flex-row gap-[10rem] justify-center items-center">
+            <div>
+              <Link href={"/bab1_1"}>
+                <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
+                  Kembali Ke Bab 1
+                </button>
+              </Link>
+            </div>
             {Pass ? (
-              <div className="w-full flex justify-center items-center">
+              <div>
                 <Link href={"/bab2"}>
                   <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
                     Lanjutkan Ke Bab 2
@@ -72,22 +93,13 @@ const ResultQuiz = ({
                 </Link>
               </div>
             ) : (
-              <div className="w-full flex gap-2 justify-center items-center">
-                <div>
-                  <button
-                    onClick={() => ResetQuiz()}
-                    className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
-                  >
-                    Ulang Kuis
-                  </button>
-                </div>
-                <div className="w-full flex justify-center items-center">
-                  <Link href={"/bab1_1"}>
-                    <button className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text2-xl font-bold text-2xl text-black">
-                      Kembali Ke Bab 1
-                    </button>
-                  </Link>
-                </div>
+              <div>
+                <button
+                  onClick={() => ResetQuiz()}
+                  className="mx-auto bg-yellow-400 hover:bg-yellow-300 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
+                >
+                  Ulang Kuis
+                </button>
               </div>
             )}
           </div>

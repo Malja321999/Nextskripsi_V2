@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import { it } from "node:test";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DataTable, {
   createTheme,
   SortOrder,
@@ -21,13 +21,14 @@ import {
   where,
 } from "firebase/firestore";
 import { firestore } from "../lib/firebase/init";
-import { DiVim } from "react-icons/di";
-import { IoClose, IoSearch } from "react-icons/io5";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { IoClose } from "react-icons/io5";
 import Modal from "react-modal";
-import Link from "next/link";
-import { FaPlus, FaSync } from "react-icons/fa";
-import { IoTriangleSharp } from "react-icons/io5";
+import { FaFilePdf, FaPrint } from "react-icons/fa";
+import { usePDF } from "react-to-pdf";
+import { useReactToPrint } from "react-to-print";
+import * as FileSaver from "file-saver";
+import * as XLSX from "xlsx";
+import { SiMicrosoftexcel } from "react-icons/si";
 
 function NOSSR() {
   const [IsLoading, setIsLoading] = useState(true);
@@ -192,6 +193,35 @@ function NOSSR() {
 
   const [GetScoreQuiz, setGetScoreQuiz] = useState("bab1_kuis");
 
+  /* Fungsi PDF */
+  const { toPDF, targetRef } = usePDF({
+    filename: `${search || "Semua Kelas"}_${GetScoreQuiz || "bab1_kuis"}`,
+  });
+
+  /* Fungsi Excel */
+  const ExportToExcel = () => {
+    const fileType =
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+    const fileExtension = ".xlsx";
+
+    const ws = XLSX.utils.json_to_sheet(DataUsers);
+    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const data = new Blob([excelBuffer], { type: fileType });
+    FileSaver.saveAs(
+      data,
+      `${search || "Semua Kelas"}_${GetScoreQuiz || "bab1_kuis"}` +
+        fileExtension
+    );
+  };
+
+  /* Fungsi Print */
+  const componentRef = useRef<HTMLDivElement | null>(null);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current || null,
+    documentTitle: `${search || "Semua Kelas"}_${GetScoreQuiz || "bab1_kuis"}`,
+  });
+
   return (
     <div className="px-3 py-0 w-[85rem] rounded-md">
       <div className={`mt-0 rounded-md overflow-y-auto h-[30rem]`}>
@@ -202,7 +232,13 @@ function NOSSR() {
         ) : (
           <div className={`flex flex-col justify-center items-center w-full`}>
             {/* table */}
-            <div className="mt-5 rounded-md overflow-y-auto h-full">
+            <div
+              ref={(element) => {
+                componentRef.current = element;
+                targetRef.current = element;
+              }}
+              className="mt-5 rounded-md overflow-y-auto h-full"
+            >
               <DataTable
                 customStyles={customStyles}
                 columns={columns}
@@ -212,60 +248,86 @@ function NOSSR() {
                 subHeader
                 subHeaderComponent={
                   <div className="flex flex-row justify-center items-center gap-5">
+                    {/* Atur Kelas yang akan ditampilkan */}
                     <div className="font-bold flex flex-col justify-start gap-5">
-                      <div>
-                        <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
-                          <select
-                            value={search}
-                            onChange={handleSelect}
-                            id="countries"
-                            className="bg-teal-400 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          >
-                            <option selected value="">
-                              Semua Kelas
+                      <form className="flex fle-row justify-center items-center gap-2 max-w-sm mx-auto">
+                        <select
+                          value={search}
+                          onChange={handleSelect}
+                          id="countries"
+                          className="bg-teal-400 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        >
+                          <option selected value="">
+                            Semua Kelas
+                          </option>
+                          {SumClass.map((item) => (
+                            <option
+                              className="bg-gray-50"
+                              key={item.id}
+                              value={item.class}
+                            >
+                              Kelas {item.class}
                             </option>
-                            {SumClass.map((item) => (
-                              <option
-                                className="bg-gray-50"
-                                key={item.id}
-                                value={item.class}
-                              >
-                                Kelas {item.class}
-                              </option>
-                            ))}
-                          </select>
-                        </form>
-                      </div>
+                          ))}
+                        </select>
+                      </form>
                     </div>
 
-                    <form className="max-w-sm mx-auto">
-                      <div className="flex">
-                        <button
-                          id="states-button"
-                          data-dropdown-toggle="dropdown-states"
-                          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm text-center text-black font-bold bg-teal-400 border border-gray-300 rounded-s-lg hover:bg-teal-300 focus:ring-4 focus:outline-none focus:ring-gray-100"
-                          type="button"
-                        >
-                          Kuis :
-                        </button>
+                    {/* Atur Kuis yang akan ditampilkan */}
+                    <div>
+                      <form className="max-w-sm mx-auto">
+                        <div className="flex">
+                          <button
+                            id="states-button"
+                            data-dropdown-toggle="dropdown-states"
+                            className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm text-center text-black font-bold bg-teal-400 border border-gray-300 rounded-s-lg hover:bg-teal-300 focus:ring-4 focus:outline-none focus:ring-gray-100"
+                            type="button"
+                          >
+                            Kuis :
+                          </button>
 
-                        <label htmlFor="states" className="sr-only">
-                          Pilih Kuis
-                        </label>
-                        <select
-                          value={GetScoreQuiz}
-                          onChange={(e) => setGetScoreQuiz(e.target.value)}
-                          id="states"
-                          className="bg-[#ffffff] border-2 border-gray-300 text-gray-900 text-sm rounded-e-lg border-s-gray-100  border-s-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        >
-                          <option selected value="bab1_kuis">
-                            Kuis Bab 1
-                          </option>
-                          <option value="bab2_kuis">Kuis Bab 2</option>
-                          <option value="bab3_kuis">Kuis Bab 3</option>
-                        </select>
-                      </div>
-                    </form>
+                          <label htmlFor="states" className="sr-only">
+                            Pilih Kuis
+                          </label>
+                          <select
+                            value={GetScoreQuiz}
+                            onChange={(e) => setGetScoreQuiz(e.target.value)}
+                            id="states"
+                            className="bg-[#ffffff] border-2 border-gray-300 text-gray-900 text-sm rounded-e-lg border-s-gray-100  border-s-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          >
+                            <option selected value="bab1_kuis">
+                              Kuis Bab 1
+                            </option>
+                            <option value="bab2_kuis">Kuis Bab 2</option>
+                            <option value="bab3_kuis">Kuis Bab 3</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    {/* Tomborl Export */}
+                    <div className="flex flex-row items-center gap-2 font-bold text-gray-50">
+                      {/* <button
+                        onClick={() => toPDF()}
+                        className="flex justify-center items-center gap-2 w-fit p-2 bg-rose-500 hover:bg-rose-400 rounded-md"
+                      >
+                        <FaFilePdf />
+                        PDF
+                      </button> */}
+                      <button
+                        onClick={() => ExportToExcel()}
+                        className="flex justify-center items-center gap-2 w-fit p-2 bg-emerald-500 hover:bg-emerald-400 rounded-md"
+                      >
+                        <SiMicrosoftexcel />
+                        EXCEL
+                      </button>
+                      <button
+                        onClick={handlePrint}
+                        className="flex justify-center items-center gap-2 w-fit p-2 bg-gray-400 hover:bg-gray-300 rounded-md"
+                      >
+                        <FaPrint />
+                        PRINT
+                      </button>
+                    </div>
                   </div>
                 }
               />

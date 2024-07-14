@@ -101,12 +101,17 @@ const Page = () => {
     if (isFullscreen) {
       document.exitFullscreen();
       console.log("exit fullscreen");
+      setfullsecreen(true);
+      setFinishReading(false);
     } else {
       element?.requestFullscreen();
       console.log("enter fullscreen");
+      setfullsecreen(false);
+      setFinishReading(true);
     }
   };
 
+  const [fullsecreen, setfullsecreen] = useState(false);
   const { modalIsOpen, setModalIsOpen } = useAppContext();
 
   return (
@@ -222,7 +227,7 @@ const Page = () => {
           </div>
 
           {/* Tombol Media */}
-         {/*  <div className="mt-5 mb-5">
+          {/*  <div className="mt-5 mb-5">
             <ul className="flex flex-row gap-5 justify-center items-center text-center cursor-pointer">
               <li
                 onClick={() => setMedia("")}
@@ -255,37 +260,28 @@ const Page = () => {
           </div> */}
 
           {/* Konten Bab */}
-          <div  className="mt-5">
+          <div className="mt-5 mb-5 w-fit h-fit">
             {Media === "" ? (
-              <div className="flex flex-col gap-1">
-                <button
-                  onClick={Tfullscreen}
-                  className="text-2xl ml-[12rem] flex justify-center items-center bg-gray-800 hover:bg-slate-700 w-[58.6rem] rounded-md"
-                >
-                  <BiFullscreen />
-                  Fulllscreen
-                </button>
-                <div className="wrapperIfreme">
+              <div className="flex flex-col gap-2">
+                <div>
+                  <button
+                    onClick={Tfullscreen}
+                    className="text-2xl ml-[12rem] flex justify-center items-center bg-gray-800 hover:bg-slate-700 w-[58.6rem] rounded-md"
+                  >
+                    <BiFullscreen />
+                    Fulllscreen
+                  </button>
+                </div>
+                <div>
                   <iframe
+                    width={`${fullsecreen ? "100%" : "10%"}`}
+                    height={`${fullsecreen ? "100%" : "5%"}`}
+                    className={`rounded-md border-[10px] border-black w-[52rem] h-[42rem] ml-[16rem]`}
                     id="fullscreenItem"
                     loading="lazy"
                     src="https://scratch.mit.edu/projects/embed/1008826186/?autostart=true"
                     allowFullScreen
                   ></iframe>
-
-                  <button
-                    onClick={() => setFinishReading(!FinishReading)}
-                    className="ml-[10rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
-                  >
-                    <span>
-                      {FinishReading ? (
-                        <BsFillBookmarkCheckFill />
-                      ) : (
-                        <BsBookmark />
-                      )}
-                    </span>
-                    Video Sudah Ditonton
-                  </button>
                 </div>
               </div>
             ) : (
@@ -293,8 +289,37 @@ const Page = () => {
             )}
           </div>
 
+          <div className="text-center text-base p-2 bg-white shadow rounded text-white">
+            <div className="p-4 bg-blue-600 rounded">
+              <h1 className="font-bold text-2xl">
+                Apakah kamu sudah menonton video Bilangan Dengan Tanda Diatas?
+              </h1>
+              <div className="flex flex-row justify-center items-center gap-[10rem]">
+                <button
+                  onClick={() => setFinishReading(true)}
+                  className="text-black hover:bg-green-400  bg-green-300 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                >
+                  Iya
+                </button>
+                <button
+                  onClick={Tfullscreen}
+                  className="text-black hover:bg-red-500  bg-red-400 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                >
+                  Tidak
+                </button>
+              </div>
+              {FinishReading ? (
+                <h1 className="font-bold text-2xl bg-white p-5 rounded-md text-black">
+                  Ayo Kerjakan Latihan 1 Dibawah ini!
+                </h1>
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
+
           {/* Video Bab 1.1 */}
-          <div>
+          {/*   <div>
             {Media === "video" ? (
               <div>
                 <div className={CVideo}>
@@ -347,10 +372,10 @@ const Page = () => {
             ) : (
               <></>
             )}
-          </div>
+          </div> */}
 
           {/* Slide Materi */}
-          <div>
+          {/*    <div>
             {Media === "slide" ? (
               <div className="wrapperIfreme">
                 <iframe
@@ -375,7 +400,7 @@ const Page = () => {
             ) : (
               <></>
             )}
-          </div>
+          </div> */}
 
           {/* Latihan Soal */}
           <div>

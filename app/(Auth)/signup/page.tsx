@@ -295,7 +295,7 @@ const SignUp = () => {
             )}
           </div>
           <div className="text-sm font-medium text-gray-900 block dark:text-gray-300">
-            <label htmlFor="nisn">Token</label>
+            <label htmlFor="nisn">Token Kelas</label>
             <div>
               <Controller
                 name="token"

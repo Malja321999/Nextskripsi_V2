@@ -300,7 +300,7 @@ const SignUp = () => {
               htmlFor="nisn"
               className="text-sm font-medium text-gray-900 block dark:text-gray-300"
             >
-              Token
+              Token Guru
             </label>
             <div>
               <Controller

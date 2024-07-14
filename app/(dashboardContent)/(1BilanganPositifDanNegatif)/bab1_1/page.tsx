@@ -222,7 +222,7 @@ const Page = () => {
           </div>
 
           {/* Tombol Media */}
-          <div className="mt-5 mb-5">
+         {/*  <div className="mt-5 mb-5">
             <ul className="flex flex-row gap-5 justify-center items-center text-center cursor-pointer">
               <li
                 onClick={() => setMedia("")}
@@ -252,10 +252,10 @@ const Page = () => {
                 Slide
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Konten Bab */}
-          <div>
+          <div  className="mt-5">
             {Media === "" ? (
               <div className="flex flex-col gap-1">
                 <button

@@ -13,16 +13,16 @@ export default function Quiz() {
   const [MNB9, setMNB9] = useState("");
   const [MNB10, setMNB10] = useState("");
 
-  const [ketMNB1, setketMNB1] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB2, setketMNB2] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB3, setketMNB3] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB4, setketMNB4] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB5, setketMNB5] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB6, setketMNB6] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB7, setketMNB7] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB8, setketMNB8] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB9, setketMNB9] = useState("Kamu Harus Memasukkan Jawaban!");
-  const [ketMNB10, setketMNB10] = useState("Kamu Harus Memasukkan Jawaban!");
+  const [ketMNB1, setketMNB1] = useState("");
+  const [ketMNB2, setketMNB2] = useState("");
+  const [ketMNB3, setketMNB3] = useState("");
+  const [ketMNB4, setketMNB4] = useState("");
+  const [ketMNB5, setketMNB5] = useState("");
+  const [ketMNB6, setketMNB6] = useState("");
+  const [ketMNB7, setketMNB7] = useState("");
+  const [ketMNB8, setketMNB8] = useState("");
+  const [ketMNB9, setketMNB9] = useState("");
+  const [ketMNB10, setketMNB10] = useState("");
 
   function CekjawabanMNB() {
     if (MNB1 !== "") {

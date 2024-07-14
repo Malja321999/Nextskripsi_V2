@@ -35,19 +35,19 @@ export default function Quiz() {
   const [MNB20, setMNB20] = useState("");
 
   const [ketMNB1, setketMNB1] = useState(
-    "Kamu Harus Memilih Jawaban Bilangan Positif!"
+    ""
   );
   const [ketMNB2, setketMNB2] = useState(
-    "Kamu Harus Memilih Jawaban Bilangan Negatif!"
+    ""
   );
   const [ketMNB3, setketMNB3] = useState(
-    "Kamu Harus Memilih Jawaban Bilangan Positif!"
+    ""
   );
   const [ketMNB4, setketMNB4] = useState(
-    "Kamu Harus Memilih Jawaban Bilangan Negatif!"
+    ""
   );
   const [ketMNB5, setketMNB5] = useState(
-    "Kamu Harus Memilih Jawaban Bilangan Positif!"
+    ""
   );
   const [ketMNB6, setketMNB6] = useState(
     "Kamu Harus Memilih Jawaban Bilangan Negatif!"

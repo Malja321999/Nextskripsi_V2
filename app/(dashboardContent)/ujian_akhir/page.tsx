@@ -38,7 +38,7 @@ const BAb4_Kuis_Page = () => {
             onClick={() => router.replace("/pagekuis/kuis_akhir")}
             className="mt-3 bg-yellow-300 hover:bg-yellow-200 rounded-md w-[20rem] p-5 text-2xl font-bold text-black"
           >
-            Mulai Kuis
+            Mulai Ujian Akhir
           </button>
         </div>
       </div>

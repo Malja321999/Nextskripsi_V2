@@ -9,11 +9,11 @@ export default function Quiz() {
   const [MNB4, setMNB4] = useState("");
   const [MNB5, setMNB5] = useState("");
 
-  const [ketMNB1, setketMNB1] = useState("Kamu Harus Memilih Jawaban!");
-  const [ketMNB2, setketMNB2] = useState("Kamu Harus Memilih Jawaban!");
-  const [ketMNB3, setketMNB3] = useState("Kamu Harus Memilih Jawaban!");
-  const [ketMNB4, setketMNB4] = useState("Kamu Harus Memilih Jawaban!");
-  const [ketMNB5, setketMNB5] = useState("Kamu Harus Memilih Jawaban!");
+  const [ketMNB1, setketMNB1] = useState("");
+  const [ketMNB2, setketMNB2] = useState("");
+  const [ketMNB3, setketMNB3] = useState("");
+  const [ketMNB4, setketMNB4] = useState("");
+  const [ketMNB5, setketMNB5] = useState("");
 
   function CekjawabanMNB() {
     if (MNB1 !== "") {
@@ -69,11 +69,11 @@ export default function Quiz() {
     setMNB3("");
     setMNB4("");
     setMNB5("");
-    setketMNB1("Kamu Harus Memilih Jawaban!");
-    setketMNB2("Kamu Harus Memilih Jawaban!");
-    setketMNB3("Kamu Harus Memilih Jawaban!");
-    setketMNB4("Kamu Harus Memilih Jawaban!");
-    setketMNB5("Kamu Harus Memilih Jawaban!");
+    setketMNB1("");
+    setketMNB2("");
+    setketMNB3("");
+    setketMNB4("");
+    setketMNB5("");
   }
 
   console.log(MNB5);

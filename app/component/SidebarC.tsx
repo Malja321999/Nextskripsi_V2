@@ -15,7 +15,7 @@ import { usePathname } from "next/navigation";
 import { BsClipboard2CheckFill } from "react-icons/bs";
 
 const SidebarC = () => {
-  const [open1, setOpen1] = useState(false);
+  const [open1, setOpen1] = useState(true);
   const [submenuOpen1, setSubmenutOpen1] = useState(false);
 
   const [submenuOpen2, setSubmenutOpen2] = useState(false);

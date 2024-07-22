@@ -55,11 +55,17 @@ const Page = () => {
     if (isFullscreen) {
       document.exitFullscreen();
       console.log("exit fullscreen");
+      setfullsecreen(true);
+      setFinishReading(false);
     } else {
       element?.requestFullscreen();
       console.log("enter fullscreen");
+      setfullsecreen(false);
+      setFinishReading(true);
     }
   };
+
+  const [fullsecreen, setfullsecreen] = useState(false);
 
   return (
     <div className="bg-emerald-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
@@ -117,71 +123,29 @@ const Page = () => {
           </div>
         </div>
 
-        {/* Tombol Media */}
-        <div className="mt-5 mb-5">
-          <ul className="flex flex-row gap-5 justify-center items-center text-center cursor-pointer">
-            <li
-              onClick={() => setMedia("")}
-              className={`${
-                Media === "" ? "bg-indigo-500" : "bg-gray-800"
-              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
-            >
-              <MdCenterFocusStrong />
-              Fokus
-            </li>
-            <li
-              onClick={() => setMedia("video")}
-              className={`${
-                Media === "video" ? "bg-indigo-500" : "bg-gray-800"
-              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
-            >
-              <FaVideo />
-              Video
-            </li>
-            <li
-              onClick={() => setMedia("slide")}
-              className={`${
-                Media === "slide" ? "bg-indigo-500" : "bg-gray-800"
-              } flex justify-center items-center gap-2  hover:bg-gray-700 w-[8rem] h-[3rem] p-2 rounded-md text-base`}
-            >
-              <RiSlideshow2Fill />
-              Slide
-            </li>
-          </ul>
-        </div>
-
         {/* Konten Bab 2 */}
-        <div>
+        <div className="mt-5 mb-5 w-fit h-fit">
           {Media === "" ? (
-            <div className="flex flex-col gap-1">
-              <button
-                onClick={Tfullscreen}
-                className="text-2xl ml-[12rem] flex justify-center items-center bg-gray-800 hover:bg-slate-700 w-[58.6rem] rounded-md"
-              >
-                <BiFullscreen />
-                Fulllscreen
-              </button>
-              <div className="wrapperIfreme">
+            <div className="flex flex-col gap-2">
+              <div>
+                <button
+                  onClick={Tfullscreen}
+                  className="text-2xl ml-[12rem] flex justify-center items-center bg-gray-800 hover:bg-slate-700 w-[58.6rem] rounded-md"
+                >
+                  <BiFullscreen />
+                  Fulllscreen
+                </button>
+              </div>
+              <div>
                 <iframe
+                  width={`${fullsecreen ? "100%" : "10%"}`}
+                  height={`${fullsecreen ? "100%" : "5%"}`}
+                  className={`rounded-md border-[10px] border-black w-[52rem] h-[42rem] ml-[16rem]`}
                   id="fullscreenItem"
                   loading="lazy"
                   src="https://scratch.mit.edu/projects/1013171666/embed"
                   allowFullScreen
                 ></iframe>
-
-                <button
-                  onClick={() => setFinishReading(!FinishReading)}
-                  className="ml-[10rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
-                >
-                  <span>
-                    {FinishReading ? (
-                      <BsFillBookmarkCheckFill />
-                    ) : (
-                      <BsBookmark />
-                    )}
-                  </span>
-                  Video Sudah Ditonton
-                </button>
               </div>
             </div>
           ) : (
@@ -189,81 +153,33 @@ const Page = () => {
           )}
         </div>
 
-        {/* Video Bab 2 */}
-        <div>
-          {Media === "video" ? (
-            <div>
-              <div className={CVideo}>
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/KjetIZJ6vFM?si=JJP-UgBllESKl3fK"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-                <h1 className="text-center mt-10 mb-5">
-                  Penjumlahan dan <br /> Pengurangan Bilangan Bulat
-                </h1>
-                <ul className="ml-5 list-decimal list-inside w-50 text-xs">
-                  <h1 className="mb-2 font-bold">
-                    Tujuan Video Pembelajaran :
-                  </h1>
-                  <li>
-                    Siswa dapat melakukan proses penjumlahan dua bilangan bulat
-                    dengan tepat.
-                  </li>
-                  <br />
-                  <li>
-                    Siswa dapat melakukan pengurangan dua bilangan bulat dengan
-                    tepat.
-                  </li>
-                  <br />
-                  <li>
-                    Siswa dapat melakukan proses perhitungan yang terdapat dua
-                    operasi <br /> (penjumlahan dan pengurangan) dengan benar.
-                  </li>
-                </ul>
-              </div>
+        <div className="text-center text-base p-2 bg-white shadow rounded text-white">
+          <div className="p-4 bg-blue-600 rounded">
+            <h1 className="font-bold text-2xl">
+              Apakah kamu sudah menonton video Bilangan Dengan Tanda Diatas?
+            </h1>
+            <div className="flex flex-row justify-center items-center gap-[10rem]">
               <button
-                onClick={() => setFinishReading(!FinishReading)}
-                className="ml-[26.5rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                onClick={() => setFinishReading(true)}
+                className="text-black hover:bg-green-400  bg-green-300 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
               >
-                <span>
-                  {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
-                </span>
-                Video Sudah Ditonton
+                Iya
+              </button>
+              <button
+                onClick={Tfullscreen}
+                className="text-black hover:bg-red-500  bg-red-400 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+              >
+                Tidak
               </button>
             </div>
-          ) : (
-            <></>
-          )}
-        </div>
-
-        {/* Slide Bab 2 */}
-        <div>
-          {Media === "slide" ? (
-            <div className="wrapperIfreme">
-              <iframe
-                width="900"
-                height="500"
-                loading="lazy"
-                src="https://www.canva.com/design/DAF_QKcRC0Q/0-bw9LtH5M9guADqDflk4Q/view?embed"
-                allowFullScreen
-              ></iframe>
-              <button
-                onClick={() => setFinishReading(!FinishReading)}
-                className="ml-[15.3rem] hover:bg-teal-400 text-5xl bg-teal-600 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
-              >
-                <span>
-                  {FinishReading ? <BsFillBookmarkCheckFill /> : <BsBookmark />}
-                </span>
-                Video Sudah Ditonton
-              </button>
-            </div>
-          ) : (
-            <></>
-          )}
+            {FinishReading ? (
+              <h1 className="font-bold text-2xl bg-white p-5 rounded-md text-black">
+                Ayo Kerjakan Latihan Soal 3 Dibawah ini!
+              </h1>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
       </div>
 

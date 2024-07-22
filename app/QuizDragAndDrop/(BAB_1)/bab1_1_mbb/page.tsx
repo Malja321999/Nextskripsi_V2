@@ -13,15 +13,9 @@ export default function Quiz() {
   const [MNB5, setMNB5] = useState("");
   const [MNB6, setMNB6] = useState("");
 
-  const [ketMNB1, setketMNB1] = useState(
-    "Kamu Harus Memilih Jawaban Bilangan Positif!"
-  );
-  const [ketMNB2, setketMNB2] = useState(
-    "Kamu Harus Memilih Jawaban Bilangan Negatif!"
-  );
-  const [ketMNB3, setketMNB3] = useState(
-    "Kamu Harus Memilih Jawaban Bilangan Positif!"
-  );
+  const [ketMNB1, setketMNB1] = useState("");
+  const [ketMNB2, setketMNB2] = useState("");
+  const [ketMNB3, setketMNB3] = useState("");
   const [ketMNB4, setketMNB4] = useState(
     "Kamu Harus Memilih Jawaban Bilangan Negatif!"
   );
@@ -35,58 +29,32 @@ export default function Quiz() {
   function CekjawabanMNB() {
     if (MNB1 !== "") {
       if (MNB1 === "4") {
-        setketMNB1("Kamu Benar, Bilangan Positif!");
+        setketMNB1("Kamu Benar");
       } else {
-        setketMNB1("Kamu Salah, Bilangan Positif!");
+        setketMNB1("Kamu Salah");
       }
     } else if (MNB1 === "") {
       setketMNB1("Kamu Harus Memilih Jawaban Bilangan Positif!");
     }
     if (MNB2 !== "") {
-      if (MNB2 === "-3") {
-        setketMNB2("Kamu Benar, Bilangan Negatif!");
+      if (MNB2 === "-2") {
+        setketMNB2("Kamu Benar");
       } else {
-        setketMNB2("Kamu Salah, Bilangan Negatif!");
+        setketMNB2("Kamu Salah");
       }
     } else if (MNB2 === "") {
       setketMNB2("Kamu Harus Memilih Jawaban Bilangan Negatif!");
     }
     if (MNB3 !== "") {
-      if (MNB3 === "2") {
-        setketMNB3("Kamu Benar, Bilangan Positif!");
+      if (MNB3 === "-3") {
+        setketMNB3("Kamu Benar");
       } else {
-        setketMNB3("Kamu Salah, Bilangan Positif!");
+        setketMNB3("Kamu Salah");
       }
     } else if (MNB3 === "") {
-      setketMNB3("Kamu Harus Memilih Jawaban Bilangan Positif!");
+      setketMNB3("K");
     }
-    if (MNB4 !== "") {
-      if (MNB4 === "-2") {
-        setketMNB4("Kamu Benar, Bilangan Negatif!");
-      } else {
-        setketMNB4("Kamu Salah, Bilangan Negatif!");
-      }
-    } else if (MNB4 === "") {
-      setketMNB3("Kamu Harus Memilih Jawaban Bilangan Negatif!");
-    }
-    if (MNB5 !== "") {
-      if (MNB5 === "2") {
-        setketMNB5("Kamu Benar, Bilangan Positif!");
-      } else {
-        setketMNB5("Kamu Salah, Bilangan Positif!");
-      }
-    } else if (MNB5 === "") {
-      setketMNB5("Kamu Harus Memilih Jawaban Bilangan Positif!");
-    }
-    if (MNB6 !== "") {
-      if (MNB6 === "-3") {
-        setketMNB6("Kamu Benar, Bilangan Negatif!");
-      } else {
-        setketMNB6("Kamu Salah, Bilangan Negatif!");
-      }
-    } else if (MNB6 === "") {
-      setketMNB6("Kamu Harus Memilih Jawaban Bilangan Negatif!");
-    }
+    console.log(MNB3, ketMNB3);
   }
 
   function reset() {
@@ -115,11 +83,11 @@ export default function Quiz() {
                 Benda
               </th>
               <th className="border border-slate-600 text-center p-3 px-20">
-                Bilangan Positif
+                Bilangan Bulat
               </th>
-              <th className="border border-slate-600 text-center p-3 px-20">
+              {/* <th className="border border-slate-600 text-center p-3 px-20">
                 Bilangan Negatif
-              </th>
+              </th> */}
               <th className="border border-slate-600 text-center p-3 px-20">
                 Keterangan
               </th>
@@ -151,7 +119,7 @@ export default function Quiz() {
                   <option value="0">0</option>
                 </select>
               </td>
-              <td className="border border-slate-600 p-3 px-5 text-center">
+              {/* <td className="border border-slate-600 p-3 px-5 text-center">
                 <select
                   value={MNB2}
                   onChange={(e) => setMNB2(e.target.value)}
@@ -165,20 +133,16 @@ export default function Quiz() {
                   <option value="-3">-3</option>
                   <option value="0">0</option>
                 </select>
-              </td>
+              </td> */}
               <td className={`border border-slate-600 p-3 px-5 text-center`}>
                 <div
-                  className={`${
-                    ketMNB1 === "Kamu Benar, Bilangan Positif!" &&
-                    "text-green-500"
-                  } ${
-                    ketMNB1 === "Kamu Salah, Bilangan Positif!" &&
-                    "text-red-500"
+                  className={`${ketMNB1 === "Kamu Benar" && "text-green-500"} ${
+                    ketMNB1 === "Kamu Salah" && "text-red-500"
                   }`}
                 >
                   {ketMNB1}
                 </div>
-                <div
+                {/* <div
                   className={`${
                     ketMNB2 === "Kamu Benar, Bilangan Negatif!" &&
                     "text-green-500"
@@ -188,7 +152,7 @@ export default function Quiz() {
                   }`}
                 >
                   {ketMNB2}
-                </div>
+                </div> */}
               </td>
             </tr>
             <tr className={`border-b  bg-gray-300`}>
@@ -203,9 +167,9 @@ export default function Quiz() {
               </td>
               <td className="border border-slate-600 p-3 px-5 text-center">
                 <select
-                  value={MNB3}
-                  onChange={(e) => setMNB3(e.target.value)}
-                  id="MNB3"
+                  value={MNB2}
+                  onChange={(e) => setMNB2(e.target.value)}
+                  id="MNB2"
                   className="text-center  bg-teal-400 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 >
                   <option value="" selected>
@@ -216,7 +180,7 @@ export default function Quiz() {
                   <option value="0">0</option>
                 </select>
               </td>
-              <td className="border border-slate-600 p-3 px-5 text-center">
+              {/*  <td className="border border-slate-600 p-3 px-5 text-center">
                 <select
                   value={MNB4}
                   onChange={(e) => setMNB4(e.target.value)}
@@ -230,20 +194,16 @@ export default function Quiz() {
                   <option value="-2">-2</option>
                   <option value="0">0</option>
                 </select>
-              </td>
+              </td> */}
               <td className={`border border-slate-600 p-3 px-5 text-center`}>
                 <div
-                  className={`${
-                    ketMNB3 === "Kamu Benar, Bilangan Positif!" &&
-                    "text-green-500"
-                  } ${
-                    ketMNB3 === "Kamu Salah, Bilangan Positif!" &&
-                    "text-red-500"
+                  className={`${ketMNB2 === "Kamu Benar" && "text-green-500"} ${
+                    ketMNB2 === "Kamu Salah" && "text-red-500"
                   }`}
                 >
-                  {ketMNB3}
+                  {ketMNB2}
                 </div>
-                <div
+                {/*   <div
                   className={`${
                     ketMNB4 === "Kamu Benar, Bilangan Negatif!" &&
                     "text-green-500"
@@ -253,7 +213,7 @@ export default function Quiz() {
                   }`}
                 >
                   {ketMNB4}
-                </div>
+                </div> */}
               </td>
             </tr>
             <tr className={`border-b bg-gray-100`}>
@@ -268,20 +228,20 @@ export default function Quiz() {
               </td>
               <td className="border border-slate-600 p-3 px-5 text-center">
                 <select
-                  value={MNB5}
-                  onChange={(e) => setMNB5(e.target.value)}
-                  id="MNB5"
-                  className="text-center bg-teal-400 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  value={MNB3}
+                  onChange={(e) => setMNB3(e.target.value)}
+                  id="MNB3"
+                  className="text-center  bg-teal-400 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 >
                   <option value="" selected>
                     -Pilih Bilangan Bulat-
                   </option>
-                  <option value="2">2</option>
-                  <option value="-2">-2</option>
+                  <option value="3">3</option>
+                  <option value="-3">-3</option>
                   <option value="0">0</option>
                 </select>
               </td>
-              <td className="border border-slate-600 p-3 px-5 text-center">
+              {/*  <td className="border border-slate-600 p-3 px-5 text-center">
                 <select
                   value={MNB6}
                   onChange={(e) => setMNB6(e.target.value)}
@@ -295,20 +255,16 @@ export default function Quiz() {
                   <option value="-3">-3</option>
                   <option value="0">0</option>
                 </select>
-              </td>
+              </td> */}
               <td className={`border border-slate-600 p-3 px-5 text-center`}>
                 <div
-                  className={`${
-                    ketMNB5 === "Kamu Benar, Bilangan Positif!" &&
-                    "text-green-500"
-                  } ${
-                    ketMNB5 === "Kamu Salah, Bilangan Positif!" &&
-                    "text-red-500"
+                  className={`${ketMNB3 === "Kamu Benar" && "text-green-500"} ${
+                    ketMNB3 === "Kamu Salah" && "text-red-500"
                   }`}
                 >
-                  {ketMNB5}
+                  {ketMNB3}
                 </div>
-                <div
+                {/*    <div
                   className={`${
                     ketMNB6 === "Kamu Benar, Bilangan Negatif!" &&
                     "text-green-500"
@@ -318,7 +274,7 @@ export default function Quiz() {
                   }`}
                 >
                   {ketMNB6}
-                </div>
+                </div> */}
               </td>
             </tr>
           </tbody>
@@ -330,12 +286,16 @@ export default function Quiz() {
           >
             Cek Jawaban
           </button>
-          <button
-            className="bg-rose-600 hover:bg-rose-500 text-center p-5  rounded-lg"
-            onClick={reset}
-          >
-            Coba Lagi
-          </button>
+          {ketMNB1 === "Kamu Salah" ||
+            ketMNB2 === "Kamu Salah" ||
+            (ketMNB3 === "Kamu Salah" && (
+              <button
+                className="bg-rose-600 hover:bg-rose-500 text-center p-5  rounded-lg"
+                onClick={reset}
+              >
+                Coba Lagi
+              </button>
+            ))}
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const Page = () => {
   const [numbers, setNumbers] = useState<number[]>([
-    11, 12, -60, -72, -13, -15, -1, 21, 5, 6, 4, -9,
+    11, 12, -60, -72, -13, -15, -1, 21, -5, 6, 4, -9,
   ]);
   const [selectedNumbers1, setSelectedNumbers1] = useState<number[]>([]);
   const [selectedNumbers2, setSelectedNumbers2] = useState<number[]>([]);
@@ -17,7 +17,7 @@ const Page = () => {
     const correctAnswers2 = [-60];
     const correctAnswers3 = [21];
     const correctAnswers4 = [-9];
-    const correctAnswers5 = [5];
+    const correctAnswers5 = [-5];
 
     // Check if selectedNumbers match correctAnswers
     const isCorrect1 =
@@ -45,7 +45,7 @@ const Page = () => {
   };
 
   const resetQuiz = () => {
-    setNumbers([11, 12, -60, -72, -13, -15, -1, 21, 5, 6, 4, -9]); // Reset the original numbers
+    setNumbers([11, 12, -60, -72, -13, -15, -1, 21, -5, 6, 4, -9]); // Reset the original numbers
     setSelectedNumbers1([]);
     setSelectedNumbers2([]);
     setSelectedNumbers3([]);

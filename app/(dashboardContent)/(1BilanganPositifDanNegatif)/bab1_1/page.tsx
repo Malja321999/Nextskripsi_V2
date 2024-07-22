@@ -118,14 +118,85 @@ const Page = () => {
     <div className="bg-rose-700 md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
       <ButttonpnUP p={"/"} n={"/bab1_2"} />
 
-      <div className="flex flex-row gap-2 justify-center items-center">
-        <button
-          onClick={() => setModalIsOpen(true)}
-          className="text-black font-bold bg-yellow-300 p-5 w-fit rounded-md flex flex-col justify-center items-center gap-2"
-        >
-          <FaCircleQuestion />
-          PANDUAN
-        </button>
+      <div className="w-full flex flex-col gap-2 justify-center items-center text-black font-bold bg-yellow-500 p-5 rounded-md">
+        <div className="text-3xl bg-white p-5 rounded-md">
+          Panduan Pengunaan Media Interaktif Bilangan Bulat
+        </div>
+        <div className="ml-6 text-justify">
+          <ul className="flex flex-col gap-2 list-decimal p-5">
+            <li>
+              <div>Tekan bendera hijau untuk memulai video pembelajaran</div>
+              <div>
+                <Image width={900} height={200} src={"/p1.png"} alt="bendera" />
+              </div>
+            </li>
+            <li>
+              <div>
+                Tonton, perhatikan, dan pahami setiap pembahasan dalam video
+                pembelajaran
+              </div>
+              <div>
+                <Image width={900} height={200} src={"/p2.png"} alt="bendera" />
+              </div>
+            </li>
+            <li>
+              <div>
+                Jawab pertanyaan di dalam video agar dapat melanjutkan video
+                pembelajaran
+              </div>
+              <div>
+                <Image width={900} height={200} src={"/p3.png"} alt="bendera" />
+              </div>
+            </li>
+            <li>
+              <div>
+                Jika kamu sudah selesai menonton video, kamu dapat mengulang
+                video kembali
+              </div>
+              <div>
+                <Image width={900} height={200} src={"/p4.png"} alt="bendera" />
+              </div>
+            </li>
+            <li>
+              <div>
+                Geser halaman bab ke paling bawah, jawab pertanyaan dengan "Iya"
+                jika kamu sudah menonton video pembelajaran dan jawab "Tidak"
+                jika sebaliknya
+              </div>
+              <div>
+                <Image width={900} height={200} src={"/p5.png"} alt="bendera" />
+              </div>
+            </li>
+            <li>
+              <div>
+                Soal Latihan akan muncul ketika kamu sudah menjawab pertanyaan
+                dengan "Iya"
+              </div>
+              <div>
+                <Image width={900} height={200} src={"/p6.png"} alt="bendera" />
+              </div>
+            </li>
+            <li>
+              <div>
+                Kerjakan semua soal latihan pada bab agar kamu dapat lebih
+                memahami pembelajaran dalam bab tersebut
+              </div>
+              <div>
+                <Image width={900} height={200} src={"/p7.png"} alt="bendera" />
+              </div>
+            </li>
+            <li>
+              <div>
+                Jika kamu sudah mengerjakan semua soal latihan pada bab,
+                silahkan lanjutkan ke bab berikutnya dengan menekan tombol
+                "selanjutnya"
+              </div>
+              <div>
+                <Image width={900} height={200} src={"/p8.png"} alt="bendera" />
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <Modal
@@ -310,7 +381,7 @@ const Page = () => {
               </div>
               {FinishReading ? (
                 <h1 className="font-bold text-2xl bg-white p-5 rounded-md text-black">
-                  Ayo Kerjakan Latihan 1 Dibawah ini!
+                  Ayo Kerjakan Latihan Soal 1 Dibawah ini!
                 </h1>
               ) : (
                 <></>
@@ -543,7 +614,7 @@ const Page = () => {
                   </div>
 
                   {/* Soal d */}
-                  <div className="mt-10">
+                  {/*  <div className="mt-10">
                     <Am />
                     <h3 className="ml-5 mb-5 text-black">
                       <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
@@ -577,20 +648,20 @@ const Page = () => {
                     </h3>
                     <div className="flex flex-col">
                       <iframe
-                        className="h-[140rem] w-100 rounded-md border-4 border-gray-800"
+                        className="h-[80rem] w-100 rounded-md border-4 border-gray-800"
                         loading="lazy"
                         src="/QuizDragAndDrop/bab1_1_am"
                         allowFullScreen
                       ></iframe>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Soal e */}
                   <div className="mt-10">
                     <Am />
                     <h3 className="ml-5 mb-5 text-black">
                       <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
-                        <ul className="list list-disc list-inside">
+                        <ul className="p-5 list list-disc list-inside">
                           <h1 className="font-bold">Petunjuk pengerjaan :</h1>
                           <div>
                             <li>
@@ -619,11 +690,22 @@ const Page = () => {
                               .
                             </li>
                             <li>
+                              Tarik dan tahan bilangan bulat pada kotak berwarna
+                              ungu
+                            </li>
+                            <li>
+                              Letakkan pada kotak berwarna hitam jika menurutmu
+                              bilangan yang ditarik adalah bilangan negatif
+                              sebaliknya jika tidak maka taruhlah pada kotak
+                              berwarna merah
+                            </li>
+                            <li>
                               Tekan tombol{" "}
                               <span className="font-bold bg-white rounded-md">
                                 Cek Jawaban
                               </span>{" "}
-                              ketika kamu sudah menjawab semua pertanyaan.
+                              ketika kamu merasa sudah meletakkan semua bilangan
+                              yang diminta.
                             </li>
                           </div>
                         </ul>
@@ -642,6 +724,58 @@ const Page = () => {
                         src="/QuizDragAndDrop/bab1_1A"
                         allowFullScreen
                       ></iframe>
+                      <h3 className="ml-5 mb-5 text-black">
+                        <div className="border-dotted border-2 bg-indigo-300 border-blue-600 rounded-md p-5">
+                          <ul className="p-5 list list-disc list-inside">
+                            <h1 className="font-bold">Petunjuk pengerjaan :</h1>
+                            <div>
+                              <li>
+                                Kamu sudah menonton video mengenai Bilangan
+                                Dengan Tanda. Sekarang kelompokkanlah{" "}
+                                <span className="font-bold">Bilangan</span> pada
+                                kotak yang tersedia berdasarkan kelompok
+                                bilangan di setiap pertanyaan di bawah ini.
+                              </li>
+                              <li>
+                                Jika jawabanmu{" "}
+                                <span className="font-bold">benar</span>, maka
+                                akan ditampilkan teks Jawaban{" "}
+                                <span className="font-bold text-green-400 bg-white rounded-md p-1">
+                                  Kamu Benar!
+                                </span>
+                                .
+                              </li>
+                              <li>
+                                Jika jawabanmu{" "}
+                                <span className="font-bold">salah</span>, maka
+                                akan ditampilkan teks Jawaban{" "}
+                                <span className="font-bold text-red-400 bg-white rounded-md p-1">
+                                  Kamu Salah!
+                                </span>
+                                .
+                              </li>
+                              <li>
+                                Tarik dan tahan bilangan bulat pada kotak
+                                berwarna ungu
+                              </li>
+                              <li>
+                                Letakkan pada kotak berwarna hijau jika
+                                menurutmu bilangan yang ditarik adalah bilangan
+                                seuai dengan bilangan yang diminta di setiap
+                                soal
+                              </li>
+                              <li>
+                                Tekan tombol{" "}
+                                <span className="font-bold bg-white rounded-md">
+                                  Cek Jawaban
+                                </span>{" "}
+                                ketika kamu merasa sudah meletakkan semua
+                                bilangan yang diminta.
+                              </li>
+                            </div>
+                          </ul>
+                        </div>
+                      </h3>
                       <li>Mana yang merupakan bilangan bulat?</li>
                       <iframe
                         className="h-[30rem] w-100 rounded-md border-4 border-gray-800"

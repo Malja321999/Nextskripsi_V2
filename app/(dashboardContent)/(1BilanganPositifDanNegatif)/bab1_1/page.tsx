@@ -199,53 +199,6 @@ const Page = () => {
         </div>
       </div>
 
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        contentLabel="Video Modal"
-        /* closeTimeoutMS={500} */
-        className="flex justify-center items-center text-5xl p-5 rounded-md w-fit"
-        style={{
-          overlay: {
-            backgroundColor: "rgba(0,0,0,0.7)",
-          },
-          content: {
-            width: "80rem",
-            height: "85vh",
-            margin: "auto", // Center the modal horizontally
-            padding: "0px",
-            border: "none",
-            overflow: "hidden",
-            marginTop: "100px",
-          },
-        }}
-      >
-        <div
-          style={{ animation: "dropTop .30s linear" }}
-          className="flex flex-col justify-start items-center gap-2"
-        >
-          <h1 className="text-3xl text-center font-bold bg-indigo-500 p-5 w-fit rounded-md shadow-md">
-            Panduan Media Pembelajaran <br /> BILANGAN BULAT
-          </h1>
-          <iframe
-            className="w-[38rem] h-[25rem] rounded-md"
-            loading="lazy"
-            src="https://www.canva.com/design/DAGE6nXV6FY/o0-Xg_uhhv8oU5mEts8OVg/view?embed"
-            allowFullScreen
-          />
-          <div className="text-center font-bold text-xs">
-            Klik Gambar Untuk Berpindah <br /> Sebelumnya dan Selanjutnya
-          </div>
-          <button
-            onClick={() => setModalIsOpen(false)}
-            className="text-base bg-red-500 p-2 w-fit rounded-md flex flex-col justify-center items-center gap-2"
-          >
-            <IoClose />
-            Tutup
-          </button>
-        </div>
-      </Modal>
-
       {/* Judul Bab */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
         <div className="bg-gray-900 w-fit p-2 rounded-md mt-3">

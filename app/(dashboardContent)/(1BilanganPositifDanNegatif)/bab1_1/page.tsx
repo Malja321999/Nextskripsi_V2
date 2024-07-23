@@ -117,7 +117,7 @@ const Page = () => {
     <div className="bg-rose-700 md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
       <ButttonpnUP p={"/"} n={"/bab1_2"} />
 
-      <div className="w-full flex flex-col gap-2 justify-center items-center text-black font-bold bg-yellow-500 p-5 rounded-md">
+      <div className="w-full flex flex-col gap-2 justify-center items-center text-black font-bold bg-teal-500 p-5 rounded-md">
         <div className="text-3xl bg-white p-5 rounded-md">
           Panduan Pengunaan Media Interaktif Bilangan Bulat
         </div>

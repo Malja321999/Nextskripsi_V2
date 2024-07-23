@@ -33,7 +33,7 @@ import { RiSlideshow2Fill } from "react-icons/ri";
 import { MdCenterFocusStrong } from "react-icons/md";
 import { set } from "firebase/database";
 import { BiFullscreen } from "react-icons/bi";
-import Modal from "react-modal";
+
 import { useAppContext } from "@/app/context/AppWrapper";
 import { IoClose } from "react-icons/io5";
 import { FaCircleQuestion } from "react-icons/fa6";
@@ -112,7 +112,6 @@ const Page = () => {
   };
 
   const [fullsecreen, setfullsecreen] = useState(false);
-  const { modalIsOpen, setModalIsOpen } = useAppContext();
 
   return (
     <div className="bg-rose-700 md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">

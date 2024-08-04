@@ -134,10 +134,10 @@ const Page = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="p-4 bg-white shadow rounded">
-        <div className="p-5 flex flex-row bg-indigo-200 text-4xl">
+        <div className="p-5 flex flex-row bg-indigo-200 h-[15rem] text-4xl">
           <div>
             {/* kolom Jawaaban */}
-            <div className="z-10 top-8 absolute flex flex-row justify-items-center text-center">
+            <div className="z-10 top-[8rem] absolute flex flex-row justify-items-center text-center">
               <div
                 className={`${
                   BenarSemua === "benar" ? "opacity-0" : "opacity-100"
@@ -257,9 +257,9 @@ const Page = () => {
               </button>
               <button
                 onClick={resetQuiz}
-                className="bg-rose-600 rounded-md border-2 border-white px-5 py-1 h-[12rem]"
+                className="rounded-md px-5 py-1 h-[12rem]"
               >
-                Ulang Kuis
+                {/* Ulang Kuis */}
               </button>
             </div>
             {/* akhir kolom tombol */}

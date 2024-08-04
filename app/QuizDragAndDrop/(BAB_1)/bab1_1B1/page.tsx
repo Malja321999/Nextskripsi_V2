@@ -92,12 +92,12 @@ export default function Quiz() {
           >
             Cek Jawaban
           </button>
-          <button
+         {/*  <button
             onClick={resetQuiz}
             className="px-4 py-2 bg-rose-600 text-white rounded shadow"
           >
             Coba Lagi
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

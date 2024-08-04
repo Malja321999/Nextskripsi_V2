@@ -27,7 +27,7 @@ const SidebarC = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex mt-[5.7rem] h-screen bg-teal-900 dark:bg-dark-purple">
+    <div className="flex mt-[5.7rem] h-screen bg-indigo-600 text-white">
       <div
         className={`h-[38rem] p-5 pt-8 overflow-y-auto overflow-x-hidden ${
           open1 ? "w-74" : "w-[6rem]"
@@ -50,7 +50,7 @@ const SidebarC = () => {
             }`}
           />
           <h1
-            className={`text-white origin-left font-medium text-2xl duration-300 ${
+            className={` origin-left font-medium text-2xl duration-300 ${
               !open1 && "scale-0"
             }`}
           >
@@ -66,10 +66,10 @@ const SidebarC = () => {
                   <li
                     className={`${
                       open1 && "w-[275px]"
-                    } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md 
-                ${pathname === "/bab1_1" && "bg-teal-500"}
-                ${pathname === "/bab1_2" && "bg-teal-500"}
-                ${pathname === "/bab1_kuis" && "bg-teal-500"}`}
+                    }  text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md 
+                ${pathname === "/bab1_1" && "bg-teal-600"}
+                ${pathname === "/bab1_2" && "bg-teal-600"}
+                ${pathname === "/bab1_kuis" && "bg-teal-600"}`}
                     onClick={() => setSubmenutOpen2(!submenuOpen2)}
                   >
                     <span className="text-2xl block float-left">
@@ -96,8 +96,8 @@ const SidebarC = () => {
                     <Link href="/bab1_1">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab1_1" && "bg-blue-600"
-                        } ${pathname === "/bab1_2" && "bg-blue-600"}`}
+                          pathname === "/bab1_1" && " bg-teal-500"
+                        } ${pathname === "/bab1_2" && " bg-teal-500"}`}
                       >
                         <span>
                           <span className="text-2xl block float-left">
@@ -117,7 +117,7 @@ const SidebarC = () => {
                     <Link href="/bab1_kuis">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab1_kuis" && "bg-blue-600"
+                          pathname === "/bab1_kuis" && " bg-teal-500"
                         }`}
                       >
                         <span>
@@ -147,9 +147,9 @@ const SidebarC = () => {
                   <li
                     className={`${
                       open1 && "w-[275px]"
-                    } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
-                ${pathname === "/bab2" && "bg-teal-500"}
-                ${pathname === "/bab2_kuis" && "bg-teal-500"}
+                    } text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
+                ${pathname === "/bab2" && "bg-teal-600"}
+                ${pathname === "/bab2_kuis" && "bg-teal-600"}
                 `}
                     onClick={() => setSubmenutOpen3(!submenuOpen3)}
                   >
@@ -177,7 +177,7 @@ const SidebarC = () => {
                     <Link href="/bab2">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab2" && "bg-blue-600"
+                          pathname === "/bab2" && " bg-teal-500"
                         }`}
                       >
                         <span>
@@ -198,7 +198,7 @@ const SidebarC = () => {
                     <Link href="/bab2_kuis">
                       <li
                         className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab2_kuis" && "bg-blue-600"
+                          pathname === "/bab2_kuis" && " bg-teal-500"
                         }`}
                       >
                         <span>
@@ -229,9 +229,9 @@ const SidebarC = () => {
                   <li
                     className={`${
                       open1 && "w-[275px]"
-                    } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
-                ${pathname === "/bab3" && "bg-teal-500"}
-                ${pathname === "/bab3_kuis" && "bg-teal-500"}
+                    }  text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
+                ${pathname === "/bab3" && "bg-teal-600"}
+                ${pathname === "/bab3_kuis" && "bg-teal-600"}
                 `}
                     onClick={() => setSubmenutOpen4(!submenuOpen4)}
                   >
@@ -259,7 +259,7 @@ const SidebarC = () => {
                     <Link href="/bab3">
                       <li
                         className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab3" && "bg-blue-600"
+                          pathname === "/bab3" && " bg-teal-500"
                         }`}
                       >
                         <span>
@@ -280,7 +280,7 @@ const SidebarC = () => {
                     <Link href="/bab3_kuis">
                       <li
                         className={` text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                          pathname === "/bab3_kuis" && "bg-blue-600"
+                          pathname === "/bab3_kuis" && " bg-teal-500"
                         }`}
                       >
                         <span>
@@ -310,8 +310,8 @@ const SidebarC = () => {
                   <li
                     className={`${
                       open1 && "w-[275px]"
-                    } text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
-                ${pathname === "/ujian_akhir" && "bg-teal-500"}
+                    }  text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white hover:text-teal-200 rounded-md
+                ${pathname === "/ujian_akhir" && "bg-teal-600"}
                 `}
                     onClick={() => setSubmenutOpen4(!submenuOpen4)}
                   >

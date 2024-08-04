@@ -424,12 +424,12 @@ export default function Quiz() {
           >
             Cek Jawaban
           </button>
-          <button
+         {/*  <button
             className="bg-rose-600 hover:bg-rose-500 text-center p-5  rounded-lg"
             onClick={reset}
           >
             Coba Lagi
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

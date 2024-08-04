@@ -68,11 +68,11 @@ const Page = () => {
   const [fullsecreen, setfullsecreen] = useState(false);
 
   return (
-    <div className="bg-emerald-700 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
+    <div className="bg-teal-500 h-[39.5rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
       <ButttonpnUP p={"/bab1_1"} n={"/bab2_kuis"} />
       {/* Judul Bab */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
-        <div className="bg-gray-900 w-fit p-2 rounded-md mt-3">
+        <div className="bg-white text-black w-fit p-2 rounded-md mt-3">
           <ul className="flex justify-start gap-2">
             <li className="mt-1">
               <IoBookOutline />
@@ -86,7 +86,7 @@ const Page = () => {
 
       <div>
         {/* Tujuan Pembelajaran 1.2 */}
-        <div className="mx-20 bg-gray-900 w-[74rem] p-2 rounded-md mt-2 flex flex-col relative">
+        <div className="mx-20 bg-white text-black w-[74rem] p-2 rounded-md mt-2 flex flex-col relative">
           <button onClick={() => SetCollapse(!Collapse)}>
             <ul className="flex justify-between gap-2">
               <li className="flex justify-between gap-2 text-2xl">
@@ -99,7 +99,7 @@ const Page = () => {
 
           <div>
             {Collapse ? (
-              <div className="bg-gray-800 w-[73rem] p-2 rounded-md text-base text-start">
+              <div className="bg-indigo-300 w-[73rem] p-2 rounded-md text-base text-start">
                 <ul className="list-decimal list-inside">
                   <li>
                     Siswa dapat melakukan proses penjumlahan dua bilangan bulat
@@ -130,7 +130,7 @@ const Page = () => {
               <div>
                 <button
                   onClick={Tfullscreen}
-                  className="text-2xl ml-[12rem] flex justify-center items-center bg-gray-800 hover:bg-slate-700 w-[58.6rem] rounded-md"
+                  className="text-2xl ml-[12rem] flex justify-center items-center bg-white text-black hover:bg-slate-700 w-[58.6rem] rounded-md"
                 >
                   <BiFullscreen />
                   Fulllscreen

@@ -193,12 +193,12 @@ const Page = () => {
             >
               Cek Jawaban
             </button>
-            <button
+           {/*  <button
               onClick={resetQuiz}
               className="bg-rose-600 rounded-md border-2 border-white px-5 py-1 h-[12rem]"
             >
               Ulang Kuis
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

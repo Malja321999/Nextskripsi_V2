@@ -5,7 +5,7 @@ const BAb4_Kuis_Page = () => {
   const router = useRouter();
 
   return (
-    <div className="bg-fuchsia-600 h-[40rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-5 relative rounded-md left-[-90.9rem] text-3xl text-white flex justify-center items-center overflow-x-auto">
+    <div className="h-[40rem] w-[89.5rem] mt-[5rem] mx-2 mb-5 p-5 relative rounded-md left-[-90.9rem] text-3xl text-white flex justify-center items-center overflow-x-auto">
       <div className="bg-emerald-600 w-full h-full mx-auto rounded-md shadow-md text-justify">
         <h1 className="text-center text-5xl p-5 px-10 font-bold">
           UJIAN AKHIR

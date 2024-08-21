@@ -163,7 +163,7 @@ const Page = () => {
               <div>
                 <button
                   onClick={Tfullscreen}
-                  className="text-2xl ml-[12rem] flex justify-center items-center bg-white text-black hover:bg-slate-700 w-[58.6rem] rounded-md"
+                  className="text-2xl ml-[12rem] flex justify-center items-center bg-blue-700 text-white hover:bg-blue-600 w-[58.6rem] rounded-md"
                 >
                   <BiFullscreen />
                   Fulllscreen

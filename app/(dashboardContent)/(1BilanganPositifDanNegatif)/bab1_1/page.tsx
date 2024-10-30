@@ -114,14 +114,16 @@ const Page = () => {
   const [fullsecreen, setfullsecreen] = useState(false);
 
   return (
-    <div className="bg-teal-500 md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden">
+    <div
+      className={`bg-[#470d9f] md:h-[39.5rem] h-[40rem] md:w-[89.5rem] w-[41rem] mt-[5rem] mx-2 mb-5 p-10 flex flex-col relative rounded-md left-[-90.9rem] text-3xl overflow-y-scroll overflow-x-hidden`}
+    >
       <ButttonpnUP p={"/"} n={"/bab1_2"} />
 
-      <div className="w-full flex flex-col gap-2 justify-center items-center text-black font-bold bg-indigo-300 p-5 rounded-md">
-        <div className="text-3xl bg-white p-5 rounded-md">
+      <div className="w-full flex flex-col gap-2 justify-center items-center text-white font-bold p-5 rounded-md">
+        <div className="text-3xl bg-teal-700 p-5 rounded-md border-[5px] border-white">
           Panduan Pengunaan Media Interaktif Bilangan Bulat
         </div>
-        <div className="ml-6 text-justify">
+        <div className="ml-6 text-justify bg-teal-700 p-5 rounded-md border-[5px] border-white">
           <ul className="flex flex-col gap-2 list-decimal p-5">
             <li>
               <div>Tekan bendera hijau untuk memulai video pembelajaran</div>
@@ -200,7 +202,7 @@ const Page = () => {
 
       {/* Judul Bab */}
       <div className="mx-2 mt-0 left-[-90.9rem]">
-        <div className="bg-white text-black w-fit p-2 rounded-md mt-3">
+        <div className="bg-teal-700 text-white w-fit p-2 rounded-md mt-3">
           <ul className="flex justify-start gap-2">
             <li className="mt-1">
               <IoBookOutline />
@@ -215,7 +217,7 @@ const Page = () => {
       <div>
         <div>
           {/* Tujuan Pembelajaran */}
-          <div className="mx-20 bg-white text-black w-[74rem] p-2 rounded-md mt-2 flex flex-col relative">
+          <div className="mx-20 bg-teal-700 text-white w-[74rem] p-2 rounded-md mt-2 flex flex-col relative">
             <button onClick={() => SetCollapse2(!Collapse2)}>
               <ul className="flex justify-between gap-2">
                 <li className="flex justify-between gap-2 text-2xl">
@@ -230,7 +232,7 @@ const Page = () => {
 
             <div>
               {Collapse2 ? (
-                <div className="bg-indigo-300 w-[73rem] p-2 rounded-md text-base text-start">
+                <div className="bg-white text-black w-[73rem] p-2 rounded-md text-base text-start">
                   <ul className="list-decimal list-inside">
                     <li>
                       Siswa dapat menjelaskan “Bilangan Positif” dan “Bilangan
@@ -313,20 +315,20 @@ const Page = () => {
           </div>
 
           <div className="text-center text-base p-2 bg-white shadow rounded text-white">
-            <div className="p-4 bg-blue-600 rounded">
+            <div className="p-4 bg-teal-700 rounded">
               <h1 className="font-bold text-2xl">
                 Apakah kamu sudah menonton video Bilangan Dengan Tanda Diatas?
               </h1>
               <div className="flex flex-row justify-center items-center gap-[10rem]">
                 <button
                   onClick={() => setFinishReading(true)}
-                  className="text-black hover:bg-green-400  bg-green-300 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                  className="text-white hover:bg-blue-400  bg-blue-500 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
                 >
                   Iya
                 </button>
                 <button
                   onClick={Tfullscreen}
-                  className="text-black hover:bg-red-500  bg-red-400 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
+                  className="text-white hover:bg-red-400  bg-red-500 p-5 w-fit rounded-md mt-10 mb-2 font-bold flex justify-between gap-2"
                 >
                   Tidak
                 </button>

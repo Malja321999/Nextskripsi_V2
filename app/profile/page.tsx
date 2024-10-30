@@ -205,7 +205,7 @@ export default function ProfilePage() {
               </table>
             ))}
           </div>
-          <div className="p-5 rounded-md bg-gray-700 w-full h-fit text-xl font-black">
+          <div className="p-5 rounded-md bg-teal-300 dark:bg-gray-700 text-black dark:text-white w-full h-fit text-xl font-black">
             <div className="flex justify-start items-center gap-2">
               <IoMdSettings />
               PENGATURAN AKUN
@@ -215,7 +215,7 @@ export default function ProfilePage() {
             onClick={() =>
               router.push("/profile/changeusernamepassword/GantiNama")
             }
-            className="flex justify-between items-center gap-2 p-5 rounded-md bg-gray-600 text-xl font-black mb-1 mt-1"
+            className="flex justify-between items-center gap-2 p-5 rounded-md bg-teal-100 dark:bg-gray-600 text-black dark:text-white text-xl font-black mb-1 mt-1"
           >
             Ganti Nama Pengguna Dan Kata Sandi
             <GrNext />

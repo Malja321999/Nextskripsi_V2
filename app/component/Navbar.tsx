@@ -196,21 +196,23 @@ function NavBar() {
 
                 <li>
                   {status === "authenticated" ? (
-                    <div className="flex flex-col item-center text-center md:rounded-md md:bg-inherit bg-sky-500 md:w-auto w-fit rounded-md md:p-1 p-5 -mt-1">
-                      <div className="flex justify-center items-center">
-                        <MdAccountCircle className="w-[5vh] h-auto bg-black rounded-full" />
+                    <Link href="/profile">
+                      <div className="flex flex-col item-center text-center md:rounded-md md:bg-inherit bg-sky-500 md:w-auto w-fit rounded-md md:p-1 p-5 -mt-1">
+                        <div className="flex justify-center items-center">
+                          <MdAccountCircle className="w-[5vh] h-auto bg-black rounded-full" />
+                        </div>
+                        <h4>
+                          {snapshotFirestore.map((data) => (
+                            <div key={data.id}>{data.fullname}</div>
+                          ))}
+                        </h4>
+                        <button onClick={() => signOut()}>
+                          <span className="pb-1 py-2 md:px-6 text-center font-bold hover:bg-indigo-500 border-teal-500 text-rose-400 hover:text-rose-300 md:hover:bg-transparent rounded-md">
+                            Logout
+                          </span>
+                        </button>
                       </div>
-                      <h4>
-                        {snapshotFirestore.map((data) => (
-                          <div key={data.id}>{data.fullname}</div>
-                        ))}
-                      </h4>
-                      <button onClick={() => signOut()}>
-                        <span className="pb-1 py-2 md:px-6 text-center font-bold hover:bg-indigo-500 border-teal-500 text-rose-400 hover:text-rose-300 md:hover:bg-transparent rounded-md">
-                          Logout
-                        </span>
-                      </button>
-                    </div>
+                    </Link>
                   ) : (
                     <button onClick={() => signIn()}>
                       <span className="">Login</span>
